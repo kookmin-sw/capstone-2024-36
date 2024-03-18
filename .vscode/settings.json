@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "3D_Base.sln"
+    "dotnet.defaultSolution": "capstone-2024-36.sln"
 }
