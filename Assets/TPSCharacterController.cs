@@ -24,7 +24,6 @@ public class TPSCharacterController : MonoBehaviour
     void Update()
     {
         Move();
-        Catch();
         if (Input.GetMouseButton(1))
             LookAround();
     }
@@ -56,35 +55,5 @@ public class TPSCharacterController : MonoBehaviour
             x = Mathf.Clamp(x, 335f, 361f);
 
         cameraArm.rotation = Quaternion.Euler(x, camAngle.y - mouseDelta.x, camAngle.z);
-    }
-
-    public void Catch()
-    {
-        Ray ray = characterCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitResult;
-        if (Physics.Raycast(ray, out hitResult))
-        {
-            //Debug.Log(hitResult.collider.gameObject.tag);
-            //Debug.Log(hitResult.transform);
-            //Debug.Log(Input.mousePosition);
-            Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
-            //hitResult.transform.position = mouseDir;
-            if (hitResult.collider.gameObject.tag == "moveable")
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    hitResult.transform.position = mouseDir + animator.transform.position + new Vector3(0, hitResult.transform.localScale.y / 2, 0);
-                    if (Input.GetKey(KeyCode.Q))
-                    {
-                        hitResult.transform.Rotate(Vector3.up, 45f * Time.deltaTime);
-                    }
-
-                    if (Input.GetKey(KeyCode.E))
-                    {
-                        hitResult.transform.Rotate(Vector3.up, -45f * Time.deltaTime);
-                    }
-                }
-            }
-        }
     }
 }
