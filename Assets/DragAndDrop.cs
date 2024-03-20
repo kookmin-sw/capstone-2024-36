@@ -29,6 +29,7 @@ public class DragAndDrop : MonoBehaviour
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
             hit.rigidbody.useGravity = false;
+            Debug.Log("moveable");
         }
     }
 
