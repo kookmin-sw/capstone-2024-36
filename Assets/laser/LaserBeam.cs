@@ -10,9 +10,12 @@ public class LaserBeam
     LineRenderer laser;
     List<Vector3> laserIndices = new List<Vector3>();
     Color laserColor;
+    private Color previousLaserColor;
+    private bool collidedWithOtherLaser = false;
 
     public LaserBeam(Vector3 pos, Vector3 dir, Material material, Color color)
     {
+        previousLaserColor = color;
         this.laserColor = color;
 
         this.laserObject = new GameObject();
@@ -77,8 +80,10 @@ public class LaserBeam
         {
             Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
             Color wallColor = hitRenderer.material.color;
+            Debug.Log(wallColor+"벽색깔");
+            Debug.Log(laserColor+"레이저색깔");
 
-            Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
+             Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
 
             hitRenderer.material.color = mixedColor;
             laserIndices.Add(hitInfo.point);
@@ -90,4 +95,15 @@ public class LaserBeam
             UpdateLaser();
         }
     }
+    Color MixColors(Color color1, Color color2)
+{
+    // 각 채널의 값이 255가 되도록 조정하여 최종 색상 계산
+    float red = Mathf.Max(color1.r, color2.r);
+    float green = 0;
+    float blue = Mathf.Max(color1.b, color2.b);
+    
+    Color mixedColor = new Color(red, green, blue);
+    
+    return mixedColor;
+}
 }

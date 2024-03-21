@@ -17,7 +17,7 @@ public class LaserController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             ToggleLaser();
         }
