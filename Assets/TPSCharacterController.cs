@@ -9,16 +9,88 @@ public class TPSCharacterController : MonoBehaviour
     private Transform characterBody;
 
     Animator animator;
+    public Camera getCamera;
+    private RaycastHit hit;
+
+    private enum State
+    {
+        Size,
+        Laser,
+        Gravity,
+    }
+    private State _state;
 
     void Start()
     {
         animator = characterBody.GetComponent<Animator>();
+        _state = State.Size;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //R로 물체 회전
+        if (Input.GetKey(KeyCode.Q))
+        {
+            hit.transform.eulerAngles += new Vector3(0f, 0.2f, 0f);
+            Debug.Log("Q");
+        }
+        //R로 물체 회전
+        if (Input.GetKey(KeyCode.E))
+        {
+            hit.transform.eulerAngles += new Vector3(0f, -0.2f, 0f);
+            Debug.Log("E");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _state = State.Size;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _state = State.Laser;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _state = State.Gravity;
+        }
+
+        switch (_state)
+        {
+            case State.Size:
+                Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.tag == "moveable")
+                    {
+                        //Q로 물체의 크기 키우기
+                        if (Input.GetKeyDown(KeyCode.R) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+                        {
+                            hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+                        }
+                        else if (Input.GetKey(KeyCode.R) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+                        {
+                            hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+                        }
+                        //E로 물체의 크기 줄이기
+                        if (Input.GetKeyDown(KeyCode.T) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
+                        {
+                            hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+                        }
+                        else if (Input.GetKey(KeyCode.T) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
+                        {
+                            hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+                        }
+                    }
+                }
+                break;
+
+            case State.Laser:
+
+                break;
+
+            case State.Gravity:
+                break;
+        }
     }
 
 

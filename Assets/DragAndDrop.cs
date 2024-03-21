@@ -29,7 +29,6 @@ public class DragAndDrop : MonoBehaviour
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
             hit.rigidbody.useGravity = false;
-            Debug.Log("moveable");
         }
     }
 
@@ -39,7 +38,6 @@ public class DragAndDrop : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
         if (transform.position.y <= 0)
         {
-            //Debug.Log(transform.position.y);
             //물체가 y좌표 0 이하로 가는 것을 방지
             transform.position = new Vector3(transform.position.x, transform.localScale.y / 2, transform.position.z);
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
@@ -47,8 +45,7 @@ public class DragAndDrop : MonoBehaviour
         }
         if (transform.position.y > 30)
         {
-            //Debug.Log(transform.position.y);
-            //물체가 y좌표 0 이하로 가는 것을 방지
+            //물체가 y좌표 30 이상으로 가는 것을 방지
             transform.position = new Vector3(transform.position.x, 30-transform.localScale.y / 2, transform.position.z);
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
 
@@ -73,44 +70,57 @@ public class DragAndDrop : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
     void Update()
     {
         Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            if(hit.collider.tag == "moveable")
+            if (hit.collider.tag == "moveable")
             {
-                //물체의 중력이 중첩되는 부분 수정
-                //hit.rigidbody.velocity = Vector3.zero;
-                //hit.rigidbody.angularVelocity = Vector3.zero;
-                //Q로 물체의 크기 키우기
-                if (Input.GetKeyDown(KeyCode.Q) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
-                {
-                    hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
-                }
-                else if (Input.GetKey(KeyCode.Q) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
-                {
-                    hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
-                }
-                //E로 물체의 크기 줄이기
-                if (Input.GetKeyDown(KeyCode.E) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
-                {
-                    hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
-                }
-                else if (Input.GetKey(KeyCode.E) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
-                {
-                    hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
-                }
-                //R로 물체 회전
-                if (Input.GetKey(KeyCode.R))
-                {
-                    hit.transform.eulerAngles += new Vector3(0f, 0.2f, 0f);
-                    Debug.Log("R");
-                }
+                hit.rigidbody.velocity = Vector3.zero;
+                hit.rigidbody.angularVelocity = Vector3.zero;
+                hit.rigidbody.useGravity = true;
             }
         }
-        //Debug.Log(hit.transform.localScale);
-        //hit.Rigidbody2D.velocity = new Vector2(0, 0);
     }
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
+    //    if (Physics.Raycast(ray, out hit))
+    //    {
+    //        if(hit.collider.tag == "moveable")
+    //        {
+    //            //물체의 중력이 중첩되는 부분 수정
+    //            //hit.rigidbody.velocity = Vector3.zero;
+    //            //hit.rigidbody.angularVelocity = Vector3.zero;
+    //            //Q로 물체의 크기 키우기
+    //            if (Input.GetKeyDown(KeyCode.Q) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+    //            {
+    //                hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+    //            }
+    //            else if (Input.GetKey(KeyCode.Q) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+    //            {
+    //                hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+    //            }
+    //            //E로 물체의 크기 줄이기
+    //            if (Input.GetKeyDown(KeyCode.E) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
+    //            {
+    //                hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+    //            }
+    //            else if (Input.GetKey(KeyCode.E) && hit.transform.localScale[0] > 1.0f && hit.transform.localScale[1] > 1.0f && hit.transform.localScale[2] > 1.0f)
+    //            {
+    //                hit.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+    //            }
+    //            //R로 물체 회전
+    //            if (Input.GetKey(KeyCode.R))
+    //            {
+    //                hit.transform.eulerAngles += new Vector3(0f, 0.2f, 0f);
+    //                Debug.Log("R");
+    //            }
+    //        }
+    //    }
+    //    //Debug.Log(hit.transform.localScale);
+    //    //hit.Rigidbody2D.velocity = new Vector2(0, 0);
+    //}
 }
