@@ -297,6 +297,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     [Rpc(SendTo.Server)]
     public void SpawnIfNotSpawnedRpc(int registerId, int sceneIndex, NetworkTransformData transformData, ulong clientId)
     {
+        Debug.Log(sceneIndex);
+
         if (MyNetworkTransform.GetRegistered(registerId) != null)
         {
             return;
@@ -323,8 +325,6 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         NetworkObject netGo = go.GetComponent<NetworkObject>();
 
         netGo.Spawn();
-
-
 
         MyNetworkTransform.Register(registerId, tr);
 

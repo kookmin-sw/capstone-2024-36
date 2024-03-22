@@ -129,6 +129,7 @@ public class MyNetworkTransform : NetworkBehaviour
 
                     MyNetworkTransform created = go.GetComponent<MyNetworkTransform>();
                     created.RegisterId = RegisterId;
+                    created.CurrentSceneIndex = CurrentSceneIndex;
                     created.IsPlacedByDesigner = false;
                     created.transform.position = transform.position;
                     created.bKeepSendWhenNotExist = bKeepSendWhenNotExist;
@@ -183,9 +184,9 @@ public class MyNetworkTransform : NetworkBehaviour
 
         if (IsOwner)
         {
-            CurrentSceneIndex = scene.buildIndex;
-            SetExistEvent?.Invoke(true);
-            FixedOnPlace();
+            // CurrentSceneIndex = scene.buildIndex;
+            // SetExistEvent?.Invoke(true);
+            // FixedOnPlace();
 
             // 플레이어는 NetworkSceneManager보다 먼저 생성된다. 
             // 이 게임오브젝트가 플레어이 아닌 경우 항상 NetworkSceneManager는
@@ -197,7 +198,7 @@ public class MyNetworkTransform : NetworkBehaviour
             }
 
             NetworkSceneManager.Instance.NotifyReadyForPlacedRpc(
-                NetworkObjectId, SceneSequenceNumber, scene.buildIndex, NetworkSceneManager.ReadyForPlacedType.MoveScene);
+                NetworkObjectId, SceneSequenceNumber, CurrentSceneIndex, NetworkSceneManager.ReadyForPlacedType.MoveScene);
         }
 
         if (RegisterId != -1)
