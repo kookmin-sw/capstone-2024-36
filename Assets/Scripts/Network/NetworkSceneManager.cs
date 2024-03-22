@@ -43,11 +43,31 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     [Header("Setting")]
     public int OnDisconnectionSceneIndex = 0;
 
+    [Header("Reference")]
+    public NetworkRegisterList RegisterList;
+
     private static UnityTransport s_unityTransport;
     public static UnityTransport GetUnityTransport() { return s_unityTransport; }
 
+    private Dictionary<int, GameObject> m_registeredPrefab = new Dictionary<int, GameObject>();
+
     private void Awake()
     {
+        if (RegisterList == null)
+            Debug.LogError("FATAL: RegisterList is NULL");
+        else
+        {
+            foreach(var item in RegisterList.List)
+            {
+                if (m_registeredPrefab.ContainsKey(item.RegisterId))
+                {
+                    Debug.LogError("Duplicated register id found!");
+                    break;
+                }
+                m_registeredPrefab.Add(item.RegisterId, item.Prefab);
+            }
+        }
+
         s_unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
         s_unityTransport.OnTransportEvent += UnityTransport_OnTransportEvent;
 
@@ -274,9 +294,41 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     } /* end of Rpc() */
 
-    void SpawnIfNotSpawnedRpc(int registerId, int sceneIndex, int transform, int clientId)
+    [Rpc(SendTo.Server)]
+    public void SpawnIfNotSpawnedRpc(int registerId, int sceneIndex, NetworkTransformData transformData, ulong clientId)
     {
+        if (MyNetworkTransform.GetRegistered(registerId) != null)
+        {
+            return;
+        }
 
+        if (!m_registeredPrefab.ContainsKey(registerId))
+        {
+            Debug.LogError("registeredPrefab not found");
+            return;
+        }
+
+        MyNetworkTransform prefabTr = m_registeredPrefab[registerId].GetComponent<MyNetworkTransform>();
+
+        GameObject go = Instantiate(m_registeredPrefab[registerId]);
+        MyNetworkTransform tr = go.GetComponent<MyNetworkTransform>();
+        
+        tr.transform.position = transformData.Position;
+        tr.transform.rotation = Quaternion.Euler(transformData.Rotation);
+        tr.transform.localScale= transformData.Scale;
+
+        tr.CurrentSceneIndex = sceneIndex;
+        tr.RegisterId = registerId;
+        tr.bKeepSendWhenNotExist = prefabTr.bKeepSendWhenNotExist;
+        NetworkObject netGo = go.GetComponent<NetworkObject>();
+
+        netGo.Spawn();
+
+
+
+        MyNetworkTransform.Register(registerId, tr);
+
+        netGo.ChangeOwnership(clientId);
     }
 
     #endregion

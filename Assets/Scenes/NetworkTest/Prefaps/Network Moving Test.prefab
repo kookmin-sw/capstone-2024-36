@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 5382643048494707561}
   - component: {fileID: -2099205837993649622}
   m_Layer: 0
-  m_Name: NetworkMovingTest
+  m_Name: Network Moving Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MyNetworkTransform : NetworkBehaviour
 {
+    // key: NetworkObjectId
     private static Dictionary<ulong, MyNetworkTransform> s_spawnedMap = new Dictionary<ulong, MyNetworkTransform>();
 
+    // key: RegisterId
     private static Dictionary<int, MyNetworkTransform> s_registeredMap = new Dictionary<int, MyNetworkTransform>();
 
     public static MyNetworkTransform GetSpawnedByNetworkId(ulong networkObjectId)
@@ -24,6 +26,38 @@ public class MyNetworkTransform : NetworkBehaviour
         return s_spawnedMap.Values.GetEnumerator();
     }
 
+    public static bool Register(int registerId, MyNetworkTransform tr)
+    {
+        if (s_registeredMap.ContainsKey(registerId))
+        { 
+            if (s_registeredMap[registerId] != tr)
+            {
+                Debug.LogError("duplicated MyNetworkTransform found!");
+                return false;
+            }
+
+            return true;
+        }
+        
+        if (tr.IsPlacedByDesigner)
+        {
+            Debug.LogError("try to register designer placed MyNetworkTransform!");
+            return false;
+        }
+
+        s_registeredMap[registerId] = tr;
+
+        return true;
+    }
+
+    public static MyNetworkTransform GetRegistered(int registerId)
+    {
+        if (s_registeredMap.ContainsKey(registerId))
+            return s_registeredMap[registerId];
+
+        return null;
+    }
+
     [Header("Status")]
     public bool IsPlacedByDesigner = false;
     public int CurrentSceneIndex;   // SceneLoader에서 관리해주는 값
@@ -36,10 +70,10 @@ public class MyNetworkTransform : NetworkBehaviour
     [SerializeField] private bool isPlaced = false;
 
     [Header("Setting")]
-    [SerializeField] int RegisterId = -1;
+    public int RegisterId = -1;
     [SerializeField] float smoothDampTime = 0.1f;
     [SerializeField] int sendPerSec = 10;
-    [SerializeField] bool bKeepSendWhenNotExist;
+    public bool bKeepSendWhenNotExist;
 
     [Header("Component")]
     [SerializeField] Transform m_existanceTransform;
@@ -107,7 +141,16 @@ public class MyNetworkTransform : NetworkBehaviour
                     // 요청할 때 위치 같이 넘기고 
                     // 서버는 Ownership도 돌려줘야 한다. 
 
-                    Debug.Log("Not Implemented: client side spawning");
+                    NetworkTransformData data = new NetworkTransformData(this.transform);
+
+                    NetworkSceneManager.Instance.SpawnIfNotSpawnedRpc(
+                        RegisterId,
+                        SceneManager.GetActiveScene().buildIndex,
+                        data,
+                        NetworkManager.Singleton.LocalClientId
+                    );
+
+                    // Debug.Log("Not Implemented: client side spawning");
                 }
             }
 
@@ -115,7 +158,7 @@ public class MyNetworkTransform : NetworkBehaviour
         }
         else
         {
-            // OK 
+            // OK   
         }
     }
 
@@ -126,6 +169,17 @@ public class MyNetworkTransform : NetworkBehaviour
         s_spawnedMap[NetworkObjectId] = this;
 
         Scene scene = SceneManager.GetActiveScene();
+
+        if (scene.buildIndex == this.CurrentSceneIndex)
+        {
+            SetExistEvent?.Invoke(true);
+            FixedOnPlace();
+        }
+        else
+        {
+            SetExistEvent?.Invoke(false);
+            FixedOnUnplace();
+        }
 
         if (IsOwner)
         {
@@ -148,7 +202,7 @@ public class MyNetworkTransform : NetworkBehaviour
 
         if (RegisterId != -1)
         {
-            s_registeredMap[RegisterId] = this;
+            Register(RegisterId, this);
         }
     }
 
