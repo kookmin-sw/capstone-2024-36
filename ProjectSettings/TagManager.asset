@@ -7,6 +7,8 @@ TagManager:
   - moveable
   - Laser
   - Wall
+  - Man Spawn Pos
+  - Woman Spawn Pos
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - Mirror
   - Wall
-  - 
+  - PlayerRigidbody
   - 
   - 
   - 
