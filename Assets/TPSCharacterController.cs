@@ -10,7 +10,10 @@ public class TPSCharacterController : MonoBehaviour
 
     Animator animator;
     public Camera getCamera;
+    public Material lasermaterial;
     private RaycastHit hit;
+
+    public Color lasercolor = Color.red;
 
     private enum State
     {
@@ -32,13 +35,13 @@ public class TPSCharacterController : MonoBehaviour
         //R로 물체 회전
         if (Input.GetKey(KeyCode.Q))
         {
-            hit.transform.eulerAngles += new Vector3(0f, 0.2f, 0f);
+            hit.transform.eulerAngles += new Vector3(0f, 0.9f, 0f);
             Debug.Log("Q");
         }
         //R로 물체 회전
         if (Input.GetKey(KeyCode.E))
         {
-            hit.transform.eulerAngles += new Vector3(0f, -0.2f, 0f);
+            hit.transform.eulerAngles += new Vector3(0f, -0.9f, 0f);
             Debug.Log("E");
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -85,13 +88,50 @@ public class TPSCharacterController : MonoBehaviour
                 break;
 
             case State.Laser:
-
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    ToggleLaser();
+                }
+                Ray laserray = getCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(laserray, out hit))
+                {
+                    if (Input.GetKeyDown(KeyCode.F)){
+                            Vector3 direction = (hit.point - transform.position).normalized;
+                            LaserBeam beam = new LaserBeam(transform.position,direction, lasermaterial,lasercolor ,"laserability"); 
+                              
+                            Invoke(nameof(DestroyLaserAbility), 0.3f);
+                        }
+                    
+                    
+                }
                 break;
 
             case State.Gravity:
                 break;
         }
     }
+
+    void ToggleLaser()
+    {
+       if(lasercolor == Color.red){
+        lasercolor = Color.blue;
+       }
+       else if(lasercolor == Color.blue){
+        lasercolor = Color.green;
+       }
+       else if(lasercolor == Color.green){
+        lasercolor = Color.red;
+       }
+    }
+    public void DestroyLaserAbility()
+{
+    // 1초 후에 실행될 코드
+    GameObject laserAbility = GameObject.Find("laserability");
+    if (laserAbility != null)
+    {
+        Destroy(laserAbility);
+    }
+}
 
 
     public float moveSpeed = 0.12f;
