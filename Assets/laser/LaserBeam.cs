@@ -7,18 +7,16 @@ public class LaserBeam
 {
     Vector3 pos, dir;
     GameObject laserObject;
-    LineRenderer laser;
-    List<Vector3> laserIndices = new List<Vector3>();
+    public LineRenderer laser;
+    public List<Vector3> laserIndices = new List<Vector3>();
     Color laserColor;
-    private Color previousLaserColor;
-    private bool collidedWithOtherLaser = false;
 
     public LaserBeam(Vector3 pos, Vector3 dir, Material material, Color color)
     {
-        previousLaserColor = color;
         this.laserColor = color;
 
         this.laserObject = new GameObject();
+        string name = "Laser_Beam" + (int)(color.r *255 ) + (int)(color.g * 255) + (int)(color.b * 255);
         this.laserObject.name = "Laser_Beam" + (int)(color.r *255 ) + (int)(color.g * 255) + (int)(color.b * 255);
         this.laserObject.tag = "Laser";
 
@@ -35,16 +33,53 @@ public class LaserBeam
         this.laser.startColor = color;
         this.laser.endColor = color;
 
-        CastRay(pos, dir);
+        CastRay(pos, dir,laser);
     }
+    public LaserBeam(Vector3 pos, Vector3 dir, Material material, Color color, string name){
+        this.laserColor = color;
 
-    void CastRay(Vector3 pos, Vector3 dir)
+        this.laserObject = new GameObject();
+        this.laserObject.name = name;
+        this.laserObject.tag = "Laser";
+
+        this.pos = pos;
+        this.dir = dir;
+
+        this.laser = this.laserObject.AddComponent<LineRenderer>();
+        this.laser.startWidth = 0.1f;
+        this.laser.endWidth = 0.1f;
+        this.laser.material = material;
+        this.laser.startColor = color;
+        this.laser.endColor = color;
+        
+        CastRay(pos, dir, laser, name);
+    }
+    public void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser, string name)
     {
         laserIndices.Add(pos);
+        this.laser = laser;
 
         Ray ray = new Ray(pos, dir);
         RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 30))
+        {
+            CheckHit(hit, dir);
+        }
+        else
+        {
+            laserIndices.Add(ray.GetPoint(30));
+            UpdateLaser();
+        }
+        
+    }
 
+    public void CastRay(Vector3 pos, Vector3 dir, LineRenderer laser)
+    {
+        laserIndices.Add(pos);
+        this.laser = laser;
+
+        Ray ray = new Ray(pos, dir);
+        RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 30))
         {
             CheckHit(hit, dir);
@@ -74,18 +109,23 @@ public class LaserBeam
             Vector3 hitPoint = hitInfo.point;
             Vector3 reflectDir = Vector3.Reflect(direction, hitInfo.normal);
 
-            CastRay(hitPoint, reflectDir);
+            CastRay(hitPoint, reflectDir,laser);
         }
         else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
+            if( this.laser.name != "laserability"){
             Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
-            Color wallColor = hitRenderer.material.color;
-            Debug.Log(wallColor+"벽색깔");
-            Debug.Log(laserColor+"레이저색깔");
+            WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
+            Color wallColor = wallc.incolor;
 
-             Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
-
-            hitRenderer.material.color = mixedColor;
+            Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
+            wallc.SetinColor(mixedColor);
+            wallc.SetoutColor();
+            if(wallc.incolor.r == 1 || wallc.incolor.g ==1 || wallc.incolor.b ==1){
+                wallc.outcolor = wallc.incolor;
+            }
+            hitRenderer.material.color = wallc.outcolor;
+            }
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }
@@ -93,6 +133,11 @@ public class LaserBeam
         {
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
+        }
+        if (hitInfo.collider.CompareTag("LaserPoint") && this.laser.name == "laserability")
+        {
+            hitInfo.collider.GetComponent<ShootLaser>().LaserColor = laserColor;
+            hitInfo.collider.GetComponent<ShootLaser>().Onofflaser();
         }
     }
     Color MixColors(Color color1, Color color2)
