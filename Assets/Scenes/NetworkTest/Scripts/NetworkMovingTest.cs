@@ -20,6 +20,7 @@ public class NetworkMovingTest : NetworkBehaviour
 
     void Start()
     {
+        /*
         m_random = new Vector3();
         if (Random.value > 0.5f)
             m_random.x = 1.0f;
@@ -35,6 +36,8 @@ public class NetworkMovingTest : NetworkBehaviour
             m_random.z = 1.0f;
         else
             m_random.z = -1.0f;
+        */
+
     }
 
     public override void OnNetworkSpawn()
@@ -44,6 +47,7 @@ public class NetworkMovingTest : NetworkBehaviour
 
     private void Update()
     {
+        /*
         // orbit XZ centered m_initialPosition
         if (IsOwner)
         {
@@ -66,5 +70,7 @@ public class NetworkMovingTest : NetworkBehaviour
                 1.0f + Mathf.Sin(Time.time * speed) * 0.5f * m_random.z
             );
         }
+        */
+
     }
 }
