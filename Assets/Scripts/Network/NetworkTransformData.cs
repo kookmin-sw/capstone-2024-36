@@ -5,6 +5,15 @@ using Unity.Netcode;
 
 public struct NetworkTransformData : INetworkSerializable, System.IEquatable<NetworkTransformData>
 {
+    public NetworkTransformData(Transform transform)
+    {
+        this.Position = transform.position;
+        this.Scale = transform.localScale;
+        this.Rotation = transform.rotation.eulerAngles;
+
+        SceneSequenceNumber = 0;
+    }
+
     public NetworkTransformData(Vector3 vector)
     {
         Position = vector;

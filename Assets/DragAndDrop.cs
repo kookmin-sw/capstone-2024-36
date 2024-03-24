@@ -50,7 +50,7 @@ public class DragAndDrop : MonoBehaviour
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
 
         }
-        if (hit.collider.tag == "moveable")
+        if (hit.collider != null && hit.collider.tag == "moveable")
         {
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
