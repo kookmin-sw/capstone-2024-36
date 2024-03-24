@@ -65,39 +65,6 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
         return null;
     }
-
-    public enum BuildIndex : int
-    {
-        LoadingScene = 0,
-        TitleScene = 1,
-        WorldScene1 = 2,
-        WorldScene2 = 3,
-    }
-
-    public static bool IsPlayableScene()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-
-        if (scene == null)
-            return false;
-
-        BuildIndex buildIndex = (BuildIndex)scene.buildIndex;
-
-        switch (buildIndex)
-        {
-            case BuildIndex.LoadingScene:
-                return false;
-            case BuildIndex.TitleScene:
-                return false;
-            case BuildIndex.WorldScene1:
-                return true;
-            case BuildIndex.WorldScene2:
-                return true;
-            default:
-                Debug.LogError("not scene index");
-                return false;
-        }
-    }
     #endregion
 
     [Header("Setting")]
@@ -404,8 +371,16 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         netTr.RegisterId = registerId;
         netTr.bKeepSendWhenNotExist = prefabTr.bKeepSendWhenNotExist;
         NetworkObject netGo = go.GetComponent<NetworkObject>();
+        
+        // TODO: register go netTr here
 
         netGo.Spawn();
+
+        // DON'T DO THIS
+        // if (netTr.OwnerClientId != clientId)
+        // {
+        //     netGo.ChangeOwnership(clientId);
+        // }
     }
 
     /*

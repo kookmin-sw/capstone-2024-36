@@ -43,6 +43,7 @@ public class MyNetworkTransform : NetworkBehaviour
 
     private void Awake()
     {
+
         // IsPlacedByDesigner: 이 값을 여기서 초기화하면 이 gameObject가
         // 맵 디자이너에 의해 배치된 것인지, Spawn하기 위해 생성한 것인지
         // 구분을 못하기 때문에 초기화하면 안된다. 
@@ -124,7 +125,6 @@ public class MyNetworkTransform : NetworkBehaviour
                     SceneSequenceNumber, CurrentSceneIndex,
                     NetworkSceneManager.ReadyForPlacedType.EchoBack
                 );
-                
             }
             else                                                 // host 플레이어의 경우
             {
@@ -202,10 +202,9 @@ public class MyNetworkTransform : NetworkBehaviour
             NetworkTransformData value = transformData.Value;
 
             // 동기화 불필요한 경우 확인
-            bool shloud_ignore = 
+            bool shloud_ignore =
                 (value.SceneSequenceNumber != SceneSequenceNumber) ||               // SceneSequenceNumber 불일치
-                (SceneManager.GetActiveScene().buildIndex != CurrentSceneIndex) ||     // 다른 룸에 있는 놈임
-                (CurrentSceneIndex == ((int)NetworkSceneManager.BuildIndex.TitleScene));          // 타이틀 화면에 있음
+                (SceneManager.GetActiveScene().buildIndex != CurrentSceneIndex);    // 다른 룸에 있는 놈임
 
             if (shloud_ignore)
             {
