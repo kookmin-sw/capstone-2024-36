@@ -74,7 +74,7 @@ public class TitleScreen : MonoBehaviour
 
         NetworkManager.Singleton.StartHost();
 
-        if (!NetworkSceneManager.IsRegistered())
+        if (!NetworkSceneManager.IsSingletoneRegistered())
         {
             GameObject myNetworkTransformManagerGo = Instantiate(NetworkSceneManagerPrefap);
             NetworkObject myNetworkTransformManagerNetGo = myNetworkTransformManagerGo.GetComponent<NetworkObject>();
@@ -111,7 +111,7 @@ public class TitleScreen : MonoBehaviour
         if (isStarted)
         {
             // network spawn 될 때까지 기다린다. 
-            if (!NetworkSceneManager.IsRegistered())
+            if (!NetworkSceneManager.IsSingletoneRegistered())
             {
                 isNetworkSceneLoaderFound = true;
                 return;

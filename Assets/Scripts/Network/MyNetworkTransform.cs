@@ -1,73 +1,22 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using Unity.Netcode;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 // using UnityEditor;
 
 public class MyNetworkTransform : NetworkBehaviour
 {
-    // key: NetworkObjectId
-    private static Dictionary<ulong, MyNetworkTransform> s_spawnedMap = new Dictionary<ulong, MyNetworkTransform>();
-
-    // key: RegisterId
-    private static Dictionary<int, MyNetworkTransform> s_registeredMap = new Dictionary<int, MyNetworkTransform>();
-
-    public static MyNetworkTransform GetSpawnedByNetworkId(ulong networkObjectId)
-    {
-        if (s_spawnedMap.ContainsKey(networkObjectId))
-            return s_spawnedMap[networkObjectId];
-
-        return null;
-    }
-
-    public static IEnumerator<MyNetworkTransform> GetAllTransforms()
-    {
-        return s_spawnedMap.Values.GetEnumerator();
-    }
-
-    public static bool Register(int registerId, MyNetworkTransform tr)
-    {
-        if (s_registeredMap.ContainsKey(registerId))
-        { 
-            if (s_registeredMap[registerId] != tr)
-            {
-                Debug.LogError("duplicated MyNetworkTransform found!");
-                return false;
-            }
-
-            return true;
-        }
-        
-        if (tr.IsPlacedByDesigner)
-        {
-            Debug.LogError("try to register designer placed MyNetworkTransform!");
-            return false;
-        }
-
-        s_registeredMap[registerId] = tr;
-
-        return true;
-    }
-
-    public static MyNetworkTransform GetRegistered(int registerId)
-    {
-        if (s_registeredMap.ContainsKey(registerId))
-            return s_registeredMap[registerId];
-
-        return null;
-    }
-
     [Header("Status")]
     public bool IsPlacedByDesigner = false;
-    public int CurrentSceneIndex;   // SceneLoader에서 관리해주는 값
+    public int CurrentSceneIndex = -1;   // SceneLoader에서 관리해주는 값
 
     // SceneLoader에서 관리해주는 값
     public ushort SceneSequenceNumber = 0;
 
     // 내부적으로 관리해야 하는 값
-    [SerializeField] private bool isReadyForPlaced = false;
-    [SerializeField] private bool isPlaced = false;
+    [SerializeField] private bool m_isReadyForPlaced = false;
+    [SerializeField] private bool m_isPlaced = false;
 
     [Header("Setting")]
     public int RegisterId = -1;
@@ -75,13 +24,10 @@ public class MyNetworkTransform : NetworkBehaviour
     [SerializeField] int sendPerSec = 10;
     public bool bKeepSendWhenNotExist;
 
-    [Header("Component")]
-    [SerializeField] Transform m_existanceTransform;
+    // public UnityAction<bool> SetExistEvent;  // true: visible, collidable
+    // SendMessage("SetExist", true/false, SendMessageOptions.DontRequireReceiver); 로 수정
 
-    [Header("Prefab")]
-    [SerializeField] GameObject m_networkPrefapInProject;
-
-    public UnityAction<bool> SetExistEvent;  // true: visible, collidable
+    // SendMessage("SetSpawnPosition", SendMessageOptions.DontRequireReceiver); 로 수정
     public UnityAction SetSpawnPositionEvent;    // set spawn position on current scene
 
     private NetworkVariable<NetworkTransformData> transformData = new NetworkVariable<NetworkTransformData>(
@@ -97,113 +43,94 @@ public class MyNetworkTransform : NetworkBehaviour
 
     private void Awake()
     {
-        FixedOnUnplace();
+        // IsPlacedByDesigner: 이 값을 여기서 초기화하면 이 gameObject가
+        // 맵 디자이너에 의해 배치된 것인지, Spawn하기 위해 생성한 것인지
+        // 구분을 못하기 때문에 초기화하면 안된다. 
+        // IsRegistered도 마찬가지다. 
+
+        // 무조건 다음 값으로 초기화해야함
+        m_isReadyForPlaced = false;
+        m_isPlaced = false;
+
+        // 어차피 Awake할 때는 알 수 없고, 외부에서 주입받아야 함. 
+        CurrentSceneIndex = -1;
+        SceneSequenceNumber = 0;
+
+        gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
         DontDestroyOnLoad(gameObject);
     }
 
     public void Start()
     {
-        if (
-            IsPlacedByDesigner == true &&
-            (m_networkPrefapInProject == this || m_networkPrefapInProject == null)
-        )
-        {
-            Debug.Log("NetworkPrefapInProject MUST NO be this, but network prefab in PROJECT");
-        }
-
         if (IsPlacedByDesigner)
         {
-            if (s_registeredMap.ContainsKey(RegisterId))
+            if (NetworkSceneManager.GetRegistered(RegisterId))
             {
                 DestroyImmediate(gameObject);
                 return;
             }
 
-            if (!IsSpawned)
-            {
-                bool canSpawnSelf = NetworkManager.IsServer || NetworkManager.IsHost;
-
-                if (canSpawnSelf)
-                {
-                    GameObject go = Instantiate(m_networkPrefapInProject);
-
-                    MyNetworkTransform created = go.GetComponent<MyNetworkTransform>();
-                    created.RegisterId = RegisterId;
-                    created.CurrentSceneIndex = CurrentSceneIndex;
-                    created.IsPlacedByDesigner = false;
-                    created.transform.position = transform.position;
-                    created.bKeepSendWhenNotExist = bKeepSendWhenNotExist;
-
-                    go.GetComponent<NetworkObject>().Spawn();
-                }
-                else
-                {
-                    // 스스로 Spawn() 할 수 없으니 RPC로 서버에 요청하여 Spawn한다. 
-                    // 요청할 때 위치 같이 넘기고 
-                    // 서버는 Ownership도 돌려줘야 한다. 
-
-                    NetworkTransformData data = new NetworkTransformData(this.transform);
-
-                    NetworkSceneManager.Instance.SpawnIfNotSpawnedRpc(
-                        RegisterId,
-                        SceneManager.GetActiveScene().buildIndex,
-                        data,
-                        NetworkManager.Singleton.LocalClientId
-                    );
-
-                    // Debug.Log("Not Implemented: client side spawning");
-                }
-            }
+            // Spawn 해야한다. 
+            Scene activeScene = SceneManager.GetActiveScene();
+            NetworkTransformData data = new NetworkTransformData(transform);
+            ulong localClientId = NetworkManager.Singleton.LocalClientId;
+            NetworkSceneManager.Instance.SpawnIfNotSpawnedRpc(
+                RegisterId, 
+                activeScene.buildIndex, 
+                data, 
+                localClientId
+            );
 
             DestroyImmediate(gameObject);
         }
         else
         {
-            // OK   
+            // OK
         }
     }
 
     public override void OnNetworkSpawn()
     {
+        Debug.Log($"OnNetworkSpawn: {this.NetworkObjectId}");
+
         base.OnNetworkSpawn();
 
-        s_spawnedMap[NetworkObjectId] = this;
+        if (RegisterId != -1)
+            NetworkSceneManager.Register(RegisterId, this);
+
+        SpawnInfo info = NetworkSceneManager.GetSpawnInfo(NetworkObjectId);
+        if (info != null)
+        {
+            CurrentSceneIndex = info.CurrentSceneIndex;
+            SceneSequenceNumber = info.SceneSequenceNumber;
+            info.NetTransform = this;
+        }
+        NetworkSceneManager.SetSpawnInfo(this);
 
         Scene scene = SceneManager.GetActiveScene();
 
-        if (scene.buildIndex == this.CurrentSceneIndex)
+        if (CurrentSceneIndex == scene.buildIndex)
         {
-            SetExistEvent?.Invoke(true);
+            gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
             FixedOnPlace();
-        }
-        else
-        {
-            SetExistEvent?.Invoke(false);
-            FixedOnUnplace();
         }
 
         if (IsOwner)
         {
-            // CurrentSceneIndex = scene.buildIndex;
-            // SetExistEvent?.Invoke(true);
-            // FixedOnPlace();
-
-            // 플레이어는 NetworkSceneManager보다 먼저 생성된다. 
-            // 이 게임오브젝트가 플레어이 아닌 경우 항상 NetworkSceneManager는
-            // 등록돼있어야 한다!
-            if (!NetworkSceneManager.IsRegistered())
+            if (NetworkSceneManager.IsSingletoneRegistered())    // 맵에 배치되어 스폰된 경우
             {
-                Debug.Log($"MyNetworkTransform::Start() NetworkSceneManager is not registered. GameObjectName: {this.name}");
-                return;
+                NetworkSceneManager.Instance.NotifyReadyForPlacedRpc(
+                    NetworkObjectId, RegisterId,
+                    SceneSequenceNumber, CurrentSceneIndex,
+                    NetworkSceneManager.ReadyForPlacedType.EchoBack
+                );
+                
             }
-
-            NetworkSceneManager.Instance.NotifyReadyForPlacedRpc(
-                NetworkObjectId, SceneSequenceNumber, CurrentSceneIndex, NetworkSceneManager.ReadyForPlacedType.MoveScene);
-        }
-
-        if (RegisterId != -1)
-        {
-            Register(RegisterId, this);
+            else                                                 // host 플레이어의 경우
+            {
+                gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+                FixedOnPlace();
+            }
         }
     }
 
@@ -212,28 +139,12 @@ public class MyNetworkTransform : NetworkBehaviour
         base.OnNetworkDespawn();
 
         // clean up.
-        if (s_spawnedMap.ContainsKey(NetworkObjectId))
-        {
-            s_spawnedMap.Remove(NetworkObjectId);
-        }
-        else
-        {
-            Debug.Log("trying to remove transform that not exist. ");
-        }
-
-        if (RegisterId != -1)
-        {
-            s_registeredMap.Remove(RegisterId);
-        }
+        NetworkSceneManager.Unregister(RegisterId);
+        NetworkSceneManager.RemoveSpawnInfo(NetworkObjectId);
     }
 
     public void FixedOnPlace()
     {
-        if (m_existanceTransform != null)
-        {
-            m_existanceTransform.gameObject.SetActive(true);
-        }
-
         if (IsOwner)
         {
             NetworkTransformData data = new NetworkTransformData(
@@ -243,31 +154,26 @@ public class MyNetworkTransform : NetworkBehaviour
 
             transformData.Value = data;
 
-            isPlaced = true;
+            m_isPlaced = true;
         }
         else
         {
-            isPlaced = false;
+            m_isPlaced = false;
         }
 
-        isReadyForPlaced = true;
+        m_isReadyForPlaced = true;
     }
 
     public void FixedOnUnplace()
     {
-        if (m_existanceTransform != null)
-        {
-            m_existanceTransform.gameObject.SetActive(false);
-        }
-
         if (IsOwner)
         {
             transformData.Value.SetSceneSequenceNumber(SceneSequenceNumber);
             transformData.SetDirty(true);
         }
 
-        isReadyForPlaced = false;
-        isPlaced = false;
+        m_isReadyForPlaced = false;
+        m_isPlaced = false;
     }
 
     void Update()
@@ -276,7 +182,7 @@ public class MyNetworkTransform : NetworkBehaviour
         {
             deltaLastSend += Time.deltaTime;
 
-            if (!isPlaced && !bKeepSendWhenNotExist)
+            if (!m_isPlaced && !bKeepSendWhenNotExist)
                 return;
 
             if (deltaLastSend >= 1.0f / sendPerSec)
@@ -307,26 +213,22 @@ public class MyNetworkTransform : NetworkBehaviour
                 return;
             }
                 
-            if (isPlaced)   // lerp
+            if (m_isPlaced)   // lerp
             {
                 transform.position = Vector3.SmoothDamp(transform.position, transformData.Value.Position, ref positionVelocity, smoothDampTime);
                 transform.localScale = Vector3.SmoothDamp(transform.localScale, transformData.Value.Scale, ref scaleVelocity, smoothDampTime);
                 // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transformData.Value.Rotation), smoothDampTime);
                 transform.rotation = SmoothDampQuaternion2(transform.rotation, Quaternion.Euler(transformData.Value.Rotation), ref deriv, smoothDampTime);
             }
-            else if (isReadyForPlaced)  // place
+            else if (m_isReadyForPlaced)  // place
             {
                 transform.position = transformData.Value.Position;
                 transform.localScale = transformData.Value.Scale;
                 transform.rotation = Quaternion.Euler(transformData.Value.Rotation);
 
-                isPlaced = true;
+                m_isPlaced = true;
 
-                SetExistEvent?.Invoke(true);
-                if (m_existanceTransform != null)
-                {
-                    m_existanceTransform.gameObject.SetActive(true);
-                }
+                gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
             }
         }
     }   /* end of Update */

@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3906133669
+  GlobalObjectIdHash: 4175192314
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -187,13 +187,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPlacedByDesigner: 0
-  CurrentSceneIndex: 0
+  CurrentSceneIndex: -1
   SceneSequenceNumber: 0
-  isReadyForPlaced: 0
-  isPlaced: 0
+  m_isReadyForPlaced: 0
+  m_isPlaced: 0
   RegisterId: -1
   smoothDampTime: 0.1
   sendPerSec: 10
   bKeepSendWhenNotExist: 1
-  m_existanceTransform: {fileID: 5578637829171349839}
-  m_networkPrefapInProject: {fileID: 0}

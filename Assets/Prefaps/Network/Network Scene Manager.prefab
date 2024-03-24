@@ -66,5 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69dd48e8ecbb514e8d1db58c7625c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDisconnectionSceneIndex: 0
+  OnDisconnectionSceneIndex: 1
   RegisterList: {fileID: 11400000, guid: adb6066e67c318b4685732bc892a3822, type: 2}

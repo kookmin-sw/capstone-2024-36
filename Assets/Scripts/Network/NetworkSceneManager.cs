@@ -7,6 +7,65 @@ using System.Collections.Generic;
 
 public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManager>
 {
+    #region static
+    private static NetworkSpawnInfoMap s_spawnInfoMap = new NetworkSpawnInfoMap();
+
+    public static void SetSpawnInfo(ulong networkObjectId, SpawnInfo info)
+    {
+        s_spawnInfoMap[networkObjectId] = info;
+    }
+
+    public static void SetSpawnInfo(ulong networkObjectId, ushort sceneSequenceNumber, int currentSceneIndex, int registerId)
+    {
+        s_spawnInfoMap[networkObjectId] = new SpawnInfo(sceneSequenceNumber, currentSceneIndex, registerId);
+    }
+
+    public static void RemoveSpawnInfo(ulong networkObjectId)
+    {
+        s_spawnInfoMap.Remove(networkObjectId);
+    }
+
+    public static void SetSpawnInfo(MyNetworkTransform netTr)
+    {
+        s_spawnInfoMap[netTr.NetworkObjectId] = new SpawnInfo(netTr);
+    }
+
+    public static SpawnInfo GetSpawnInfo(ulong networkObjectId)
+    {
+        if (s_spawnInfoMap.ContainsKey(networkObjectId))
+            return s_spawnInfoMap[networkObjectId];
+
+        return null;
+    }
+
+    public static IEnumerator<MyNetworkTransform> GetSpawnedEnumerator()
+    {
+        return s_spawnInfoMap.GetSpawnedIterator();
+    }
+
+    private static Dictionary<int, MyNetworkTransform> s_registeredMap = new Dictionary<int, MyNetworkTransform>();
+    
+    public static void Register(int registerId, MyNetworkTransform netTr)
+    {
+        if (registerId == -1)
+            return;
+
+        s_registeredMap[registerId] = netTr;
+    }
+
+    public static void Unregister(int registerId)
+    {
+        if (s_registeredMap.ContainsKey(registerId))
+            s_registeredMap.Remove(registerId);
+    }
+    public static MyNetworkTransform GetRegistered(int registerId)
+    {
+        if (s_registeredMap.ContainsKey(registerId))
+            return s_registeredMap[registerId];
+
+        return null;
+    }
+
     public enum BuildIndex : int
     {
         LoadingScene = 0,
@@ -39,6 +98,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 return false;
         }
     }
+    #endregion
 
     [Header("Setting")]
     public int OnDisconnectionSceneIndex = 0;
@@ -118,12 +178,12 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         }
 
         // 모든 MyNetworkTransform이 안보이게 된다. 
-        IEnumerator<MyNetworkTransform> iterator = MyNetworkTransform.GetAllTransforms();
-        while(iterator.MoveNext() )
+        IEnumerator < MyNetworkTransform> iterator = GetSpawnedEnumerator();
+        while(iterator.MoveNext())
         {
             MyNetworkTransform iTransform = iterator.Current;
 
-            iTransform.SetExistEvent?.Invoke(false);
+            iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
             iTransform.FixedOnUnplace();
         }
 
@@ -137,27 +197,28 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         yield return null;
 
         // 내가 owner인 것들은 궂이 RPC 안 때려도 보인다. 
-        Scene currentScene = SceneManager.GetActiveScene();
-        IEnumerator<MyNetworkTransform> iterator = MyNetworkTransform.GetAllTransforms();
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
         while (iterator.MoveNext())
         {
             MyNetworkTransform iTransform = iterator.Current;
+            
+            if (iTransform == null) continue;
 
             if (iTransform.CurrentSceneIndex == newSceneIndex && iTransform.IsOwner)
             {
                 iTransform.FixedOnPlace();
-                iTransform.SetExistEvent?.Invoke(true);
+                iTransform.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
             }
         }
 
         // 호스트 접속 후 worldScene1에서 2로 이동.
         // 게스트 접속 후 worldScene2을 봤을 때 호스트가 worldScene2에 안보이는 문제 해결
         NotifyReadyForPlacedRpc(
-            0, 0, newSceneIndex, ReadyForPlacedType.LoadScene
+            0, -1, 0, newSceneIndex, ReadyForPlacedType.LoadScene
         );
     }
 
-    public void MoveScene(int newSceneIndex, MyNetworkTransform networkTransform)
+    public void MoveScene(int newSceneIndex, MyNetworkTransform netTr)
     {
         if (SceneManager.GetActiveScene().buildIndex == newSceneIndex)
         {
@@ -165,55 +226,56 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             return;
         }
 
-        networkTransform.SceneSequenceNumber += 1;
-        networkTransform.CurrentSceneIndex = -1;
+        netTr.SceneSequenceNumber += 1;
+        netTr.CurrentSceneIndex = -1;
 
         // 모든 MyNetworkTransform이 안보이게 된다. 
-        IEnumerator<MyNetworkTransform> iterator = MyNetworkTransform.GetAllTransforms();
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
         while (iterator.MoveNext())
         {
             MyNetworkTransform iTransform = iterator.Current;
 
-            iTransform.SetExistEvent?.Invoke(false);
+            iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
             iTransform.FixedOnUnplace();
         }
 
         NotifyLeaveSceneRpc(
-            networkTransform.NetworkObjectId, networkTransform.SceneSequenceNumber
+            netTr.NetworkObjectId, netTr.RegisterId, netTr.SceneSequenceNumber
         );
 
-        StartCoroutine(moveSceneEnumerator(newSceneIndex, networkTransform));
+        StartCoroutine(moveSceneEnumerator(newSceneIndex, netTr));
     }
 
-    private IEnumerator moveSceneEnumerator(int newSceneIndex, MyNetworkTransform networkTransform)
+    private IEnumerator moveSceneEnumerator(int newSceneIndex, MyNetworkTransform netTr)
     {
         SceneManager.LoadScene(newSceneIndex);
 
         yield return null;
 
-        IEnumerator<MyNetworkTransform> iterator = MyNetworkTransform.GetAllTransforms();
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
         while (iterator.MoveNext())
         {
             MyNetworkTransform iTransform = iterator.Current;
 
             if (iTransform.CurrentSceneIndex == newSceneIndex && iTransform.IsOwner)
             {
-                if (iTransform == networkTransform)
+                if (iTransform == netTr)
                     continue;
 
                 iTransform.FixedOnPlace();
-                iTransform.SetExistEvent?.Invoke(true);
+                iTransform.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
             }
         }
 
-        networkTransform.CurrentSceneIndex = newSceneIndex;
-        networkTransform.SetSpawnPositionEvent?.Invoke();
-        networkTransform.SetExistEvent?.Invoke(true);
-        networkTransform.FixedOnPlace();
+        netTr.CurrentSceneIndex = newSceneIndex;
+        netTr.SetSpawnPositionEvent.Invoke();
+        netTr.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+        netTr.FixedOnPlace();
 
         NotifyReadyForPlacedRpc(
-            networkTransform.NetworkObjectId, 
-            networkTransform.SceneSequenceNumber, 
+            netTr.NetworkObjectId,
+            netTr.RegisterId,
+            netTr.SceneSequenceNumber,            
             newSceneIndex, 
             ReadyForPlacedType.MoveScene
         );
@@ -221,25 +283,32 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     #region Rpc
     [Rpc(SendTo.NotMe)]
-    public void NotifyLeaveSceneRpc(ulong networkObjectId, ushort sceneSequenceNumber)
+    public void NotifyLeaveSceneRpc(ulong networkObjectId, int registerId, ushort sceneSequenceNumber)
     {
-        // Debug.Log($"AlertLeaveSceneRpc received networkObjectId: {networkObjectId} sceneSequenceNumber: {sceneSequenceNumber}");
-
-        // ulong clientId = rpcRarams.Receive.SenderClientId;
-        MyNetworkTransform networkTransform = MyNetworkTransform.GetSpawnedByNetworkId(networkObjectId);
-
-        if (networkTransform != null)
+        SpawnInfo info = GetSpawnInfo(networkObjectId);
+        if (info == null)
         {
-            networkTransform.SceneSequenceNumber = sceneSequenceNumber;
-            networkTransform.CurrentSceneIndex = -1;
-            
-            networkTransform.SetExistEvent?.Invoke(false);
-            networkTransform.FixedOnUnplace();
+            info = new SpawnInfo();
+            SetSpawnInfo(networkObjectId, info);
         }
-        else
+
+        info.SceneSequenceNumber = sceneSequenceNumber;
+        info.CurrentSceneIndex = -1;
+        info.RegisterId = registerId;
+
+        MyNetworkTransform netTr = info.NetTransform;
+        if (netTr == null)
         {
-            Debug.LogError("network Transform not found");
+            Debug.LogError("neTr is NULL");
+            return;
         }
+
+        netTr.SceneSequenceNumber = sceneSequenceNumber;
+        netTr.CurrentSceneIndex = -1;
+        netTr.RegisterId = registerId;
+
+        netTr.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
+        netTr.FixedOnUnplace();
     }
 
     public enum ReadyForPlacedType
@@ -251,42 +320,54 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     // TODO: Specified In Pram을 사용하여 Echo Back을 구현하기
     [Rpc(SendTo.NotMe)]
-    public void NotifyReadyForPlacedRpc(ulong networkObjectId, ushort sceneSequenceNumber, int newSceneIndex, ReadyForPlacedType type)
+    public void NotifyReadyForPlacedRpc(ulong networkObjectId, int registerId, ushort sceneSequenceNumber, int newSceneIndex, ReadyForPlacedType type)
     {
-        // Debug.Log($"AlertReadyForPlacedRpc received from: {senderClientId} new: {newSceneIndex} echo: {requestEcho}");
-        // ulong clientId = rpcRarams.Receive.SenderClientId;
-
         if (type != ReadyForPlacedType.LoadScene)
         {
             // set
-            MyNetworkTransform networkTransform = MyNetworkTransform.GetSpawnedByNetworkId(networkObjectId);
-
-            if (networkTransform != null)
+            SpawnInfo info = GetSpawnInfo(networkObjectId);
+            if (info == null)
             {
-                networkTransform.CurrentSceneIndex = newSceneIndex;
-                networkTransform.SceneSequenceNumber = sceneSequenceNumber;
+                info = new SpawnInfo();
+                SetSpawnInfo(networkObjectId, info);
+            }
 
-                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-                if (currentSceneIndex == newSceneIndex)
-                {
-                    networkTransform.FixedOnPlace();
-                }
+            info.SceneSequenceNumber = sceneSequenceNumber;
+            info.CurrentSceneIndex = newSceneIndex;
+            info.RegisterId = registerId;
+
+            // 게스트가 호스트가 가본 적 없는 씬에 입장한 경우
+            MyNetworkTransform netTr = info.NetTransform;
+            if (netTr == null) return;
+
+            netTr.SceneSequenceNumber = sceneSequenceNumber;
+            netTr.CurrentSceneIndex = newSceneIndex;
+            netTr.RegisterId = registerId;
+
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (currentSceneIndex == newSceneIndex)
+            {
+                netTr.gameObject.SendMessage("SetExist", true, SendMessageOptions.RequireReceiver);
+                netTr.FixedOnPlace();
             }
         }
 
-        if (type == ReadyForPlacedType.MoveScene || type == ReadyForPlacedType.LoadScene)
+        if (type != ReadyForPlacedType.EchoBack)
         {
             // echo
-            IEnumerator<MyNetworkTransform> iterator = MyNetworkTransform.GetAllTransforms();
+            IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
             while (iterator.MoveNext())
             {
                 MyNetworkTransform iTransform = iterator.Current;
-                
-                // if (transform.IsOwner && transform.CurrentSceneIndex == currentSceneIndex)
+
                 if (iTransform.IsOwner && iTransform.CurrentSceneIndex == newSceneIndex)
                 {
                     NotifyReadyForPlacedRpc(
-                        iTransform.NetworkObjectId, iTransform.SceneSequenceNumber, iTransform.CurrentSceneIndex, ReadyForPlacedType.EchoBack
+                        iTransform.NetworkObjectId,
+                        iTransform.RegisterId, 
+                        iTransform.SceneSequenceNumber, 
+                        iTransform.CurrentSceneIndex, 
+                        ReadyForPlacedType.EchoBack
                     );
                 }
             }
@@ -297,10 +378,9 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     [Rpc(SendTo.Server)]
     public void SpawnIfNotSpawnedRpc(int registerId, int sceneIndex, NetworkTransformData transformData, ulong clientId)
     {
-        Debug.Log(sceneIndex);
-
-        if (MyNetworkTransform.GetRegistered(registerId) != null)
+        if (GetRegistered(registerId) != null)
         {
+            Debug.Log($"alreay regisered: {registerId}");
             return;
         }
 
@@ -313,23 +393,71 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         MyNetworkTransform prefabTr = m_registeredPrefab[registerId].GetComponent<MyNetworkTransform>();
 
         GameObject go = Instantiate(m_registeredPrefab[registerId]);
-        MyNetworkTransform tr = go.GetComponent<MyNetworkTransform>();
-        
-        tr.transform.position = transformData.Position;
-        tr.transform.rotation = Quaternion.Euler(transformData.Rotation);
-        tr.transform.localScale= transformData.Scale;
+        MyNetworkTransform netTr = go.GetComponent<MyNetworkTransform>();
 
-        tr.CurrentSceneIndex = sceneIndex;
-        tr.RegisterId = registerId;
-        tr.bKeepSendWhenNotExist = prefabTr.bKeepSendWhenNotExist;
+        netTr.IsPlacedByDesigner = false;
+        netTr.transform.position = transformData.Position;
+        netTr.transform.rotation = Quaternion.Euler(transformData.Rotation);
+        netTr.transform.localScale= transformData.Scale;
+
+        netTr.CurrentSceneIndex = sceneIndex;
+        netTr.RegisterId = registerId;
+        netTr.bKeepSendWhenNotExist = prefabTr.bKeepSendWhenNotExist;
         NetworkObject netGo = go.GetComponent<NetworkObject>();
 
         netGo.Spawn();
-
-        MyNetworkTransform.Register(registerId, tr);
-
-        netGo.ChangeOwnership(clientId);
     }
+
+    /*
+    [Rpc(SendTo.Server)]
+    public void RequestOwnerRpc(ulong networkObjectId, ulong clientId)
+    {
+        MyNetworkTransform.RegisterInfo spawnInfo = MyNetworkTransform.GetSpawned(networkObjectId);
+        if (spawnInfo == null)
+        {
+            Debug.LogError("SpawnInfo is NULL");
+            return;
+        }
+
+        MyNetworkTransform netTr = spawnInfo.NetTransform;
+        if (netTr == null)
+        {
+            Debug.LogError("NetTransform is NULL");
+            return;
+        }
+
+        ulong serverId = NetworkManager.Singleton.LocalClientId;
+        if (clientId != serverId)
+        {
+            NetworkObject netGo = netTr.GetComponent<NetworkObject>();
+            netGo.ChangeOwnership(clientId);
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    public void DestoryNetworkObjectRpc(ulong networkObjectId, ulong clientId) 
+    {
+        MyNetworkTransform.RegisterInfo spawnInfo = MyNetworkTransform.GetSpawned(networkObjectId);
+        if (spawnInfo == null)
+        {
+            Debug.LogError("SpawnInfo is NULL");
+            return;
+        }
+
+        MyNetworkTransform netTr = spawnInfo.NetTransform;
+        if (netTr == null)
+        {
+            Debug.LogError("SpawnInfo is NULL");
+            return;
+        }
+
+        if (netTr.OwnerClientId == clientId)
+        {
+            NetworkObject netGo = netTr.GetComponent<NetworkObject>();
+            netGo.Despawn();
+        }
+    }
+    */
 
     #endregion
 }

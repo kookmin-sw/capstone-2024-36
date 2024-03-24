@@ -10,6 +10,14 @@ public class NetworkMovingTest : NetworkBehaviour
 
     private Vector3 m_random;
 
+    public void SetExist(bool bExist)
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(bExist);
+        }
+    }
+
     void Start()
     {
         m_random = new Vector3();

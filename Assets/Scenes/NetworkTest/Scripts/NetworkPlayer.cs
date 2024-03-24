@@ -52,7 +52,6 @@ public class NetworkPlayer
             playerControl.Enable();
         }
 
-        networkTransform.SetExistEvent += SetExistance;
         networkTransform.SetSpawnPositionEvent += SetSpawnPosition;
     }
 
@@ -96,7 +95,7 @@ public class NetworkPlayer
         }
     }
 
-    private void SetExistance(bool bExist)
+    private void SetExist(bool bExist)
     {
         if (bExist && NetworkSceneManager.IsPlayableScene())
         {
