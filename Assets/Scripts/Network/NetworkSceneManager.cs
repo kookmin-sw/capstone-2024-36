@@ -408,7 +408,9 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             netGo.ChangeOwnership(clientId);
         }
     }
+    */
 
+    /*
     [Rpc(SendTo.Server)]
     public void DestoryNetworkObjectRpc(ulong networkObjectId, ulong clientId) 
     {

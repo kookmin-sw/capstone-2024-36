@@ -34,8 +34,10 @@ public class NetworkPlayer
     [SerializeField] Transform womanTransform;
     [SerializeField] MyNetworkTransform networkTransform;
     [SerializeField] CapsuleCollider rigidbodyCollider;
+    [SerializeField] Animator animator;
 
     private PlayerControl playerControl;
+    private Vector3 m_lastPostion;
 
     private void Awake()
     {
@@ -67,6 +69,8 @@ public class NetworkPlayer
             LocalIstance = this;
             isLocal = true;
         }
+
+        m_lastPostion = transform.position;
     }
 
     private void Update()
@@ -85,7 +89,32 @@ public class NetworkPlayer
             speedDelta *= walkSpeed;
 
             characterController.Move(speedDelta * Time.deltaTime);
+
+            if (speedDelta.magnitude > float.Epsilon)
+            {
+                animator?.SetBool("is_walking", true);
+                transform.forward = speedDelta;
+            }
+            else
+            {
+                animator?.SetBool("is_walking", false);
+            }
         }
+        else
+        {
+            Vector3 delta = transform.position - m_lastPostion;
+            if (delta.magnitude > float.Epsilon)
+            {
+                animator?.SetBool("is_walking", true);
+                transform.forward = delta;
+            }
+            else
+            {
+                animator?.SetBool("is_walking", false);
+            }
+        }
+
+        m_lastPostion = transform.position;
     }
 
     public override void OnNetworkDespawn()
@@ -104,12 +133,14 @@ public class NetworkPlayer
             {
                 manTransform.gameObject.SetActive(true);
                 womanTransform.gameObject.SetActive(false);
+                animator = manTransform.GetComponent<Animator>();
                 currentMesh = eMesh.Man;
             }
             else
             {
                 manTransform.gameObject.SetActive(false);
                 womanTransform.gameObject.SetActive(true);
+                animator = womanTransform.GetComponent<Animator>();
                 currentMesh = eMesh.Woman;
             }
 
