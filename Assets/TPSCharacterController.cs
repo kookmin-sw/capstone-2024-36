@@ -24,11 +24,14 @@ public class TPSCharacterController : MonoBehaviour
     {
         animator = characterBody.GetComponent<Animator>();
         _state = State.Size;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         //R로 물체 회전
         if (Input.GetKey(KeyCode.Q))
         {
@@ -118,10 +121,8 @@ public class TPSCharacterController : MonoBehaviour
 
     public float clickControl(string axis)
     {
-        if (Input.GetMouseButton(1))
-            return UnityEngine.Input.GetAxis(axis);
+        return UnityEngine.Input.GetAxis(axis);
 
-        return 0;
     }
 
     void FixedUpdate()
