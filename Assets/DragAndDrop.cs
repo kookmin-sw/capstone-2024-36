@@ -8,9 +8,9 @@ public class DragAndDrop : MonoBehaviour
     public Camera getCamera;
     private RaycastHit hit;
 
-    void Start()
+    void Awake()
     {
-
+        getCamera = Camera.main;
     }
 
     private Vector3 GetMousePos()
@@ -22,13 +22,14 @@ public class DragAndDrop : MonoBehaviour
     {
         //마우스의 위치 가져오기
         mousePosition = Input.mousePosition - GetMousePos();
-
+        Debug.Log("Mouse Down");
         //물체의 중력이 중첩되는 부분 수정
         if (hit.collider.tag == "moveable")
         {
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
             hit.rigidbody.useGravity = false;
+            Debug.Log("Moveable Select");
         }
     }
 
@@ -88,7 +89,7 @@ public class DragAndDrop : MonoBehaviour
     //{
     //    Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
     //    if (Physics.Raycast(ray, out hit))
-    //    {
+    //    { 
     //        if(hit.collider.tag == "moveable")
     //        {
     //            //물체의 중력이 중첩되는 부분 수정

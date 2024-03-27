@@ -17,6 +17,11 @@ public class NetworkMovingTest : NetworkBehaviour
             transform.GetChild(i).gameObject.SetActive(bExist);
         }
     }
+    //private Camera camera;
+    //void Awake()
+    //{
+    //    camera = Camera.main;
+    //}
 
     void Start()
     {
@@ -44,10 +49,14 @@ public class NetworkMovingTest : NetworkBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("Mouse Down2");
+        }
         // orbit XZ centered m_initialPosition
         if (IsOwner)
         {
-            float speed = 2.0f;
+            float speed = 0.0f;
 
             transform.position =
                 m_initialPosition +

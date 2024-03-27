@@ -894,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkMovingTest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: m_TagString
+      value: moveable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2583,6 +2587,10 @@ PrefabInstance:
       propertyPath: m_networkPrefapInProject
       value: 
       objectReference: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+    - target: {fileID: 2063576093647471897, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: getCamera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4064438781998964111, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
@@ -2631,9 +2639,17 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 4175192314
       objectReference: {fileID: 0}
+    - target: {fileID: 8108959070233499286, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: getCamera
+      value: 
+      objectReference: {fileID: 622923584}
     - target: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
       propertyPath: m_Name
       value: NetworkMovingTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: m_TagString
+      value: moveable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5852,6 +5868,10 @@ PrefabInstance:
     - target: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
       propertyPath: m_Name
       value: NetworkMovingTest (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: m_TagString
+      value: moveable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
