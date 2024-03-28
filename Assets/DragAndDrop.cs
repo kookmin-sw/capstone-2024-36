@@ -35,6 +35,7 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        Debug.Log("Moveable Drag");
         //마우스의 위치를 월드좌표로 변환시켜서 물체에 대입
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
         if (transform.position.y <= 0)
@@ -56,6 +57,7 @@ public class DragAndDrop : MonoBehaviour
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
         }
+        NetworkMovingTest.m_initialPosition = transform.position;
     }
 
     private void OnMouseUp()

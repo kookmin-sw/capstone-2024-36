@@ -2588,6 +2588,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
     - target: {fileID: 2063576093647471897, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+      propertyPath: script
+      value: 
+      objectReference: {fileID: 949279251}
+    - target: {fileID: 2063576093647471897, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
       propertyPath: getCamera
       value: 
       objectReference: {fileID: 0}
@@ -2656,6 +2660,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+--- !u!1 &949279251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8319281662908137179, guid: 2122276893ae0274cb2e4bd7d9d84f28, type: 3}
+  m_PrefabInstance: {fileID: 949279250}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &949982353
 PrefabInstance:
   m_ObjectHideFlags: 0

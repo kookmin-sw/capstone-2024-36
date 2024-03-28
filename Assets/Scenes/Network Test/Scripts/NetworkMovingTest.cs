@@ -6,7 +6,7 @@ using Unity.Netcode;
 
 public class NetworkMovingTest : NetworkBehaviour
 {
-    public Vector3 m_initialPosition;
+    public static Vector3 m_initialPosition;
 
     private Vector3 m_random;
 
@@ -58,10 +58,7 @@ public class NetworkMovingTest : NetworkBehaviour
         {
             float speed = 0.0f;
 
-            transform.position =
-                m_initialPosition +
-                new Vector3(Mathf.Cos(Time.time * speed), 0, Mathf.Sin(Time.time * speed)
-            );
+            transform.position = m_initialPosition;
 
             transform.rotation = Quaternion.Euler(
                 Time.time * speed * 60.0f * m_random.x,
@@ -70,9 +67,9 @@ public class NetworkMovingTest : NetworkBehaviour
             );
 
             transform.localScale = new Vector3(
-                1.0f + Mathf.Cos(Time.time * speed) * 0.5f * m_random.x,
-                1.0f - Mathf.Cos(Time.time * speed) * 0.5f * m_random.y,
-                1.0f + Mathf.Sin(Time.time * speed) * 0.5f * m_random.z
+                1.0f,
+                1.0f,
+                1.0f
             );
         }
     }
