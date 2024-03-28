@@ -61,7 +61,7 @@ public class NetworkMovingTest : NetworkBehaviour
             Debug.Log("Mouse Down2");
         }
         // orbit XZ centered m_initialPosition
-        if (IsOwner )
+        if (true)
         {
             float speed = 0.0f;
 
