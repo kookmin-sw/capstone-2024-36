@@ -4,9 +4,9 @@ using Unity.Netcode;
 using System.Collections.Generic;
 
 // TODO:
-// CharacterControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ positionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ CharacterControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. 
-// Ownerï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½, ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? 
-// È¤ï¿½ï¿½, NetworkTransformï¿½ï¿½ CharacterControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?
+// CharacterController¸¦ »ç¿ëÇÒ ¶§´Â positionÀ» ¼³Á¤ÇÏ±â Àü¿¡ CharacterController¸¦ ²¨¾ßÇÏ´Â ÀÌ½´°¡ ÀÖ´Ù. 
+// Owner°¡ ¾Æ´Ñ °æ¿ì, ÄÝ¶óÀÌ´õ¸¸ »ç¿ëÇÏ´Â°Ô ³ªÀ»±î? 
+// È¤Àº, NetworkTransformÀÌ CharacterController¸¦ »ç¿ëÇÏµµ·Ï ¼öÁ¤?
 
 public class NetworkPlayer
     : NetworkBehaviour

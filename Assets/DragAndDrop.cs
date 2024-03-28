@@ -8,7 +8,6 @@ public class DragAndDrop : MonoBehaviour
     public Camera getCamera;
     private RaycastHit hit;
     public Rigidbody rigid;
-    private Vector3 nowrot;
 
     void Awake()
     {
@@ -49,11 +48,6 @@ public class DragAndDrop : MonoBehaviour
         rigid.useGravity = false;
         rigid.angularVelocity = Vector3.zero;
         rigid.velocity = Vector3.zero;
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    transform.eulerAngles += new Vector3(0f, 15f, 0f);
-        //    Debug.Log("Q");
-        //}
         if (transform.position.y <= 0)
         {
             //물체가 y좌표 0 이하로 가는 것을 방지
