@@ -7,16 +7,10 @@ public class DragAndDrop : MonoBehaviour
     Vector3 mousePosition;
     public Camera getCamera;
     private RaycastHit hit;
-    public Rigidbody rigid;
 
     void Awake()
     {
         getCamera = Camera.main;
-    }
-    
-    void Start()
-    {
-        rigid = GetComponent<Rigidbody>();
     }
 
     private Vector3 GetMousePos()
@@ -30,13 +24,13 @@ public class DragAndDrop : MonoBehaviour
         mousePosition = Input.mousePosition - GetMousePos();
         Debug.Log("Mouse Down");
         //물체의 중력이 중첩되는 부분 수정
-        //if (hit.collider.tag == "moveable")
-        //{
-        //    hit.rigidbody.velocity = Vector3.zero;
-        //    hit.rigidbody.angularVelocity = Vector3.zero;
-        //    hit.rigidbody.useGravity = false;
-        //    Debug.Log("Moveable Select");
-        //}
+        if (hit.collider.tag == "moveable")
+        {
+            hit.rigidbody.velocity = Vector3.zero;
+            hit.rigidbody.angularVelocity = Vector3.zero;
+            hit.rigidbody.useGravity = false;
+            Debug.Log("Moveable Select");
+        }
     }
 
     private void OnMouseDrag()
@@ -44,10 +38,6 @@ public class DragAndDrop : MonoBehaviour
         Debug.Log("Moveable Drag");
         //마우스의 위치를 월드좌표로 변환시켜서 물체에 대입
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
-        transform.eulerAngles = Vector3.zero;
-        rigid.useGravity = false;
-        rigid.angularVelocity = Vector3.zero;
-        rigid.velocity = Vector3.zero;
         if (transform.position.y <= 0)
         {
             //물체가 y좌표 0 이하로 가는 것을 방지
@@ -62,33 +52,26 @@ public class DragAndDrop : MonoBehaviour
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
 
         }
-        //if (hit.collider.tag == "moveable")
-        //{
-        //    Debug.Log("asdasdasd");
-        //    hit.rigidbody.velocity = Vector3.zero;
-        //    hit.rigidbody.angularVelocity = Vector3.zero;
-        //    hit.rigidbody.useGravity = false;
-        //}
+        if (hit.collider != null && hit.collider.tag == "moveable")
+        {
+            hit.rigidbody.velocity = Vector3.zero;
+            hit.rigidbody.angularVelocity = Vector3.zero;
+        }
         NetworkMovingTest.m_movedPosition = transform.position;
-    }
-
-    private void OnMouseExit()
-    {
-        //Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
-        Debug.Log("Up");
-        rigid.useGravity = true;
-        //if (hit.collider.tag == "moveable")
-        //{
-        //    hit.rigidbody.velocity = Vector3.zero;
-        //    hit.rigidbody.angularVelocity = Vector3.zero;
-        //    hit.rigidbody.useGravity = true;
-        //}
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("Up");
-        rigid.useGravity = true;
+        Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.tag == "moveable")
+            {
+                hit.rigidbody.velocity = Vector3.zero;
+                hit.rigidbody.angularVelocity = Vector3.zero;
+                hit.rigidbody.useGravity = true;
+            }
+        }
     }
     void Update()
     {

@@ -162,21 +162,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4064438781998964111}
     m_Modifications:
-    - target: {fileID: 112556, guid: fa16f192e48b4f34888fa5f987fae652, type: 3}
-      propertyPath: m_TagString
-      value: moveable
-      objectReference: {fileID: 0}
     - target: {fileID: 182668, guid: fa16f192e48b4f34888fa5f987fae652, type: 3}
       propertyPath: m_Name
       value: P_Crate_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 182668, guid: fa16f192e48b4f34888fa5f987fae652, type: 3}
-      propertyPath: m_TagString
-      value: moveable
-      objectReference: {fileID: 0}
-    - target: {fileID: 196250, guid: fa16f192e48b4f34888fa5f987fae652, type: 3}
-      propertyPath: m_TagString
-      value: moveable
       objectReference: {fileID: 0}
     - target: {fileID: 470824, guid: fa16f192e48b4f34888fa5f987fae652, type: 3}
       propertyPath: m_LocalPosition.x
