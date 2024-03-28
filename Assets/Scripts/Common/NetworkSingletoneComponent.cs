@@ -5,7 +5,7 @@ public class NetworkSingletoneComponent<T> : NetworkBehaviour where T : MonoBeha
 {
     private static T s_instance;
 
-    public static bool IsRegistered()
+    public static bool IsSingletoneRegistered()
     {
         return s_instance != null;
     }
@@ -21,7 +21,7 @@ public class NetworkSingletoneComponent<T> : NetworkBehaviour where T : MonoBeha
         }
     }
 
-    public static void RegisterInstance(T instance)
+    public static void RegisterSingletone(T instance)
     {
         if (s_instance == null)
         {
@@ -39,6 +39,6 @@ public class NetworkSingletoneComponent<T> : NetworkBehaviour where T : MonoBeha
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        RegisterInstance(this as T);
+        RegisterSingletone(this as T);
     }
 }
