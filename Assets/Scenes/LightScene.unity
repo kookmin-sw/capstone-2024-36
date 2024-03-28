@@ -423,7 +423,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120640267}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.026766181, y: 0.000000010380534, z: -0.00000003121928, w: 0.9996418}
+=======
+  m_LocalRotation: {x: -0.026766181, y: 0.000000010380516, z: -0.000000031219226, w: 0.9996418}
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -561,7 +565,10 @@ MonoBehaviour:
   characterBody: {fileID: 206241348}
   getCamera: {fileID: 963194227}
   lasermaterial: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
+<<<<<<< HEAD
   lasercolor: {r: 1, g: 0, b: 0, a: 1}
+=======
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
   moveSpeed: 0.04
   strafeSpeed: 0.04
   horizontal: 0
@@ -786,7 +793,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431121916}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.013393849, y: 0.0000000318625, z: -0.000000100286385, w: 0.99991035}
+=======
+  m_LocalRotation: {x: -0.013393849, y: 0.000000031862477, z: -0.00000010028635, w: 0.99991035}
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1053,7 +1064,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684429386}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: -0, y: 0.000000013582783, z: -0.00000004482318, w: 1}
+=======
+  m_LocalRotation: {x: -0, y: 0.00000001358277, z: -0.00000004482315, w: 1}
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1564,7 +1579,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: 0.59581566, y: 0.000000026422505, z: -0.0000000196022, w: 0.8031212}
+=======
+  m_LocalRotation: {x: 0.59581566, y: 0.000000026422509, z: -0.000000019602203, w: 0.8031212}
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
   m_LocalPosition: {x: 0, y: 8, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2320,6 +2339,56 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 206241349}
   m_SourcePrefab: {fileID: 100100000, guid: 3e3d174592f5f49489db6d6af59e90cd, type: 3}
+<<<<<<< HEAD
+=======
+--- !u!1 &1724400989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724400991}
+  - component: {fileID: 1724400990}
+  m_Layer: 0
+  m_Name: LaserController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1724400990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724400989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ec887871fcb2942b1526d9a129fd51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redLaser: {fileID: 323847549}
+  blueLaser: {fileID: 2125712176}
+  greenLaser: {fileID: 2064700850}
+--- !u!4 &1724400991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724400989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.248264, y: 0.32470277, z: 4.4353986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 1b5cbcf378c74bd91a183b65fce1cd08d968e5d2
 --- !u!1 &1880338057
 GameObject:
   m_ObjectHideFlags: 0
