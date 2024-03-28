@@ -6,9 +6,16 @@ using Unity.Netcode;
 
 public class NetworkMovingTest : NetworkBehaviour
 {
-    public static Vector3 m_initialPosition;
+    public Vector3 m_initialPosition;
+    public static Vector3 m_movedPosition;
+    MyNetworkTransform netTransfrom;
 
     private Vector3 m_random;
+
+    public void Awake()
+    {
+        netTransfrom.GetComponent<MyNetworkTransform>();
+    }
 
     public void SetExist(bool bExist)
     {
@@ -54,11 +61,11 @@ public class NetworkMovingTest : NetworkBehaviour
             Debug.Log("Mouse Down2");
         }
         // orbit XZ centered m_initialPosition
-        if (IsOwner)
+        if (IsOwner )
         {
             float speed = 0.0f;
 
-            transform.position = m_initialPosition;
+            transform.position = m_initialPosition + m_movedPosition;
 
             transform.rotation = Quaternion.Euler(
                 Time.time * speed * 60.0f * m_random.x,
@@ -67,9 +74,9 @@ public class NetworkMovingTest : NetworkBehaviour
             );
 
             transform.localScale = new Vector3(
-                1.0f,
-                1.0f,
-                1.0f
+                1.0f + Mathf.Cos(Time.time * speed) * 0.5f * m_random.x,
+                1.0f - Mathf.Cos(Time.time * speed) * 0.5f * m_random.y,
+                1.0f + Mathf.Sin(Time.time * speed) * 0.5f * m_random.z
             );
         }
     }

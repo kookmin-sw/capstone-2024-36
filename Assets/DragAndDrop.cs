@@ -57,7 +57,7 @@ public class DragAndDrop : MonoBehaviour
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
         }
-        NetworkMovingTest.m_initialPosition = transform.position;
+        NetworkMovingTest.m_movedPosition = transform.position;
     }
 
     private void OnMouseUp()
@@ -75,16 +75,16 @@ public class DragAndDrop : MonoBehaviour
     }
     void Update()
     {
-        Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.tag == "moveable")
-            {
-                hit.rigidbody.velocity = Vector3.zero;
-                hit.rigidbody.angularVelocity = Vector3.zero;
-                hit.rigidbody.useGravity = true;
-            }
-        }
+        //Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    if (hit.collider.tag == "moveable")
+        //    {
+        //        hit.rigidbody.velocity = Vector3.zero;
+        //        hit.rigidbody.angularVelocity = Vector3.zero;
+        //        hit.rigidbody.useGravity = true;
+        //    }
+        //}
     }
     // Update is called once per frame
     //void Update()
