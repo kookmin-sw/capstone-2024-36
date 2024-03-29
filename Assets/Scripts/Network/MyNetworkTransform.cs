@@ -43,7 +43,6 @@ public class MyNetworkTransform : NetworkBehaviour
 
     private void Awake()
     {
-
         // IsPlacedByDesigner: 이 값을 여기서 초기화하면 이 gameObject가
         // 맵 디자이너에 의해 배치된 것인지, Spawn하기 위해 생성한 것인지
         // 구분을 못하기 때문에 초기화하면 안된다. 

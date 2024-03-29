@@ -7,8 +7,15 @@ using Unity.Netcode;
 public class NetworkMovingTest : NetworkBehaviour
 {
     public Vector3 m_initialPosition;
+    public static Vector3 m_movedPosition;
+    MyNetworkTransform netTransfrom;
 
     private Vector3 m_random;
+
+    public void Awake()
+    {
+        netTransfrom.GetComponent<MyNetworkTransform>();
+    }
 
     public void SetExist(bool bExist)
     {
@@ -17,6 +24,11 @@ public class NetworkMovingTest : NetworkBehaviour
             transform.GetChild(i).gameObject.SetActive(bExist);
         }
     }
+    //private Camera camera;
+    //void Awake()
+    //{
+    //    camera = Camera.main;
+    //}
 
     void Start()
     {
@@ -44,15 +56,16 @@ public class NetworkMovingTest : NetworkBehaviour
 
     private void Update()
     {
-        // orbit XZ centered m_initialPosition
-        if (IsOwner)
+        if (Input.GetMouseButton(0))
         {
-            float speed = 2.0f;
+            Debug.Log("Mouse Down2");
+        }
+        // orbit XZ centered m_initialPosition
+        if (IsOwner )
+        {
+            float speed = 0.0f;
 
-            transform.position =
-                m_initialPosition +
-                new Vector3(Mathf.Cos(Time.time * speed), 0, Mathf.Sin(Time.time * speed)
-            );
+            transform.position = m_initialPosition + m_movedPosition;
 
             transform.rotation = Quaternion.Euler(
                 Time.time * speed * 60.0f * m_random.x,

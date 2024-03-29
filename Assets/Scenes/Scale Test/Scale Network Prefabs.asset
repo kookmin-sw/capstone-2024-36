@@ -13,4 +13,14 @@ MonoBehaviour:
   m_Name: Scale Network Prefabs
   m_EditorClassIdentifier: 
   IsDefault: 1
-  List: []
+  List:
+  - Override: 0
+    Prefab: {fileID: 5382125386911965414, guid: e7efb3dc7ed1e5545a5af7083c123878, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 0}
+  - Override: 0
+    Prefab: {fileID: 1522112976853672520, guid: 31d9fcc927423d749ab4e8d64fab6786, type: 3}
+    SourcePrefabToOverride: {fileID: 0}
+    SourceHashToOverride: 0
+    OverridingTargetPrefab: {fileID: 0}

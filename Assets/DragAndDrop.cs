@@ -8,9 +8,9 @@ public class DragAndDrop : MonoBehaviour
     public Camera getCamera;
     private RaycastHit hit;
 
-    void Start()
+    void Awake()
     {
-
+        getCamera = Camera.main;
     }
 
     private Vector3 GetMousePos()
@@ -22,18 +22,20 @@ public class DragAndDrop : MonoBehaviour
     {
         //마우스의 위치 가져오기
         mousePosition = Input.mousePosition - GetMousePos();
-
+        Debug.Log("Mouse Down");
         //물체의 중력이 중첩되는 부분 수정
         if (hit.collider.tag == "moveable")
         {
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
             hit.rigidbody.useGravity = false;
+            Debug.Log("Moveable Select");
         }
     }
 
     private void OnMouseDrag()
     {
+        Debug.Log("Moveable Drag");
         //마우스의 위치를 월드좌표로 변환시켜서 물체에 대입
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
         if (transform.position.y <= 0)
@@ -55,6 +57,7 @@ public class DragAndDrop : MonoBehaviour
             hit.rigidbody.velocity = Vector3.zero;
             hit.rigidbody.angularVelocity = Vector3.zero;
         }
+        NetworkMovingTest.m_movedPosition = transform.position;
     }
 
     private void OnMouseUp()
@@ -72,23 +75,23 @@ public class DragAndDrop : MonoBehaviour
     }
     void Update()
     {
-        Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.tag == "moveable")
-            {
-                hit.rigidbody.velocity = Vector3.zero;
-                hit.rigidbody.angularVelocity = Vector3.zero;
-                hit.rigidbody.useGravity = true;
-            }
-        }
+        //Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    if (hit.collider.tag == "moveable")
+        //    {
+        //        hit.rigidbody.velocity = Vector3.zero;
+        //        hit.rigidbody.angularVelocity = Vector3.zero;
+        //        hit.rigidbody.useGravity = true;
+        //    }
+        //}
     }
     // Update is called once per frame
     //void Update()
     //{
     //    Ray ray = getCamera.ScreenPointToRay(Input.mousePosition);
     //    if (Physics.Raycast(ray, out hit))
-    //    {
+    //    { 
     //        if(hit.collider.tag == "moveable")
     //        {
     //            //물체의 중력이 중첩되는 부분 수정

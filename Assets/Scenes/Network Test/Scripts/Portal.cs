@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    public int nextSceneIndex;
+    public string NextSceneName;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -19,7 +20,8 @@ public class Portal : MonoBehaviour
             {
                 MyNetworkTransform playerTransform = player.GetComponent<MyNetworkTransform>();
 
-                NetworkSceneManager.Instance.MoveScene(nextSceneIndex, playerTransform);
+                int idx = SceneUtility.GetBuildIndexByScenePath(NextSceneName);
+                NetworkSceneManager.Instance.MoveScene(idx, playerTransform);
             }
         }
     }
