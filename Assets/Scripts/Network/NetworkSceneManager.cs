@@ -68,7 +68,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     #endregion
 
     [Header("Setting")]
-    public int OnDisconnectionSceneIndex = 0;
+    public string OnDisconnectionSceneName = "";
 
     [Header("Reference")]
     public NetworkRegisterList RegisterList;
@@ -115,7 +115,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 if (clientId == NetworkManager.Singleton.LocalClientId)
                 {
                     // catch disconnect here
-                    SceneManager.LoadScene(OnDisconnectionSceneIndex);
+                    SceneManager.LoadScene(OnDisconnectionSceneName);
                 }
 
                 break;
@@ -133,7 +133,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         s_unityTransport.OnTransportEvent -= UnityTransport_OnTransportEvent;
         NetworkManager.Singleton.OnClientStopped -= Singleton_OnClientStopped;
 
-        SceneManager.LoadScene(OnDisconnectionSceneIndex);
+        SceneManager.LoadScene(OnDisconnectionSceneName);
     }
 
     public void LoadScene(int newSceneIndex)

@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Unity.Netcode;
-using System.Collections.Generic;
 
 // TODO:
 // CharacterController를 사용할 때는 position을 설정하기 전에 CharacterController를 꺼야하는 이슈가 있다. 
