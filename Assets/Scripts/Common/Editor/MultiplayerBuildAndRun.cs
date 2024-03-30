@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System;
 using System.ComponentModel;
 using System.IO;
+using System.Collections.Generic;
 
 public class MultiplayerBuildAndRun
 {
@@ -43,12 +44,19 @@ public class MultiplayerBuildAndRun
             "1/";
 
         ProcessStartInfo startInfo = new ProcessStartInfo();
+        List<string> scenePaths = new List<string>();
+        foreach (var s in EditorBuildSettings.scenes)
+        {
+            if (s.enabled)
+                scenePaths.Add(s.path);
+        }
 
         for (int i = 1; i <= playerCount; i++)
         {
             if (i == 1)
             {
-                BuildPipeline.BuildPlayer(GetScenePaths(),
+                // GetScenePaths()
+                BuildPipeline.BuildPlayer(scenePaths.ToArray(),
                 "Builds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + ".exe",
                 BuildTarget.StandaloneWindows64, BuildOptions.AutoRunPlayer);
             }
