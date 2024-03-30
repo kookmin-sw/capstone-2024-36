@@ -1,10 +1,5 @@
-using UnityEngine;
+癤퓎sing UnityEngine;
 using Unity.Netcode;
-
-// TODO:
-// CharacterController를 사용할 때는 position을 설정하기 전에 CharacterController를 꺼야하는 이슈가 있다. 
-// Owner가 아닌 경우, 콜라이더만 사용하는게 나을까? 
-// 혹은, NetworkTransform이 CharacterController를 사용하도록 수정?
 
 public class NetworkPlayer
     : NetworkBehaviour
@@ -73,15 +68,12 @@ public class NetworkPlayer
 
     private void Update()
     {
-        if (PlayerCamera.Instance() == null)
-            return;
-
         // move character tranform by CharacterController
         if (IsOwner && characterController.enabled)
         {
             Vector3 speedDelta =
-                PlayerCamera.Instance().transform.forward * movementInput.y +
-                PlayerCamera.Instance().transform.right * movementInput.x;
+                Camera.main.transform.forward * movementInput.y +
+                Camera.main.transform.right * movementInput.x;
             speedDelta.y = 0;
             speedDelta.Normalize();
             speedDelta *= walkSpeed;
@@ -103,12 +95,13 @@ public class NetworkPlayer
             Vector3 delta = transform.position - m_lastPostion;
             if (delta.magnitude > float.Epsilon)
             {
-                animator?.SetBool("is_walking", true);
-                transform.forward = delta;
+                if (animator != null)
+                    animator?.SetBool("is_walking", true);
             }
             else
             {
-                animator?.SetBool("is_walking", false);
+                if (animator != null)
+                    animator?.SetBool("is_walking", false);
             }
         }
 
