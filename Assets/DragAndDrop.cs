@@ -20,6 +20,8 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
+        return;
+
         //마우스의 위치 가져오기
         mousePosition = Input.mousePosition - GetMousePos();
         Debug.Log("Mouse Down");
