@@ -17,6 +17,7 @@ public class NetworkPlayer
 
     [Header("Setting")]
     [SerializeField] int walkSpeed;
+    [SerializeField] float Gravity;
 
     [Header("Input")]
     [SerializeField] Vector2 movementInput;
@@ -29,22 +30,24 @@ public class NetworkPlayer
     [SerializeField] CapsuleCollider rigidbodyCollider;
     [SerializeField] Animator animator;
 
-    private PlayerControl playerControl;
+    private PlayerControl m_playerControl;
     private Vector3 m_lastPostion;
+
+    private float m_speedY;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
 
-        if (playerControl == null)
+        if (m_playerControl == null)
         {
-            playerControl = new PlayerControl();
+            m_playerControl = new PlayerControl();
 
-            playerControl.PlayerMovement.Movement.performed += (i) =>
+            m_playerControl.PlayerMovement.Movement.performed += (i) =>
             {
                 movementInput = i.ReadValue<Vector2>();
             };
-            playerControl.Enable();
+            m_playerControl.Enable();
         }
 
         networkTransform.SetSpawnPositionEvent += SetSpawnPosition;
@@ -89,6 +92,8 @@ public class NetworkPlayer
             {
                 animator?.SetBool("is_walking", false);
             }
+
+            characterController.Move(Vector3.down * Gravity * Time.deltaTime);
         }
         else
         {
@@ -137,11 +142,11 @@ public class NetworkPlayer
 
             characterController.enabled = true;
             rigidbodyCollider.enabled = true;
-            playerControl.Enable();
+            m_playerControl.Enable();
         }
         else
         {
-            playerControl.Disable();
+            m_playerControl.Disable();
 
             manTransform.gameObject.SetActive(false);
             womanTransform.gameObject.SetActive(false);
@@ -155,6 +160,13 @@ public class NetworkPlayer
 
     private void SetSpawnPosition()
     {
+        if (IsOwner)
+        {
+            CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
+            if (camCtrl != null)
+                camCtrl.Target = transform;
+        }
+
         if (IsHost == IsOwner)
         {
             transform.position = SpawnPosManager.Instance.HostSpawnPos.position;

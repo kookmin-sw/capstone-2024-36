@@ -8,13 +8,13 @@ public class NetworkMovingTest : NetworkBehaviour
 {
     public Vector3 m_initialPosition;
     public static Vector3 m_movedPosition;
-    MyNetworkTransform netTransfrom;
+    // MyNetworkTransform netTransfrom;
 
     private Vector3 m_random;
 
     public void Awake()
     {
-        netTransfrom.GetComponent<MyNetworkTransform>();
+        // netTransfrom.GetComponent<MyNetworkTransform>();
     }
 
     public void SetExist(bool bExist)

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4007385289716303653}
   - component: {fileID: 3761582769011026831}
   - component: {fileID: -7377718256095586167}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Network Network Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +158,7 @@ MonoBehaviour:
   isLocal: 0
   ownerClientId: 0
   walkSpeed: 4
+  Gravity: 4
   movementInput: {x: 0, y: 0}
   characterController: {fileID: 3761582769011026831}
   manTransform: {fileID: 8807092439703178205}
@@ -184,7 +185,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Height: 1.8
+  m_Height: 1.75
   m_Radius: 0.27
   m_SlopeLimit: 45
   m_StepOffset: 0.3
