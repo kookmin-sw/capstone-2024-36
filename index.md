@@ -15,8 +15,9 @@ Ai Senma는 실험실에서 기억을 잃은 플레이어가 퍼즐을 풀어가
 강기범(\*\*\*\*1564): 스토리 및 보조개발  
 
 ## 스크린샷
+<img width="529" alt="20240402_212842584" src="https://github.com/kookmin-sw/capstone-2024-36/assets/36731857/3b670a27-69ee-4f52-b573-653c720dd376">
+
 <img width="527" alt="20240402_213012097" src="https://github.com/kookmin-sw/capstone-2024-36/assets/36731857/1051cc27-b264-47a8-9013-aeccce17ffc1">
 
-<img width="529" alt="20240402_212842584" src="https://github.com/kookmin-sw/capstone-2024-36/assets/36731857/3b670a27-69ee-4f52-b573-653c720dd376">
 
 
