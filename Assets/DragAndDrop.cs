@@ -20,19 +20,11 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        return;
 
         //마우스의 위치 가져오기
         mousePosition = Input.mousePosition - GetMousePos();
         Debug.Log("Mouse Down");
-        //물체의 중력이 중첩되는 부분 수정
-        if (hit.collider.tag == "moveable")
-        {
-            hit.rigidbody.velocity = Vector3.zero;
-            hit.rigidbody.angularVelocity = Vector3.zero;
-            hit.rigidbody.useGravity = false;
-            Debug.Log("Moveable Select");
-        }
+
     }
 
     private void OnMouseDrag()
@@ -53,11 +45,6 @@ public class DragAndDrop : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 30-transform.localScale.y / 2, transform.position.z);
             transform.eulerAngles = new Vector3(0.0f, transform.eulerAngles.y, 0.0f);
 
-        }
-        if (hit.collider != null && hit.collider.tag == "moveable")
-        {
-            hit.rigidbody.velocity = Vector3.zero;
-            hit.rigidbody.angularVelocity = Vector3.zero;
         }
         NetworkMovingTest.m_movedPosition = transform.position;
     }

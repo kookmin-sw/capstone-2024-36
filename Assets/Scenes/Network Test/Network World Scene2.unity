@@ -3629,6 +3629,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera (Left & Right)
       objectReference: {fileID: 0}
+    - target: {fileID: 7224954078321432468, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
+      propertyPath: m_maxPivotV
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

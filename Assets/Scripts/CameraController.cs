@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float m_verticalSpeed= 220;
     [SerializeField] private float m_horizontalSpeed = 220;
     [SerializeField] private float m_minPivotV = -30;     // lowest point look down
-    [SerializeField] private float m_maxPivotV = 60;     // highest point look up
+    [SerializeField] private float m_maxPivotV = 80;     // highest point look up
     [SerializeField] private float m_collisionRadius = 0.2f;
     [SerializeField] private LayerMask m_collisionMask;
 
@@ -50,16 +50,23 @@ public class CameraController : MonoBehaviour
             m_defaultCameraZ = Cam.transform.localPosition.z;
     }
 
+
     private void LateUpdate()
     {
         if (Target == null)
             return;
 
+        if (Input.GetMouseButtonDown(1)){
+            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+
         // follow target
-        Vector3 _targetCameraPosition = Vector3.SmoothDamp(
+            Vector3 _targetCameraPosition = Vector3.SmoothDamp(
             transform.position, Target.transform.position, ref m_smoothVelocity, m_smoothSpeed * Time.deltaTime
         );
-        transform.position = _targetCameraPosition;
+        transform.position = _targetCameraPosition + new Vector3(0, 1.0f, 0);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
 
         // ratation
         HorizontalAngle += m_mouseDelta.x * m_horizontalSpeed * Time.deltaTime;
@@ -92,14 +99,14 @@ public class CameraController : MonoBehaviour
         {
             float distance = Vector3.Distance(Pivot.transform.position, hit.point);
             m_targetCameraZ = -(distance - m_collisionRadius);
-        }
+        }   
 
         if (Mathf.Abs(m_targetCameraZ) < m_collisionRadius)
         {
             m_targetCameraZ = -m_collisionRadius;
         }
 
-        m_cameraPosition.z = Mathf.Lerp(Cam.transform.localPosition.z, m_targetCameraZ, 0.2f); 
+        m_cameraPosition.z = Mathf.Lerp(Cam.transform.localPosition.z, m_targetCameraZ, 0.2f);
         Cam.transform.localPosition = m_cameraPosition;
 
     }
