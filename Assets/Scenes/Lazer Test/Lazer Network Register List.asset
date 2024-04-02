@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dda531ea08ca8d429c059daada90e41, type: 3}
   m_Name: Lazer Network Register List
   m_EditorClassIdentifier: 
-  List: []
+  List:
+  - RegisterId: 0
+    Prefab: {fileID: 8319281662908137179, guid: 001e9e308ca4dc0439e4ad47affed331, type: 3}
+  - RegisterId: 1
+    Prefab: {fileID: 8319281662908137179, guid: 001e9e308ca4dc0439e4ad47affed331, type: 3}
+  - RegisterId: 2
+    Prefab: {fileID: 8319281662908137179, guid: 001e9e308ca4dc0439e4ad47affed331, type: 3}

@@ -136,8 +136,9 @@ public class LaserBeam
         }
         if (hitInfo.collider.CompareTag("LaserPoint") && this.laser.name == "laserability")
         {
-            hitInfo.collider.GetComponent<ShootLaser>().LaserColor = laserColor;
-            hitInfo.collider.GetComponent<ShootLaser>().Onofflaser();
+            Debug.Log("laserpointer by laserability hit");
+            hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().LaserColor = laserColor;
+            hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().Onofflaser();
         }
     }
     Color MixColors(Color color1, Color color2)
