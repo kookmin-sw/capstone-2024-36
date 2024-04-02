@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+## Ai Senma
 
-You can use the [editor on GitHub](https://github.com/kookmin-sw/cap-template/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Ai Senma는 실험실에서 기억을 잃은 플레이어가 퍼즐을 풀어가며 사건의 진상을 알아가는 스토리의 게임입니다. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+크기 조절, 중력, 빛의 세 가지 퍼즐 기믹이 있으며 2인 협동 멀티 플레이가 가능합니다. 
 
-### Markdown
+## 팀 소개
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+문민철(\*\*\*\*1607): 팀장, 플레이어 스킬 개발(크기)
+박세호(\*\*\*\*): 플레이어 스킬 개발(중력)
+김현준(\*\*\*\*1593): 플레이어 스킬 개발(빛)
+이재원(\*\*\*\*1671): 서버 및 백엔드 개발
+오정규(\*\*\*\*3025): 서버 및 백엔드 개발
+강동우(\*\*\*\*1566): 맵 및 그래픽 디자인
+강기범(\*\*\*\*1564): 스토리 및 보조개발
 
-```markdown
-Syntax highlighted code block
+## 스크린샷
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kookmin-sw/cap-template/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
