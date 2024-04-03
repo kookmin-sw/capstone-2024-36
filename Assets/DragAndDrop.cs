@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragAndDrop : MonoBehaviour
 {
     Vector3 mousePosition;
     public Camera getCamera;
     private RaycastHit hit;
+    private GameObject NPCDialog;
+    private Text NPCText; 
+
+    void Start()
+    {
+        NPCDialog = GameObject.Find("Interact");
+        NPCText = GameObject.Find("Text").GetComponent<Text>();
+        NPCDialog.SetActive(false);
+    }
 
     void Awake()
     {
         getCamera = Camera.main;
+        NPCDialog = GameObject.Find("Interact");
+        NPCText = GameObject.Find("Text").GetComponent<Text>();
+        NPCDialog.SetActive(false); 
     }
 
     private Vector3 GetMousePos()
@@ -25,6 +38,18 @@ public class DragAndDrop : MonoBehaviour
         mousePosition = Input.mousePosition - GetMousePos();
         Debug.Log("Mouse Down");
 
+    }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("enter");
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        Debug.Log("exit");
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void OnMouseDrag()
