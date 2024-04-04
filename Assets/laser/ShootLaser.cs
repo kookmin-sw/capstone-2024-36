@@ -7,12 +7,12 @@ public class ShootLaser : MonoBehaviour
     public Color LaserColor = Color.red;
     public Material material;
     
-    bool isLaserActive = false;
+    bool isLaserActive = true;
     LaserBeam beam;
 
     void Start(){
-       
-
+       beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+    
     }
     // Update is called once per frame
     void Update()

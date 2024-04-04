@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3542470855
+  GlobalObjectIdHash: 1767689297
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaserColor: {r: 1, g: 0, b: 0, a: 1}
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
   isLaserActive:
     m_InternalValue: 0
 --- !u!1001 &5055543838487541064

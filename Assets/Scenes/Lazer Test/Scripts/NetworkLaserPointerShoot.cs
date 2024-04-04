@@ -12,33 +12,31 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
 
     LaserBeam beam;
 
+    void Start(){
+        if(beam == null){
+        beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+        Debug.Log("빔생성");
+        }
+    }
+
     void Update()
     {
-        if (IsLocalPlayer)
-        {
-            if(isLaserActive.Value && beam == null){
+        beam.laser.positionCount = 0;
+        beam.laserIndices.Clear();
         
-            beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
-            }
-            else{
-                beam.laser.positionCount = 0;
-                beam.laserIndices.Clear();
-            }
-            if (isLaserActive.Value && beam != null)
-            {
-                beam.laser.positionCount = 0;
-                beam.laserIndices.Clear();
-                beam.CastRay(transform.position, transform.forward, beam.laser);
-            }
+        if (isLaserActive.Value && beam != null)
+        {
+            
+            beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
         }
+    
     }
 
     public void Onofflaser()
     {
-        if (IsLocalPlayer)
-        {
-            isLaserActive.Value = !isLaserActive.Value; // 레이저 활성화 상태를 토글
-            Debug.Log(isLaserActive.Value);
-        }
+        
+        isLaserActive.Value = !isLaserActive.Value; // 레이저 활성화 상태를 토글
+        Debug.Log(isLaserActive.Value);
+    
     }
 }

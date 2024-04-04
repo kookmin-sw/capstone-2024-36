@@ -1731,6 +1731,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4113103782148822168, guid: bed8f9a768341d04f953c49676d25b79, type: 3}
+      propertyPath: RegisterId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113103782148822168, guid: bed8f9a768341d04f953c49676d25b79, type: 3}
+      propertyPath: IsPlacedByDesigner
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4304498387937030328, guid: bed8f9a768341d04f953c49676d25b79, type: 3}
       propertyPath: m_Name
       value: LaserPointer
