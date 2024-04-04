@@ -44,6 +44,7 @@ public class DragAndDrop : MonoBehaviour
     {
         Debug.Log("enter");
         transform.GetChild(0).gameObject.SetActive(true);
+        //Debug.Log(transform.GetComponent<MyNetworkTransform>().RegisterId);
     }
 
     private void OnMouseExit()

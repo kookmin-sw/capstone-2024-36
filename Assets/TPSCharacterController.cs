@@ -69,11 +69,11 @@ public class TPSCharacterController : MonoBehaviour
                     if (hit.collider.tag == "moveable")
                     {
                         //Q로 물체의 크기 키우기
-                        if (Input.GetKeyDown(KeyCode.R) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+                        if (Input.GetKeyDown(KeyCode.R) && hit.transform.localScale[0] < 3.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
                         {
                             hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
                         }
-                        else if (Input.GetKey(KeyCode.R) && hit.transform.localScale[0] < 10.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
+                        else if (Input.GetKey(KeyCode.R) && hit.transform.localScale[0] < 3.0f && hit.transform.localScale[1] < 10.0f && hit.transform.localScale[2] < 10.0f)
                         {
                             hit.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
                         }
