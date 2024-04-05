@@ -17,7 +17,7 @@
   - Theme Chooser에서 태마선택
   - 수정후 팀페이지 확인하여 점검.
 
-**팀페이지 주소** 2024년 팀36  https://github.com/kookmin-sw/capstone-2024-36
+**팀페이지 주소** 2024년 팀36  https://kookmin-sw.github.io/capstone-2024-36/
 
 
 ## 내용에 아래와 같은 내용들을 추가하세요.
