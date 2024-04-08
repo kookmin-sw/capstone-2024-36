@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Scale Network Register List
   m_EditorClassIdentifier: 
   List:
-  - RegisterId: 100
-    Prefab: {fileID: 8319281662908137179, guid: 3b4e6094ff05ea64aa3dfa9ba368b123, type: 3}
+  - RegisterId: 0
+    Prefab: {fileID: 6072448084118646386, guid: 1ec2aaaf7dd01a549b88e7d6934b9a35, type: 3}
