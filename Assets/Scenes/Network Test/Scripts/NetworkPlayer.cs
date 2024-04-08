@@ -14,10 +14,13 @@ public class NetworkPlayer
     [SerializeField] eMesh currentMesh = eMesh.None;
     [SerializeField] bool isLocal = false;
     [SerializeField] ulong ownerClientId;
+    [SerializeField] private float m_speedY;
 
     [Header("Setting")]
     [SerializeField] int walkSpeed;
     [SerializeField] float Gravity;
+    [SerializeField] float MaxGravity;
+    [SerializeField] float JumpPower;
 
     [Header("Input")]
     [SerializeField] Vector2 movementInput;
@@ -32,8 +35,6 @@ public class NetworkPlayer
 
     private PlayerControl m_playerControl;
     private Vector3 m_lastPostion;
-
-    private float m_speedY;
 
     private void Awake()
     {
@@ -93,11 +94,30 @@ public class NetworkPlayer
                 animator?.SetBool("is_walking", false);
             }
 
-            characterController.Move(Vector3.down * Gravity * Time.deltaTime);
+            m_speedY -= Gravity * Time.deltaTime;
+            if (m_speedY < -MaxGravity)
+                m_speedY = -MaxGravity;
+
+            if (characterController.isGrounded)
+            {
+                m_speedY = 0;
+
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_speedY = JumpPower;
+            }
+
+            characterController.Move(Vector3.up * m_speedY * Time.deltaTime);
         }
         else
         {
-            Vector3 delta = transform.position - m_lastPostion;
+            Vector3 delta = transform.position;
+            delta.y = 0.0f;
+            delta -= m_lastPostion;
+
             if (delta.magnitude > float.Epsilon)
             {
                 if (animator != null)
@@ -111,6 +131,7 @@ public class NetworkPlayer
         }
 
         m_lastPostion = transform.position;
+        m_lastPostion.y = 0;
     }
 
     public override void OnNetworkDespawn()

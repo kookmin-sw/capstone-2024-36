@@ -157,7 +157,11 @@ MonoBehaviour:
   currentMesh: 2
   isLocal: 0
   ownerClientId: 0
+  m_speedY: 0
   walkSpeed: 4
+  Gravity: 0
+  MaxGravity: 0
+  JumpPower: 0
   movementInput: {x: 0, y: 0}
   characterController: {fileID: 3761582769011026831}
   manTransform: {fileID: 8807092439703178205}
@@ -184,13 +188,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Height: 1.8
+  m_Height: 2
   m_Radius: 0.27
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &-7377718256095586167
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -383,17 +383,16 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         // }
     }
 
-    /*
     [Rpc(SendTo.Server)]
     public void RequestOwnerRpc(ulong networkObjectId, ulong clientId)
     {
-        MyNetworkTransform.RegisterInfo spawnInfo = MyNetworkTransform.GetSpawned(networkObjectId);
-        if (spawnInfo == null)
+        if (!s_spawnInfoMap.ContainsKey(networkObjectId))
         {
-            Debug.LogError("SpawnInfo is NULL");
+            Debug.LogError("SpawnInfo not found");
             return;
         }
 
+        SpawnInfo spawnInfo = s_spawnInfoMap[networkObjectId];
         MyNetworkTransform netTr = spawnInfo.NetTransform;
         if (netTr == null)
         {
@@ -401,14 +400,12 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             return;
         }
 
-        ulong serverId = NetworkManager.Singleton.LocalClientId;
-        if (clientId != serverId)
+        if (netTr.OwnerClientId == clientId)
         {
             NetworkObject netGo = netTr.GetComponent<NetworkObject>();
             netGo.ChangeOwnership(clientId);
         }
     }
-    */
 
     /*
     [Rpc(SendTo.Server)]
