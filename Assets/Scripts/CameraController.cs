@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float m_maxPivotV = 80;     // highest point look up
     [SerializeField] private float m_collisionRadius = 0.2f;
     [SerializeField] private LayerMask m_collisionMask;
+    [SerializeField] private bool m_bLockMouse;
 
     [Header("Reference")]
     public Transform Target;
@@ -65,8 +66,12 @@ public class CameraController : MonoBehaviour
             transform.position, Target.transform.position, ref m_smoothVelocity, m_smoothSpeed * Time.deltaTime
         );
         transform.position = _targetCameraPosition; // + new Vector3(0, 1.0f, 0);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        
+        if (m_bLockMouse)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
 
         // ratation
         HorizontalAngle += m_mouseDelta.x * m_horizontalSpeed * Time.deltaTime;

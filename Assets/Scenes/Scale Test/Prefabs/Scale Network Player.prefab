@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1754430511
+  GlobalObjectIdHash: 2467886304
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -160,9 +160,9 @@ MonoBehaviour:
   ownerClientId: 0
   m_speedY: 0
   walkSpeed: 4
-  Gravity: 0
-  MaxGravity: 0
-  JumpPower: 0
+  Gravity: 20
+  MaxGravity: 40
+  JumpPower: 10
   movementInput: {x: 0, y: 0}
   characterController: {fileID: 3761582769011026831}
   manTransform: {fileID: 8807092439703178205}
