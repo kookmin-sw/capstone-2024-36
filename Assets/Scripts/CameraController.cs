@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
             Vector3 _targetCameraPosition = Vector3.SmoothDamp(
             transform.position, Target.transform.position, ref m_smoothVelocity, m_smoothSpeed * Time.deltaTime
         );
-        transform.position = _targetCameraPosition + new Vector3(0, 1.0f, 0);
+        transform.position = _targetCameraPosition; // + new Vector3(0, 1.0f, 0);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 

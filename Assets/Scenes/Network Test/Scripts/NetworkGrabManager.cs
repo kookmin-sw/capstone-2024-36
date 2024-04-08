@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class NetworkGrabManager : MonoBehaviour
+public class NetworkGrabManager : NetworkBehaviour
 {
     [Header("Status")]
     [SerializeField] private NetworkGrabbable m_catchTarget;
@@ -22,7 +22,7 @@ public class NetworkGrabManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(m_grabKey))
+        if (IsLocalPlayer && Input.GetKeyDown(m_grabKey))
         {
             if (Camera.main.GetComponentInParent<CameraController>() == null)
                 return;
