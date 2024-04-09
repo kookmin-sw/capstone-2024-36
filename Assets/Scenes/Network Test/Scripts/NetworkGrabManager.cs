@@ -101,10 +101,16 @@ public class NetworkGrabManager : NetworkBehaviour
 
             CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
             Debug.Log("m_holdDistance : " + m_holdDistance);
+            //if (camCtrl.getPivot().localRotation.x < 30) { }
             m_catchTarget.transform.position =
                 transform.position +
                 Quaternion.AngleAxis(m_currentRotY, Vector3.up) * Vector3.forward * m_holdDistance +
-                Vector3.up * m_deltaY;
+                Vector3.up * -Mathf.Tan(camCtrl.getPivot().localRotation.x) * m_holdDistance * 2;
+            Vector3 newPosition = m_catchTarget.transform.position;  // Get a copy of the position
+            if (newPosition.y < 0.5f)
+                newPosition.y = 0.5f;
+            m_catchTarget.transform.position = newPosition;
+            Debug.Log("rotate : " + Mathf.Tan(camCtrl.getPivot().localRotation.x));
 
             /*
             if (camCtrl != null)

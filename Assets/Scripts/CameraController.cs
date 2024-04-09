@@ -31,6 +31,8 @@ public class CameraController : MonoBehaviour
     private float m_targetCameraZ;
     private Vector3 m_cameraPosition = Vector3.zero;
 
+    public Transform getPivot() { return Pivot; }
+
     private void Awake()
     {
         if (m_playerControl == null)
