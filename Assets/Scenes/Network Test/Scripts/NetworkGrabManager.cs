@@ -40,7 +40,7 @@ public class NetworkGrabManager : NetworkBehaviour
             RaycastHit hit;
             bool bHit = Physics.Raycast(
                 Camera.main.transform.position, 
-                Camera.main.transform.forward, 
+                Camera.main.transform.forward,
                 out hit, m_grabDistance, m_layerMask
             );
             if (!bHit)
@@ -63,6 +63,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
                 return;
             }
+            m_holdDistance = Vector3.Distance(transform.position, m_catchTarget.transform.position);
         }
 
         if (m_catchTarget != null)
@@ -99,6 +100,7 @@ public class NetworkGrabManager : NetworkBehaviour
             */
 
             CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
+            Debug.Log("m_holdDistance : " + m_holdDistance);
             m_catchTarget.transform.position =
                 transform.position +
                 Quaternion.AngleAxis(m_currentRotY, Vector3.up) * Vector3.forward * m_holdDistance +
