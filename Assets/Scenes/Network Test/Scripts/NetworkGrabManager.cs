@@ -92,10 +92,24 @@ public class NetworkGrabManager : NetworkBehaviour
                 return;
             }
 
+            if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.R))
+            {
+                m_catchTarget.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            }
+            if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.T))
+            {
+                m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            }
+            if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.Q))
+            {
+                m_catchTarget.transform.eulerAngles += new Vector3(0, 15f, 0);
+            }
+
             Rigidbody rBody = m_catchTarget.GetRigidbody();
 
-            m_currentRotY = Mathf.SmoothDampAngle(m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime);
-            Debug.Log( "roty" + m_currentRotY.ToString() + "  eulerAngles" + transform.rotation.eulerAngles.y.ToString() + "    mrotvel" + m_rotationVelocity.ToString() + "   SDT" + m_smoothDampTime.ToString());
+            m_currentRotY = Mathf.SmoothDampAngle(
+                m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime
+            );
             //rBody.MoveRotation(Quaternion.Euler(0.0f, m_currentRotY, 0.0f));
 
             CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();

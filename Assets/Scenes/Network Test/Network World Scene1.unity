@@ -3580,6 +3580,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4474643186290845, guid: 5598757c65679a846b41f911edf106b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474643186290845, guid: 5598757c65679a846b41f911edf106b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Network World Scene2
+      objectReference: {fileID: 0}
     - target: {fileID: 1873752641092413234, guid: 5598757c65679a846b41f911edf106b5, type: 3}
       propertyPath: m_Name
       value: TestPlayUI Canvas
@@ -3663,6 +3671,14 @@ PrefabInstance:
     - target: {fileID: 6004138193357572108, guid: 5598757c65679a846b41f911edf106b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917781551801425054, guid: 5598757c65679a846b41f911edf106b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917781551801425054, guid: 5598757c65679a846b41f911edf106b5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Network World Scene1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

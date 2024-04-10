@@ -23,17 +23,22 @@ public class NetworkGrabbable : NetworkBehaviour
             {
                 GetRigidbody().useGravity = true;
             }
-
         };
     }
 
     public override void OnNetworkSpawn()
     {
-
-
+        if (IsHolding.Value)
+        {
+            GetRigidbody().useGravity = false;
+        }
+        else
+        {
+            GetRigidbody().useGravity = true;
+        }
     }
 
-        public Rigidbody GetRigidbody() { return m_rigidBody; }
+    public Rigidbody GetRigidbody() { return m_rigidBody; }
 
     public void SetExist(bool bExist)
     {
@@ -41,7 +46,16 @@ public class NetworkGrabbable : NetworkBehaviour
         {
             m_rigidBody.detectCollisions = true;
 
-            for(int i = 0; i < transform.childCount; i++)
+            if (IsHolding.Value)
+            {
+                GetRigidbody().useGravity = false;
+            }
+            else
+            {
+                GetRigidbody().useGravity = true;
+            }
+
+            for (int i = 0; i < transform.childCount; i++)
             {
                 Transform child = transform.GetChild(i);
                 child.gameObject.SetActive(true);

@@ -120,6 +120,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player Action",
+            "id": "7a7b55e2-a8a2-4c53-9f48-a762332e13ae",
+            "actions": [
+                {
+                    "name": "Light ability",
+                    "type": "Button",
+                    "id": "3c171009-1623-4172-9daa-d5fd041620c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "287604d4-3284-445e-a0a2-a11f11f234fe",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Light ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

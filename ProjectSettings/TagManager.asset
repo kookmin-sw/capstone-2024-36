@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Man Spawn Pos
   - Woman Spawn Pos
+  - LaserPoint
   layers:
   - Default
   - TransparentFX
