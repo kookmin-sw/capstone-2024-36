@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class NetworkGrabManager : NetworkBehaviour
 {
@@ -17,9 +19,10 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private float m_deltaY;
     [SerializeField] float m_smoothDampTime = 0.1f;
     [SerializeField] float m_forceSize = 5.0f;
+    [SerializeField] float m_deltabuff = 0.1f;
 
     private float m_rotationVelocity;
-
+ 
     private void Update()
     {
         if (IsLocalPlayer && Input.GetKeyDown(m_grabKey))
@@ -91,10 +94,9 @@ public class NetworkGrabManager : NetworkBehaviour
 
             Rigidbody rBody = m_catchTarget.GetRigidbody();
 
-            m_currentRotY = Mathf.SmoothDampAngle(
-                m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime
-            );
-            rBody.MoveRotation(Quaternion.Euler(0.0f, m_currentRotY, 0.0f));
+            m_currentRotY = Mathf.SmoothDampAngle(m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime);
+            Debug.Log( "roty" + m_currentRotY.ToString() + "  eulerAngles" + transform.rotation.eulerAngles.y.ToString() + "    mrotvel" + m_rotationVelocity.ToString() + "   SDT" + m_smoothDampTime.ToString());
+            //rBody.MoveRotation(Quaternion.Euler(0.0f, m_currentRotY, 0.0f));
 
             CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
             Vector3 newPosition =
@@ -105,10 +107,19 @@ public class NetworkGrabManager : NetworkBehaviour
                 newPosition.y = 0.65f;
 
             Vector3 delta = newPosition - m_catchTarget.transform.position;
-            if (delta.magnitude >= float.Epsilon)
+            if (delta.magnitude >= m_deltabuff)
             {
                 rBody.velocity = (delta / Time.deltaTime) / 5.0f;
             }
+            else
+            {
+                rBody.velocity = Vector3.zero;
+            }
+        }
+        else
+        {
+            m_rotationVelocity = 0;
+            m_currentRotY = transform.rotation.eulerAngles.y;
         }
     }
 }
