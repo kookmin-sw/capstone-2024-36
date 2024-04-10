@@ -142,6 +142,34 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Player Action"",
+            ""id"": ""7a7b55e2-a8a2-4c53-9f48-a762332e13ae"",
+            ""actions"": [
+                {
+                    ""name"": ""Light ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c171009-1623-4172-9daa-d5fd041620c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""287604d4-3284-445e-a0a2-a11f11f234fe"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -153,6 +181,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         // Player Camera
         m_PlayerCamera = asset.FindActionMap("Player Camera", throwIfNotFound: true);
         m_PlayerCamera_Mouse = m_PlayerCamera.FindAction("Mouse", throwIfNotFound: true);
+        // Player Action
+        m_PlayerAction = asset.FindActionMap("Player Action", throwIfNotFound: true);
+        m_PlayerAction_Lightability = m_PlayerAction.FindAction("Light ability", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +341,52 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         }
     }
     public PlayerCameraActions @PlayerCamera => new PlayerCameraActions(this);
+
+    // Player Action
+    private readonly InputActionMap m_PlayerAction;
+    private List<IPlayerActionActions> m_PlayerActionActionsCallbackInterfaces = new List<IPlayerActionActions>();
+    private readonly InputAction m_PlayerAction_Lightability;
+    public struct PlayerActionActions
+    {
+        private @PlayerControl m_Wrapper;
+        public PlayerActionActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Lightability => m_Wrapper.m_PlayerAction_Lightability;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerAction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActionActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerActionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerActionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerActionActionsCallbackInterfaces.Add(instance);
+            @Lightability.started += instance.OnLightability;
+            @Lightability.performed += instance.OnLightability;
+            @Lightability.canceled += instance.OnLightability;
+        }
+
+        private void UnregisterCallbacks(IPlayerActionActions instance)
+        {
+            @Lightability.started -= instance.OnLightability;
+            @Lightability.performed -= instance.OnLightability;
+            @Lightability.canceled -= instance.OnLightability;
+        }
+
+        public void RemoveCallbacks(IPlayerActionActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerActionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerActionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerActionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerActionActions @PlayerAction => new PlayerActionActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -318,5 +395,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     public interface IPlayerCameraActions
     {
         void OnMouse(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActionActions
+    {
+        void OnLightability(InputAction.CallbackContext context);
     }
 }
