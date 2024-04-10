@@ -93,9 +93,19 @@
 
         void DestroyLaserAbility(){
             GameObject laserAbility = GameObject.Find("laserability");
-    if (laserAbility != null)
-    {
-        Destroy(laserAbility);
-    }
+            if (laserAbility != null)
+            {
+                Destroy(laserAbility);
+            }
         }
+
+        private void SetExist(bool bExist){
+        if(bExist){
+        }
+        else{
+
+        }
+    }
+
+
     }
