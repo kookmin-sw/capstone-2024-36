@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2482799886987530861, guid: 6f0a949d7ee01a448ad544f4f96569a0, type: 3}
+      propertyPath: NetworkConfig.PlayerPrefab
+      value: 
+      objectReference: {fileID: 5382125386911965414, guid: 430b1a5fe031d054d95b1fea29cc41e2, type: 3}
+    - target: {fileID: 2482799886987530861, guid: 6f0a949d7ee01a448ad544f4f96569a0, type: 3}
+      propertyPath: NetworkConfig.Prefabs.NetworkPrefabsLists.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e3f9ee2a6ea90a4e854e393a5151058, type: 2}
     - target: {fileID: 5906892966367529116, guid: 6f0a949d7ee01a448ad544f4f96569a0, type: 3}
       propertyPath: m_Name
       value: Network Manager
@@ -587,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b381b94516eb0f4f9f6ff07ac51aade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Network Title Scene
+  nextSceneName: Combine TItle Scene
 --- !u!4 &2047427011
 Transform:
   m_ObjectHideFlags: 0

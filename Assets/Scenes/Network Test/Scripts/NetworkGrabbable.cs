@@ -23,14 +23,19 @@ public class NetworkGrabbable : NetworkBehaviour
             {
                 GetRigidbody().useGravity = true;
             }
-
         };
     }
 
     public override void OnNetworkSpawn()
     {
-
-
+        if (IsHolding.Value)
+        {
+            GetRigidbody().useGravity = true;
+        }
+        else
+        {
+            GetRigidbody().useGravity = false;
+        }
     }
 
         public Rigidbody GetRigidbody() { return m_rigidBody; }
