@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 4479562085828977117, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
       propertyPath: NetworkSceneManagerPrefap
       value: 
-      objectReference: {fileID: 1522112976853672520, guid: 31d9fcc927423d749ab4e8d64fab6786, type: 3}
+      objectReference: {fileID: 1522112976853672520, guid: 69f78e0fdde75834c8d564df08d6ddda, type: 3}
     - target: {fileID: 5765221093219835172, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
       propertyPath: m_Name
       value: Title Screen Canvas
