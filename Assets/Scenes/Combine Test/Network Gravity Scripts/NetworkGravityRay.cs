@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 public class NetworkGravityRay : NetworkBehaviour
 {
     public GravityHandler gravityHandler;
-    private PathRecorderAndReturn pathRecorderAndReturn;
+    //private PathRecorderAndReturn pathRecorderAndReturn;
     private Camera playerCamera;
 
     private void Update()
@@ -67,8 +67,8 @@ public class NetworkGravityRay : NetworkBehaviour
 
                 if (hitObjectRegisterID == clientObjectRegisterID)
                 {
-                    pathRecorderAndReturn = clientObject.GetComponent<PathRecorderAndReturn>();
-                    pathRecorderAndReturn.StartRecord();
+                    //pathRecorderAndReturn = clientObject.GetComponent<PathRecorderAndReturn>();
+                    //pathRecorderAndReturn.StartRecord();
                 }
             }
         }

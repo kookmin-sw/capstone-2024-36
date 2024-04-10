@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using Unity.Netcode;
 using System.Collections;
@@ -106,3 +107,4 @@ public class pathRecorderAndReturnCopy : NetworkBehaviour
     }
 
 }
+*/
