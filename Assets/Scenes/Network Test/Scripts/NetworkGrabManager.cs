@@ -89,6 +89,15 @@ public class NetworkGrabManager : NetworkBehaviour
                 return;
             }
 
+            if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.R))
+            {
+                m_catchTarget.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            }
+            if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.T))
+            {
+                m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+            }
+
             Rigidbody rBody = m_catchTarget.GetRigidbody();
 
             m_currentRotY = Mathf.SmoothDampAngle(
