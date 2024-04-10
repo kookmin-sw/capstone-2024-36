@@ -75,6 +75,10 @@ public class NetworkPlayer
         // move character tranform by CharacterController
         if (IsOwner && characterController.enabled)
         {
+            Vector3 new_forward = Camera.main.transform.forward;
+            new_forward.y = 0;
+            transform.forward = new_forward;
+
             Vector3 speedDelta =
                 Camera.main.transform.forward * movementInput.y +
                 Camera.main.transform.right * movementInput.x;
@@ -82,16 +86,34 @@ public class NetworkPlayer
             speedDelta.Normalize();
             speedDelta *= walkSpeed;
 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speedDelta *= 1.7f;
+            }
+
             characterController.Move(speedDelta * Time.deltaTime);
 
-            if (speedDelta.magnitude > float.Epsilon)
+            if (animator != null)
             {
-                animator?.SetBool("is_walking", true);
-                transform.forward = speedDelta;
-            }
-            else
-            {
-                animator?.SetBool("is_walking", false);
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    animator.SetFloat("forward", movementInput.y * 2.0f);
+                    animator.SetFloat("right", movementInput.x * 2.0f);
+                }
+                else
+                {
+                    animator.SetFloat("forward", movementInput.y);
+                    animator.SetFloat("right", movementInput.x);
+                }
+
+                if (speedDelta.magnitude > float.Epsilon)
+                {
+                    animator.SetBool("is_walking", true);
+                }
+                else
+                {
+                    animator.SetBool("is_walking", false);
+                }
             }
 
             m_speedY -= Gravity * Time.deltaTime;
@@ -101,8 +123,6 @@ public class NetworkPlayer
             if (characterController.isGrounded)
             {
                 m_speedY = 0;
-
-                
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -121,12 +141,12 @@ public class NetworkPlayer
             if (delta.magnitude > float.Epsilon)
             {
                 if (animator != null)
-                    animator?.SetBool("is_walking", true);
+                    animator.SetBool("is_walking", true);
             }
             else
             {
                 if (animator != null)
-                    animator?.SetBool("is_walking", false);
+                    animator.SetBool("is_walking", false);
             }
         }
 

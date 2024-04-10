@@ -16,8 +16,8 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private float m_holdDistance;
     [SerializeField] private float m_deltaY;
     [SerializeField] float m_smoothDampTime = 0.1f;
+    [SerializeField] float m_forceSize = 5.0f;
 
-    private Vector3 m_posVelocity;
     private float m_rotationVelocity;
 
     private void Update()
@@ -31,7 +31,9 @@ public class NetworkGrabManager : NetworkBehaviour
             if (m_catchTarget != null)
             {
                 if (m_catchTarget.IsOwner)
-                    m_catchTarget.GetRigidbody().isKinematic = false;
+                {
+                    m_catchTarget.IsHolding.Value = false;
+                }
 
                 m_catchTarget = null;
                 return;
@@ -52,7 +54,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
             if (m_catchTarget.IsOwner)
             {
-                // ... 
+                m_catchTarget.IsHolding.Value = true;
             }
             else
             {
@@ -68,6 +70,18 @@ public class NetworkGrabManager : NetworkBehaviour
 
         if (m_catchTarget != null)
         {
+            float distance = (transform.position - m_catchTarget.transform.position).magnitude;
+            if (distance > m_holdDistance * 1.5f)
+            {
+                if (m_catchTarget.IsOwner)
+                {
+                    m_catchTarget.IsHolding.Value = false;
+                }
+
+                m_catchTarget = null;
+                return;
+            }
+
             // 뺏긴 경우
             if (!m_catchTarget.IsOwner)
             {
@@ -75,56 +89,26 @@ public class NetworkGrabManager : NetworkBehaviour
                 return;
             }
 
-            m_catchTarget.GetRigidbody().isKinematic = true;
-
-            // lerp rot
-            // m_catchTarget.transform.forward = transform.forward;
+            Rigidbody rBody = m_catchTarget.GetRigidbody();
 
             m_currentRotY = Mathf.SmoothDampAngle(
                 m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime
             );
-
-            m_catchTarget.transform.rotation = Quaternion.Euler(0.0f, m_currentRotY, 0.0f);
-
-
-            // lerp pos
-            /*
-            Vector3 targetPos =
-                transform.position +
-                transform.forward * m_holdDistance +
-                Vector3.up * m_deltaY;
-
-            m_catchTarget.transform.position = Vector3.SmoothDamp(
-                m_catchTarget.transform.position,
-                targetPos, ref m_posVelocity, m_smoothDampTime);
-            */
+            rBody.MoveRotation(Quaternion.Euler(0.0f, m_currentRotY, 0.0f));
 
             CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
-            Debug.Log("m_holdDistance : " + m_holdDistance);
-            //if (camCtrl.getPivot().localRotation.x < 30) { }
-            m_catchTarget.transform.position =
+            Vector3 newPosition =
                 transform.position +
                 Quaternion.AngleAxis(m_currentRotY, Vector3.up) * Vector3.forward * m_holdDistance +
                 Vector3.up * -Mathf.Tan(camCtrl.getPivot().localRotation.x) * m_holdDistance * 2;
-            Vector3 newPosition = m_catchTarget.transform.position;  // Get a copy of the position
-            if (newPosition.y < 0.5f)
-                newPosition.y = 0.5f;
-            m_catchTarget.transform.position = newPosition;
-            Debug.Log("rotate : " + Mathf.Tan(camCtrl.getPivot().localRotation.x));
+            if (newPosition.y < 0.65f)
+                newPosition.y = 0.65f;
 
-            /*
-            if (camCtrl != null)
+            Vector3 delta = newPosition - m_catchTarget.transform.position;
+            if (delta.magnitude >= float.Epsilon)
             {
-                Quaternion.AngleAxis(camCtrl.VerticalAngle, Vector3.right)
-                
+                rBody.velocity = (delta / Time.deltaTime) / 5.0f;
             }
-            else
-            {
-
-            }
-            */
-
-
         }
     }
 }

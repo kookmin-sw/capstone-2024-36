@@ -400,7 +400,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             return;
         }
 
-        if (netTr.OwnerClientId == clientId)
+        if (netTr.OwnerClientId != clientId)
         {
             NetworkObject netGo = netTr.GetComponent<NetworkObject>();
             netGo.ChangeOwnership(clientId);

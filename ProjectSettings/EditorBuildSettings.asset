@@ -5,40 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Network Test/Network Loading Scene.unity
     guid: dc11c92d3d6d9ec469c08899b49607c3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Network Test/Network Title Scene.unity
     guid: 550624f289de7864b845cb7b4bf07630
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Network Test/Network World Scene1.unity
     guid: 0a10ba941f0043240be29549444b49df
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Network Test/Network World Scene2.unity
     guid: 771db8da7e4e2fe44aab43a1d70ac12a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gravity Test/Gravity Loading Scene.unity
     guid: cf85438c2e72fb84f9719a31fe85debe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gravity Test/Gravity Title Scene.unity
     guid: 14bc393b8e4c0b7448a48ad04c62ff3c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gravity Test/Gravity World Scene1.unity
     guid: d648a43cd8907854f99ef8bc7d2efacb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gravity Test/Gravity World Scene2.unity
     guid: d18d6756e88c775428001a4acc3e9a67
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lazer Test/Lazer Loading Scene.unity
     guid: 602fcec90e97fc846bb4493e5ac2f1b9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lazer Test/Lazer Title Scene.unity
     guid: 61af94f63e9e5a8498f72c0821a6cfa6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lazer Test/Lazer World Scene1.unity
     guid: e5c02a0ce41bf874981d4ded3eb9bb78
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lazer Test/Lazer World Scene2.unity
     guid: 4e4a7f8db9c810d4ab2351efd09e6abb
   - enabled: 1
