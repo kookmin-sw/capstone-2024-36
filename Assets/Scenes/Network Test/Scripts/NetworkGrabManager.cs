@@ -23,8 +23,11 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] float m_forceSize = 5.0f;
     [SerializeField] float m_deltabuff = 0.1f;
     [SerializeField] float m_velocityReduce = 5.0f;
+    [SerializeField] float m_velocity = 10.0f;
 
+    private Rigidbody rBody;
     private float m_rotationVelocity;
+
     private void Update()
     {
         if (IsLocalPlayer && Input.GetKeyDown(m_grabKey))
@@ -39,7 +42,12 @@ public class NetworkGrabManager : NetworkBehaviour
                 {
                     m_catchTarget.IsHolding.Value = false;
                 }
-
+                if(m_catchTarget.GetRigidbody().velocity.magnitude > m_velocity)
+                {
+                    Vector3 dir = m_catchTarget.GetRigidbody().velocity.normalized;
+                    m_catchTarget.GetRigidbody().velocity = dir * m_velocity;
+                    Debug.Log(m_catchTarget.GetRigidbody().velocity);
+                }
                 m_catchTarget = null;
                 return;
             }
@@ -54,7 +62,7 @@ public class NetworkGrabManager : NetworkBehaviour
                 return;
 
             m_catchTarget = hit.transform.GetComponent<NetworkGrabbable>();
-
+            rBody = m_catchTarget.GetRigidbody();
 
             if (m_catchTarget == null)
                 return;
@@ -113,8 +121,6 @@ public class NetworkGrabManager : NetworkBehaviour
                 m_catchTarget.transform.eulerAngles += new Vector3(0, 15f, 0);
             }
 
-
-            Rigidbody rBody = m_catchTarget.GetRigidbody();
 
             m_currentRotY = Mathf.SmoothDampAngle(
                 m_currentRotY, transform.rotation.eulerAngles.y, ref m_rotationVelocity, m_smoothDampTime
