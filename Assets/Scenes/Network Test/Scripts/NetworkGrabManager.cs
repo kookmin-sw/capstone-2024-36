@@ -27,48 +27,6 @@ public class NetworkGrabManager : NetworkBehaviour
     private float m_rotationVelocity;
     private void Update()
     {
-        RaycastHit Lhit;
-        bool LbHit = Physics.Raycast(
-            Camera.main.transform.position,
-            Camera.main.transform.forward,
-            out Lhit, m_grabDistance, m_layerMask
-        );
-        if (!LbHit)
-            return;
-
-        m_lookingTarget = Lhit.transform.GetComponent<NetworkGrabbable>();
-        if (m_lookingTarget != null)
-        {
-            Debug.Log(m_lookingTarget);
-
-            if (m_previousTarget != null && m_lookingTarget != m_previousTarget)
-            {
-                m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-            }
-            float distance = (transform.position - m_lookingTarget.transform.position).magnitude;
-            //Debug.Log(IsLocalPlayer);
-            //Debug.Log("잉? = " + distance.ToString() + "갸아악" + m_holdDistance * 1.5f);
-            if (IsLocalPlayer && distance < m_holdDistance * 1.5f)
-            {
-                //Debug.Log("여기 옴?");
-                if (m_lookingTarget.GetComponentInChildren<Outline>() != null)
-                {
-                    //Debug.Log("활성화");
-                    m_previousTarget = m_lookingTarget;
-                    m_lookingTarget.GetComponentInChildren<Outline>().enabled = true;
-                }
-            }
-            else
-            {
-                m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-                m_lookingTarget.GetComponentInChildren<Outline>().enabled = false;
-            }
-        }
-        else
-        {
-            m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-        }
-
         if (IsLocalPlayer && Input.GetKeyDown(m_grabKey))
         {
             if (Camera.main.GetComponentInParent<CameraController>() == null)
