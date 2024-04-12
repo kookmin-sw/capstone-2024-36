@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3761582769011026831}
   - component: {fileID: -7377718256095586167}
   - component: {fileID: -916438802882961531}
+  - component: {fileID: 1916310946139489602}
   m_Layer: 0
   m_Name: Scale Network Player
   m_TagString: Untagged
@@ -230,6 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_catchTarget: {fileID: 0}
+  m_lookingTarget: {fileID: 0}
+  m_previousTarget: {fileID: 0}
   m_currentRotY: 0
   m_grabKey: 101
   m_grabDistance: 10
@@ -239,6 +242,21 @@ MonoBehaviour:
   m_holdDistance: 10
   m_deltaY: 0.5
   m_smoothDampTime: 0.3
+  m_forceSize: 5
+  m_deltabuff: 0.1
+  m_velocityReduce: 5
+--- !u!114 &1916310946139489602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382125386911965414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ade39d925a88d4395c2c7bebb8110c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2510564653223965319
 PrefabInstance:
   m_ObjectHideFlags: 0
