@@ -64,6 +64,7 @@ public class NetworkGrabbable : NetworkBehaviour
         else
         {
             m_rigidBody.detectCollisions = false;
+            m_rigidBody.useGravity = false;
 
             for (int i = 0; i < transform.childCount; i++)
             {
