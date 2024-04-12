@@ -66,5 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69dd48e8ecbb514e8d1db58c7625c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDisconnectionSceneName: Scale Title Scene
+  OnDisconnectionSceneName: Combine Title Scene
   RegisterList: {fileID: 11400000, guid: dc3bf8c6319ede7448e435e6670c3ae8, type: 2}

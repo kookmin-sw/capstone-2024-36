@@ -19,7 +19,7 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private float m_deltaY;
     [SerializeField] float m_smoothDampTime = 0.1f;
     [SerializeField] float m_forceSize = 5.0f;
-    [SerializeField] float m_deltabuff = 0.1f;
+    [SerializeField] float m_deltabuff = 0.01f;
 
     private float m_rotationVelocity;
  
@@ -69,6 +69,9 @@ public class NetworkGrabManager : NetworkBehaviour
                 return;
             }
             m_holdDistance = Vector3.Distance(transform.position, m_catchTarget.transform.position);
+            if (m_holdDistance < 2.5f)
+                m_holdDistance = 2.5f;
+            
         }
 
         if (m_catchTarget != null)
@@ -116,7 +119,8 @@ public class NetworkGrabManager : NetworkBehaviour
             Vector3 newPosition =
                 transform.position +
                 Quaternion.AngleAxis(m_currentRotY, Vector3.up) * Vector3.forward * m_holdDistance +
-                Vector3.up * -Mathf.Tan(camCtrl.getPivot().localRotation.x) * m_holdDistance * 2;
+                Vector3.up * -Mathf.Tan(camCtrl.getPivot().localRotation.x-Mathf.PI/6) * m_holdDistance;
+            //Debug.Log("rotation" + camCtrl.getPivot().localRotation.eulerAngles.x);
             if (newPosition.y < 0.65f)
                 newPosition.y = 0.65f;
 
