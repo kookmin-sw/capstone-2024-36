@@ -244,10 +244,10 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
+  SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  AutoObjectParentSync: 0
 --- !u!114 &-4137017444966621424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,12 +260,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de28113beac09ef4bb9a604689a07140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsPlacedByDesigner: 0
+  IsPlacedByDesigner: 1
   CurrentSceneIndex: -1
   SceneSequenceNumber: 0
   m_isReadyForPlaced: 0
   m_isPlaced: 0
-  RegisterId: -1
+  RegisterId: 401
   smoothDampTime: 0.1
   sendPerSec: 10
-  bKeepSendWhenNotExist: 0
+  bKeepSendWhenNotExist: 1
