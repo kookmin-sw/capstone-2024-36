@@ -27,3 +27,17 @@ MonoBehaviour:
     Prefab: {fileID: 8909384589283366414, guid: 83741fa9929f7423e92eb307598cb4b3, type: 3}
   - RegisterId: 401
     Prefab: {fileID: 8909384589283366414, guid: 83741fa9929f7423e92eb307598cb4b3, type: 3}
+  - RegisterId: 401
+    Prefab: {fileID: 8909384589283366414, guid: 83741fa9929f7423e92eb307598cb4b3, type: 3}
+  - RegisterId: 401
+    Prefab: {fileID: 8909384589283366414, guid: 83741fa9929f7423e92eb307598cb4b3, type: 3}
+  - RegisterId: 401
+    Prefab: {fileID: 8909384589283366414, guid: 83741fa9929f7423e92eb307598cb4b3, type: 3}
+  - RegisterId: 700
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
+  - RegisterId: 701
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
+  - RegisterId: 702
+    Prefab: {fileID: 4304498387937030328, guid: 5e4b531d29ee1424d86cc2b3c1b1436b, type: 3}
+  - RegisterId: 703
+    Prefab: {fileID: 8319281662908137179, guid: 72dbe3b6c8af987419b702270bf4196a, type: 3}
