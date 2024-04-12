@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8913528614515616486, guid: 6f0a949d7ee01a448ad544f4f96569a0, type: 3}
       propertyPath: ConnectionData.ServerListenAddress
-      value: 192.168.50.117
+      value: 127.0.0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

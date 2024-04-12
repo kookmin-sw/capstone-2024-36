@@ -63,6 +63,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Combine Test/Combine World Scene1.unity
     guid: 3b667d2c53c62a847ae87d497075aef1
   - enabled: 1
-    path: Assets/Scenes/Combine Test/Combine World Scene2.unity
+    path: Assets/Scenes/Combine Test/Scale World Scene.unity
     guid: f52ea29867a1cc34d9ceab1f855adc59
+  - enabled: 1
+    path: Assets/Scenes/Combine Test/Gravity World Scene.unity
+    guid: baa3043647364fc4ba774ec5b451d0d1
+  - enabled: 1
+    path: Assets/Scenes/Combine Test/Laser World Scene.unity
+    guid: efa78e0324bdcea4e8b55cce8ad72a8b
   m_configObjects: {}
