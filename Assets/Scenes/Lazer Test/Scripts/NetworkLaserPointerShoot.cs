@@ -17,7 +17,6 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     {
         if(beam == null){
             //beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
-            Debug.Log("beam없음");
         }
         else{
              if (isLaserActive.Value && beam != null)
