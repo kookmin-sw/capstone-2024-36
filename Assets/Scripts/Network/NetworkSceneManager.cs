@@ -89,7 +89,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 if (m_registeredPrefab.ContainsKey(item.RegisterId))
                 {
                     Debug.LogError("Duplicated register id found!");
-                    break;
+                    continue;
                 }
                 m_registeredPrefab.Add(item.RegisterId, item.Prefab);
             }
