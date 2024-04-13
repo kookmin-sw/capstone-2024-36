@@ -25,11 +25,11 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private float m_rayDistance = 20.0f;
     [SerializeField] private float m_holdDistance = 10.0f;
 
-    [SerializeField] private float m_pickupRange = 5.0f;
     [SerializeField] private float m_pickupForce = 150.0f;
-    [SerializeField] float m_forceSize = 5.0f;
     [SerializeField] float m_deltabuff = 0.1f;
     [SerializeField] float m_dragSpeed = 10.0f;
+    [SerializeField] float m_dropAtDrag = 0.0f;
+    [SerializeField] float distance;
 
     private float m_rotationVelocity;
 
@@ -40,7 +40,7 @@ public class NetworkGrabManager : NetworkBehaviour
         {
 
             RaycastHit hit;
-            bool bHit = Physics.Raycast(transform.position, transform.forward, out hit, m_rayDistance, m_layerMask);
+            bool bHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, m_rayDistance, m_layerMask);
             if(bHit)
             {
                 m_lookingTarget = hit.transform.GetComponent<NetworkGrabbable>();
@@ -55,7 +55,7 @@ public class NetworkGrabManager : NetworkBehaviour
                     // 눌렸는데 들려있지 않다면 줍기
                     if (bHit)
                     {
-                        Debug.Log("들어오냐?");
+                        //Debug.Log("들어오냐?");
                         PickupObject(hit.transform.gameObject);
                     }
                 }
@@ -92,14 +92,13 @@ public class NetworkGrabManager : NetworkBehaviour
         m_catchTargetRB.useGravity = false;
         m_catchTargetRB.drag = m_dragSpeed;
         m_catchTargetRB.constraints = RigidbodyConstraints.FreezeRotation;
+        m_catchTargetRB.interpolation = RigidbodyInterpolation.None;
         m_catchTargetRB.transform.parent = holdArea;
 
         if (!pickObj.GetComponent<Rigidbody>()) //선택된 오브젝트에 리지드바디확인
         {
             Debug.LogError("neTr is NULL");
         }
-
-        
     }
 
     void DropObject()
@@ -111,26 +110,29 @@ public class NetworkGrabManager : NetworkBehaviour
             {
                 m_catchTarget.IsHolding.Value = false; //잡기 해제 반영
             }
+            /*
             //놓았을때 속도 조정
             if (m_catchTarget.GetRigidbody().velocity.magnitude > m_dragSpeed) 
             {
                 Vector3 dir = m_catchTarget.GetRigidbody().velocity.normalized;
                 m_catchTarget.GetRigidbody().velocity = dir * m_dragSpeed;
             }
+            */
 
+            m_catchTargetRB.interpolation = RigidbodyInterpolation.Interpolate;
+            m_catchTargetRB.constraints = RigidbodyConstraints.None;
+            m_catchTargetRB.drag = m_dropAtDrag;
             m_catchTargetRB.useGravity = true;
-            m_catchTargetRB.drag = 11;
-            m_catchTargetRB.constraints = RigidbodyConstraints.FreezeRotation;
-
-            m_catchTargetRB.transform.parent = holdArea;
+            m_catchTargetRB.transform.parent = null;
             m_catchTarget = null;
         }
     }
 
     void MoveObject()
     {
-        float distance = Vector3.Distance(transform.position, m_catchTarget.transform.position); //벡터길이 위의 m_holdDistance 하고 다른점은?
+        distance = Vector3.Distance(transform.position, m_catchTarget.transform.position); //벡터길이 위의 m_holdDistance 하고 다른점은?
 
+        /*
         if (distance > m_holdDistance * 1.5f) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
             if (m_catchTarget.IsOwner)
@@ -140,6 +142,8 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTarget = null;
             return;
         }
+        */
+
 
         if (!m_catchTarget.IsOwner) // 뺏긴경우 떨
         {
@@ -165,17 +169,8 @@ public class NetworkGrabManager : NetworkBehaviour
 
         if(distance > m_deltabuff)
         {
-            Vector3 moveDirection = (m_catchTargetRB.position - holdArea.transform.position);
+            Vector3 moveDirection = (holdArea.transform.position - m_catchTargetRB.position);
             m_catchTargetRB.AddForce(moveDirection * m_pickupForce);
-        }
-
-
-
-
-        if (Vector3.Distance(heldObj.transform.position, holdArea.transform.position) > 0.1f) 
-        {
-            Vector3 moveDirection = (holdArea.position - holdArea.transform.position);
-            heldObjRB.AddForce(moveDirection * m_pickupForce);
         }
     }
 

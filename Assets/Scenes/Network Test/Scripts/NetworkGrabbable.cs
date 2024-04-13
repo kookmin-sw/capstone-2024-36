@@ -21,6 +21,7 @@ public class NetworkGrabbable : NetworkBehaviour
             }
             else
             {
+                Debug.Log("중력 true awa");
                 GetRigidbody().useGravity = true;
             }
         };
@@ -34,6 +35,8 @@ public class NetworkGrabbable : NetworkBehaviour
         }
         else
         {
+
+            Debug.Log("중력 true ons");
             GetRigidbody().useGravity = true;
         }
     }
@@ -52,6 +55,8 @@ public class NetworkGrabbable : NetworkBehaviour
             }
             else
             {
+
+                Debug.Log("중력 true bex");
                 GetRigidbody().useGravity = true;
             }
 
