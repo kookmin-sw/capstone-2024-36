@@ -7,10 +7,7 @@ public class NetworkRay : NetworkBehaviour
 {
     public GravityHandler gravityHandler;
     private BackToInitialPos backToInitialPos;
-    //private TestReturnToStart testReturnToStart;
     private Camera playerCamera;
-    //private NetworkObject networkObject;
-    //ulong networkObjectId;
 
     private void Update()
     {
@@ -26,35 +23,18 @@ public class NetworkRay : NetworkBehaviour
         ShootRaycastClientRpc(hitObjectRegisterID);
     }
 
-
-/*
-    [ClientRpc]
-    void ShootRaycastClientRpc(ulong networkObjectId)
-    {
-        FindNetworkObjectById(networkObjectId);
-        hitObject = networkObject.gameObject;
-        gravityHandler.ToggleGravity(hitObject);
-        
-        
-        GameObject networkStarTestObject = GameObject.Find("Network Star Test");
-        hitObject = networkStarTestObject;
-        gravityHandler.ToggleGravity(hitObject);
-        
-    }
-*/
-
     [ClientRpc]
     void ShootRaycastClientRpc(int hitObjectRegisterID)
     {
-        //클라이언트의 모든 GravityObject 태그의 오브젝트를 가져오기
+        // 클라이언트의 모든 GravityObject 태그의 오브젝트를 가져오기
         GameObject[] allClientObjects = GameObject.FindGameObjectsWithTag("GravityObject");
 
         foreach (GameObject clientObject in allClientObjects)
         {
-            //RegisterId를 비교하기 위한 NetworkObject 
+            // RegisterId를 비교하기 위한 NetworkObject 
             MyNetworkTransform clientNetworkTransform = clientObject.GetComponent<MyNetworkTransform>();
 
-            //RegisterID 값 비교
+            // RegisterID 값 비교
             if (clientNetworkTransform != null)
             {
                 int clientObjectRegisterID = clientNetworkTransform.RegisterId;
@@ -91,22 +71,22 @@ public class NetworkRay : NetworkBehaviour
 
                 if (hitObjectRegisterID == clientObjectRegisterID)
                 {
-                    //testReturnToStart = clientObject.GetComponent<TestReturnToStart>();
                     backToInitialPos.ToInitialPos(clientObject);
-                    //testReturnToStart.StartRecord();
                 }
             }
         }
     }
-
-
 
     void ShootRaycast()
     {
         if(IsLocalPlayer)
         {
             playerCamera = Camera.main;
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+            Vector3 cameraPosition = playerCamera.transform.position;
+            Vector3 cameraForward = playerCamera.transform.forward;
+
+            Ray ray = new Ray(cameraPosition, cameraForward);
             RaycastHit hit;
 
             int layerMask = 1 << LayerMask.NameToLayer("GravityArea");
@@ -116,17 +96,6 @@ public class NetworkRay : NetworkBehaviour
             {
                 if (hit.collider.CompareTag("GravityObject"))
                 {   
-                    /*
-                    Find NetworkObjectId : Fail
-
-                    networkObject = hit.collider.gameObject.GetComponent<NetworkObject>();
-                    Debug.Log(networkObject.name + " and " + networkObject);
-
-                    Debug.Log(networkObject.NetworkObjectId + " : networkObject.NetworkObjectId");
-                    networkObjectId = networkObject.NetworkObjectId;
-                    Debug.Log(networkObjectId + " is network object ID");
-                    */
-
                     MyNetworkTransform myNetworkTransform = hit.collider.gameObject.GetComponent<MyNetworkTransform>();
                     int hitObjectRegisterID = myNetworkTransform.RegisterId;
                     ShootRaycastServerRpc(hitObjectRegisterID);
@@ -143,19 +112,4 @@ public class NetworkRay : NetworkBehaviour
             }
         }
     }
-    /*
-
-    NetworkObject FindNetworkObjectById(ulong networkObjectId)
-    { 
-        if (NetworkManager.Singleton != null && NetworkManager.Singleton.SpawnManager != null)
-        {
-            if (NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(networkObjectId, out NetworkObject networkObject))
-            {
-                Debug.Log("network Object found");
-                return networkObject;
-            }
-        }
-        return null;
-    }
-    */
 }

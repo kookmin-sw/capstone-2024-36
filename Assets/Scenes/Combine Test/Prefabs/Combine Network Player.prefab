@@ -122,6 +122,7 @@ Transform:
   - {fileID: 2505798926101164371}
   - {fileID: 9146727198132156138}
   - {fileID: 7812455487185981618}
+  - {fileID: 9026812555885019245}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1101844329408875290
@@ -232,6 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_catchTarget: {fileID: 0}
+  m_lookingTarget: {fileID: 0}
+  m_previousTarget: {fileID: 0}
   m_currentRotY: 0
   m_grabKey: 101
   m_grabDistance: 10
@@ -243,6 +246,8 @@ MonoBehaviour:
   m_smoothDampTime: 0.3
   m_forceSize: 5
   m_deltabuff: 0.1
+  m_velocityReduce: 5
+  m_velocity: 10
 --- !u!114 &5875068394305949217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +262,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaserColor: {r: 1, g: 0, b: 0, a: 1}
   material: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
+--- !u!1 &7626019150864735622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9026812555885019245}
+  - component: {fileID: 7550956030041969388}
+  m_Layer: 0
+  m_Name: CheckScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9026812555885019245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626019150864735622}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6166541612193110638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7550956030041969388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7626019150864735622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bacc5d4e3c7484b8f8f992e4869197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 0}
 --- !u!1 &7826454819721695950
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +318,7 @@ GameObject:
   - component: {fileID: 7812455487185981618}
   - component: {fileID: 6981466768497176451}
   - component: {fileID: 1986901507474695472}
+  - component: {fileID: 1952468928826052652}
   m_Layer: 0
   m_Name: NetworkRay
   m_TagString: Untagged
@@ -313,6 +364,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 461972a9d25774a2785ebca8cc3e295d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1952468928826052652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826454819721695950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5c3d390059948aeaba26bfd18714a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2510564653223965319

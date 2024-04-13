@@ -79,7 +79,11 @@ public class NetworkGravityRay : NetworkBehaviour
         if(IsLocalPlayer)
         {
             playerCamera = Camera.main;
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+
+            Vector3 cameraPosition = playerCamera.transform.position;
+            Vector3 cameraForward = playerCamera.transform.forward;
+
+            Ray ray = new Ray(cameraPosition, cameraForward);
             RaycastHit hit;
 
             int layerMask = 1 << LayerMask.NameToLayer("GravityArea");
