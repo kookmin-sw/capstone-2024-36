@@ -67,4 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDisconnectionSceneName: Combine Title Scene
-  RegisterList: {fileID: 11400000, guid: dc3bf8c6319ede7448e435e6670c3ae8, type: 2}
+  RegisterLists:
+  - {fileID: 11400000, guid: dc3bf8c6319ede7448e435e6670c3ae8, type: 2}

@@ -71,7 +71,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     public string OnDisconnectionSceneName = "";
 
     [Header("Reference")]
-    public NetworkRegisterList RegisterList;
+    public List<NetworkRegisterList> RegisterLists = new List<NetworkRegisterList>();
 
     private static UnityTransport s_unityTransport;
     public static UnityTransport GetUnityTransport() { return s_unityTransport; }
@@ -80,18 +80,33 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     private void Awake()
     {
-        if (RegisterList == null)
-            Debug.LogError("FATAL: RegisterList is NULL");
+        if (RegisterLists == null)
+            Debug.LogError("FATAL: RegisterLists is NULL");
         else
         {
-            foreach(var item in RegisterList.List)
+            foreach(var list in RegisterLists)
             {
-                if (m_registeredPrefab.ContainsKey(item.RegisterId))
+                if (list == null)
                 {
-                    Debug.LogError("Duplicated register id found!");
+                    Debug.LogError("list is NULL!");
                     continue;
                 }
-                m_registeredPrefab.Add(item.RegisterId, item.Prefab);
+
+                foreach(var item in list.List)
+                {
+                    if (item.Prefab == null)
+                    {
+                        Debug.LogError("Prefab is NULL!");
+                        continue;
+                    }
+
+                    if (m_registeredPrefab.ContainsKey(item.RegisterId))
+                    {
+                        Debug.LogError("Duplicated register id found!");
+                        continue;
+                    }
+                    m_registeredPrefab.Add(item.RegisterId, item.Prefab);
+                }
             }
         }
 
