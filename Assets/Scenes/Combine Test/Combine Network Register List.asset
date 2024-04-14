@@ -31,5 +31,3 @@ MonoBehaviour:
     Prefab: {fileID: 8025697493180462384, guid: 49b7d771581fd47f8960432b3a85cbfd, type: 3}
   - RegisterId: 403
     Prefab: {fileID: 5009757800210387919, guid: 50399b70a191f464f87a44ec1fb96cbb, type: 3}
-  - RegisterId: 404
-    Prefab: {fileID: 0}
