@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -21,6 +21,7 @@ public class NetworkGrabbable : NetworkBehaviour
             }
             else
             {
+                Debug.Log("중력 true awa");
                 GetRigidbody().useGravity = true;
             }
         };
@@ -34,6 +35,8 @@ public class NetworkGrabbable : NetworkBehaviour
         }
         else
         {
+
+            Debug.Log("중력 true ons");
             GetRigidbody().useGravity = true;
         }
     }
@@ -48,11 +51,12 @@ public class NetworkGrabbable : NetworkBehaviour
 
             if (IsHolding.Value)
             {
-                GetRigidbody().useGravity = false;
+                m_rigidBody.useGravity = false;
             }
             else
             {
-                GetRigidbody().useGravity = true;
+                Debug.Log("중력 true bex");
+                m_rigidBody.useGravity = true;
             }
 
             for (int i = 0; i < transform.childCount; i++)
@@ -63,8 +67,13 @@ public class NetworkGrabbable : NetworkBehaviour
         }
         else
         {
+            // TODO: 들고 이동 시 초기화 위치로 돌아가도록 설정 필요
+            // 안그러면 기존 맵에 남아있는 사람 입장에서는 그냥 공중에 떠있게 됨
+
             m_rigidBody.detectCollisions = false;
             m_rigidBody.useGravity = false;
+            m_rigidBody.velocity = Vector3.zero;
+            m_rigidBody.angularVelocity = Vector3.zero;
 
             for (int i = 0; i < transform.childCount; i++)
             {

@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: -7377718256095586167}
   - component: {fileID: -916438802882961531}
   - component: {fileID: 5875068394305949217}
+  - component: {fileID: 6802948144894432541}
   m_Layer: 0
   m_Name: Combine Network Player
   m_TagString: Untagged
@@ -190,12 +191,12 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.27
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 30
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -232,20 +233,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10723bfb17910d248b1693ffa8cb9e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdArea: {fileID: 3527728625248550431}
   m_catchTarget: {fileID: 0}
   m_lookingTarget: {fileID: 0}
   m_previousTarget: {fileID: 0}
   m_currentRotY: 0
   m_grabKey: 101
-  m_grabDistance: 10
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  m_holdDistance: 10
-  m_deltaY: 0.5
-  m_smoothDampTime: 0.3
-  m_forceSize: 5
+    m_Bits: 65
+  m_holdAreaZ: 2.5
+  m_rayDistance: 15
+  m_maxHoldDistance: 8
+  m_minHoldDistance: 1.5
+  m_upDownDegree: 3
+  m_pickupForce: 150
   m_deltabuff: 0.1
+  m_dragSpeed: 20
+  m_dropAtDrag: 0.3
+  distance: 0
   m_velocityReduce: 5
   m_velocity: 10
 --- !u!114 &5875068394305949217
@@ -262,7 +268,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaserColor: {r: 1, g: 0, b: 0, a: 1}
   material: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
---- !u!1 &7626019150864735622
+--- !u!114 &6802948144894432541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382125386911965414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ade39d925a88d4395c2c7bebb8110c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lookingTarget: {fileID: 0}
+  m_previousTarget: {fileID: 0}
+  m_rayDistance: 15
+  m_layerMask:
+    serializedVersion: 2
+    m_Bits: 65
+  m_holdDistance: 10
+  distance: 0
+--- !u!1 &7581870567378784099
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,10 +296,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9026812555885019245}
-  - component: {fileID: 7550956030041969388}
+  - component: {fileID: 3527728625248550431}
+  - component: {fileID: 786260272823668079}
   m_Layer: 0
-  m_Name: CheckScene
+  m_Name: holdArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,6 +311,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581870567378784099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_GameObject: {fileID: 7626019150864735622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -294,12 +324,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6166541612193110638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7550956030041969388
+--- !u!114 &786260272823668079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581870567378784099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742ae268a0c772343be51f04e9658aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_GameObject: {fileID: 7626019150864735622}
   m_Enabled: 1
   m_EditorHideFlags: 0

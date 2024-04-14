@@ -41,16 +41,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Lazer Test/Lazer World Scene2.unity
     guid: 4e4a7f8db9c810d4ab2351efd09e6abb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scale Test/Scale Loading Scene.unity
     guid: 32bf7fe9315776941b217748b84723a7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scale Test/Scale Title Scene.unity
     guid: c703fe1234ae955438a52adde8d3962c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scale Test/Scale World Scene1.unity
     guid: 7966fe12e646e0f4ea71f2d7dc05ea00
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scale Test/Scale World Scene2.unity
     guid: 08077475f6d76f745a809febd3597558
   - enabled: 1

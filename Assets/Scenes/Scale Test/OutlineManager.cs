@@ -12,9 +12,9 @@ public class OutlineManager : NetworkBehaviour
     [SerializeField] private NetworkGrabbable m_previousTarget;
 
 
-    [SerializeField] private float m_grabDistance;
+    [SerializeField] private float m_rayDistance = 15.0f;
     [SerializeField] private LayerMask m_layerMask;
-    [SerializeField] private float m_holdDistance;
+    [SerializeField] private float m_holdDistance = 10.0f;
     [SerializeField] float distance;
 
     void Update()
@@ -23,42 +23,54 @@ public class OutlineManager : NetworkBehaviour
         bool bHit = Physics.Raycast(
             Camera.main.transform.position,
             Camera.main.transform.forward,
-            out hit, m_grabDistance, m_layerMask
+            out hit, m_rayDistance, m_layerMask
         );
-        if (!bHit)
-
-        m_lookingTarget = hit.transform.GetComponent<NetworkGrabbable>();
-        if (m_lookingTarget != null)
+        if (bHit)
         {
-            Debug.Log(m_lookingTarget);
+            m_lookingTarget = hit.transform.GetComponent<NetworkGrabbable>();
+            if (m_lookingTarget != null)
+            {
+                Debug.Log(m_lookingTarget);
 
-            if (m_previousTarget != null && m_lookingTarget != m_previousTarget)
-            {
-                m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-            }
-            distance = (transform.position - m_lookingTarget.transform.position).magnitude;
-            //Debug.Log(IsLocalPlayer);
-            //Debug.Log("À×? = " + distance.ToString() + "°¼¾Æ¾Ç" + m_holdDistance * 1.5f);
-            if (IsLocalPlayer && distance < m_holdDistance)
-            {
-                //Debug.Log("¿©±â ¿È?");
-                if (m_lookingTarget.GetComponentInChildren<Outline>() != null)
+                if (m_previousTarget != null && m_lookingTarget != m_previousTarget)
                 {
-                    //Debug.Log("È°¼ºÈ­");
-                    m_previousTarget = m_lookingTarget;
-                    m_lookingTarget.GetComponentInChildren<Outline>().enabled = true;
+                    Outline prevOutline = m_previousTarget.GetComponentInChildren<Outline>();
+                    if (prevOutline != null)
+                        prevOutline.enabled = false;
+                }
+                distance = Vector3.Distance(transform.position , m_lookingTarget.transform.position);
+                //Debug.Log(IsLocalPlayer);
+                //Debug.Log("À×? = " + distance.ToString() + "°¼¾Æ¾Ç" + m_holdDistance * 1.5f);
+                if (IsLocalPlayer && distance < m_holdDistance)
+                {
+                    if (m_lookingTarget.GetComponentInChildren<Outline>() != null)
+                    {
+                        m_previousTarget = m_lookingTarget;
+                        m_lookingTarget.GetComponentInChildren<Outline>().enabled = true;
+                    }
+                }
+                else
+                {
+                    if(m_previousTarget != null)
+                    {
+                        m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
+                    }
+                    m_lookingTarget.GetComponentInChildren<Outline>().enabled = false;
                 }
             }
             else
             {
-                m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-                m_lookingTarget.GetComponentInChildren<Outline>().enabled = false;
+                if (m_previousTarget != null)
+                {
+                    Outline prevOutline = m_previousTarget.GetComponentInChildren<Outline>();
+                    if (prevOutline != null)
+                        prevOutline.enabled = false;
+                }
             }
         }
-        else
-        {
-            m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
-        }
+
+        
+        
 
     }
 }

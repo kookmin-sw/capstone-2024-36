@@ -162,7 +162,7 @@ public class NetworkPlayer
         }
     }
 
-    private void SetExist(bool bExist)
+    public void SetExist(bool bExist)
     {
         if (bExist)
         {
