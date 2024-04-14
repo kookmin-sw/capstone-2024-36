@@ -22,8 +22,12 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private KeyCode m_grabKey;
     [SerializeField] private LayerMask m_layerMask;
 
+
+    [SerializeField] private float m_holdAreaZ = 2.5f;
     [SerializeField] private float m_rayDistance = 20.0f;
-    [SerializeField] private float m_holdDistance = 10.0f;
+    [SerializeField] private float m_maxHoldDistance = 5.0f;
+    [SerializeField] private float m_minHoldDistance = 1.0f;
+    [SerializeField] private float m_upDownDegree = 4.0f;
 
     [SerializeField] private float m_pickupForce = 150.0f;
     [SerializeField] float m_deltabuff = 0.1f;
@@ -132,24 +136,26 @@ public class NetworkGrabManager : NetworkBehaviour
     {
         distance = Vector3.Distance(transform.position, m_catchTarget.transform.position); //벡터길이 위의 m_holdDistance 하고 다른점은?
 
-        /*
-        if (distance > m_holdDistance * 1.5f) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
+        
+        if (distance > m_maxHoldDistance) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
-            if (m_catchTarget.IsOwner)
-            {
-                m_catchTarget.IsHolding.Value = false;
-            }
-            m_catchTarget = null;
-            return;
+            DropObject();
         }
-        */
-
+        if (distance < m_minHoldDistance) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
+        {
+            DropObject();
+        }
 
         if (!m_catchTarget.IsOwner) // 뺏긴경우 떨
         {
             m_catchTarget = null;
             return;
         }
+
+        float targetScale = m_catchTarget.transform.localScale.x;
+        Vector3 temp = new Vector3(0,0, 2.5f + targetScale/2);
+        Debug.Log("targetScale : "+ targetScale.ToString() + "     temp : " + temp.ToString());
+        holdArea.position = temp;
 
         //스케일
         if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.R)) //들고 있는 상태에서 크기조정
@@ -167,9 +173,15 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTarget.transform.eulerAngles += new Vector3(0, 15f, 0);
         }
 
-        if(distance > m_deltabuff)
+        CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
+
+        Vector3 newPosition =  Vector3.up * -Mathf.Tan(camCtrl.getPivot().localRotation.x - Mathf.PI / 6) * m_upDownDegree;
+
+        if (distance > m_deltabuff)
         {
             Vector3 moveDirection = (holdArea.transform.position - m_catchTargetRB.position);
+            //Debug.Log(newPosition);
+            moveDirection += newPosition;
             m_catchTargetRB.AddForce(moveDirection * m_pickupForce);
         }
     }
