@@ -136,12 +136,16 @@ public class NetworkGrabManager : NetworkBehaviour
     {
         distance = Vector3.Distance(transform.position, m_catchTarget.transform.position); //벡터길이 위의 m_holdDistance 하고 다른점은?
 
-        
-        if (distance > m_maxHoldDistance) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
+
+        float targetScale = m_catchTarget.transform.localScale.x - 1;
+        holdArea.transform.localPosition = new Vector3(0, 0, 2.5f + targetScale / 2);
+        Debug.Log(distance.ToString() + "      " + (m_minHoldDistance + targetScale / 2).ToString());
+
+        if (distance > m_maxHoldDistance + targetScale / 2) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
             DropObject();
         }
-        if (distance < m_minHoldDistance) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
+        if (distance < m_minHoldDistance + targetScale / 2) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
             DropObject();
         }
@@ -151,11 +155,7 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTarget = null;
             return;
         }
-
-        float targetScale = m_catchTarget.transform.localScale.x;
-        Vector3 temp = new Vector3(0,0, 2.5f + targetScale/2);
-        Debug.Log("targetScale : "+ targetScale.ToString() + "     temp : " + temp.ToString());
-        holdArea.position = temp;
+       
 
         //스케일
         if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.R)) //들고 있는 상태에서 크기조정
