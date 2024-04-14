@@ -97,7 +97,7 @@ public class NetworkGrabManager : NetworkBehaviour
         m_catchTargetRB.drag = m_dragSpeed;
         m_catchTargetRB.constraints = RigidbodyConstraints.FreezeRotation;
         m_catchTargetRB.interpolation = RigidbodyInterpolation.None;
-        m_catchTargetRB.transform.parent = holdArea;
+        //m_catchTargetRB.transform.parent = holdArea;
 
         if (!pickObj.GetComponent<Rigidbody>()) //선택된 오브젝트에 리지드바디확인
         {
@@ -127,7 +127,7 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTargetRB.constraints = RigidbodyConstraints.None;
             m_catchTargetRB.drag = m_dropAtDrag;
             m_catchTargetRB.useGravity = true;
-            m_catchTargetRB.transform.parent = null;
+            //m_catchTargetRB.transform.parent = null;
             m_catchTarget = null;
         }
     }
@@ -147,7 +147,7 @@ public class NetworkGrabManager : NetworkBehaviour
         }
         if (distance < m_minHoldDistance + targetScale / 2) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
-            DropObject();
+            //DropObject();
         }
 
         if (!m_catchTarget.IsOwner) // 뺏긴경우 떨
