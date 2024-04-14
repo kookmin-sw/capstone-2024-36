@@ -37,12 +37,19 @@ public class NetworkGrabManager : NetworkBehaviour
 
     private float m_rotationVelocity;
 
+    public void SetExist(bool bExist)
+    {
+        if (!bExist)
+        {
+            DropObject();
+        }
 
-    private void Update()
+    }
+
+        private void Update()
     {
         if (IsLocalPlayer)
         {
-
             RaycastHit hit;
             bool bHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, m_rayDistance, m_layerMask);
             if(bHit)
@@ -79,7 +86,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
     void PickupObject(GameObject pickObj)
     {
-        m_catchTarget = pickObj.transform.GetComponent<NetworkGrabbable>(); //선택된 타겟의 grabbagble
+        m_catchTarget = pickObj.GetComponent<NetworkGrabbable>(); //선택된 타겟의 grabbagble
         m_catchTargetRB = m_catchTarget.GetRigidbody();
         if (m_catchTarget.IsOwner) //잡힌 물체의 owner 처리ㅇ
         {

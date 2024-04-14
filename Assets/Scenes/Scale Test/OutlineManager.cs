@@ -34,7 +34,9 @@ public class OutlineManager : NetworkBehaviour
 
                 if (m_previousTarget != null && m_lookingTarget != m_previousTarget)
                 {
-                    m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
+                    Outline prevOutline = m_previousTarget.GetComponentInChildren<Outline>();
+                    if (prevOutline != null)
+                        prevOutline.enabled = false;
                 }
                 distance = Vector3.Distance(transform.position , m_lookingTarget.transform.position);
                 //Debug.Log(IsLocalPlayer);
@@ -60,7 +62,9 @@ public class OutlineManager : NetworkBehaviour
             {
                 if (m_previousTarget != null)
                 {
-                    m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
+                    Outline prevOutline = m_previousTarget.GetComponentInChildren<Outline>();
+                    if (prevOutline != null)
+                        prevOutline.enabled = false;
                 }
             }
         }
