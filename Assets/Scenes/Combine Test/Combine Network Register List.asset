@@ -31,3 +31,11 @@ MonoBehaviour:
     Prefab: {fileID: 8025697493180462384, guid: 49b7d771581fd47f8960432b3a85cbfd, type: 3}
   - RegisterId: 403
     Prefab: {fileID: 5009757800210387919, guid: 50399b70a191f464f87a44ec1fb96cbb, type: 3}
+  - RegisterId: 700
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
+  - RegisterId: 701
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
+  - RegisterId: 702
+    Prefab: {fileID: 4304498387937030328, guid: 5e4b531d29ee1424d86cc2b3c1b1436b, type: 3}
+  - RegisterId: 703
+    Prefab: {fileID: 8319281662908137179, guid: 72dbe3b6c8af987419b702270bf4196a, type: 3}
