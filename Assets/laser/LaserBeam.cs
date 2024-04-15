@@ -129,6 +129,11 @@ public class LaserBeam
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }
+        else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("ClearCheck")){
+            hitInfo.collider.GetComponent<LightDoorUpdate>().ClearSuccess();
+            laserIndices.Add(hitInfo.point);
+            UpdateLaser();
+        }
         else
         {
             laserIndices.Add(hitInfo.point);
