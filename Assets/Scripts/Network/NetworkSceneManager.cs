@@ -200,7 +200,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         );
     }
 
-    public void MoveScene(int newSceneIndex, MyNetworkTransform netTr, bool destoryMine = false)
+    public void MoveScene(int newSceneIndex, MyNetworkTransform netTr)
     {
         SaveFileManager.Instance.HideCanvas();
 
@@ -225,14 +225,6 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             if (iTransform == netTr)
             {
                 continue;
-            }
-
-            if (destoryMine)
-            {
-                if (iTransform.CurrentSceneIndex != newSceneIndex && iTransform.IsOwner)
-                {
-                    iTransform.NetworkObject.Despawn(true);
-                }
             }
         }
 
@@ -344,7 +336,14 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 continue;
             }
 
-            if(iTransform.CurrentSceneIndex != newSceneIndex && iTransform.IsOwner) 
+            // 플레이어는 삭제하지 않는다. 
+            NetworkPlayer player = iTransform.GetComponent<NetworkPlayer>();
+            if (player != null)
+            {
+                continue;
+            }
+
+            if (iTransform.CurrentSceneIndex != newSceneIndex) 
             {
                 iTransform.NetworkObject.Despawn(true);
             }
@@ -398,7 +397,7 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
     public void AfterServerMovedRpc(int newSceneIndex)
     {
         MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>();
-        MoveScene(newSceneIndex, playerTransform, true);
+        MoveScene(newSceneIndex, playerTransform);
     }
 
     // TODO: Specified In Pram을 사용하여 Echo Back을 구현하기

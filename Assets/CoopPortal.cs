@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -138,7 +138,16 @@ public class CoopPortal : MonoBehaviour
                 }
                 else
                 {
-                    // ∞¢ ¿Ø¿˙¿« ºº¿Ã∫Í ±‚∑œ »Æ¿Œ
+                    // TODO: Í∞Å Ïú†Ï†ÄÏùò ÏÑ∏Ïù¥Î∏å Í∏∞Î°ù ÌôïÏù∏
+                    if (playerCount == 1 && IsLocalPlayerIn)
+                    {
+                        moveScene = true;
+                    }
+
+                    if (playerCount == 2 && (IsLocalPlayerIn && IsRemotePlayerIn))
+                    {
+                        moveScene = true;
+                    }
                 }
 
                 if (moveScene)

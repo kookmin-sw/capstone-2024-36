@@ -87,6 +87,9 @@ public class NetworkGrabManager : NetworkBehaviour
     void PickupObject(GameObject pickObj)
     {
         m_catchTarget = pickObj.GetComponent<NetworkGrabbable>(); //선택된 타겟의 grabbagble
+        if (m_catchTarget == null)
+            return;
+
         m_catchTargetRB = m_catchTarget.GetRigidbody();
         if (m_catchTarget.IsOwner) //잡힌 물체의 owner 처리ㅇ
         {

@@ -3109,7 +3109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: IsSimpleDoor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: NextSceneName
@@ -8852,7 +8852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: IsSimpleDoor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: NextSceneName
@@ -10423,7 +10423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: IsSimpleDoor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145745947019485241, guid: 2f50a6521e613b74bbe2ff8fc7f7b669, type: 3}
       propertyPath: NextSceneName
