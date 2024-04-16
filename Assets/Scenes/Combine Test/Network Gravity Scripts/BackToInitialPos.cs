@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BackToInitialPos : MonoBehaviour
 {
-    private Vector3 initialPosition;
-    private Quaternion initialRotations;
+    [SerializeField] private Vector3 initialPosition;
+    [SerializeField] private Quaternion initialRotations;
 
     void Start()
     {
@@ -18,8 +18,6 @@ public class BackToInitialPos : MonoBehaviour
     {
         Debug.Log(clientObject + " : check clientObj");
         Rigidbody rb = clientObject.GetComponent<Rigidbody>();
-                            
-        initialPosition.x = 0f;
 
         clientObject.transform.position = initialPosition;
         clientObject.transform.rotation = initialRotations;

@@ -57,9 +57,6 @@ public class NetworkRay : NetworkBehaviour
     [ClientRpc]
     void ToIPosClientRpc(int hitObjectRegisterID)
     {
-        backToInitialPos = GetComponent<BackToInitialPos>();
-        
-
         GameObject[] allClientObjects = GameObject.FindGameObjectsWithTag("moveable");
 
         foreach (GameObject clientObject in allClientObjects)
@@ -71,6 +68,7 @@ public class NetworkRay : NetworkBehaviour
 
                 if (hitObjectRegisterID == clientObjectRegisterID)
                 {
+                    backToInitialPos = clientObject.GetComponent<BackToInitialPos>();
                     backToInitialPos.ToInitialPos(clientObject);
                 }
             }
