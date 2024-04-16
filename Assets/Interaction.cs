@@ -15,7 +15,6 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("RID = " + Interact.RegisterId);
         if (Interact.transform.localScale.x > 3.0f && Interact.RegisterId == 100)
             gameObject.SetActive(false);
     }

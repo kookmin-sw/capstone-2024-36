@@ -55,7 +55,7 @@ public class TitleScreen : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("TitleScreen start");
+        // Debug.Log("TitleScreen start");
         unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
 
         unityTransport.OnTransportEvent += UnityTransport_OnTransportEvent;

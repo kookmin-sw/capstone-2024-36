@@ -13,12 +13,12 @@ public class NetworkGrabManager : NetworkBehaviour
     private Rigidbody heldObjRB;
 
     [Header("Status")]
-
     [SerializeField] private NetworkGrabbable m_catchTarget;
     [SerializeField] private NetworkGrabbable m_lookingTarget;
     private Rigidbody m_catchTargetRB;
 
     [Header("Setting")]
+    [SerializeField] private bool isSimpleDoor;
     [SerializeField] private KeyCode m_grabKey;
     [SerializeField] private KeyCode m_rotateKey;
     [SerializeField] private LayerMask m_layerMask;
@@ -49,7 +49,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
     }
 
-        private void Update()
+    private void Update()
     {
         if (IsLocalPlayer)
         {
@@ -61,9 +61,6 @@ public class NetworkGrabManager : NetworkBehaviour
             }
             if (Input.GetKeyDown(m_grabKey))
             {
-                //if (Camera.main.GetComponentInParent<CameraController>() == null) //카메라 없으면 밴?
-                //    return;
-
                 if(m_catchTarget == null) 
                 {
                     // 눌렸는데 들려있지 않다면 줍기

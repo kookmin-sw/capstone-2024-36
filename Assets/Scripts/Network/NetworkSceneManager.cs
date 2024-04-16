@@ -200,8 +200,10 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         );
     }
 
-    public void MoveScene(int newSceneIndex, MyNetworkTransform netTr)
+    public void MoveScene(int newSceneIndex, MyNetworkTransform netTr, bool destoryMine = false)
     {
+        SaveFileManager.Instance.HideCanvas();
+
         if (SceneManager.GetActiveScene().buildIndex == newSceneIndex)
         {
             Debug.Log($"LoadNextScene: already in same scene: {newSceneIndex}");
@@ -219,6 +221,19 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
             iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
             iTransform.FixedOnUnplace();
+
+            if (iTransform == netTr)
+            {
+                continue;
+            }
+
+            if (destoryMine)
+            {
+                if (iTransform.CurrentSceneIndex != newSceneIndex && iTransform.IsOwner)
+                {
+                    iTransform.NetworkObject.Despawn(true);
+                }
+            }
         }
 
         NotifyLeaveSceneRpc(
@@ -299,6 +314,92 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         EchoBack,   // set
         LoadScene   // request echo
     };
+
+    [Rpc(SendTo.Server)]
+    public void MoveSceneWithEveryPlayersRPC(int newSceneIndex)
+    {
+        SaveFileManager.Instance.HideCanvas();
+
+        if (SceneManager.GetActiveScene().buildIndex == newSceneIndex)
+        {
+            Debug.Log($"LoadNextScene: already in same scene: {newSceneIndex}");
+            return;
+        }
+
+        MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>(); ;
+        playerTransform.SceneSequenceNumber += 1;
+        playerTransform.CurrentSceneIndex = -1;
+
+        // 모든 MyNetworkTransform이 안보이게 된다. 
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
+        while (iterator.MoveNext())
+        {
+            MyNetworkTransform iTransform = iterator.Current;
+
+            iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
+            iTransform.FixedOnUnplace();
+
+            if (iTransform == playerTransform)
+            {
+                continue;
+            }
+
+            if(iTransform.CurrentSceneIndex != newSceneIndex && iTransform.IsOwner) 
+            {
+                iTransform.NetworkObject.Despawn(true);
+            }
+        }
+
+        NotifyLeaveSceneRpc(
+            playerTransform.NetworkObjectId, playerTransform.RegisterId, playerTransform.SceneSequenceNumber
+        );
+
+        StartCoroutine(moveSceneWithEveryPlayersEnumerator(newSceneIndex, playerTransform));
+    }
+
+    private IEnumerator moveSceneWithEveryPlayersEnumerator(int newSceneIndex, MyNetworkTransform netTr)
+    {
+        SceneManager.LoadScene(newSceneIndex);
+
+        yield return null;
+
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
+        while (iterator.MoveNext())
+        {
+            MyNetworkTransform iTransform = iterator.Current;
+
+            if (iTransform.CurrentSceneIndex == newSceneIndex && iTransform.IsOwner)
+            {
+                if (iTransform == netTr)
+                    continue;
+
+                iTransform.FixedOnPlace();
+                iTransform.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+
+        netTr.CurrentSceneIndex = newSceneIndex;
+        netTr.SetSpawnPositionEvent.Invoke();
+        netTr.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+        netTr.FixedOnPlace();
+
+        NotifyReadyForPlacedRpc(
+            netTr.NetworkObjectId,
+            netTr.RegisterId,
+            netTr.SceneSequenceNumber,
+            newSceneIndex,
+            ReadyForPlacedType.MoveScene
+        );
+
+        AfterServerMovedRpc(newSceneIndex);
+    }
+
+    [Rpc(SendTo.NotServer)]
+    public void AfterServerMovedRpc(int newSceneIndex)
+    {
+        MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>();
+        MoveScene(newSceneIndex, playerTransform, true);
+    }
 
     // TODO: Specified In Pram을 사용하여 Echo Back을 구현하기
     [Rpc(SendTo.NotMe)]

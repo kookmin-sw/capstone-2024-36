@@ -49,7 +49,7 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -277,20 +277,23 @@ MonoBehaviour:
   holdArea: {fileID: 3559661434434369515}
   m_catchTarget: {fileID: 0}
   m_lookingTarget: {fileID: 0}
-  m_grabKey: 0
+  m_grabKey: 101
+  m_rotateKey: 113
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   m_holdAreaZ: 2.5
-  m_rayDistance: 20
-  m_maxHoldDistance: 5
-  m_minHoldDistance: 1
-  m_upDownDegree: 4
+  m_rayDistance: 15
+  m_maxHoldDistance: 8
+  m_minHoldDistance: 1.5
+  m_upDownDegree: 3
+  m_largestScale: 4
+  m_smallestScale: 0.1
   m_pickupForce: 150
   m_deltabuff: 0.1
-  m_dragSpeed: 10
-  m_dropAtDrag: 0
-  distance: 0
+  m_dragSpeed: 20
+  m_dropAtDrag: 0.3
+  distance: 2.67
 --- !u!1001 &2510564653223965319
 PrefabInstance:
   m_ObjectHideFlags: 0
