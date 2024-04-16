@@ -20,6 +20,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
     [Header("Setting")]
     [SerializeField] private KeyCode m_grabKey;
+    [SerializeField] private KeyCode m_rotateKey;
     [SerializeField] private LayerMask m_layerMask;
 
 
@@ -28,6 +29,8 @@ public class NetworkGrabManager : NetworkBehaviour
     [SerializeField] private float m_maxHoldDistance = 5.0f;
     [SerializeField] private float m_minHoldDistance = 1.0f;
     [SerializeField] private float m_upDownDegree = 4.0f;
+    [SerializeField] private float m_largestScale = 4.0f;
+    [SerializeField] private float m_smallestScale = 0.1f;
 
     [SerializeField] private float m_pickupForce = 150.0f;
     [SerializeField] float m_deltabuff = 0.1f;
@@ -146,7 +149,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
         float targetScale = m_catchTarget.transform.localScale.x - 1;
         holdArea.transform.localPosition = new Vector3(0, 0, 2.5f + targetScale / 2);
-        Debug.Log(distance.ToString() + "      " + (m_minHoldDistance + targetScale / 2).ToString());
+        //Debug.Log(distance.ToString() + "      " + (m_minHoldDistance + targetScale / 2).ToString());
 
         if (distance > m_maxHoldDistance + targetScale / 2) //물체가 들려있는상태로 distance가 잡은 것보다 1.5배 이상 멀어지면 떨
         {
@@ -162,23 +165,29 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTarget = null;
             return;
         }
-       
+
 
         //스케일
-        if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.R)) //들고 있는 상태에서 크기조정
+        float wheelInput = Input.GetAxis("Mouse ScrollWheel");
+        if (m_catchTarget.IsOwner && wheelInput > 0) //들고 있는 상태에서 크기조정
         {
             m_catchTarget.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
-        if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.T))
+        if (m_catchTarget.IsOwner && wheelInput < 0)
         {
             m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }
 
         //앵글
-        if (m_catchTarget.IsOwner && Input.GetKeyDown(KeyCode.Q)) //들고있는 상태에서 돌
+        if (m_catchTarget.IsOwner && Input.GetKey(m_rotateKey)) //들고있는 상태에서 돌
         {
-            m_catchTarget.transform.eulerAngles += new Vector3(0, 15f, 0);
+            Debug.Log(Quaternion.AngleAxis(0, m_catchTarget.GetRigidbody().rotation.eulerAngles));
+            
         }
+        //else if (m_catchTarget.IsOwner && Input.GetKeyDown(m_rotateKey))
+        //{
+        //    m_catchTarget.GetRigidbody().rotation = m_catchTarget.GetRigidbody().rotation * Quaternion.Euler(0f, 15.0f, 0f);
+        //}
 
         CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
 
