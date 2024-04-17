@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 5875068394305949217}
   - component: {fileID: 6802948144894432541}
   - component: {fileID: 7313854131071841802}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Combine Network Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,12 +192,12 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.27
   m_SlopeLimit: 30
-  m_StepOffset: 0.1
+  m_StepOffset: 0.35
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
