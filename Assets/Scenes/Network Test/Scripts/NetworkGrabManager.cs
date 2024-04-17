@@ -181,12 +181,11 @@ public class NetworkGrabManager : NetworkBehaviour
         //앵글
         if (m_catchTarget.IsOwner && Input.GetKey(m_rotateKey)) //들고있는 상태에서 돌
         {
-            Debug.Log(Quaternion.AngleAxis(0, m_catchTarget.GetRigidbody().rotation.eulerAngles));
-            
+            m_catchTarget.GetRigidbody().rotation = m_catchTarget.GetRigidbody().rotation * Quaternion.Euler(0f, 2.0f, 0f);
         }
-        //else if (m_catchTarget.IsOwner && Input.GetKeyDown(m_rotateKey))
+        //else if (m_catchTarget.IsOwner && Input.GetKey(KeyCode.E))
         //{
-        //    m_catchTarget.GetRigidbody().rotation = m_catchTarget.GetRigidbody().rotation * Quaternion.Euler(0f, 15.0f, 0f);
+            //m_catchTarget.GetRigidbody().rotation = m_catchTarget.GetRigidbody().rotation * Quaternion.Euler(0f, -2.0f, 0f);
         //}
 
         CameraController camCtrl = Camera.main.GetComponentInParent<CameraController>();
