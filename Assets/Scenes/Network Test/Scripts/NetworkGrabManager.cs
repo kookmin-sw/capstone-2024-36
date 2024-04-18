@@ -136,7 +136,7 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTargetRB.interpolation = RigidbodyInterpolation.Interpolate;
             m_catchTargetRB.constraints = RigidbodyConstraints.None;
             m_catchTargetRB.drag = m_dropAtDrag;
-            m_catchTargetRB.useGravity = true;
+            //m_catchTargetRB.useGravity = true;
             //m_catchTargetRB.transform.parent = null;
             m_catchTarget = null;
         }
