@@ -89,23 +89,30 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
 
 
 
-    private void SetExist(bool bExist){
+    public void SetExist(bool bExist){
         if(bExist){
             if(beam == null && isLaserActive.Value){
                 beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
                 Debug.Log("빔생성");
             }
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Transform child = transform.GetChild(i);
+                child.gameObject.SetActive(true);
+            }
+             isLaserActive.Value = false;
         }
         else{
             if(beam != null){
-            Destroy(beam);
+            beam = null;
             }
-
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Transform child = transform.GetChild(i);
+                child.gameObject.SetActive(false);
+            }
+            isLaserActive.Value = false;
         }
     }
 
-    private void Destroy(LaserBeam beam)
-    {
-        throw new NotImplementedException();
-    }
 }

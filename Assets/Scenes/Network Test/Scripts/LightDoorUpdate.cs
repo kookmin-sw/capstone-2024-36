@@ -21,7 +21,8 @@ public class LightDoorUpdate : NetworkBehaviour
     }
     void Update()
     {
-        if(isDoor1Active.Value){
+        if(door!=null){
+            if(isDoor1Active.Value){
             if(door.transform.position.y >-2){
                 door.transform.Translate(Vector3.down * Time.deltaTime);
 
@@ -36,6 +37,11 @@ public class LightDoorUpdate : NetworkBehaviour
         if(isDoor1Active.Value == true){
             isDoor1Active.Value = !isDoor1Active.Value;
             }
+
+        }
+        else{
+            door = GameObject.Find("Door_2 Variant");
+        }
     }
 
     public void ClearSuccess(){
@@ -45,5 +51,17 @@ public class LightDoorUpdate : NetworkBehaviour
             }
             Debug.Log("door toggle success");
             }
+    }
+
+    public void SetExist(bool bExist)
+    {
+        if (bExist)
+        {
+            
+        }
+        else
+        {
+
+        }
     }
 }
