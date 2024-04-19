@@ -7,6 +7,8 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     public Color LaserColor = Color.red;
     public Material material;
 
+    public bool thisscene = true;
+
     // 레이저의 활성화 상태를 나타내는 Network Variable
     public NetworkVariable<bool> isLaserActive = new NetworkVariable<bool>(
         false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -15,7 +17,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
 
     void Update()
     {
-        if(beam == null){
+        if(thisscene){if(beam == null){
             //beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
         }
         else{
@@ -31,6 +33,9 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
                 beam.laserIndices.Clear();
             }
         }
+            
+        }
+        
        
     }
 
@@ -52,13 +57,16 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
         public void Onofflaser()
     {
             // 클라이언트에서 서버로 RPC를 보냅니다.
-            if(NetworkManager.Singleton.IsServer){
-            isLaserActive.Value = !isLaserActive.Value;
-            Debug.Log("toggle success");
+            if(thisscene){
+                if(NetworkManager.Singleton.IsServer){
+                    isLaserActive.Value = !isLaserActive.Value;
+                    Debug.Log("toggle success");
+                    }
+                RequestToggleLaserActivationServerRpc();
+                Debug.Log("toggle send");
+                Debug.Log(isLaserActive.Value);
             }
-            RequestToggleLaserActivationServerRpc();
-            Debug.Log("toggle send");
-            Debug.Log(isLaserActive.Value);
+            
         
     }
 
@@ -101,6 +109,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
                 child.gameObject.SetActive(true);
             }
              isLaserActive.Value = false;
+             thisscene = true;
         }
         else{
             if(beam != null){
@@ -112,6 +121,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
                 child.gameObject.SetActive(false);
             }
             isLaserActive.Value = false;
+            thisscene = false;
         }
     }
 

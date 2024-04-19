@@ -41,8 +41,12 @@
                 Debug.Log("f button");
                 Vector3 playerposition = FindInChildren(transform,"Base HumanRArmDigit23").position;
                 m_camera = Camera.main;
+                // Vector3 mousedirection = m_camera.transform.forward;
+                Vector3 cameraPosition = m_camera.transform.position;
                 Vector3 mousedirection = m_camera.transform.forward;
-                Ray laserray = m_camera.ScreenPointToRay(Input.mousePosition);
+
+                Ray laserray = new(cameraPosition, mousedirection);
+                // Ray laserray = m_camera.ScreenPointToRay(Input.mousePosition);
                 if(Physics.Raycast(laserray, out hit)){
                     // mousedirection = (hit.point - playerposition).normalized;
                     mousedirection = m_camera.transform.forward;
