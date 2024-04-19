@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d98f2d4654637542bf336cd584b9fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMesh: 2
+  currentMesh: 1
   isLocal: 0
   ownerClientId: 0
   m_speedY: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_lookingTarget: {fileID: 0}
   isSimpleDoor: 0
   m_grabKey: 101
-  m_rotateKey: 39
+  m_rotateKey: 113
   m_layerMask:
     serializedVersion: 2
     m_Bits: 65
