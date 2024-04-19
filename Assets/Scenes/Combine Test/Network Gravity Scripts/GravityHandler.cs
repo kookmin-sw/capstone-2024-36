@@ -7,7 +7,6 @@ public class GravityHandler : MonoBehaviour
     private const int maxClickCount = 1;
     private GameObject _gravityObject;
     
-    //애니메이션을 구현하는게 나은지 아니면 스크립트로 만들지 고민
     public void ToggleGravity(GameObject gravityObject)
     {
         if (clickCount >= maxClickCount)
@@ -24,13 +23,11 @@ public class GravityHandler : MonoBehaviour
                 clickCount++;
             }
         }
-
-        Debug.Log("check toggled");
     }
 
     private System.Collections.IEnumerator ToggleGravityWithAnimation()
     {
-        float duration = 0.5f;
+        float duration = 1.2f;
         Vector3 originalScale = _gravityObject.transform.localScale;
         Vector3 targetScale = isGravityEnabled ? originalScale : Vector3.zero;
 
@@ -44,7 +41,7 @@ public class GravityHandler : MonoBehaviour
 
         _gravityObject.transform.localScale = targetScale;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         elapsedTime = 0f;
         while (elapsedTime < duration)
