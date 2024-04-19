@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BackToInitialPos : MonoBehaviour
 {
-    [SerializeField] private Vector3 initialPosition;
+    public Vector3 initialPosition;
     [SerializeField] private Quaternion initialRotations;
 
     void Start()

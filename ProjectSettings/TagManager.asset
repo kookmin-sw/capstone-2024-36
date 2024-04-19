@@ -11,6 +11,8 @@ TagManager:
   - Woman Spawn Pos
   - LaserPoint
   - GravityObject
+  - stars
+  - GravityControl
   layers:
   - Default
   - TransparentFX
