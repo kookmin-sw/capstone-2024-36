@@ -10,6 +10,7 @@ public class NetworkGrabbable : NetworkBehaviour
     );
 
     [SerializeField] private Rigidbody m_rigidBody;
+    [SerializeField] public bool isGrabbed;
 
     private void Awake()
     {
@@ -82,4 +83,15 @@ public class NetworkGrabbable : NetworkBehaviour
             }
         }
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        Debug.Log("collision detect");
+        isGrabbed = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("collision end");
+        isGrabbed = false;
+    }
+
 }
