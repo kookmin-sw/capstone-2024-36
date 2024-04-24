@@ -80,4 +80,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Combine Test/Scale2 World Scene.unity
     guid: 072f67214ce9a0447aba8aaa7872a8a8
+  - enabled: 1
+    path: Assets/Scenes/Combine Test/Combine Setting Scene.unity
+    guid: 0d03e0f59cb2c5c40ad36a5c324ab0cf
   m_configObjects: {}

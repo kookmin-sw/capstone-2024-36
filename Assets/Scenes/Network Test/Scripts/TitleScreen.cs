@@ -10,9 +10,13 @@ public class TitleScreen : MonoBehaviour
 {
     [Header("Settings")]
     public string NextSceneName;
+    public string SettingSceneName;
+    public string TitleSceneName;
 
     [Header("Status")]
     public bool isStarted = false;
+    public bool isSetting = false;
+    public bool endSetting = false;
     public static bool IsLocalPlayerFound = false;
     public bool isNetworkSceneLoaderFound = false;
     // public bool isHost;
@@ -110,6 +114,16 @@ public class TitleScreen : MonoBehaviour
         InfoText.text = "Loading Network Object... ";
     }
 
+    public void StartSetting()
+    {
+        isSetting = true;
+    }
+
+    public void EndSetting()
+    {
+        endSetting = true;
+    }
+
     private void Update()
     {
         if (isStarted)
@@ -144,6 +158,17 @@ public class TitleScreen : MonoBehaviour
 
             // call it only once
             isStarted = false;
+        }
+        if (isSetting)
+        {
+            SceneManager.LoadScene("Combine Setting Scene");
+            isSetting = false;
+        }
+
+        if (endSetting)
+        {
+            SceneManager.LoadScene("Combine Title Scene");
+            endSetting = false;
         }
     }
 }
