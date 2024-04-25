@@ -33,6 +33,7 @@ public class NetworkPlayer
     [SerializeField] CapsuleCollider rigidbodyCollider;
     [SerializeField] Animator animator;
 
+
     private PlayerControl m_playerControl;
     private Vector3 m_lastPostion;
 
@@ -219,4 +220,6 @@ public class NetworkPlayer
             transform.position += new Vector3(0, characterController.skinWidth, 0);
         }
     }
+
+
 }
