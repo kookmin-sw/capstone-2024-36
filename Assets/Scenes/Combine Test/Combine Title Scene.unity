@@ -359,6 +359,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4479562085828977117, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: ceadd494791e8b74db8cbe036f936dfd, type: 2}
+    - target: {fileID: 4479562085828977117, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
       propertyPath: NextSceneName
       value: Combine World Scene1
       objectReference: {fileID: 0}

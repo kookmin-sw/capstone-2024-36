@@ -114,11 +114,6 @@ public class TitleScreen : MonoBehaviour
         InfoText.text = "Loading Network Object... ";
     }
 
-    public void setVolume(float volume)
-    {
-        Debug.Log((int)volume);
-    }
-
     public void StartSetting()
     {
         isSetting = true;

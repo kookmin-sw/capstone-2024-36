@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 using Unity.Netcode;
 
 public class NetworkPlayer
@@ -32,6 +33,7 @@ public class NetworkPlayer
     [SerializeField] MyNetworkTransform networkTransform;
     [SerializeField] CapsuleCollider rigidbodyCollider;
     [SerializeField] Animator animator;
+    [SerializeField] AudioSource audioSource;
 
 
     private PlayerControl m_playerControl;
@@ -53,6 +55,8 @@ public class NetworkPlayer
         }
 
         networkTransform.SetSpawnPositionEvent += SetSpawnPosition;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void OnNetworkSpawn()
@@ -115,6 +119,18 @@ public class NetworkPlayer
                 {
                     animator.SetBool("is_walking", false);
                 }
+            }
+
+            //발소리
+            if (speedDelta.magnitude > float.Epsilon)
+            {
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
+
+            }
+            else
+            {
+                audioSource.Stop();
             }
 
             m_speedY -= Gravity * Time.deltaTime;
