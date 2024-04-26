@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 3761582769011026831}
   - component: {fileID: -7377718256095586167}
   - component: {fileID: 5813700302598325919}
+  - component: {fileID: 7434326689861652891}
   m_Layer: 2
   m_Name: Network Network Player
   m_TagString: Untagged
@@ -215,6 +216,7 @@ MonoBehaviour:
   networkTransform: {fileID: -7377718256095586167}
   rigidbodyCollider: {fileID: 6309499927814549253}
   animator: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!143 &3761582769011026831
 CharacterController:
   m_ObjectHideFlags: 0
@@ -277,6 +279,7 @@ MonoBehaviour:
   holdArea: {fileID: 3559661434434369515}
   m_catchTarget: {fileID: 0}
   m_lookingTarget: {fileID: 0}
+  isSimpleDoor: 0
   m_grabKey: 101
   m_rotateKey: 113
   m_layerMask:
@@ -294,6 +297,26 @@ MonoBehaviour:
   m_dragSpeed: 20
   m_dropAtDrag: 0.3
   distance: 2.67
+--- !u!114 &7434326689861652891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382125386911965414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9600b0e5ba71e4fb1d3d67e3bec096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isLeftStepping: 0
+  m_isRightStepping: 0
+  m_leftUp: 0
+  m_rightUp: 0
+  m_stepHeight: 0
+  m_leftFoot: {fileID: 8802118250289891053}
+  m_rightFoot: {fileID: 8802047639066927365}
+  m_footstepSound: {fileID: 0}
 --- !u!1001 &2510564653223965319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -378,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912108287219450, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4703804780881668, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,6 +452,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}
+--- !u!4 &8802047639066927365 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4083920507342300, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}
+  m_PrefabInstance: {fileID: 8802749450864291033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8802118250289891053 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4154045829016116, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}
+  m_PrefabInstance: {fileID: 8802749450864291033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8807092439703178205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4703804780881668, guid: b6a1ebed15b361547a23f7cb28c9afb2, type: 3}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Audio;
 using Unity.Netcode;
 
 public class NetworkPlayer
@@ -33,7 +32,12 @@ public class NetworkPlayer
     [SerializeField] MyNetworkTransform networkTransform;
     [SerializeField] CapsuleCollider rigidbodyCollider;
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource audioSource;
+    // [SerializeField] AudioSource audioSource;
+
+    [SerializeField] private Transform m_hostLeftFoot;
+    [SerializeField] private Transform m_hostRightFoot;
+    [SerializeField] private Transform m_guestLeftFoot;
+    [SerializeField] private Transform m_guestRightFoot;
 
 
     private PlayerControl m_playerControl;
@@ -56,7 +60,7 @@ public class NetworkPlayer
 
         networkTransform.SetSpawnPositionEvent += SetSpawnPosition;
 
-        audioSource = GetComponent<AudioSource>();
+        // audioSource = GetComponent<AudioSource>();
     }
 
     public override void OnNetworkSpawn()
@@ -122,16 +126,16 @@ public class NetworkPlayer
             }
 
             //발소리
-            if (speedDelta.magnitude > float.Epsilon)
-            {
-                if (!audioSource.isPlaying)
-                    audioSource.Play();
+            //if (speedDelta.magnitude > float.Epsilon)
+            //{
+            //    if (!audioSource.isPlaying)
+            //        audioSource.Play();
 
-            }
-            else
-            {
-                audioSource.Stop();
-            }
+            //}
+            //else
+            //{
+            //    audioSource.Stop();
+            //}
 
             m_speedY -= Gravity * Time.deltaTime;
             if (m_speedY < -MaxGravity)
@@ -181,13 +185,31 @@ public class NetworkPlayer
 
     public void SetExist(bool bExist)
     {
+        FootstepSoundManager footstepSoundManager = GetComponent<FootstepSoundManager>();
+
         if (bExist)
         {
+            if (footstepSoundManager != null)
+                footstepSoundManager.enabled = true;
+
             if (IsHost == IsOwner)
             {
                 manTransform.gameObject.SetActive(true);
                 womanTransform.gameObject.SetActive(false);
                 animator = manTransform.GetComponent<Animator>();
+
+                if (footstepSoundManager != null)
+                {
+                    footstepSoundManager.leftFoot = m_hostLeftFoot;
+                    if (footstepSoundManager.leftFoot == null)
+                        Debug.LogError("left foot is NULL");
+
+                    footstepSoundManager.rightFoot = m_hostRightFoot;
+                    if (footstepSoundManager.rightFoot == null)
+                        Debug.LogError("right foot is NULL");
+
+                }
+
                 currentMesh = eMesh.Man;
             }
             else
@@ -195,6 +217,18 @@ public class NetworkPlayer
                 manTransform.gameObject.SetActive(false);
                 womanTransform.gameObject.SetActive(true);
                 animator = womanTransform.GetComponent<Animator>();
+
+                if (footstepSoundManager != null)
+                {
+                    footstepSoundManager.leftFoot = m_guestLeftFoot;
+                    if (footstepSoundManager.leftFoot == null)
+                        Debug.LogError("left foot is NULL");
+
+                    footstepSoundManager.rightFoot = m_guestRightFoot;
+                    if (footstepSoundManager.rightFoot == null)
+                        Debug.LogError("right foot is NULL");
+                }
+
                 currentMesh = eMesh.Woman;
             }
 
@@ -213,6 +247,9 @@ public class NetworkPlayer
 
             characterController.enabled = false;
             rigidbodyCollider.enabled = false;
+
+            if (footstepSoundManager != null)
+                footstepSoundManager.enabled = false;
         }
     }
 
@@ -236,6 +273,4 @@ public class NetworkPlayer
             transform.position += new Vector3(0, characterController.skinWidth, 0);
         }
     }
-
-
 }

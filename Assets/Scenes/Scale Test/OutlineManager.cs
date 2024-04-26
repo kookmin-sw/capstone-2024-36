@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 
 public class OutlineManager : NetworkBehaviour
@@ -40,7 +36,7 @@ public class OutlineManager : NetworkBehaviour
                 }
                 distance = Vector3.Distance(transform.position , m_lookingTarget.transform.position);
                 //Debug.Log(IsLocalPlayer);
-                //Debug.Log("À×? = " + distance.ToString() + "°¼¾Æ¾Ç" + m_holdDistance * 1.5f);
+                //Debug.Log("ï¿½ï¿½? = " + distance.ToString() + "ï¿½ï¿½ï¿½Æ¾ï¿½" + m_holdDistance * 1.5f);
                 if (IsLocalPlayer && distance < m_holdDistance)
                 {
                     if (m_lookingTarget.GetComponentInChildren<Outline>() != null)
@@ -53,7 +49,11 @@ public class OutlineManager : NetworkBehaviour
                 {
                     if(m_previousTarget != null)
                     {
-                        m_previousTarget.GetComponentInChildren<Outline>().enabled = false;
+                        Outline outline = m_previousTarget.GetComponentInChildren<Outline>();
+                        if (outline != null)
+                        {
+                            outline.enabled = false;
+                        }
                     }
                     m_lookingTarget.GetComponentInChildren<Outline>().enabled = false;
                 }
