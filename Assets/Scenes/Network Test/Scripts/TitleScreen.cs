@@ -15,8 +15,6 @@ public class TitleScreen : MonoBehaviour
 
     [Header("Status")]
     public bool isStarted = false;
-    public bool isSetting = false;
-    public bool endSetting = false;
     public static bool IsLocalPlayerFound = false;
     public bool isNetworkSceneLoaderFound = false;
     // public bool isHost;
@@ -114,14 +112,19 @@ public class TitleScreen : MonoBehaviour
         InfoText.text = "Loading Network Object... ";
     }
 
+    public void StartMulti()
+    {
+        SceneManager.LoadScene("Combine Multi Scene");
+    }
+
     public void StartSetting()
     {
-        isSetting = true;
+        SceneManager.LoadScene("Combine Setting Scene");
     }
 
     public void EndSetting()
     {
-        endSetting = true;
+        SceneManager.LoadScene("Combine Title Scene");
     }
 
     private void Update()
@@ -158,17 +161,6 @@ public class TitleScreen : MonoBehaviour
 
             // call it only once
             isStarted = false;
-        }
-        if (isSetting)
-        {
-            SceneManager.LoadScene("Combine Setting Scene");
-            isSetting = false;
-        }
-
-        if (endSetting)
-        {
-            SceneManager.LoadScene("Combine Title Scene");
-            endSetting = false;
         }
     }
 }

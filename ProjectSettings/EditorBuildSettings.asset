@@ -83,4 +83,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Combine Test/Combine Setting Scene.unity
     guid: 0d03e0f59cb2c5c40ad36a5c324ab0cf
+  - enabled: 1
+    path: Assets/Scenes/Combine Test/Combine Multi Scene.unity
+    guid: 3f84b879f17549049ad8239f533c63d9
   m_configObjects: {}

@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b381b94516eb0f4f9f6ff07ac51aade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Combine TItle Scene
+  nextSceneName: Combine Title Scene
 --- !u!4 &2047427011
 Transform:
   m_ObjectHideFlags: 0

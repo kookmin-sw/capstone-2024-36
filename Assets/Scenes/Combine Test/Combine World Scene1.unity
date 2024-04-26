@@ -1090,7 +1090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2326755076599765587, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1812177693}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
 --- !u!1001 &352288675
@@ -1520,6 +1523,14 @@ PrefabInstance:
     - target: {fileID: 3380255775583746086, guid: 1ec2aaaf7dd01a549b88e7d6934b9a35, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 3477694352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126477716208448110, guid: 1ec2aaaf7dd01a549b88e7d6934b9a35, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126477716208448110, guid: 1ec2aaaf7dd01a549b88e7d6934b9a35, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5126477716208448110, guid: 1ec2aaaf7dd01a549b88e7d6934b9a35, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4693,6 +4704,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8243510477928082872, guid: 6cb82243f4a23b34ebcb8d1d7d43fc10, type: 3}
   m_PrefabInstance: {fileID: 1861647813}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1526103447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2326755076599765587, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
+  m_PrefabInstance: {fileID: 349976579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526537305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9126332970625463957, guid: 8d3b5c47eb0f0174cad78c58d54ecaf0, type: 3}
@@ -5662,7 +5678,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1526103447}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1812343273
 PrefabInstance:
@@ -6756,7 +6772,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 349976579}
-  - {fileID: 1812177693}
   - {fileID: 105741946}
   - {fileID: 788135090}
   - {fileID: 1699383023}
