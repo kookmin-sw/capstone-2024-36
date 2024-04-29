@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class GravityBody : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class GravityBody : NetworkBehaviour
 {
     Vector3 minScale = new Vector3(1f, 1f, 1f);
     Vector3 maxScale = new Vector3(1.5f, 1.5f, 1.5f);
@@ -40,6 +42,15 @@ public class GravityBody : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _gravityAreas = new List<GravityArea>();
+
+        if (IsOwner)
+        {
+            _rigidbody.isKinematic = false;
+        }
+        else
+        {
+            _rigidbody.isKinematic = true;
+        }
     }
 
     private void FixedUpdate()
