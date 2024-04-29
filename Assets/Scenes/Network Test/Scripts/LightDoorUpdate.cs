@@ -21,25 +21,30 @@ public class LightDoorUpdate : NetworkBehaviour
     }
     void Update()
     {
-        if(door!=null){
-            if(isDoor1Active.Value){
-            if(door.transform.position.y >-2){
-                door.transform.Translate(Vector3.down * Time.deltaTime);
-
+        if (door != null)
+        {
+            if (isDoor1Active.Value)
+            {
+                if (door.transform.position.y > -2)
+                {
+                    door.transform.Translate(Vector3.down * Time.deltaTime);
+                }
+            }
+            else
+            {
+                if (door.transform.position.y < 2)
+                {
+                    door.transform.Translate(Vector3.up * Time.deltaTime);
+                }
+            }
+            //if laser doesn't continously box , need to close door again 
+            if (isDoor1Active.Value == true)
+            {
+                isDoor1Active.Value = !isDoor1Active.Value;
             }
         }
-        else{
-            if(door.transform.position.y<2){
-                door.transform.Translate(Vector3.up * Time.deltaTime);
-            }
-        }
-        //if laser doesn't continously box , need to close door again 
-        if(isDoor1Active.Value == true){
-            isDoor1Active.Value = !isDoor1Active.Value;
-            }
-
-        }
-        else{
+        else
+        {
             door = GameObject.Find("Door_2 Variant");
         }
     }

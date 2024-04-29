@@ -2391,7 +2391,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6166333235029796121, guid: 0dc72833edb354b4b9c96b232ebdab5a, type: 3}
       propertyPath: m_Name
-      value: Door_1 Variant
+      value: Filter
       objectReference: {fileID: 0}
     - target: {fileID: 6166333235029796121, guid: 0dc72833edb354b4b9c96b232ebdab5a, type: 3}
       propertyPath: m_Layer
@@ -3126,7 +3126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7058683303470689374, guid: 8e166d73eee1c794895124953668a153, type: 3}
       propertyPath: NextSceneName
-      value: Combine World Scene1
+      value: Scale3 World Scene
       objectReference: {fileID: 0}
     - target: {fileID: 8730415509230863179, guid: 8e166d73eee1c794895124953668a153, type: 3}
       propertyPath: m_Name
