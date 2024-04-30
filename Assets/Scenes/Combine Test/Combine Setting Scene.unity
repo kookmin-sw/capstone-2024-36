@@ -347,8 +347,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249412938}
-        m_TargetAssemblyTypeName: BrightnessSetting, Assembly-CSharp
+      - m_Target: {fileID: 1249412937}
+        m_TargetAssemblyTypeName: soundSettings, Assembly-CSharp
         m_MethodName: setBrightness
         m_Mode: 0
         m_Arguments:
@@ -1557,13 +1557,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1200021258}
   m_HandleRect: {fileID: 2107378392}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 10
+  m_MaxValue: 90
   m_WholeNumbers: 0
   m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1249412937}
+        m_TargetAssemblyTypeName: soundSettings, Assembly-CSharp
+        m_MethodName: setMouseSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1238066978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: ceadd494791e8b74db8cbe036f936dfd, type: 2}
+  Obj: {fileID: 0}
 --- !u!114 &1249412938
 MonoBehaviour:
   m_ObjectHideFlags: 0

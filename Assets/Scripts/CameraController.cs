@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     public Transform Target;
     [SerializeField] private Transform Pivot;
     [SerializeField] private Camera Cam;
+    [SerializeField] private Light BLight;
 
     private Vector3 m_smoothVelocity;
     private PlayerControl m_playerControl;
@@ -30,6 +31,9 @@ public class CameraController : MonoBehaviour
     private float m_defaultCameraZ;
     private float m_targetCameraZ;
     private Vector3 m_cameraPosition = Vector3.zero;
+
+    public static float Brightness = 1; // 밝기세팅을 위한 변수
+    public static float MouseSpeed = 50; // 마우스 속도세팅을 위한 변수
 
     public Transform getPivot() { return Pivot; }
 
@@ -56,6 +60,11 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        BLight.intensity = Brightness;
+        m_verticalSpeed = MouseSpeed;
+        m_horizontalSpeed = MouseSpeed;
+        Debug.Log(MouseSpeed);
+
         if (Target == null)
             return;
 

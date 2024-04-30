@@ -180,7 +180,7 @@ public class NetworkGrabManager : NetworkBehaviour
             m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }
         //앵글
-        if (m_catchTarget.IsOwner && Input.GetKey(m_rotateKey)) //들고있는 상태에서 돌
+        if (m_catchTarget.IsOwner && Input.GetKey(m_rotateKey) && !canChange) //들고있는 상태에서 돌
         {
             m_catchTarget.GetRigidbody().rotation = m_catchTarget.GetRigidbody().rotation * Quaternion.Euler(0f, 2.0f, 0f);
         }
