@@ -58,12 +58,14 @@ public class CameraController : MonoBehaviour
     }
 
 
+
+
     private void LateUpdate()
     {
+        //세팅창에서 설정한 변수
         BLight.intensity = Brightness;
         m_verticalSpeed = MouseSpeed;
         m_horizontalSpeed = MouseSpeed;
-        Debug.Log(MouseSpeed);
 
         if (Target == null)
             return;

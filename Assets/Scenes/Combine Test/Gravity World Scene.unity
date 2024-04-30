@@ -6741,6 +6741,10 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7224954078321432468, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
+      propertyPath: BLight
+      value: 
+      objectReference: {fileID: 1812177692}
+    - target: {fileID: 7224954078321432468, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
       propertyPath: m_maxPivotV
       value: 75
       objectReference: {fileID: 0}
