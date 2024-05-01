@@ -31,6 +31,14 @@ MonoBehaviour:
     Prefab: {fileID: 8025697493180462384, guid: 49b7d771581fd47f8960432b3a85cbfd, type: 3}
   - RegisterId: 403
     Prefab: {fileID: 1069549992600387420, guid: ef3e1f5fa4c334b0a8615ec100c5c91b, type: 3}
+  - RegisterId: 404
+    Prefab: {fileID: 3318573162003583959, guid: 700612e01cec74ac7bc420ab287086cc, type: 3}
+  - RegisterId: 405
+    Prefab: {fileID: 264308519798568513, guid: 4d78fbec0fac14aefbd409c40faab0e1, type: 3}
+  - RegisterId: 406
+    Prefab: {fileID: 8611212553416790420, guid: 8ffe63713f99f48039145adf067d98e9, type: 3}
+  - RegisterId: 407
+    Prefab: {fileID: 8242841767902432820, guid: 2d62f311e9e9841328a3b4f45a039281, type: 3}
   - RegisterId: 700
     Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
   - RegisterId: 701

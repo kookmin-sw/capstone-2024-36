@@ -20,7 +20,7 @@ public class BackToInitialPos : MonoBehaviour
         Rigidbody rb = clientObject.GetComponent<Rigidbody>();
 
         clientObject.transform.position = initialPosition;
-        clientObject.transform.rotation = initialRotations;
+        //clientObject.transform.rotation = initialRotations;
                             
         //물리 시뮬레이션 재시작 
         //isKinematic을 꺼놓은 상태라 한번 받은 힘의 영향을 계속 받아서 
