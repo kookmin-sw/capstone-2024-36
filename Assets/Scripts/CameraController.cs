@@ -83,7 +83,7 @@ public class CameraController : MonoBehaviour
         if (m_bLockMouse)
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            Cursor.visible = false;
         }
 
         // ratation
