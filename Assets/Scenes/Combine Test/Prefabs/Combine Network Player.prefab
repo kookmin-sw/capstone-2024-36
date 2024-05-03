@@ -465,7 +465,7 @@ MonoBehaviour:
   m_rightUp: 0
   leftFoot: {fileID: 0}
   rightFoot: {fileID: 0}
-  m_stepHeight: 0.03
+  m_stepHeight: 0.035
   m_footstepSound: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
 --- !u!1 &7581870567378784099
 GameObject:

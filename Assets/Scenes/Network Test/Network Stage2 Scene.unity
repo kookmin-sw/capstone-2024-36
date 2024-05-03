@@ -3569,6 +3569,10 @@ PrefabInstance:
       value: Camera (Left & Right)
       objectReference: {fileID: 0}
     - target: {fileID: 7224954078321432468, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
+      propertyPath: BLight
+      value: 
+      objectReference: {fileID: 541107219}
+    - target: {fileID: 7224954078321432468, guid: cdad33b2e82473943be0bfcbde2f0244, type: 3}
       propertyPath: m_maxPivotV
       value: 80
       objectReference: {fileID: 0}
