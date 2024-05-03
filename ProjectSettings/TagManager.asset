@@ -13,6 +13,8 @@ TagManager:
   - GravityObject
   - stars
   - GravityControl
+  - StageNumber
+  - PlayerForGravity
   layers:
   - Default
   - TransparentFX

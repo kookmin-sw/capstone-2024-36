@@ -11,7 +11,7 @@ public class SavePlayerPos : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerForGravity"))
         {
             Debug.Log("check : " + other);
             SavedPlayerPos savedPlayerPos = other.GetComponent<SavedPlayerPos>();

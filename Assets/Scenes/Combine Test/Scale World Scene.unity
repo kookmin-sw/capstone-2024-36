@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4924,27 +4924,14 @@ GameObject:
   - component: {fileID: 1190417405}
   - component: {fileID: 1190417404}
   - component: {fileID: 1190417403}
-  - component: {fileID: 1190417402}
+  - component: {fileID: 1190417407}
   m_Layer: 0
-  m_Name: Graviti Area
+  m_Name: Gravity Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1190417402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190417401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e8784af15ad4582bf96e9fb2aadd90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _priority: 1
 --- !u!65 &1190417403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5031,6 +5018,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1190417407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190417401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e8784af15ad4582bf96e9fb2aadd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priority: 1
 --- !u!1001 &1192159147
 PrefabInstance:
   m_ObjectHideFlags: 0

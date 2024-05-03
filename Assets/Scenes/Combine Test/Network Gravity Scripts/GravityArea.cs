@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class GravityArea : MonoBehaviour
 {
-    [SerializeField] private int _priority;
-    public int Priority => _priority;
+    [SerializeField] public int priority;
+    public int Priority => priority;
     
     void Start()
     {

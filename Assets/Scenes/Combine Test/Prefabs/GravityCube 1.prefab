@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -7493638663916752086}
   - component: {fileID: -3634197699350905960}
   m_Layer: 0
-  m_Name: GravityCube
+  m_Name: GravityCube 1
   m_TagString: moveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
