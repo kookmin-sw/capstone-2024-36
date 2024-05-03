@@ -216,7 +216,10 @@ MonoBehaviour:
   networkTransform: {fileID: -7377718256095586167}
   rigidbodyCollider: {fileID: 6309499927814549253}
   animator: {fileID: 0}
-  audioSource: {fileID: 0}
+  m_hostLeftFoot: {fileID: 8802118250289891053}
+  m_hostRightFoot: {fileID: 8802047639066927365}
+  m_guestLeftFoot: {fileID: 2510936348265689419}
+  m_guestRightFoot: {fileID: 2510810599946996531}
 --- !u!143 &3761582769011026831
 CharacterController:
   m_ObjectHideFlags: 0
@@ -313,10 +316,10 @@ MonoBehaviour:
   m_isRightStepping: 0
   m_leftUp: 0
   m_rightUp: 0
-  m_stepHeight: 0
-  m_leftFoot: {fileID: 8802118250289891053}
-  m_rightFoot: {fileID: 8802047639066927365}
-  m_footstepSound: {fileID: 0}
+  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 0}
+  m_stepHeight: 0.035
+  m_footstepSound: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
 --- !u!1001 &2510564653223965319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,6 +388,16 @@ PrefabInstance:
 --- !u!4 &2505798926101164371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4841806588036052, guid: d992e2f3256273946b0ddbe515d39efc, type: 3}
+  m_PrefabInstance: {fileID: 2510564653223965319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2510810599946996531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4329534018075060, guid: d992e2f3256273946b0ddbe515d39efc, type: 3}
+  m_PrefabInstance: {fileID: 2510564653223965319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2510936348265689419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4488266710434764, guid: d992e2f3256273946b0ddbe515d39efc, type: 3}
   m_PrefabInstance: {fileID: 2510564653223965319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8802749450864291033
