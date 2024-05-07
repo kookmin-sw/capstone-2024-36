@@ -6,6 +6,7 @@ public class ShootLaser : MonoBehaviour
 {
     public Color LaserColor = Color.red;
     public Material material;
+    public LaserManger lasermanger;
     
     bool isLaserActive = true;
     LaserBeam beam;
@@ -24,7 +25,9 @@ public class ShootLaser : MonoBehaviour
        if(beam != null && isLaserActive == true){
         beam.laser.positionCount = 0;
         beam.laserIndices.Clear();
-        beam.CastRay(transform.position, transform.forward, beam.laser);}
+        beam.CastRay(transform.position, transform.forward, beam.laser);
+        //beam.GenerateMeshCollider();
+        }
 
     
     }
@@ -42,6 +45,7 @@ public class ShootLaser : MonoBehaviour
         else{
             isLaserActive = true;
              beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+             beam.CheckCollision();
         }
     }
 }

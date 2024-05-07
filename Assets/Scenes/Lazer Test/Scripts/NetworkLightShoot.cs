@@ -40,19 +40,22 @@
             if(IsLocalPlayer){
                 Debug.Log("f button");
                 Vector3 playerposition = FindInChildren(transform,"Base HumanRArmDigit23").position;
+                
                 m_camera = Camera.main;
                 // Vector3 mousedirection = m_camera.transform.forward;
                 Vector3 cameraPosition = m_camera.transform.position;
-                Vector3 mousedirection = m_camera.transform.forward;
+                Vector3 camerafoward = m_camera.transform.forward;
 
-                Ray laserray = new(cameraPosition, mousedirection);
+                Ray laserray = new(cameraPosition, camerafoward);
                 // Ray laserray = m_camera.ScreenPointToRay(Input.mousePosition);
+                Vector3 directionToCameraCenter = (laserray.GetPoint(30f) - playerposition).normalized;
                 if(Physics.Raycast(laserray, out hit)){
                     // mousedirection = (hit.point - playerposition).normalized;
-                    mousedirection = m_camera.transform.forward;
-                    Debug.Log(playerposition+"+"+mousedirection);
+                    directionToCameraCenter = (hit.point - playerposition).normalized;
+                    Debug.Log(playerposition);
                 }
-                ShootLaserServerRpc(playerposition, mousedirection);
+                ShootLaserServerRpc(playerposition,directionToCameraCenter);
+                ColorChange();
             }
         }
 
@@ -103,13 +106,26 @@
             }
         }
 
+        void ColorChange(){
+            if(LaserColor == Color.red){
+                LaserColor = Color.blue;
+            }
+            else if(LaserColor == Color.blue){
+                LaserColor = Color.green;
+            }
+            else if(LaserColor == Color.green){
+                LaserColor = Color.red;
+            }
+
+        }
+
         private void SetExist(bool bExist){
         if(bExist){
         }
         else{
 
         }
-    }
+        }
 
 
     }
