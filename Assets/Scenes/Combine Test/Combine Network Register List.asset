@@ -85,3 +85,19 @@ MonoBehaviour:
     Prefab: {fileID: 8964083125199060499, guid: a6697b4f4a4ea423497c751b8ae6d6f2, type: 3}
   - RegisterId: 414
     Prefab: {fileID: 4109435457740106278, guid: 884a8aeda9e9a457bb90680f0c4d0d8a, type: 3}
+  - RegisterId: 107
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 108
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 109
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 110
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 111
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 112
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 113
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 114
+    Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
