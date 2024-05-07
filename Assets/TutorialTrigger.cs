@@ -13,6 +13,6 @@ public class TutorialTrigger : MonoBehaviour
         {
             chatManager.AddMessage(message); // 메시지 표시
             hasTriggered = true;
-}
+        }
     }
 }
