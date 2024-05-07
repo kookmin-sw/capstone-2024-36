@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4734,6 +4734,7 @@ Transform:
   - {fileID: 1997257293}
   - {fileID: 1645835946}
   - {fileID: 818818950}
+  - {fileID: 2002751763}
   m_Father: {fileID: 896833071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &361832314
@@ -5567,6 +5568,7 @@ Transform:
   m_Children:
   - {fileID: 89853052}
   - {fileID: 2080836073}
+  - {fileID: 1746748162}
   m_Father: {fileID: 607883691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &451099100
@@ -21476,6 +21478,76 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8319852, y: 7.6045933, z: 1.1433241}
   m_Center: {x: -0.0000024884946, y: -0.0000034570694, z: -0.00000008940742}
+--- !u!1 &1746748161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746748162}
+  - component: {fileID: 1746748164}
+  - component: {fileID: 1746748163}
+  m_Layer: 0
+  m_Name: Hint2-Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746748162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746748161}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.92, z: -12.79}
+  m_LocalScale: {x: 3.5, y: 1.62, z: 1.9}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432346633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1746748163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746748161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC5EC\uAE30\uC11C\uB294 \uAC01 \uCE78\uB9C8\uB2E4 \uD55C\uAC00\uC9C0\uC758
+    \uAE30\uB2A5\uC744 \uC218\uD589\uD560 \uAC83\uC785\uB2C8\uB2E4. \uAC01\uAC01\uC758
+    \uBC15\uC2A4\uB97C \uCD08\uB85D\uC0C9 \uC9C0\uC5ED\uC73C\uB85C \uB123\uC5B4\uC8FC\uC138\uC694."
+  chatManager: {fileID: 0}
+--- !u!65 &1746748164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746748161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1751048348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25711,6 +25783,80 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.831985, y: 7.6045933, z: 1.1433239}
   m_Center: {x: -0.000002488494, y: -0.0000034570694, z: -0.0000019967556}
+--- !u!1 &2002751762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002751763}
+  - component: {fileID: 2002751765}
+  - component: {fileID: 2002751764}
+  m_Layer: 0
+  m_Name: Hint1-Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002751763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002751762}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.02, z: -14.62}
+  m_LocalScale: {x: 3.24, y: 1.89, z: 1.6}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 354099723}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2002751764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002751762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uCCAB\uBC88\uC9F8 \uC2E4\uD5D8\uC785\uB2C8\uB2E4. \uC5EC\uAE30\uC5D0\uC11C\uB294
+    \uBB3C\uCCB4\uB97C \uB358\uC838\uC11C \uC62E\uAE30\uAC70\uB098 \uD06C\uAE30\uB97C
+    \uC870\uC808\uD558\uB294 \uBC29\uBC95\uC744 \uBC30\uC6C1\uB2C8\uB2E4.  \uC55E\uC5D0
+    \uBCF4\uC774\uB294 \uBC18\uD22C\uBA85\uD55C \uBCBD\uC740 \uC0AC\uB78C\uB9CC \uC9C0\uB098\uAC08
+    \uC218 \uC788\uACE0 \uBB3C\uCCB4\uB294 \uC9C0\uB098\uAC08 \uC218\uC5C6\uC2B5\uB2C8\uB2E4.
+    \uBB3C\uCCB4\uB97C \uB4E4\uC5B4\uC11C \uAC74\uB108\uD3B8\uC5D0 \uC788\uB294 \uCD08\uB85D\uC0C9
+    \uC9C0\uC5ED\uAE4C\uC9C0 \uC62E\uAE30\uC138\uC694"
+  chatManager: {fileID: 0}
+--- !u!65 &2002751765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002751762}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2003021431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26901,6 +27047,7 @@ GameObject:
   - component: {fileID: 2071622823}
   - component: {fileID: 2071622821}
   - component: {fileID: 2071622828}
+  - component: {fileID: 2071622829}
   m_Layer: 9
   m_Name: CubeGravityArea
   m_TagString: Untagged
@@ -27042,6 +27189,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 1607280111}
   nextObsObjPrefab: {fileID: 2003021432}
+--- !u!114 &2071622829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071622820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. \uD55C\uBC88 \uCD08\uB85D\uC0C9
+    \uAD6C\uC5ED\uC5D0 \uB4E4\uC5B4\uAC04 \uBB3C\uCCB4\uB294 \uB2E4\uC2DC \uC62E\uAE38
+    \uC218 \uC5C6\uAC8C\uB418\uB2C8 \uC720\uC758\uD574\uC8FC\uC138\uC694. \uB2E4\uC74C\uAD6C\uC5ED\uC73C\uB85C
+    \uB118\uC5B4\uAC00\uC8FC\uC138\uC694"
+  chatManager: {fileID: 0}
 --- !u!1001 &2073110507
 PrefabInstance:
   m_ObjectHideFlags: 0
