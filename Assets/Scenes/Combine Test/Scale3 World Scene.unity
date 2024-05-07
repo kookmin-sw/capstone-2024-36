@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6700,6 +6700,7 @@ GameObject:
   - component: {fileID: 502037790}
   - component: {fileID: 502037789}
   - component: {fileID: 502037788}
+  - component: {fileID: 502037794}
   m_Layer: 9
   m_Name: CubeGravityArea1-2-1
   m_TagString: Untagged
@@ -6841,6 +6842,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502037786}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &502037794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502037786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. "
+  chatManager: {fileID: 0}
 --- !u!1001 &514036628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14915,6 +14930,7 @@ GameObject:
   - component: {fileID: 1160203182}
   - component: {fileID: 1160203181}
   - component: {fileID: 1160203185}
+  - component: {fileID: 1160203186}
   m_Layer: 0
   m_Name: Gravity Area
   m_TagString: Untagged
@@ -15021,6 +15037,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 1
+--- !u!114 &1160203186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160203179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. "
+  chatManager: {fileID: 0}
 --- !u!1001 &1171718242
 PrefabInstance:
   m_ObjectHideFlags: 0
