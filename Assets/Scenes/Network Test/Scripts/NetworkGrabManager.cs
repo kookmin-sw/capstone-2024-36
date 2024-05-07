@@ -171,11 +171,11 @@ public class NetworkGrabManager : NetworkBehaviour
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
         Debug.Log("isGrabbed = " + m_catchTarget.GetComponent<NetworkGrabbable>().isGrabbed);
         bool canChange = m_catchTarget.GetComponent<NetworkGrabbable>().isGrabbed;
-        if (m_catchTarget.IsOwner && wheelInput > 0 && !canChange && m_catchTarget.transform.localScale.x > 0.1f) //들고 있는 상태에서 크기조정
+        if (m_catchTarget.IsOwner && wheelInput > 0 && !canChange && m_catchTarget.transform.localScale.x < 5.9f) //들고 있는 상태에서 크기조정
         {
             m_catchTarget.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
-        if (m_catchTarget.IsOwner && wheelInput < 0 && !canChange && m_catchTarget.transform.localScale.x < 4.0f)
+        if (m_catchTarget.IsOwner && wheelInput < 0 && !canChange && m_catchTarget.transform.localScale.x > 0.2f)
         {
             m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }

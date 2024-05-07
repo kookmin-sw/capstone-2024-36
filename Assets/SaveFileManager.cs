@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -150,7 +150,7 @@ public class SaveFileManager : SingletoneComponent<SaveFileManager>
                 }
             }
         }
-        else    // ³»°¡ °Ô½ºÆ®ÀÎ °æ¿ì
+        else   
         {
             Player1Sprite.rectTransform.anchoredPosition = new Vector2(-80.0f, 0.0f);
             Player2Sprite.enabled = true;
