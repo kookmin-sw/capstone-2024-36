@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class TutorialTrigger : MonoBehaviour
 {
-    public string message; // Ç¥½ÃÇÒ ¸Þ½ÃÁö
-    public ChatManager chatManager; // Ã¤ÆÃ ¸Å´ÏÀú ÂüÁ¶
+    public string message; // Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½
+    public ChatManager chatManager; // Ã¤ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private bool hasTriggered = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasTriggered) // ÇÃ·¹ÀÌ¾î°¡ Æ®¸®°Å¿¡ µé¾î¿À¸é
+        if (other.CompareTag("PlayerForGravity") && !hasTriggered) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ Æ®ï¿½ï¿½ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            chatManager.AddMessage(message); // ¸Þ½ÃÁö Ç¥½Ã
+            chatManager.AddMessage(message); // ï¿½Þ½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
             hasTriggered = true;
         }
         else if (other.CompareTag("moveable") && !hasTriggered)
         {
-            chatManager.AddMessage(message); // ¸Þ½ÃÁö Ç¥½Ã
+            chatManager.AddMessage(message); // ï¿½Þ½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
             hasTriggered = true;
         }
     }
