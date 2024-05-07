@@ -7,13 +7,22 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     public Color LaserColor = Color.red;
     public Material material;
 
+    public LaserManger lasermanger;
+
     public bool thisscene = true;
 
     // 레이저의 활성화 상태를 나타내는 Network Variable
     public NetworkVariable<bool> isLaserActive = new NetworkVariable<bool>(
         false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    LaserBeam beam;
+    public LaserBeam beam;
+
+    private float lastUpdateTime; // 마지막으로 업데이트된 시간
+    public float updateInterval = 0.5f; // 업데이트 간격 설정 (초 단위)
+
+    void Start(){
+        lasermanger = GameObject.Find("LaserManger").GetComponent<LaserManger>();
+    }
 
     void Update()
     {
@@ -21,20 +30,26 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
             //beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
         }
         else{
-             if (isLaserActive.Value && beam != null)
+            if (isLaserActive.Value && beam != null)
             {
-                beam.laser.positionCount = 0;
-                beam.laserIndices.Clear();  
-                beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
+                beam.laserObject.SetActive(true);
+                beam.laserObject.GetComponent<LineRenderer>().startColor = LaserColor;
+                beam.laserObject.GetComponent<LineRenderer>().endColor = LaserColor;
+                beam.laserColor = LaserColor;
+                // beam.laser.positionCount = 0;
+                // beam.laserIndices.Clear();  
+                // beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
             }
             else if (!isLaserActive.Value && beam != null)
             {
-                beam.laser.positionCount = 0;
-                beam.laserIndices.Clear();
+                beam.laserObject.SetActive(false);
+                // beam.laser.positionCount = 0;
+                // beam.laserIndices.Clear();
             }
         }
             
         }
+        
         
        
     }
@@ -90,6 +105,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
             if (beam == null)
             {
                 beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+                lasermanger.lasers.Add(gameObject);
                 Debug.Log("빔생성");
             }
         }
@@ -101,6 +117,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
         if(bExist){
             if(beam == null && isLaserActive.Value){
                 beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+                lasermanger.lasers.Add(gameObject);
                 Debug.Log("빔생성");
             }
             for (int i = 0; i < transform.childCount; i++)
@@ -123,6 +140,17 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
             isLaserActive.Value = false;
             thisscene = false;
         }
+    }
+
+
+    public void Shootlaser()
+    {
+        beam.laser.positionCount = 0;
+        beam.laserIndices.Clear();
+        beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
+        beam.UpdateCollider();
+        // beam.Offcollider();
+        // beam.GenerateMeshCollider();
     }
 
 }
