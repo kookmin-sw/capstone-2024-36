@@ -56,6 +56,7 @@ public class NetworkGravityRay : NetworkBehaviour
     [ClientRpc]
     void ToIPosClientRpc(int hitObjectRegisterID)
     {
+        Debug.Log("Check : ToIPosClientRpc " + hitObjectRegisterID);
         GameObject[] allClientObjects = GameObject.FindGameObjectsWithTag("moveable");
 
         foreach (GameObject clientObject in allClientObjects)

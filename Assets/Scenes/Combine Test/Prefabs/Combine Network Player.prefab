@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 8030350346223149365}
   m_Layer: 8
   m_Name: Combine Network Player
-  m_TagString: Player
+  m_TagString: PlayerForGravity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,6 @@ MonoBehaviour:
   networkTransform: {fileID: -7377718256095586167}
   rigidbodyCollider: {fileID: 6309499927814549253}
   animator: {fileID: 0}
-  audioSource: {fileID: 0}
   m_hostLeftFoot: {fileID: 8802118250289891053}
   m_hostRightFoot: {fileID: 8802047639066927365}
   m_guestLeftFoot: {fileID: 2510936348265689419}
@@ -466,7 +465,7 @@ MonoBehaviour:
   m_rightUp: 0
   leftFoot: {fileID: 0}
   rightFoot: {fileID: 0}
-  m_stepHeight: 0.03
+  m_stepHeight: 0.035
   m_footstepSound: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
 --- !u!1 &7581870567378784099
 GameObject:

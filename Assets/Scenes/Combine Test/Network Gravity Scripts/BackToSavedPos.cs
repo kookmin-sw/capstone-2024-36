@@ -9,7 +9,7 @@ public class BackToSavedPos : NetworkBehaviour
     void Start()
     {
         transform.GetComponent<Collider>().isTrigger = true;
-        Debug.Log("check BackToSavedPos Start");
+        Debug.Log("check BackToSavedPos Start : " + this.gameObject.name);
     }
 
     [ServerRpc]
@@ -23,11 +23,8 @@ public class BackToSavedPos : NetworkBehaviour
     {
         if (regId == -1)
         {
-            Debug.Log("check regId " + regId);
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            Debug.Log("check playerObj " + playerObj);
+            GameObject playerObj = GameObject.FindGameObjectWithTag("PlayerForGravity");
             SavedPlayerPos savedPlayerPos = playerObj.GetComponent<SavedPlayerPos>();
-            Debug.Log("check playerObj " + savedPlayerPos);
             playerObj.transform.position = savedPlayerPos.playerPos;
         }
         else
@@ -53,9 +50,9 @@ public class BackToSavedPos : NetworkBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerForGravity"))
         {
-            Debug.Log("check if player : " + other);
+            Debug.Log("check if player collide : " + other.gameObject.name);
 
             BackToSavedPosServerRpc(-1);
 
@@ -71,6 +68,25 @@ public class BackToSavedPos : NetworkBehaviour
             BackToSavedPosServerRpc(otherRegisterID);
         }
     }
+     void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("PlayerForGravity"))
+        {
+            Debug.Log("check if player collide : " + other.gameObject.name);
 
+            BackToSavedPosServerRpc(-1);
+
+        }
+        else if (other.CompareTag("moveable"))
+        {
+            Debug.Log("check if other obj : " + other);
+            BackToInitialPos moveableTransform = other.GetComponent<BackToInitialPos>();
+
+            MyNetworkTransform myNetworkTransform = other.gameObject.GetComponent<MyNetworkTransform>();
+            int otherRegisterID = myNetworkTransform.RegisterId;
+
+            BackToSavedPosServerRpc(otherRegisterID);
+        }
+    }
     
 }

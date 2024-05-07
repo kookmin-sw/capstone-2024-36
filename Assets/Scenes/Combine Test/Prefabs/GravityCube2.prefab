@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4325001699521127514}
   - component: {fileID: 4517120974227941663}
   - component: {fileID: 8336505692218119642}
-  - component: {fileID: 1904068719052051562}
   - component: {fileID: -8490592098726045908}
+  - component: {fileID: 1904068719052051562}
   - component: {fileID: 1567902928458582172}
   - component: {fileID: -7493638663916752086}
   - component: {fileID: -3634197699350905960}
@@ -138,6 +138,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8490592098726045908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025697493180462384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 899533577
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!114 &1904068719052051562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,27 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityForceMin: 1000
   gravityForceMax: 1000
---- !u!114 &-8490592098726045908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8025697493180462384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3039883116
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 0
 --- !u!114 &1567902928458582172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   IsHolding:
     m_InternalValue: 0
   m_rigidBody: {fileID: 8336505692218119642}
+  isGrabbed: 0
 --- !u!114 &-3634197699350905960
 MonoBehaviour:
   m_ObjectHideFlags: 0
