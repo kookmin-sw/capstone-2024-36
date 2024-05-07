@@ -8,16 +8,16 @@ public class ChatManager : MonoBehaviour
 
     void Awake()
     {
+        
         // 싱글톤 패턴 구현
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // 씬 전환 시 파괴되지 않도록 설정
         }
         else
         {
-            Destroy(gameObject);  // 중복 인스턴스가 생성되지 않도록 처리
         }
+        
     }
 
     // 채팅 메시지를 채팅창에 추가하는 메소드

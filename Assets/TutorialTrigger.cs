@@ -9,7 +9,12 @@ public class TutorialTrigger : MonoBehaviour
     private bool hasTriggered = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasTriggered) // 플레이어가 트리거에 들어오면
+        if (other.CompareTag("PlayerForGravity") && !hasTriggered) // 플레이어가 트리거에 들어오면
+        {
+            chatManager.AddMessage(message); // 메시지 표시
+            hasTriggered = true;
+        }
+        else if (other.CompareTag("moveable") && !hasTriggered)
         {
             chatManager.AddMessage(message); // 메시지 표시
             hasTriggered = true;

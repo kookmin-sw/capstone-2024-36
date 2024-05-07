@@ -9,11 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4064438781998964111}
-  - component: {fileID: 7479649237607603934}
-  - component: {fileID: -2099205837993649622}
   - component: {fileID: -2183150713918061832}
   - component: {fileID: 9050751240923510756}
-  - component: {fileID: 7313901802688208937}
   - component: {fileID: -5336588883881092236}
   m_Layer: 10
   m_Name: light clear box
@@ -38,48 +35,6 @@ Transform:
   - {fileID: 2286961795940358994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7479649237607603934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8319281662908137179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1151529824
-  InScenePlacedSourceGlobalObjectIdHash: 0
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 0
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 0
---- !u!114 &-2099205837993649622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8319281662908137179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de28113beac09ef4bb9a604689a07140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlacedByDesigner: 0
-  CurrentSceneIndex: -1
-  SceneSequenceNumber: 0
-  m_isReadyForPlaced: 0
-  m_isPlaced: 0
-  RegisterId: -1
-  smoothDampTime: 0.1
-  sendPerSec: 10
-  bKeepSendWhenNotExist: 1
 --- !u!65 &-2183150713918061832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -128,21 +83,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7313901802688208937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8319281662908137179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4acc7c79cb43d44a213f91610b6db6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsHolding:
-    m_InternalValue: 0
-  m_rigidBody: {fileID: 9050751240923510756}
 --- !u!114 &-5336588883881092236
 MonoBehaviour:
   m_ObjectHideFlags: 0
