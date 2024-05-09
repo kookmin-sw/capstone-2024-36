@@ -86,7 +86,7 @@ public class NetworkGrabManager : NetworkBehaviour
 
     void PickupObject(GameObject pickObj)
     {
-        m_catchTarget = pickObj.GetComponent<NetworkGrabbable>(); //선택된 타겟의 grabbagble
+        m_catchTarget = pickObj.GetComponent<NetworkGrabbable>(); //선택된 타겟의 grabbable
         if (m_catchTarget == null)
             return;
 
