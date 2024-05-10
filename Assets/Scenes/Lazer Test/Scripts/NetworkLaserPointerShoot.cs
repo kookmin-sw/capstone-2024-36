@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using System;
+using System.Collections.Generic;
 
 public class NetworkLaserPointerShoot : NetworkBehaviour
 {
@@ -8,6 +9,8 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     public Material material;
 
     public LaserManger lasermanger;
+
+    public List<GameObject> colliders;
 
     public bool thisscene = true;
 
@@ -33,8 +36,10 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
             if (isLaserActive.Value && beam != null)
             {
                 beam.laserObject.SetActive(true);
+                beam.EndPoint.SetActive(true);
                 beam.laserObject.GetComponent<LineRenderer>().startColor = LaserColor;
                 beam.laserObject.GetComponent<LineRenderer>().endColor = LaserColor;
+                beam.EndPoint.name = "EndCollider" + (int)( LaserColor.r *255 ) + (int)( LaserColor.g * 255) + (int)( LaserColor.b * 255);
                 beam.laserColor = LaserColor;
                 // beam.laser.positionCount = 0;
                 // beam.laserIndices.Clear();  
@@ -43,6 +48,8 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
             else if (!isLaserActive.Value && beam != null)
             {
                 beam.laserObject.SetActive(false);
+                beam.Offcollider();
+                beam.EndPoint.SetActive(false);
                 // beam.laser.positionCount = 0;
                 // beam.laserIndices.Clear();
             }

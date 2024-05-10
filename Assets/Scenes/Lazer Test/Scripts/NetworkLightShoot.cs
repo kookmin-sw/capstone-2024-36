@@ -52,7 +52,6 @@
                 if(Physics.Raycast(laserray, out hit)){
                     // mousedirection = (hit.point - playerposition).normalized;
                     directionToCameraCenter = (hit.point - playerposition).normalized;
-                    Debug.Log(playerposition);
                 }
                 ShootLaserServerRpc(playerposition,directionToCameraCenter);
                 ColorChange();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class WallColor : MonoBehaviour
@@ -13,12 +14,36 @@ public class WallColor : MonoBehaviour
     private bool IsBlue = false;
     private bool IsGreen = false;
     private Color mix = Color.black;
+    public GameObject door;
+
+    private MeshRenderer meshRenderer;
 
 
     public Color ClearWallColor;
+    void Awake(){
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
     
     void Update(){
+        ColorOFF();
         
+    }
+
+    void UpdaetWallColor(){
+        mix = mixColor();
+        SetWallColor(mix);
+        // mix = outcolor;
+        if( mix == ClearWallColor){
+            if (door.transform.position.y > -2)
+                {
+                    door.transform.Translate(Vector3.down * Time.deltaTime *3);
+                }
+            else
+                {
+                    door.transform.Translate(Vector3.up * Time.deltaTime);
+                }
+        }
+
     }
 
     public void ColorOn(Color color){
@@ -32,13 +57,17 @@ public class WallColor : MonoBehaviour
             IsGreen = true;
         }
     }
+    public void ColorOFF(){
+        IsRed =false;
+        IsBlue =false;
+        IsGreen = false;
+    }
 
     public void SetWallColor(Color color)
     {
-        Renderer renderer = GetComponent<Renderer>();
-        if (renderer != null)
+        if (meshRenderer != null)
         {
-            renderer.material.color = color;
+            meshRenderer.material.color = color;
         }
     }
 
@@ -48,9 +77,61 @@ public class WallColor : MonoBehaviour
         float greenValue = IsGreen ? 1f : 0f;
 
         // 각 색상 채널을 누적하여 새로운 색상을 생성
-        Color mix = new Color(redValue, greenValue, blueValue);
+        mix = new Color(redValue, greenValue, blueValue);
 
         return mix;
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("trigger");
+        // if (collision.gameObject.name == "LaserCollider25500")
+        // {
+        //     IsRed  = true;
+        // }
+        // else if (collision.gameObject.name == "LaserCollider00255")
+        // {
+        //     IsBlue  = true;
+        // }
+        // else if (collision.gameObject.name == "LaserCollider02550")
+        // {
+        //     IsGreen  = true;
+        // }
+    }
+
+
+    void OnTriggerStay(Collider collision){
+        Debug.Log("stay");
+        if (collision.gameObject.name == "EndCollider25500")
+        {
+            IsRed  = true;
+        }
+        if (collision.gameObject.name == "EndCollider00255")
+        {
+            IsBlue  = true;
+        }
+        if (collision.gameObject.name == "EndCollider02550")
+        {
+            IsGreen  = true;
+        }
+        UpdaetWallColor();     
+    }
+
+    void OnTriggerExit(Collider collision){
+        Debug.Log("exit");
+        // if (collision.gameObject.name == "EndColliderCollider25500")
+        // {
+        //     IsRed  = false;
+        // }
+        // else if (collision.gameObject.name == "EndColliderCollider00255")
+        // {
+        //     IsBlue  = false;
+        // }
+        // else if (collision.gameObject.name == "EndColliderCollider02550")
+        // {
+        //     IsGreen  = false;
+        // }
+
     }
 
     public void SetinColor(Color color){
