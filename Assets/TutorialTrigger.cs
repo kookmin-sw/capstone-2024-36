@@ -5,19 +5,24 @@ using UnityEngine;
 public class TutorialTrigger : MonoBehaviour
 {
     public string message; // 표시할 메시지
-    public ChatManager chatManager; // 채팅 매니저 참조
     private bool hasTriggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerForGravity") && !hasTriggered) // 플레이어가 트리거에 들어오면
+        // 플레이어가 트리거에 들어오면 메시지 표시
+        if ((other.CompareTag("PlayerForGravity") || other.CompareTag("moveable")) && !hasTriggered)
         {
-            chatManager.AddMessage(message); // 메시지 표시
-            hasTriggered = true;
-        }
-        else if (other.CompareTag("moveable") && !hasTriggered)
-        {
-            chatManager.AddMessage(message); // 메시지 표시
-            hasTriggered = true;
+            // DontDestroyOnLoad 상태의 ChatManager 인스턴스 찾기
+            ChatManager chatManager = DontDestroyOnLoadManager.FindChatManagerInDontDestroyOnLoad();
+            if (chatManager != null)
+            {
+                chatManager.AddMessage(message);
+                hasTriggered = true;
+            }
+            else
+            {
+                Debug.LogError("ChatManager not found in DontDestroyOnLoad scene.");
+            }
         }
     }
 }

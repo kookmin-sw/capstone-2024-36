@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3240,8 +3240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "AI SENMA : \uC67C\uCABD\uBD80\uD130 Scale, Laser, Gravity Stage\uC785\uB2C8\uB2E4. "
-  chatManager: {fileID: 1978974819}
+  message: "AI SENMA : \uC67C\uCABD\uBD80\uD130 \uC5FC\uB825, \uC911\uB825, \uB808\uC774\uC800
+    \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
 --- !u!65 &314084343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3272,7 +3272,7 @@ Transform:
   m_GameObject: {fileID: 314084341}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3.4043686, y: 0, z: 197.62674}
+  m_LocalPosition: {x: 2.49, y: 1.29, z: 205.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17478,7 +17478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142.34387
+      value: -141.5
       objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.y
