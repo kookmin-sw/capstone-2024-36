@@ -15,12 +15,19 @@ public class NetworkPlayer
     [SerializeField] bool isLocal = false;
     [SerializeField] ulong ownerClientId;
     [SerializeField] private float m_speedY;
+    [SerializeField] bool isOnGround = false;
 
     [Header("Setting")]
     [SerializeField] int walkSpeed;
     [SerializeField] float Gravity;
     [SerializeField] float MaxGravity;
     [SerializeField] float JumpPower;
+    [SerializeField] private bool drawGizmo;
+
+    [Header("Setting - Ground Check")]
+    [SerializeField] private Vector3 groundBoxSize;
+    [SerializeField] private Vector3 groundBoxOffset;
+    [SerializeField] private LayerMask groundLayerMask;
 
     [Header("Input")]
     [SerializeField] Vector2 movementInput;
@@ -75,8 +82,25 @@ public class NetworkPlayer
             LocalIstance = this;
             isLocal = true;
         }
+        else
+        {
+            drawGizmo = false;
+        }
+        
 
         m_lastPostion = transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!IsOwner)
+            return;
+
+        if (!drawGizmo)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position + groundBoxOffset, groundBoxSize);
     }
 
     private void Update()
@@ -84,6 +108,8 @@ public class NetworkPlayer
         // move character tranform by CharacterController
         if (IsOwner && characterController.enabled)
         {
+            isOnGround = GroundCheck();
+
             Vector3 new_forward = Camera.main.transform.forward;
             new_forward.y = 0;
             transform.forward = new_forward;
@@ -125,30 +151,29 @@ public class NetworkPlayer
                 }
             }
 
-            //발소리
-            //if (speedDelta.magnitude > float.Epsilon)
-            //{
-            //    if (!audioSource.isPlaying)
-            //        audioSource.Play();
+            if (!isOnGround)
+            {
+                m_speedY -= Gravity * Time.deltaTime;
+                if (m_speedY < -MaxGravity)
+                    m_speedY = -MaxGravity;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isOnGround = false;
+                m_speedY = JumpPower;
+            }
 
-            //}
-            //else
-            //{
-            //    audioSource.Stop();
-            //}
-
-            m_speedY -= Gravity * Time.deltaTime;
-            if (m_speedY < -MaxGravity)
-                m_speedY = -MaxGravity;
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isOnGround = false;
+                m_speedY = JumpPower;
+            }
+#endif
 
             if (characterController.isGrounded)
             {
                 m_speedY = 0;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                m_speedY = JumpPower;
             }
 
             characterController.Move(Vector3.up * m_speedY * Time.deltaTime);
@@ -272,5 +297,20 @@ public class NetworkPlayer
             transform.position = SpawnPosManager.Instance.GuestSpawnPos.position;
             transform.position += new Vector3(0, characterController.skinWidth, 0);
         }
+    }
+
+    public bool GroundCheck()
+    {
+        Vector3 center = transform.position - new Vector3(0.0f, -groundBoxSize.y, 0.0f) + groundBoxOffset;
+
+        bool _isOnGround = Physics.BoxCast(
+            center,
+            groundBoxSize * 0.5f, // half extents
+            -transform.up, transform.rotation,
+            groundBoxSize.y, groundLayerMask
+        );
+
+        return _isOnGround;
+
     }
 }
