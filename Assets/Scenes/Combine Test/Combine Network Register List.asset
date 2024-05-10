@@ -101,3 +101,13 @@ MonoBehaviour:
     Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
   - RegisterId: 114
     Prefab: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+  - RegisterId: 710
+    Prefab: {fileID: 4304498387937030328, guid: 5e4b531d29ee1424d86cc2b3c1b1436b, type: 3}
+  - RegisterId: 711
+    Prefab: {fileID: 4304498387937030328, guid: 5e4b531d29ee1424d86cc2b3c1b1436b, type: 3}
+  - RegisterId: 712
+    Prefab: {fileID: 4304498387937030328, guid: 5e4b531d29ee1424d86cc2b3c1b1436b, type: 3}
+  - RegisterId: 713
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
+  - RegisterId: 714
+    Prefab: {fileID: 8319281662908137179, guid: 28bd5122d67420748b956479d61b4bcd, type: 3}
