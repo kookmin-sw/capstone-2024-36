@@ -157,10 +157,15 @@ public class NetworkPlayer
                 if (m_speedY < -MaxGravity)
                     m_speedY = -MaxGravity;
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else
             {
-                isOnGround = false;
-                m_speedY = JumpPower;
+                m_speedY = 0.0f;
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    isOnGround = false;
+                    m_speedY = JumpPower;
+                }
             }
 
 #if UNITY_EDITOR
