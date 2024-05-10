@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserManger : MonoBehaviour
 {
     public List<GameObject> lasers;
+    public GameObject wall23;
     private int currentLaserIndex = 0; // 현재 레이저 인덱스
     NetworkLaserPointerShoot laserPointer;
     // Start is called before the first frame update
@@ -25,7 +26,13 @@ public class LaserManger : MonoBehaviour
 
         if (laserPointer != null && currentLaser.activeSelf)
         {
+            // if(currentLaserIndex ==0){
+            //     wall23.GetComponent<WallColor>().ColorOFF();
+            // }
             laserPointer.Shootlaser();
+        }
+        else if (laserPointer != null && currentLaser.activeSelf == false){
+            laserPointer.beam.Offcollider();
         }
 
         currentLaserIndex++; // 다음 레이저로 인덱스 이동

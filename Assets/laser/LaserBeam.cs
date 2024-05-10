@@ -7,6 +7,8 @@ public class LaserBeam
 {
     Vector3 pos, dir;
     public GameObject laserObject;
+
+    public GameObject EndPoint;
     public LineRenderer laser;
     public List<Vector3> laserIndices = new List<Vector3>();
     private List<BoxCollider> colliders = new List<BoxCollider>();
@@ -24,6 +26,11 @@ public class LaserBeam
 
         this.laserObject.AddComponent<BoxCollider>();
         this.laserObject.GetComponent<BoxCollider>().isTrigger = true;
+        EndPoint = new("EndCollider");
+        EndPoint.AddComponent<BoxCollider>();
+        EndPoint.GetComponent<BoxCollider>().isTrigger = true;
+        EndPoint.layer = LayerMask.NameToLayer("Filter");
+        EndPoint.name = "EndCollider"+ (int)(color.r *255 ) + (int)(color.g * 255) + (int)(color.b * 255);
 
         this.pos = pos;
         this.dir = dir;
@@ -47,7 +54,6 @@ public class LaserBeam
         this.laserObject.AddComponent<MeshCollider>();
         this.laserObject.AddComponent<MeshFilter>();
         this.laserObject.AddComponent<Rigidbody>();
-
 
         this.pos = pos;
         this.dir = dir;
@@ -73,7 +79,7 @@ public class LaserBeam
         layerMask = ~layerMask; // 필터 레이어를 제외한 다른 모든 레이어를 활성화합니다.
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
-            CheckHit(hit, dir);
+            CheckHit(ray, hit, dir);
         }
         else
         {
@@ -95,10 +101,11 @@ public class LaserBeam
         Offcollider();
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
-            CheckHit(hit, dir);
+            CheckHit(ray,hit, dir);
         }
         else
         {
+            EndPoint.GetComponent<BoxCollider>().transform.position = ray.GetPoint(500);
             laserIndices.Add(ray.GetPoint(500));
             UpdateLaser();
         }
@@ -120,9 +127,8 @@ public class LaserBeam
         {
             Vector3 startPos = laser.GetPosition(i);
             Vector3 endPos = laser.GetPosition(i + 1);
-            Debug.Log(startPos +"end " +  endPos);
             if(i >= colliders.Count){
-                CreateBoxCollider(startPos,endPos);
+                CreateBoxCollider(startPos,endPos,this.laserColor);
                 Debug.Log("create");
             }
             else{
@@ -146,12 +152,12 @@ public class LaserBeam
 
     }
 
-    void CreateBoxCollider(Vector3 startPos, Vector3 endPos)
+    void CreateBoxCollider(Vector3 startPos, Vector3 endPos, Color color)
     {
         Vector3 midPoint = (startPos + endPos) / 2f;
         Vector3 colliderSize = new Vector3(Vector3.Distance(startPos, endPos), 0.1f, 0.1f);
 
-        GameObject colliderObject = new GameObject("LaserCollider");
+        GameObject colliderObject = new GameObject("LaserCollider"  + (int)(color.r *255 ) + (int)(color.g * 255) + (int)(color.b * 255));
         colliderObject.transform.position = midPoint;
 
         // 레이저의 방향을 향하도록 콜라이더의 회전 설정
@@ -181,8 +187,11 @@ public class LaserBeam
     }
 
     
-    void CheckHit(RaycastHit hitInfo, Vector3 direction)
+    void CheckHit(Ray ray, RaycastHit hitInfo, Vector3 direction)
     {
+        if( this.laser.name != "laserability"){
+                EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+        }
         if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Mirror"))
         {
             Vector3 hitPoint = hitInfo.point;
@@ -193,17 +202,19 @@ public class LaserBeam
         else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             if( this.laser.name != "laserability"){
-            Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
-            WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
-            Color wallColor = wallc.incolor;
+                // WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
+                // wallc.ColorOn(laserColor);
+            // Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
+            // WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
+            // Color wallColor = wallc.incolor;
 
-            Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
-            wallc.SetinColor(mixedColor);
-            wallc.SetoutColor();
-            if(wallc.incolor.r == 1 || wallc.incolor.g ==1 || wallc.incolor.b ==1){
-                wallc.outcolor = wallc.incolor;
-            }
-            hitRenderer.material.color = wallc.outcolor;
+            // Color mixedColor = (wallColor + laserColor) /2f; // 색상 혼합
+            // wallc.SetinColor(mixedColor);
+            // wallc.SetoutColor();
+            // if(wallc.incolor.r == 1 || wallc.incolor.g ==1 || wallc.incolor.b ==1){
+            //     wallc.outcolor = wallc.incolor;
+            // }
+            // hitRenderer.material.color = wallc.outcolor;
             }
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
@@ -223,11 +234,15 @@ public class LaserBeam
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }
+        // if( this.laser.name != "laserability" && hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Mirror")){
+        //         EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+        // }
         if (hitInfo.collider.CompareTag("LaserPoint") && this.laser.name == "laserability")
         {
             Debug.Log("laserpointer by laserability hit");
             hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().LaserColor = laserColor;
             hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().Onofflaser();
+            Offcollider();
         }
     }
     Color MixColors(Color color1, Color color2)
