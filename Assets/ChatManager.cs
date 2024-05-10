@@ -1,39 +1,79 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections;  // 이 줄을 추가하세요
+using System.Collections;
+using System.Collections.Generic;
 
 public class ChatManager : MonoBehaviour
 {
-    public static ChatManager Instance;  // 싱글톤 인스턴스
-    public TextMeshProUGUI chatText;     // 채팅창에 텍스트를 표시할 TextMeshProUGUI
-    public ScrollRect scrollRect;        // 채팅창 스크롤바 컨트롤을 위한 ScrollRect
+    public static ChatManager Instance;
+    public TextMeshProUGUI chatText;
+    public ScrollRect scrollRect;
+    public RectTransform chatRectTransform;
+    private Vector2 originalSize;
+    private Queue<string> messageQueue = new Queue<string>();
+    private bool isMessageRunning = false;
+    private bool isChatExpanded = false; // 채팅창 확장 상태를 추적하는 변수
 
     void Awake()
     {
-        // 싱글톤 패턴 구현
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // 씬 전환 시 파괴되지 않도록 설정
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);  // 중복 인스턴스 제거
+            Destroy(gameObject);
+        }
+        originalSize = chatRectTransform.sizeDelta; // 원래 채팅창 크기를 저장
+    }
+
+    public void AddMessage(string message)
+    {
+        messageQueue.Enqueue(message + "\n");
+        if (!isMessageRunning)
+        {
+            StartCoroutine(ShowMessages());
         }
     }
 
-    // 채팅 메시지를 채팅창에 추가하는 메소드
-    public void AddMessage(string message)
+    IEnumerator ShowMessages()
     {
-        chatText.text += message + "\n";
-        StartCoroutine(AdjustScrollPosition());  // 스크롤 위치 조정 코루틴 호출
+        isMessageRunning = true;
+        while (messageQueue.Count > 0)
+        {
+            string message = messageQueue.Dequeue();
+            foreach (char letter in message)
+            {
+                chatText.text += letter;
+                yield return new WaitForSeconds(0.03f);
+            }
+            yield return new WaitForEndOfFrame();
+            scrollRect.verticalNormalizedPosition = 0f;
+        }
+        isMessageRunning = false;
     }
 
-    // 스크롤 위치를 최하단으로 조정하는 코루틴
-    IEnumerator AdjustScrollPosition()
+    void Update()
     {
-        yield return new WaitForEndOfFrame();  // 프레임 끝을 기다림
-        scrollRect.verticalNormalizedPosition = 0f;  // 스크롤을 최하단으로 이동
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ToggleChatWindowSize();
+        }
+    }
+
+    private void ToggleChatWindowSize()
+    {
+        if (!isChatExpanded)
+        {
+            chatRectTransform.sizeDelta = new Vector2(originalSize.x, originalSize.y * 2);
+            isChatExpanded = true;
+        }
+        else
+        {
+            chatRectTransform.sizeDelta = originalSize;
+            isChatExpanded = false;
+        }
     }
 }

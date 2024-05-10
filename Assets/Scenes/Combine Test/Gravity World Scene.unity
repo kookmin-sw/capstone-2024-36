@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16826874, g: 0.1701757, b: 0.16826874, a: 1}
+  m_IndirectSpecularColor: {r: 0.16494176, g: 0.1658155, b: 0.16494176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10109,16 +10109,17 @@ Transform:
   - {fileID: 1050423727}
   - {fileID: 2131832523}
   - {fileID: 1668121022}
+  - {fileID: 317688200}
   - {fileID: 1437793206}
   - {fileID: 1560210952}
   - {fileID: 463381640}
-  - {fileID: 317688200}
   - {fileID: 1757322186}
   - {fileID: 1713012751}
   - {fileID: 416042238}
   - {fileID: 2127568670}
   - {fileID: 1639076453}
   - {fileID: 742090855}
+  - {fileID: 868911301}
   - {fileID: 640046101}
   - {fileID: 2022415379}
   - {fileID: 538765814}
@@ -13897,6 +13898,7 @@ Transform:
   - {fileID: 1004158763}
   - {fileID: 1856606671}
   - {fileID: 1382237743}
+  - {fileID: 1739374909}
   - {fileID: 1322555069}
   - {fileID: 1794588686}
   - {fileID: 1001578283}
@@ -28720,6 +28722,73 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.0916038, y: 7.514861, z: 0.52229035}
   m_Center: {x: 0.00001001358, y: -0.00002861023, z: -0.0000038444996}
+--- !u!1 &868911300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 868911301}
+  - component: {fileID: 868911303}
+  - component: {fileID: 868911302}
+  m_Layer: 13
+  m_Name: Hint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &868911301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868911300}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 92.90001, z: -8.200003}
+  m_LocalScale: {x: 8, y: 0.10000001, z: 7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299639583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &868911302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868911300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC5EC\uAE30\uB294 \uC911\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
+--- !u!65 &868911303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868911300}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.79, y: 18.48, z: 2.71}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &869670599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60175,6 +60244,73 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.15132, y: 7.5148916, z: 9.256458}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1739374908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1739374909}
+  - component: {fileID: 1739374911}
+  - component: {fileID: 1739374910}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1739374909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374908}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 1.7300009, z: -51.8}
+  m_LocalScale: {x: 5, y: 0.10000001, z: 7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 424741135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1739374910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "AI SENMA : \uC5EC\uAE30\uB294 \uC911\uB825 \uB9F5\uC785\uB2C8\uB2E4. "
+--- !u!65 &1739374911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739374908}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.68, y: 2.9, z: 2.27}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1741778676
 PrefabInstance:
