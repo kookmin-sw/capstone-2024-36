@@ -64,8 +64,9 @@ public class CameraController : MonoBehaviour
     {
         //세팅창에서 설정한 변수
         BLight.intensity = Brightness;
+        BLight.shadowStrength = 0.5f;
         m_verticalSpeed = MouseSpeed;
-        m_horizontalSpeed = MouseSpeed;
+        m_horizontalSpeed = MouseSpeed; 
 
         if (Target == null)
             return;
