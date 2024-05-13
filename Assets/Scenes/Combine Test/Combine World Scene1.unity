@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16535369, g: 0.16589633, b: 0.16535369, a: 1}
+  m_IndirectSpecularColor: {r: 0.16533285, g: 0.16586453, b: 0.16533285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5298,7 +5298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "AI SENMA : \uC67C\uCABD\uBD80\uD130 \uC5FC\uB825, \uC911\uB825, \uB808\uC774\uC800
+  message: "\uC67C\uCABD\uBD80\uD130 \uC5FC\uB825, \uC911\uB825, \uB808\uC774\uC800
     \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
 --- !u!65 &314084343
 BoxCollider:
@@ -5330,7 +5330,7 @@ Transform:
   m_GameObject: {fileID: 314084341}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -23.9, y: 1.29, z: 205.45}
+  m_LocalPosition: {x: -26.45, y: 1.29, z: 205.45}
   m_LocalScale: {x: 0.61215, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7256,8 +7256,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1912273016680169900, guid: fb90562cccbb8cd47a5ae59ab2a20e98, type: 3}
       propertyPath: message
-      value: "AI SENMA : \uC2E4\uD5D8\uCCB4 892, \uC790\uBC1C\uC801\uC73C\uB85C \uC5F0\uAD6C\uC5D0
-        \uCC38\uAC00\uD574\uC8FC\uC2EC\uC5D0 \uAC10\uC0AC\uB4DC\uB9BD\uB2C8\uB2E4.
+      value: "<b><i>AI SENMA</b></i> : \uC2E4\uD5D8\uCCB4 892, \uC790\uBC1C\uC801\uC73C\uB85C
+        \uC5F0\uAD6C\uC5D0 \uCC38\uAC00\uD574\uC8FC\uC2EC\uC5D0 \uAC10\uC0AC\uB4DC\uB9BD\uB2C8\uB2E4.
         \uC774\uB3D9\uC740 WASD\uD0A4\uB97C \uC774\uC6A9\uD558\uC2DC\uBA74 \uB429\uB2C8\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 1912273016680169900, guid: fb90562cccbb8cd47a5ae59ab2a20e98, type: 3}
@@ -7270,7 +7270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7109469428862700234, guid: fb90562cccbb8cd47a5ae59ab2a20e98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.75
+      value: -19.44
       objectReference: {fileID: 0}
     - target: {fileID: 7109469428862700234, guid: fb90562cccbb8cd47a5ae59ab2a20e98, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28659,6 +28659,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 942754721157112072, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1559365420251016398, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_Name
       value: Canvas(Chat) 1
@@ -28705,11 +28709,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -141.49998
+      value: -191.49976
       objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 91.5
+      value: 116.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358756410310142203, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358756410310142203, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358756410310142203, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358756410310142203, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358756410310142203, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8003271198805985442, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchorMax.y

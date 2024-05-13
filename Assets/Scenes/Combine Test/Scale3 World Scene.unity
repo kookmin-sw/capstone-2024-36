@@ -9398,7 +9398,7 @@ GameObject:
   - component: {fileID: 690024762}
   - component: {fileID: 690024761}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SpawnMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9431,7 +9431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "AI SENMA : \uC5EC\uAE30\uB294 \uC5FC\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
+  message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uB294 \uC5FC\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
 --- !u!65 &690024762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23807,9 +23807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "AI SENMA : \uC5EC\uAE30\uC11C\uB294 \uAC01 \uCE78\uB9C8\uB2E4 \uD55C\uAC00\uC9C0\uC758
-    \uAE30\uB2A5\uC744 \uC218\uD589\uD560 \uAC83\uC785\uB2C8\uB2E4. \uAC01\uAC01\uC758
-    \uBC15\uC2A4\uB97C \uCD08\uB85D\uC0C9 \uC9C0\uC5ED\uC73C\uB85C \uB123\uC5B4\uC8FC\uC138\uC694."
+  message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uC11C\uB294 \uAC01 \uCE78\uB9C8\uB2E4
+    \uD55C\uAC00\uC9C0\uC758 \uAE30\uB2A5\uC744 \uC218\uD589\uD560 \uAC83\uC785\uB2C8\uB2E4.
+    \uAC01\uAC01\uC758 \uBC15\uC2A4\uB97C \uCD08\uB85D\uC0C9 \uC9C0\uC5ED\uC5D0 \uB123\uC5B4
+    \uC8FC\uC138\uC694."
 --- !u!65 &1746748164
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 302736169779860611}
   - component: {fileID: 7095551115602354255}
   m_Layer: 5
-  m_Name: Canvas(Chat)
+  m_Name: "Canvas\uC608\uBE44"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
