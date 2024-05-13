@@ -4,6 +4,14 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
+public enum ePortalType
+{
+    Simple,
+    Stage,
+    Clear 
+}
+
+
 public class CoopPortal : MonoBehaviour
 {
     public static CoopPortal current;
@@ -13,7 +21,7 @@ public class CoopPortal : MonoBehaviour
     public bool IsRemotePlayerIn = false;
 
     [Header("Setting")]
-    public bool IsSimpleDoor;
+    public ePortalType portalType;
     public string StageName;
     public string PrefsName;
     public string NextSceneName;
@@ -48,7 +56,7 @@ public class CoopPortal : MonoBehaviour
                 SaveFileManager.Instance.SetGuestColor(true);
             }
 
-            SaveFileManager.Instance.ShowCanvas(StageName, PrefsName, IsSimpleDoor);
+            SaveFileManager.Instance.ShowCanvas(StageName, PrefsName, portalType);
             IsLocalPlayerIn = true;
         }
         else
@@ -124,7 +132,8 @@ public class CoopPortal : MonoBehaviour
 
                 bool moveScene = false;
 
-                if (IsSimpleDoor)
+                // 이동 여부 결정
+                if (portalType == ePortalType.Simple || portalType == ePortalType.Clear)
                 {
                     if (playerCount == 1 && IsLocalPlayerIn)
                     {
@@ -136,15 +145,18 @@ public class CoopPortal : MonoBehaviour
                         moveScene = true;
                     }
                 }
-                else
+                else if (portalType == ePortalType.Stage)
                 {
-                    // TODO: 각 유저의 세이브 기록 확인
-                    if (playerCount == 1 && IsLocalPlayerIn)
+                    StageClearInfo info = SaveFileManager.Instance.GetStageClearInfo();
+                    if (PrefsName.Contains('1'))
                     {
                         moveScene = true;
                     }
-
-                    if (playerCount == 2 && (IsLocalPlayerIn && IsRemotePlayerIn))
+                    else if (PrefsName.Contains('2') && info.IsStage1Cleared)
+                    {
+                        moveScene = true;
+                    }
+                    else if (PrefsName.Contains('3') && info.IsStage2Cleared)
                     {
                         moveScene = true;
                     }
@@ -152,6 +164,25 @@ public class CoopPortal : MonoBehaviour
 
                 if (moveScene)
                 {
+                    if (portalType == ePortalType.Clear)
+                    {
+                        StageClearInfo info = SaveFileManager.Instance.GetStageClearInfo();
+                        if (PrefsName.Contains('1'))
+                        {
+                            info.IsStage1Cleared = true;
+                        }
+                        else if (PrefsName.Contains('2'))
+                        {
+                            info.IsStage2Cleared = true;
+                        }
+                        else if (PrefsName.Contains('3'))
+                        {
+                            info.IsStage3Cleared = true;
+                        }
+
+                        info.Save();
+                    }
+
                     int sceneIndex = SceneUtility.GetBuildIndexByScenePath(NextSceneName);
                     NetworkSceneManager.Instance.MoveSceneWithEveryPlayersRPC(sceneIndex);
                 }

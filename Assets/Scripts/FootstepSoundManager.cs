@@ -35,8 +35,6 @@ public class FootstepSoundManager : MonoBehaviour
         {
             if (!m_isLeftStepping)
             {
-                Debug.Log("left step");
-
                 m_isLeftStepping = true;
 
                 if (m_footstepSound != null)
@@ -52,8 +50,6 @@ public class FootstepSoundManager : MonoBehaviour
         {
             if (!m_isRightStepping)
             {
-                Debug.Log("right step");
-
                 m_isRightStepping = true;
 
                 if (m_footstepSound != null)

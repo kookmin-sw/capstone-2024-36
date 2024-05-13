@@ -4,28 +4,68 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.Netcode;
+using System.IO;
+using System;
 
+[System.Serializable]
 public class StageClearInfo
 {
     public void Load()
     {
-        IsStage1Cleared = true;
-        if (PlayerPrefs.GetInt("isStage1Cleared", 0) == 0)
+        string contents = "";
+        try
         {
-            IsStage1Cleared = false;
-        }
+            contents = File.ReadAllText("./saved.save");
 
-        IsStage2Cleared = true;
-        if (PlayerPrefs.GetInt("isStage2Cleared", 0) == 0)
-        {
-            IsStage2Cleared = false;
         }
+        catch (FileNotFoundException)
+        {
+            StageClearInfo info = new StageClearInfo();
+            info.IsStage1Cleared = false;
+            info.IsStage2Cleared = false;
+            info.IsStage3Cleared = false;
 
-        IsStage3Cleared = true;
-        if (PlayerPrefs.GetInt("isStage3Cleared", 0) == 0)
-        {
-            IsStage3Cleared = false;
+            contents = JsonUtility.ToJson(info);
+
+            try { 
+                File.WriteAllText("./saved.save", contents);
+            } catch(Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
+        finally
+        {
+            StageClearInfo info = new StageClearInfo();
+
+            try
+            {
+                info = JsonUtility.FromJson<StageClearInfo>(contents);
+            }
+            catch
+            {
+                // file corrupted
+                IsStage1Cleared = false;
+                IsStage2Cleared = false;
+                IsStage3Cleared = false;
+
+                string content = JsonUtility.ToJson(this);
+                File.WriteAllText("./saved.save", content);
+            }
+            finally
+            {
+                IsStage1Cleared = info.IsStage1Cleared;
+                IsStage2Cleared = info.IsStage2Cleared;
+                IsStage3Cleared = info.IsStage3Cleared;
+            }
+            
+        }
+    }
+
+    public void Save()
+    {
+        string content = JsonUtility.ToJson(this);
+        File.WriteAllText("./saved.save", content);
     }
 
     public bool IsStage1Cleared;
@@ -50,29 +90,39 @@ public class SaveFileManager : SingletoneComponent<SaveFileManager>
         return m_stageClearInfo;
     }
 
-    public void ShowCanvas(string stageName, string prefsName, bool isSimpleDoor)
+    public void ShowCanvas(string stageName, string prefsName, ePortalType portalType)
     {
         StageNameText.text = stageName;
-        
-        int isCleared = PlayerPrefs.GetInt(prefsName, 0);
-        if (isCleared == 0)
+
+        IsClearedText.text = "No";
+        if (prefsName.Contains("1") && m_stageClearInfo.IsStage1Cleared)
         {
-            IsClearedText.text = "NO";
+            IsClearedText.text = "Yes";
         }
-        else
+        else if (prefsName.Contains("2") && m_stageClearInfo.IsStage2Cleared)
         {
-            IsClearedText.text = "YES";
+            IsClearedText.text = "Yes";
+        }
+        else if (prefsName.Contains("3") && m_stageClearInfo.IsStage3Cleared)
+        {
+            IsClearedText.text = "Yes";
         }
 
-        if (isSimpleDoor)
+
+        if (portalType == ePortalType.Stage)
+        {
+            IsClearedUIText.enabled = true;
+            IsClearedText.enabled = true;
+        }
+        else if (portalType == ePortalType.Simple)
         {
             IsClearedUIText.enabled = false;
             IsClearedText.enabled = false;
         }
-        else
+        else if (portalType == ePortalType.Stage)
         {
-            IsClearedUIText.enabled = true;
-            IsClearedText.enabled = true;
+            IsClearedUIText.enabled = false;
+            IsClearedText.enabled = false;
         }
 
         UICanvas.gameObject.SetActive(true);
