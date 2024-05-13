@@ -139,7 +139,7 @@ public class MultiplayerBuildAndRun
 
     #endregion
 
-    static string GetProjectName()
+    public static string GetProjectName()
     {
         string[] s = Application.dataPath.Split('/');
         return s[s.Length - 2];

@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage1
   PrefsName: Stage1
   NextSceneName: Scale3 World Scene
@@ -1900,7 +1900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage2
   PrefsName: Stage2
   NextSceneName: Laser World Scene
@@ -16658,7 +16658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage1
   PrefsName: Stage1
   NextSceneName: Scale3 World Scene
@@ -18353,7 +18353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage3
   PrefsName: Stage3
   NextSceneName: Gravity World Scene
@@ -20242,7 +20242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage2
   PrefsName: Stage2
   NextSceneName: Laser World Scene
@@ -29984,7 +29984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
   IsRemotePlayerIn: 0
-  IsSimpleDoor: 1
+  portalType: 1
   StageName: Stage3
   PrefsName: Stage3
   NextSceneName: Gravity World Scene
