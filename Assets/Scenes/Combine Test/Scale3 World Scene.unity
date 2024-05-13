@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42405736, g: 0.37301123, b: 0.35727587, a: 1}
+  m_IndirectSpecularColor: {r: 0.42405736, g: 0.37301123, b: 0.35727578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9663,7 +9663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uB294 \uC5FC\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
+  message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uB294 \uC5FC\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4.
+    \uB098\uBB34 \uC0C1\uC790\uB97C \uC5FC\uB825(E\uD0A4)\uB97C \uC774\uC6A9\uD574
+    \uB4E4\uC5B4 \uBB38 \uC55E\uC5D0 \uC788\uB294 \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0
+    \uB123\uC5B4\uC8FC\uC138\uC694."
 --- !u!65 &690024762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24636,8 +24639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uC11C\uB294 \uAC01 \uCE78\uB9C8\uB2E4
     \uD55C\uAC00\uC9C0\uC758 \uAE30\uB2A5\uC744 \uC218\uD589\uD560 \uAC83\uC785\uB2C8\uB2E4.
-    \uAC01\uAC01\uC758 \uBC15\uC2A4\uB97C \uCD08\uB85D\uC0C9 \uC9C0\uC5ED\uC5D0 \uB123\uC5B4
-    \uC8FC\uC138\uC694."
+    \uAC01\uAC01\uC758 \uC0C1\uC790\uB97C \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0 \uB123\uC73C\uC138\uC694."
 --- !u!65 &1746748164
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30329,6 +30331,7 @@ GameObject:
   - component: {fileID: 2071622821}
   - component: {fileID: 2071622828}
   - component: {fileID: 2071622829}
+  - component: {fileID: 2071622830}
   m_Layer: 9
   m_Name: CubeGravityArea
   m_TagString: Untagged
@@ -30567,6 +30570,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2071622830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071622820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. \uCD08\uB85D\uC0C9 \uBE14\uB7ED
+    \uC548\uC5D0 \uB4E4\uC5B4\uAC04 \uAC83\uC740 \uB2E4\uC2DC \uBE7C\uC9C0 \uBABB\uD558\uB2C8
+    \uC8FC\uC758\uD558\uC138\uC694. \uC55E\uC73C\uB85C \uC804\uC9C4\uD558\uC138\uC694."
 --- !u!1001 &2073110507
 PrefabInstance:
   m_ObjectHideFlags: 0

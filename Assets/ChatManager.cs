@@ -47,7 +47,7 @@ public class ChatManager : MonoBehaviour
             foreach (char letter in message)
             {
                 chatText.text += letter;
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.02f);
             }
             yield return new WaitForEndOfFrame();
             scrollRect.verticalNormalizedPosition = 0f;
