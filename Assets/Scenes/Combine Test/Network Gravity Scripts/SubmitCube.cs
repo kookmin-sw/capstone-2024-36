@@ -6,7 +6,7 @@ public class SubmitCube : NetworkBehaviour
 {
     bool isHandlingCollision = false;
     [SerializeField] GameObject nextObsObj;
-    [SerializeField] GameObject nextObsObjPrefab;
+    [SerializeField] GameObject elminateObject;
     [SerializeField] private AudioClip openDoorSound;
 
 
@@ -59,6 +59,7 @@ public class SubmitCube : NetworkBehaviour
                 isHandlingCollision = false;
 
                 nextObsObj.SetActive(true);
+                elminateObject.SetActive(false);
                 Destroy(GetComponent<BoxCollider>());
                 AudioSource.PlayClipAtPoint(openDoorSound, nextObsObj.transform.position);
             }
