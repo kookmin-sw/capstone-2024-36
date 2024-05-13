@@ -7,6 +7,7 @@ public class SubmitCube_Remove : NetworkBehaviour
     bool isHandlingCollision = false;
     [SerializeField] GameObject nextObsObj;
     [SerializeField] GameObject nextObsObjPrefab;
+    [SerializeField] private AudioClip openDoorSound;
 
     IEnumerator HandleCollision(Collider other)
     {
@@ -58,6 +59,7 @@ public class SubmitCube_Remove : NetworkBehaviour
 
                 nextObsObj.SetActive(false);
                 Destroy(GetComponent<BoxCollider>());
+                AudioSource.PlayClipAtPoint(openDoorSound, nextObsObj.transform.position);
             }
         }
         //int otherRegId = other.GetComponent<MyNetworkTransform>().RegisterId;

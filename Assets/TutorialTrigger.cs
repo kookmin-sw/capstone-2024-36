@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class TutorialTrigger : MonoBehaviour
 {
-    public string message; // Ç¥½ÃÇÒ ¸Þ½ÃÁö
+    public string message; // Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½
     private bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        // ÇÃ·¹ÀÌ¾î°¡ Æ®¸®°Å¿¡ µé¾î¿À¸é ¸Þ½ÃÁö Ç¥½Ã
+        // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ Æ®ï¿½ï¿½ï¿½Å¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
         if ((other.CompareTag("PlayerForGravity") || other.CompareTag("moveable")) && !hasTriggered)
         {
-            // DontDestroyOnLoad »óÅÂÀÇ ChatManager ÀÎ½ºÅÏ½º Ã£±â
+            // DontDestroyOnLoad ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ChatManager ï¿½Î½ï¿½ï¿½Ï½ï¿½ Ã£ï¿½ï¿½
             ChatManager chatManager = DontDestroyOnLoadManager.FindChatManagerInDontDestroyOnLoad();
             if (chatManager != null)
             {

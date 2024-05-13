@@ -6,8 +6,10 @@ public class SubmitCube : NetworkBehaviour
 {
     bool isHandlingCollision = false;
     [SerializeField] GameObject nextObsObj;
-    [SerializeField] GameObject nextObsObjPrefab; 
-    
+    [SerializeField] GameObject nextObsObjPrefab;
+    [SerializeField] private AudioClip openDoorSound;
+
+
     IEnumerator HandleCollision(Collider other)
     {
         yield return new WaitForSeconds(3f);
@@ -58,6 +60,7 @@ public class SubmitCube : NetworkBehaviour
 
                 nextObsObj.SetActive(true);
                 Destroy(GetComponent<BoxCollider>());
+                AudioSource.PlayClipAtPoint(openDoorSound, nextObsObj.transform.position);
             }
         }
         //int otherRegId = other.GetComponent<MyNetworkTransform>().RegisterId;
