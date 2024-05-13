@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 
 public class MultiplayerBuildAndRun
 {
@@ -51,6 +52,7 @@ public class MultiplayerBuildAndRun
                 scenePaths.Add(s.path);
         }
 
+        BuildReport report = null;
         for (int i = 1; i <= playerCount; i++)
         {
             if (i == 1)
@@ -58,7 +60,7 @@ public class MultiplayerBuildAndRun
                 // disable auto run player
 
                 // GetScenePaths()
-                BuildPipeline.BuildPlayer(scenePaths.ToArray(),
+                report = BuildPipeline.BuildPlayer(scenePaths.ToArray(),
                 "Builds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + ".exe",
                 BuildTarget.StandaloneWindows64, BuildOptions.None);
             }
@@ -81,7 +83,13 @@ public class MultiplayerBuildAndRun
         // Current Directory를 지정하기 위해 AutoRunPlayer를 사용하는 대신
         // 아래 함수로 실행시킨다. 
         // 세이브 파일 충돌 방지
-        RunWin64(playerCount);
+        if (report != null)
+        {
+            if (report.summary.result == BuildResult.Succeeded)
+            {
+                RunWin64(playerCount);
+            }
+        }
     }
 
     [MenuItem("Jobs/Multiplayer/Run/1 Players")]
