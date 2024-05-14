@@ -33354,8 +33354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocalPlayerIn: 0
-  IsRemotePlayerIn: 0
-  portalType: 1
+  IsRemotePlayerIn: 1
+  portalType: 2
   StageName: Stage3
   PrefsName: Stage3
   NextSceneName: Combine World Scene
