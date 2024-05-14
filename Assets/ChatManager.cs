@@ -6,7 +6,9 @@ using System.Collections.Generic;
 
 public class ChatManager : MonoBehaviour
 {
-    public static ChatManager Instance;
+    
+
+public static ChatManager Instance;
     public TextMeshProUGUI chatText;
     public ScrollRect scrollRect;
     public RectTransform chatRectTransform;
@@ -25,7 +27,6 @@ public class ChatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
     }
 
     public void AddMessage(string message)
@@ -43,16 +44,32 @@ public class ChatManager : MonoBehaviour
         while (messageQueue.Count > 0)
         {
             string message = messageQueue.Dequeue();
-            foreach (char letter in message)
+            bool insideTag = false;
+
+            for (int i = 0; i < message.Length; i++)
             {
+                char letter = message[i];
+
+                if (letter == '<')
+                {
+                    insideTag = true;  // 태그 시작
+                }
+
                 chatText.text += letter;
-                yield return new WaitForSeconds(0.02f);
+
+                if (! insideTag)
+                {
+                    yield return new WaitForSeconds(0.03f);  // 일반 문자 처리 속도
+                    scrollRect.verticalNormalizedPosition = 0f;// 스크롤 위치를 맨 아래로 설정
+                }
+
+                if (letter == '>')
+                {
+                    insideTag = false;  // 태그 종료
+                }
             }
-            yield return new WaitForEndOfFrame();
-            scrollRect.verticalNormalizedPosition = 0f;
+
         }
         isMessageRunning = false;
     }
-
-    
 }

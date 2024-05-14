@@ -2518,6 +2518,10 @@ PrefabInstance:
       value: Network Grab Test 3-2-1
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -4054,6 +4058,10 @@ PrefabInstance:
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_Name
       value: Network Grab Test (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
@@ -7842,7 +7850,7 @@ GameObject:
   - component: {fileID: 502037794}
   - component: {fileID: 502037795}
   m_Layer: 9
-  m_Name: CubeGravityArea1-2-1
+  m_Name: CubeGravityArea1-2-1-Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8497,6 +8505,140 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.5201316, y: 0.0995207, z: 6.563418}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &531530349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531530350}
+  - component: {fileID: 531530352}
+  - component: {fileID: 531530351}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &531530350
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531530349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1731364832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &531530351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531530349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 173585ca98434114c8bcc7fca185d4e4, type: 2}
+  m_sharedMaterial: {fileID: -8647269136003828602, guid: 173585ca98434114c8bcc7fca185d4e4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 3017793535
+  m_fontColor: {r: 1, g: 0.8726415, b: 0.8726415, a: 0.7019608}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 40
+  m_fontSizeBase: 40
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0.33013916, y: -110.01843, z: -180.08264, w: -71.68622}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &531530352
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531530349}
+  m_CullTransparentMesh: 1
 --- !u!1 &546968347
 GameObject:
   m_ObjectHideFlags: 0
@@ -9911,6 +10053,10 @@ PrefabInstance:
       value: Network Grab Test (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -10903,7 +11049,7 @@ GameObject:
   - component: {fileID: 690024760}
   - component: {fileID: 690024762}
   - component: {fileID: 690024761}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10938,10 +11084,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "<b><i>AI SENMA</b></i> : \uBC29\uAE08 \uC5FC\uB825\uC744 \uBD80\uC5EC\uD574\uB4DC\uB838\uC2B5\uB2C8\uB2E4.
-    \uB098\uBB34 \uC0C1\uC790\uB97C \uC5FC\uB825(E\uD0A4)\uB97C \uC774\uC6A9\uD574
-    \uB4E4\uC5B4 \uBB38 \uC55E\uC5D0 \uC788\uB294 \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0
-    \uB123\uC5B4\uC8FC\uC138\uC694. \uC774 \uBCBD\uC740 \uC0AC\uB78C\uC740 \uC9C0\uB0A0
-    \uC218 \uC788\uC9C0\uB9CC \uC0C1\uC790\uB294 \uC9C0\uB098\uC9C0 \uBABB\uD569\uB2C8\uB2E4."
+    <br><b><i>Moonmad Nick</b></i> : \uBB50? \uC9C4\uC9DC\uB85C?<br><b><i>AI SENMA</b></i>
+    : \uB124, \uBCC4 \uAC70 \uC544\uB2D9\uB2C8\uB2E4. \uB098\uBB34 \uC0C1\uC790\uB97C
+    \uC5FC\uB825(E\uD0A4)\uB97C \uC774\uC6A9\uD574 \uB4E4\uC5B4 \uBB38 \uC55E\uC5D0
+    \uC788\uB294 \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0 \uB123\uC5B4\uC8FC\uC138\uC694. "
 --- !u!65 &690024762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13431,6 +13577,76 @@ Transform:
   - {fileID: 1844868657}
   m_Father: {fileID: 896833071}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &803063659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803063662}
+  - component: {fileID: 803063661}
+  - component: {fileID: 803063660}
+  m_Layer: 13
+  m_Name: Hint1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &803063660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803063659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC55E\uC758 \uBCBD\uC740 \uC0AC\uB78C\uC740
+    \uC9C0\uB0A0 \uC218 \uC788\uC9C0\uB9CC \uC0C1\uC790\uB294 \uC9C0\uB098\uC9C0
+    \uBABB\uD569\uB2C8\uB2E4. <br><b><i>Moonmad Nick</b></i> : \uBA38\uB9AC\uB97C
+    \uAD74\uB824\uBCF4\uB780 \uAC74\uAC00.. \uD574\uBCF4\uC9C0 \uBB50."
+--- !u!65 &803063661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803063659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.09, y: 2.64, z: 2.8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &803063662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803063659}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67, y: 2.39, z: -16.07}
+  m_LocalScale: {x: 30.64, y: 1.63, z: 0.47}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819165946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13502,6 +13718,10 @@ PrefabInstance:
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_Name
       value: Network Grab Test (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
@@ -18783,6 +19003,10 @@ PrefabInstance:
       value: Network Grab Test 3-1-2
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -19071,7 +19295,7 @@ GameObject:
   - component: {fileID: 1169111237}
   - component: {fileID: 1169111238}
   m_Layer: 9
-  m_Name: CubeGravityArea1-3-2-1
+  m_Name: CubeGravityArea1-3-2-1-Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19338,7 +19562,8 @@ MonoBehaviour:
   message: "<b><i>Moonmad Nick</b></i> : \uC800 \uC55E\uC5D0 \uC0C1\uC790\uB97C \uC774\uC6A9\uD574\uC11C
     \uC67C\uCABD\uC73C\uB85C \uC62C\uB77C\uAC08 \uC218 \uC788\uC744 \uAC83 \uAC19\uB124.
     <br><b><i>AI SENMA</b></i> : \uD63C\uC7A3\uB9D0\uC774 \uB9CE\uC544\uC9C0\uC168\uB124\uC694.
-    \uC678\uB85C\uC6B0\uC2E0\uAC00\uC694? <br><b><i>Moonmad Nick</b></i> : \uB2E5\uCE58\uB77C\uACE0."
+    \uC678\uB85C\uC6B0\uC2E0\uAC00 \uBD05\uB2C8\uB2E4. <br><b><i>Moonmad Nick</b></i>
+    : \uB2E5\uCE58\uB77C\uACE0."
 --- !u!1001 &1172930685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19967,7 +20192,7 @@ GameObject:
   - component: {fileID: 1202275427}
   - component: {fileID: 1202275428}
   m_Layer: 9
-  m_Name: CubeGravityArea1-2-1 (1)
+  m_Name: CubeGravityArea1-2-1 (1)-Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22206,6 +22431,10 @@ PrefabInstance:
       value: Network Grab Test 3-3-1
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -22796,9 +23025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "<b><i>Moonmad Nick</b></i> : \uC774\uC81C \uC774\uC815\uB3C4\uB294 \uC27D\uC9C0.<br><b><i>AI
+  message: "<b><i>Moonmad Nick</b></i> : \uC774\uC81C \uC774 \uC815\uB3C4\uB294 \uC27D\uC9C0.<br><b><i>AI
     SENMA</b></i> : \uB2A5\uC219\uD558\uC2DC\uB124\uC694. \uD639\uC2DC \uCE6D\uCC2C\uC774
-    \uACE0\uD504\uC2E0\uAC00\uC694?<br><<b><i>Moonmad Nick</b></i> : \uB2E5\uCCD0."
+    \uACE0\uD504\uC2E0\uAC00\uC694?<br><b><i>Moonmad Nick</b></i> : \uB2E5\uCCD0."
 --- !u!65 &1397774658
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22820,6 +23049,76 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1406039627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406039630}
+  - component: {fileID: 1406039629}
+  - component: {fileID: 1406039631}
+  m_Layer: 13
+  m_Name: Control Hint 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1406039629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406039627}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.09, y: 2.64, z: 2.8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1406039630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406039627}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.67, y: 2.39, z: -29.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1406039631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406039627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc507c11ac7dc545bf131ce6e254ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashingText: {fileID: 531530351}
+  displayDuration: 10
+  message: "<b><\uC5FC\uB825 \uD68D\uB4DD></b><br>E : \uB744\uC6B0\uAE30/\uB193\uAE30<br>\uB9C8\uC6B0\uC2A4
+    \uD720 : \uD06C\uAE30 \uC870\uC808"
 --- !u!1001 &1416175409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25405,7 +25704,7 @@ GameObject:
   - component: {fileID: 1557460245}
   - component: {fileID: 1557460246}
   m_Layer: 9
-  m_Name: CubeGravityArea1-3-3-2
+  m_Name: CubeGravityArea1-3-3-2-Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25674,7 +25973,7 @@ MonoBehaviour:
     \uAC78. <br><b><i>AI SENMA</b></i> : \uC0C1\uD669\uD310\uB2E8 \uB2A5\uB825 \uBFD0\uB9CC
     \uC544\uB2C8\uB77C \uADC0\uB3C4 \uC88B\uC73C\uC2DC\uB124\uC694. \uB2E4\uD589\uC785\uB2C8\uB2E4.
     <br><b><i>Moonmad Nick</b></i> : \uACE0\uB9D9\uB2E4. \uC7AC\uC218 \uC5C6\uB294
-    \uC790\uC2DD."
+    \uC790\uC2DD. <br><b><i>AI SENMA</b></i> : \uBCC4 \uB9D0\uC500\uC744\uC694."
 --- !u!1 &1559088857
 GameObject:
   m_ObjectHideFlags: 0
@@ -26800,6 +27099,10 @@ PrefabInstance:
       value: Network Grab Test 3-3-2
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -27124,6 +27427,108 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.869203, y: 0.09952, z: 4.4622717}
   m_Center: {x: -4.5474735e-13, y: 0, z: 0.000014424327}
+--- !u!1 &1731364828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731364832}
+  - component: {fileID: 1731364831}
+  - component: {fileID: 1731364830}
+  - component: {fileID: 1731364829}
+  m_Layer: 0
+  m_Name: Control Hint Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1731364829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731364828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1731364830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731364828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1731364831
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731364828}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1731364832
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731364828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 531530350}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1732966238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30125,6 +30530,10 @@ PrefabInstance:
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_Name
       value: Network Grab Test (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
@@ -33422,6 +33831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Network Grab Test
       objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34166,6 +34579,10 @@ PrefabInstance:
       value: Network Grab Test 3-2-2
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -34255,6 +34672,10 @@ PrefabInstance:
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_Name
       value: Network Grab Test 3-1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6072448084118646386, guid: 475bdc4d5564a964abfdd30dcfaf5a28, type: 3}
       propertyPath: m_IsActive
@@ -34496,7 +34917,7 @@ GameObject:
   - component: {fileID: 2071622829}
   - component: {fileID: 2071622830}
   m_Layer: 9
-  m_Name: CubeGravityArea
+  m_Name: CubeGravityArea-Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34745,7 +35166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "<b><i>AI SENMA</b></i> \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. \uCD08\uB85D\uC0C9
+  message: "<b><i>AI SENMA</b></i> : \uC798\uD558\uC168\uC2B5\uB2C8\uB2E4. \uCD08\uB85D\uC0C9
     \uBE14\uB7ED \uC548\uC5D0 \uB4E4\uC5B4\uAC04 \uAC83\uC740 \uB2E4\uC2DC \uBE7C\uC9C0
     \uBABB\uD558\uB2C8 \uC8FC\uC758\uD558\uC138\uC694. \uC55E\uC73C\uB85C \uC804\uC9C4\uD558\uC138\uC694."
 --- !u!1001 &2073110507
@@ -36772,6 +37193,8 @@ SceneRoots:
   - {fileID: 1812177693}
   - {fileID: 624645089}
   - {fileID: 690024760}
+  - {fileID: 803063662}
+  - {fileID: 1406039630}
   - {fileID: 1989598628}
   - {fileID: 1160203184}
   - {fileID: 1539439031}
@@ -36783,3 +37206,4 @@ SceneRoots:
   - {fileID: 651377209}
   - {fileID: 1811687396}
   - {fileID: 170880800}
+  - {fileID: 1731364832}

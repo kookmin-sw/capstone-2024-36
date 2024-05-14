@@ -5,7 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class DontDestroyOnLoadManager : MonoBehaviour
 {
-    // DontDestroyOnLoad »óÅÂ¿¡ ÀÖ´Â ¸ğµç ·çÆ® °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+    private static ChatManager cachedChatManager = null;
+
+    // DontDestroyOnLoad ìƒíƒœì˜ ChatManager ì¸ìŠ¤í„´ìŠ¤ ì°¾ê¸°
+    public static ChatManager FindChatManagerInDontDestroyOnLoad()
+    {
+        if (cachedChatManager != null)
+            return cachedChatManager;
+
+        GameObject[] rootObjects = GetDontDestroyOnLoadObjects();
+        foreach (GameObject obj in rootObjects)
+        {
+            ChatManager chatManager = obj.GetComponentInChildren<ChatManager>(true);
+            if (chatManager != null)
+            {
+                cachedChatManager = chatManager;
+                return cachedChatManager;
+            }
+        }
+        return null; // ChatManagerê°€ ë°œê²¬ë˜ì§€ ì•Šì€ ê²½ìš°
+    }
+
+    // DontDestroyOnLoad ìƒíƒœì— ìˆëŠ” ëª¨ë“  ë£¨íŠ¸ ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
     private static GameObject[] GetDontDestroyOnLoadObjects()
     {
         GameObject temp = new GameObject("TemporaryFinder");
@@ -15,20 +36,5 @@ public class DontDestroyOnLoadManager : MonoBehaviour
         DestroyImmediate(temp);
 
         return rootObjects;
-    }
-
-    // DontDestroyOnLoad »óÅÂÀÇ ChatManager ÀÎ½ºÅÏ½º Ã£±â
-    public static ChatManager FindChatManagerInDontDestroyOnLoad()
-    {
-        GameObject[] rootObjects = GetDontDestroyOnLoadObjects();
-        foreach (GameObject obj in rootObjects)
-        {
-            ChatManager chatManager = obj.GetComponentInChildren<ChatManager>(true);
-            if (chatManager != null)
-            {
-                return chatManager;
-            }
-        }
-        return null; // ChatManager°¡ ¹ß°ßµÇÁö ¾ÊÀº °æ¿ì
     }
 }
