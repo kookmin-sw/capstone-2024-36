@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -11,6 +11,7 @@ public class NetworkGrabbable : NetworkBehaviour
 
     [SerializeField] private Rigidbody m_rigidBody;
     [SerializeField] public bool isGrabbed;
+    [SerializeField] public bool toggleGravity;
 
     private void Awake()
     {
@@ -20,10 +21,14 @@ public class NetworkGrabbable : NetworkBehaviour
             {
                 GetRigidbody().useGravity = false;
             }
-            else
+            else if(!after && toggleGravity)
             {
                 Debug.Log("중력 true awa");
-                //GetRigidbody().useGravity = true;
+                GetRigidbody().useGravity = false;
+            }
+            else
+            {
+                GetRigidbody().useGravity = true;
             }
         };
     }
@@ -34,11 +39,14 @@ public class NetworkGrabbable : NetworkBehaviour
         {
             GetRigidbody().useGravity = false;
         }
+        else if (!after && toggleGravity)
+        {
+            Debug.Log("중력 true ons");
+            GetRigidbody().useGravity = false;
+        }
         else
         {
-
-            Debug.Log("중력 true ons");
-            //GetRigidbody().useGravity = true;
+            GetRigidbody().useGravity = true;
         }
     }
 
@@ -54,10 +62,14 @@ public class NetworkGrabbable : NetworkBehaviour
             {
                 m_rigidBody.useGravity = false;
             }
-            else
+            else if (!after && toggleGravity)
             {
                 Debug.Log("중력 true bex");
-                //m_rigidBody.useGravity = true;
+                GetRigidbody().useGravity = false;
+            }
+            else
+            {
+                GetRigidbody().useGravity = true;
             }
 
             for (int i = 0; i < transform.childCount; i++)
