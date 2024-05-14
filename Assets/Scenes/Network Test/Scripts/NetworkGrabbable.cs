@@ -39,7 +39,7 @@ public class NetworkGrabbable : NetworkBehaviour
         {
             GetRigidbody().useGravity = false;
         }
-        else if (!after && toggleGravity)
+        else if (toggleGravity)
         {
             Debug.Log("중력 true ons");
             GetRigidbody().useGravity = false;
@@ -62,7 +62,7 @@ public class NetworkGrabbable : NetworkBehaviour
             {
                 m_rigidBody.useGravity = false;
             }
-            else if (!after && toggleGravity)
+            else if (toggleGravity)
             {
                 Debug.Log("중력 true bex");
                 GetRigidbody().useGravity = false;
