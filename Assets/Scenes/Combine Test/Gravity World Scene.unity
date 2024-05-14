@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16826874, g: 0.1701757, b: 0.16826874, a: 1}
+  m_IndirectSpecularColor: {r: 0.16533285, g: 0.16586453, b: 0.16533285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1274,6 +1274,7 @@ GameObject:
   - component: {fileID: 84784421}
   - component: {fileID: 84784420}
   - component: {fileID: 84784419}
+  - component: {fileID: 84784424}
   m_Layer: 9
   m_Name: SubmitArea
   m_TagString: Untagged
@@ -1395,6 +1396,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84784417}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &84784424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84784417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC774\uC81C\uBD80\uD130\uB294 \uC751\uC6A9\uD558\uB294
+    \uAD6C\uAC04\uC785\uB2C8\uB2E4. \uD589\uC131 \uC911\uB825\uC744 \uC774\uC6A9\uD558\uC5EC
+    \uB098\uBB34 \uC0C1\uC790\uB97C \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0 \uB123\uC5B4\uBCF4\uC138\uC694.
+    \uD589\uC131 \uC911\uB825\uBCF4\uB2E4 \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC758 \uC911\uB825\uC774
+    \uB354 \uAC15\uD569\uB2C8\uB2E4."
 --- !u!1 &86865971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,7 +3628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 163568676}
   m_Layer: 0
-  m_Name: Stager2-4
+  m_Name: Stage2-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6274,6 +6292,7 @@ Transform:
   - {fileID: 538765814}
   - {fileID: 2057571302}
   - {fileID: 421855732}
+  - {fileID: 1107120806}
   - {fileID: 1307462405}
   - {fileID: 1666417162}
   - {fileID: 1402322329}
@@ -7295,6 +7314,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 992379124}
+  - {fileID: 1957849365}
   - {fileID: 1698058141}
   - {fileID: 1123650724}
   - {fileID: 98246443}
@@ -7388,6 +7408,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
       insertIndex: -1
       addedObject: {fileID: 418625981}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 418625982}
   m_SourcePrefab: {fileID: 100100000, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
 --- !u!4 &418625979 stripped
 Transform:
@@ -7420,6 +7443,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.5201316, y: 0.0995207, z: 6.5634193}
   m_Center: {x: 0, y: 0, z: -0.00000011920929}
+--- !u!114 &418625982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418625980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uB208\uC73C\uB85C \uBCF4\uC774\uB294 \uAC83\uC744
+    \uC804\uBD80 \uBBFF\uC73C\uC2DC\uBA74 \uC548\uB429\uB2C8\uB2E4.<br><b><i>Moonmad
+    Nick</b></i> : \uC820\uC790\uC544\uC544\uC559!"
 --- !u!1 &421855731
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,7 +9232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515911346849538179, guid: 607a48dddd13c1e45bd6adc2ee9a37b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -6.56
       objectReference: {fileID: 0}
     - target: {fileID: 5515911346849538179, guid: 607a48dddd13c1e45bd6adc2ee9a37b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9462,6 +9500,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 8979269360817942707, guid: 700612e01cec74ac7bc420ab287086cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2443034c622eb14db7002a2e6f5d35c, type: 2}
     m_RemovedComponents:
     - {fileID: 1099807485600840296, guid: 700612e01cec74ac7bc420ab287086cc, type: 3}
     m_RemovedGameObjects: []
@@ -9539,7 +9581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &542273399
 Transform:
   m_ObjectHideFlags: 0
@@ -10771,6 +10813,7 @@ Transform:
   m_Children:
   - {fileID: 827599570}
   - {fileID: 1318630215}
+  - {fileID: 814866185}
   m_Father: {fileID: 2127568670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &614821926
@@ -11569,7 +11612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349356241860146120, guid: 179150b9bbb9e864d8d166648af6e1a4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 7349356241860146120, guid: 179150b9bbb9e864d8d166648af6e1a4, type: 3}
       propertyPath: m_LocalScale.z
@@ -11581,11 +11624,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349356241860146120, guid: 179150b9bbb9e864d8d166648af6e1a4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7
+      value: 5.93
       objectReference: {fileID: 0}
     - target: {fileID: 7349356241860146120, guid: 179150b9bbb9e864d8d166648af6e1a4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -49.100018
+      value: -49.95
       objectReference: {fileID: 0}
     - target: {fileID: 7349356241860146120, guid: 179150b9bbb9e864d8d166648af6e1a4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11677,7 +11720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5515911346849538179, guid: 607a48dddd13c1e45bd6adc2ee9a37b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -1.42
       objectReference: {fileID: 0}
     - target: {fileID: 5515911346849538179, guid: 607a48dddd13c1e45bd6adc2ee9a37b0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14299,6 +14342,77 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1508659, y: 7.514927, z: 4.724602}
   m_Center: {x: 0, y: 0, z: -0.000005722046}
+--- !u!1 &814866184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814866185}
+  - component: {fileID: 814866187}
+  - component: {fileID: 814866186}
+  m_Layer: 0
+  m_Name: Hint3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &814866185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814866184}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: -8.377783, z: 0.22111976}
+  m_LocalScale: {x: 1.6666654, y: 0.033333316, z: 2.3333333}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 613693706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814866186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814866184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC0C1\uC790\uC5D0 \uC911\uB825(R\uD0A4)\uC744
+    \uC801\uC6A9\uD558\uBA74 \uBE14\uB799\uD640\uACFC \uD654\uC774\uD2B8\uD640\uC744
+    \uD1B5\uD574 \uC0C1\uC790\uAC00 \uC6D0\uB798\uB300\uB85C \uB3CC\uC544\uC635\uB2C8\uB2E4.
+    \uD589\uC131\uC5D0\uB3C4 \uAC19\uC740 \uB2A5\uB825\uC744 \uC774\uC6A9\uD574 \uC911\uB825\uC744
+    \uC801\uC6A9\uD558\uAC70\uB098 \uB04C \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. "
+--- !u!65 &814866187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814866184}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &817955548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15319,6 +15433,77 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.08383, y: 0.4057256, z: 8.434778}
   m_Center: {x: 0.00000047683716, y: -0.000016123056, z: 0.0000019073486}
+--- !u!1 &866509080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866509081}
+  - component: {fileID: 866509083}
+  - component: {fileID: 866509082}
+  m_Layer: 0
+  m_Name: Hint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866509081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866509080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1358107972}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866509082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866509080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC55E\uC5D0 \uACF5\uC744 \uD55C \uBC88 \uB9DE\uC544\uBCF4\uC2DC\uAE30
+    \uBC14\uB78D\uB2C8\uB2E4. \uC790\uC2E0\uC758 \uC0DD\uC874\uBCF8\uB2A5\uC744 \uBBFF\uACE0\uC11C\uC694.<br><b><i>Moonmad
+    Nick</b></i> : \uADF8\uAC8C \uBB34\uC2A8 \uBBF8\uCE5C \uC18C\uB9AC\uC57C. \uC774\uAC83\uB3C4
+    \uC0B4\uB824\uC900\uB2E4\uACE0? \uC2E4\uD5D8\uCCB4\uB77C\uACE0 \uB108\uBB34 \uB9C9
+    \uAD74\uB9AC\uB294 \uAC70 \uC544\uB2C8\uC57C?"
+--- !u!65 &866509083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866509080}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.89, y: 10, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &868911300
 GameObject:
   m_ObjectHideFlags: 0
@@ -15364,7 +15549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "AI SENMA : \uC5EC\uAE30\uB294 \uC911\uB825 \uC2A4\uD14C\uC774\uC9C0\uC785\uB2C8\uB2E4. "
+  message: "<b><i>AI SENMA</b></i> : \uC5EC\uAE30\uB294 \uBC29\uAE08 \uBD80\uC5EC\uBC1B\uC73C\uC2E0
+    \uC911\uB825\uC744 \uC801\uC751\uD558\uB294 \uAD6C\uAC04\uC785\uB2C8\uB2E4.  "
 --- !u!65 &868911303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15825,11 +16011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -124.999954
+      value: -123.18
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -82.200005
+      value: -82.2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16888,6 +17074,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
       insertIndex: -1
       addedObject: {fileID: 936333971}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 936333972}
   m_SourcePrefab: {fileID: 100100000, guid: ec3dd2bda6c91bb49b72dc4653852c31, type: 3}
 --- !u!4 &936333969 stripped
 Transform:
@@ -16914,12 +17103,26 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 4.5201316, y: 0.0995207, z: 6.5634193}
   m_Center: {x: 0, y: 0, z: -0.00000011920929}
+--- !u!114 &936333972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936333970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uB208\uC5D0 \uBCF4\uC774\uB294 \uC804\uBD80\uB97C
+    \uBBFF\uC9C0 \uB9C8\uC138\uC694."
 --- !u!1001 &942471675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20534,6 +20737,80 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8319852, y: 7.6045933, z: 1.1433241}
   m_Center: {x: -0.000010117889, y: -0.0000034570694, z: -0.000001996756}
+--- !u!1 &1107120805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107120806}
+  - component: {fileID: 1107120808}
+  - component: {fileID: 1107120807}
+  m_Layer: 0
+  m_Name: Hint 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107120806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107120805}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 95, z: -31.01}
+  m_LocalScale: {x: 13, y: 10, z: 0.10000001}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 299639583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107120807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107120805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uBB38\uC774 \uC5F4\uB838\uC2B5\uB2C8\uB2E4.
+    \uBC16\uC73C\uB85C \uD55C \uBC88 \uB098\uAC00\uBCF4\uC138\uC694.<br><b><i>Moonmad
+    Nick</b></i> : \uBB50\uC57C. \uB0A0 \uC8FD\uC774\uB824\uACE0? <br><b><i>AI SENMA</b></i>
+    : \uC911\uB825\uC5D0\uB294 \uBE14\uB799\uD640\uACFC \uD654\uC774\uD2B8\uD640\uC774
+    \uC788\uC2B5\uB2C8\uB2E4. \uB9CC\uC57D \uBAB8\uC774 \uBC14\uAE65\uC73C\uB85C
+    \uB098\uAC00\uAC8C \uB418\uBA74 \uC790\uB3D9\uC73C\uB85C \uBCF4\uD638\uBCF8\uB2A5\uC774
+    \uC791\uB3D9\uD574 \uC548\uC804\uD55C \uACF3\uC73C\uB85C \uB3CC\uC544\uC624\uAC8C
+    \uB429\uB2C8\uB2E4."
+--- !u!65 &1107120808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107120805}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1110646367
 GameObject:
   m_ObjectHideFlags: 0
@@ -23808,7 +24085,7 @@ Transform:
   m_GameObject: {fileID: 1285734249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3.4142854, z: 1.942847}
+  m_LocalPosition: {x: 0, y: -2.63, z: 0.27}
   m_LocalScale: {x: 0.31745714, y: 0.31745714, z: 0.31745714}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23851,7 +24128,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 8, y: 8, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1287924091
 PrefabInstance:
@@ -25690,7 +25967,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2293647944089922770, guid: 0c4202286da94a8499805d13e8c20c82, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 866509081}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2994882206471429825, guid: 0c4202286da94a8499805d13e8c20c82, type: 3}
       insertIndex: -1
@@ -27070,7 +27350,6 @@ GameObject:
   - component: {fileID: 1451950715}
   - component: {fileID: 1451950714}
   - component: {fileID: 1451950713}
-  - component: {fileID: 1451950712}
   m_Layer: 0
   m_Name: GravityArea
   m_TagString: Untagged
@@ -27093,18 +27372,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1199014974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1451950712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451950710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f579ec3c527549a1adf51d26d23ed87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1451950713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28775,6 +29042,7 @@ GameObject:
   - component: {fileID: 1540918393}
   - component: {fileID: 1540918392}
   - component: {fileID: 1540918391}
+  - component: {fileID: 1540918395}
   m_Layer: 9
   m_Name: SavePosArea2-2-1
   m_TagString: Untagged
@@ -28880,6 +29148,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540918389}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1540918395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540918389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC0C1\uC790\uB97C \uB4E4\uACE0 \uC800 \uB05D\uC5D0
+    \uAC00\uC2DC\uBA74 \uB429\uB2C8\uB2E4. <br><b><i>Moonmad Nick</b></i> : \uC8FD\uC9C0
+    \uC54A\uB294\uB2E4 \uD574\uB3C4 \uBB34\uC12D\uB2E4\uACE0.."
 --- !u!1 &1555335586
 GameObject:
   m_ObjectHideFlags: 0
@@ -34706,6 +34989,77 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1508659, y: 7.514925, z: 4.7246017}
   m_Center: {x: 0.00000047683716, y: -0.0000008940697, z: -0.0000038146973}
+--- !u!1 &1957849364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957849365}
+  - component: {fileID: 1957849367}
+  - component: {fileID: 1957849366}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1957849365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957849364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071071, y: -0, z: -0, w: 0.70710653}
+  m_LocalPosition: {x: 0, y: 5.13, z: -2.25}
+  m_LocalScale: {x: 4, y: 1, z: 5.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 416042238}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1957849366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957849364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c65f07b1a388a47ade10106cc5fcf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "<b><i>AI SENMA</b></i> : \uC55E\uC5D0 \uBCF4\uC774\uB294 \uBB3C\uCCB4\uCC98\uB7FC,
+    \uC5B4\uB290 \uC0AC\uBB3C\uC740 \uC911\uB825\uC758 \uC601\uD5A5\uC744 \uBC1B\uC744
+    \uC218 \uC788\uACE0, \uC544\uB2D0 \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. \uC801\uC751\uACFC
+    \uAC01\uC131\uC744 \uC704\uD55C \uAC83\uC774\uB2C8 \uC138\uC2EC\uD788 \uAD00\uCC30\uD558\uACE0
+    \uD589\uB3D9\uD558\uC138\uC694."
+--- !u!65 &1957849367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957849364}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 4, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1958418166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38616,7 +38970,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4999993
+      value: 3.9978933
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7241955
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38624,11 +38982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -69
+      value: -66.93
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -137.00003
+      value: -134.89
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 18c6a3d3fd77c264db392a72663b3078, type: 3}
       propertyPath: m_LocalRotation.w

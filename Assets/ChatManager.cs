@@ -13,7 +13,6 @@ public class ChatManager : MonoBehaviour
     private Vector2 originalSize;
     private Queue<string> messageQueue = new Queue<string>();
     private bool isMessageRunning = false;
-    private bool isChatExpanded = false; // 채팅창 확장 상태를 추적하는 변수
 
     void Awake()
     {
@@ -26,7 +25,7 @@ public class ChatManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        originalSize = chatRectTransform.sizeDelta; // 원래 채팅창 크기를 저장
+        
     }
 
     public void AddMessage(string message)
@@ -55,25 +54,5 @@ public class ChatManager : MonoBehaviour
         isMessageRunning = false;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            ToggleChatWindowSize();
-        }
-    }
-
-    private void ToggleChatWindowSize()
-    {
-        if (!isChatExpanded)
-        {
-            chatRectTransform.sizeDelta = new Vector2(originalSize.x, originalSize.y * 2);
-            isChatExpanded = true;
-        }
-        else
-        {
-            chatRectTransform.sizeDelta = originalSize;
-            isChatExpanded = false;
-        }
-    }
+    
 }
