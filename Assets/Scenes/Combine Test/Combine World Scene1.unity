@@ -1732,7 +1732,7 @@ MonoBehaviour:
   portalType: 1
   StageName: Stage2
   PrefsName: Stage2
-  NextSceneName: Laser World Scene
+  NextSceneName: Laser2 World Scene
 --- !u!1001 &119525417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3789,6 +3789,7 @@ MonoBehaviour:
   message: "<b><i>Moonmad Nick</b></i> : \uAE5C\uC9DD\uC774\uC57C. \uC2DC\uCCB4\uB4E4\uC774\uC796\uC544.
     \uC774 \uAF34 \uB098\uC9C0 \uC54A\uC73C\uB824\uBA74 \uC5B4\uCA54 \uC218 \uC5C6\uC774
     \uC2DC\uD0A4\uB294 \uB300\uB85C \uD574\uC57C\uACA0\uB124."
+  waitingSec: 0
 --- !u!65 &260154415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5058,6 +5059,7 @@ MonoBehaviour:
   message: "<b><i>AI SENMA</b></i> : \uC67C\uCABD\uBD80\uD130 \uC5FC\uB825, \uC554\uD751\uBB3C\uC9C8,
     \uC911\uB825 \uB2A5\uB825\uC744 \uBD80\uC5EC\uBC1B\uACE0 \uC801\uC751 \uBC0F
     \uAC01\uC131\uC744 \uC704\uD574 \uC2E4\uD5D8\uD569\uB2C8\uB2E4."
+  waitingSec: 0
 --- !u!65 &314084343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20168,7 +20170,7 @@ MonoBehaviour:
   portalType: 1
   StageName: Stage2
   PrefsName: Stage2
-  NextSceneName: Laser World Scene
+  NextSceneName: Laser2 World Scene
 --- !u!65 &1357640352
 BoxCollider:
   m_ObjectHideFlags: 0

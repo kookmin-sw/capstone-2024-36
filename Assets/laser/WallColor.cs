@@ -11,7 +11,7 @@ public class WallColor : MonoBehaviour
     private bool IsRed = false;
     private bool IsBlue = false;
     private bool IsGreen = false;
-    private Color mix = Color.black;
+    public Color mix = Color.black;
     public GameObject door;
 
     private MeshRenderer meshRenderer;
@@ -40,6 +40,13 @@ public class WallColor : MonoBehaviour
                 {
                     door.transform.Translate(Vector3.up * Time.deltaTime);
                 }
+        }
+        else{
+            if (door.transform.position.y < 2.26)
+                {
+                    door.transform.Translate(Vector3.up * Time.deltaTime *3);
+                }
+
         }
 
     }

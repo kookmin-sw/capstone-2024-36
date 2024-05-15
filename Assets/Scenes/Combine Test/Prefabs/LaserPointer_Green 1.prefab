@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3668704219477989758}
   - component: {fileID: -789193653972387127}
   m_Layer: 0
-  m_Name: Combine LaserPointer
+  m_Name: LaserPointer_Green 1
   m_TagString: LaserPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2162331381
+  GlobalObjectIdHash: 3645771742
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -111,10 +111,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75d51ca7e64de643aaad4a1f4bfddb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaserColor: {r: 1, g: 0, b: 0, a: 1}
+  LaserColor: {r: 0, g: 1, b: 0, a: 1}
   material: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
+  lasermanger: {fileID: 0}
+  colliders: []
+  thisscene: 1
   isLaserActive:
     m_InternalValue: 0
+  updateInterval: 0.5
 --- !u!1001 &5055543838487541064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chamber_3 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8720921341406404793, guid: e6046664aeb01474283f053e724fee16, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 849b1586c04fca8429372df48f8e27e9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -101,12 +101,19 @@ public class LaserBeam
         Offcollider();
         if (Physics.Raycast(ray, out hit, 500, layerMask))
         {
+            Vector3 point = hit.point;
+            point = new Vector3(Mathf.Round(point.x * 100f) / 100f, Mathf.Round(point.y * 100f) / 100f,
+             Mathf.Round(point.z * 100f) / 100f);
+             hit.point = point;
             CheckHit(ray,hit, dir);
         }
         else
         {
-            EndPoint.GetComponent<BoxCollider>().transform.position = ray.GetPoint(500);
-            laserIndices.Add(ray.GetPoint(500));
+            Vector3 point = ray.GetPoint(500);
+            point = new Vector3(Mathf.Round(point.x * 100f) / 100f, Mathf.Round(point.y * 100f) / 100f, 
+            Mathf.Round(point.z * 100f) / 100f);
+            EndPoint.GetComponent<BoxCollider>().transform.position = point;
+            laserIndices.Add(point);
             UpdateLaser();
         }
     }
@@ -190,7 +197,7 @@ public class LaserBeam
     void CheckHit(Ray ray, RaycastHit hitInfo, Vector3 direction)
     {
         if( this.laser.name != "laserability"){
-                EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+                // EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
         }
         if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Mirror"))
         {
@@ -202,8 +209,9 @@ public class LaserBeam
         else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             if( this.laser.name != "laserability"){
-                // WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
-                // wallc.ColorOn(laserColor);
+                EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+                WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
+                wallc.ColorOn(laserColor);
             // Renderer hitRenderer = hitInfo.collider.GetComponent<Renderer>();
             // WallColor wallc = hitInfo.collider.GetComponent<WallColor>();
             // Color wallColor = wallc.incolor;
@@ -220,6 +228,9 @@ public class LaserBeam
             UpdateLaser();
         }
         else if (hitInfo.collider.gameObject.layer == LayerMask.NameToLayer("ClearCheck")){
+            if( this.laser.name != "laserability"){
+                EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+            }
             hitInfo.collider.GetComponent<LightDoorUpdate>().ClearSuccess(this.laserColor);
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
@@ -231,6 +242,9 @@ public class LaserBeam
         }
         else
         {
+            if( this.laser.name != "laserability"){
+                EndPoint.GetComponent<BoxCollider>().transform.position = hitInfo.point;
+            }
             laserIndices.Add(hitInfo.point);
             UpdateLaser();
         }
@@ -240,7 +254,7 @@ public class LaserBeam
         if (hitInfo.collider.CompareTag("LaserPoint") && this.laser.name == "laserability")
         {
             Debug.Log("laserpointer by laserability hit");
-            hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().LaserColor = laserColor;
+            // hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().LaserColor = laserColor;
             hitInfo.collider.GetComponent<NetworkLaserPointerShoot>().Onofflaser();
             Offcollider();
         }

@@ -15,7 +15,7 @@ public class LightDoorUpdate : MonoBehaviour
     public Color ClearColor;
     public Color receiveColor;
 
-    private bool isDoorActive;
+    public bool isDoorActive;
     // public NetworkVariable<bool> isDoor1Active = new NetworkVariable<bool>(
     //     false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     // Start is called before the first frame update
@@ -47,10 +47,7 @@ public class LightDoorUpdate : MonoBehaviour
                 }
             }
             //if laser doesn't continously box , need to close door again 
-            if (isDoorActive == true)
-            {
-                isDoorActive = false;
-            }
+            
         }
         else
         {
@@ -65,7 +62,8 @@ public class LightDoorUpdate : MonoBehaviour
             isDoorActive = true;
             UnityEngine.Debug.Log("clear" + isDoorActive);
         }
-        
+
+
 
 
         // if(NetworkManager.Singleton.IsServer){
@@ -74,6 +72,15 @@ public class LightDoorUpdate : MonoBehaviour
         //     }
         //     Debug.Log("door toggle success");
         //     }
+    }
+
+
+    
+
+    void OnTriggerExit(Collider other)
+    {
+        isDoorActive = false;
+        UnityEngine.Debug.Log("exit");
     }
 
     public void SetExist(bool bExist)

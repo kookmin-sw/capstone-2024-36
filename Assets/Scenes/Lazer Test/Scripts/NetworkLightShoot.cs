@@ -54,7 +54,7 @@
                     directionToCameraCenter = (hit.point - playerposition).normalized;
                 }
                 ShootLaserServerRpc(playerposition,directionToCameraCenter);
-                ColorChange();
+                // ColorChange();
             }
         }
 
