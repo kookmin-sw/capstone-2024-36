@@ -1438,6 +1438,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 1863646694}
   elminateObject: {fileID: 364156752}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &84784420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,6 +1540,7 @@ MonoBehaviour:
     \uB098\uBB34 \uC0C1\uC790\uB97C \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC5D0 \uB123\uC5B4\uBCF4\uC138\uC694.
     \uD589\uC131 \uC911\uB825\uBCF4\uB2E4 \uCD08\uB85D\uC0C9 \uBE14\uB7ED\uC758 \uC911\uB825\uC774
     \uB354 \uAC15\uD569\uB2C8\uB2E4."
+  waitingSec: 0
 --- !u!1 &86865971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1592,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 163568675}
   elminateObject: {fileID: 180417075}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &86865974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1830,6 +1833,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 163568675}
   elminateObject: {fileID: 612865783}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &95367382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7444,6 +7448,7 @@ MonoBehaviour:
   message: "<b><i>AI SENMA</b></i> : \uB208\uC73C\uB85C \uBCF4\uC774\uB294 \uAC83\uC744
     \uC804\uBD80 \uBBFF\uC73C\uC2DC\uBA74 \uC548\uB429\uB2C8\uB2E4.<br><b><i>Moonmad
     Nick</b></i> : \uC820\uC790\uC544\uC544\uC559!"
+  waitingSec: 0
 --- !u!1 &421855731
 GameObject:
   m_ObjectHideFlags: 0
@@ -14095,6 +14100,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 2093671466}
   elminateObject: {fileID: 0}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &812826219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14333,6 +14339,7 @@ MonoBehaviour:
     \uD1B5\uD574 \uC0C1\uC790\uAC00 \uC6D0\uB798\uB300\uB85C \uB3CC\uC544\uC635\uB2C8\uB2E4.
     \uD589\uC131\uC5D0\uB3C4 \uAC19\uC740 \uB2A5\uB825\uC744 \uC774\uC6A9\uD574 \uC911\uB825\uC744
     \uC801\uC6A9\uD558\uAC70\uB098 \uB04C \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. "
+  waitingSec: 0
 --- !u!65 &814866187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15443,6 +15450,7 @@ MonoBehaviour:
     Nick</b></i> : \uADF8\uAC8C \uBB34\uC2A8 \uBBF8\uCE5C \uC18C\uB9AC\uC57C. \uC774\uAC83\uB3C4
     \uC0B4\uB824\uC900\uB2E4\uACE0? \uC2E4\uD5D8\uCCB4\uB77C\uACE0 \uB108\uBB34 \uB9C9
     \uAD74\uB9AC\uB294 \uAC70 \uC544\uB2C8\uC57C?"
+  waitingSec: 0
 --- !u!65 &866509083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15514,6 +15522,7 @@ MonoBehaviour:
     \uBC1B\uC9C0 \uC54A\uC744 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC801\uC751\uACFC
     \uAC01\uC131\uC744 \uC704\uD55C \uAC83\uC774\uB2C8 \uC138\uC2EC\uD788 \uAD00\uCC30\uD558\uACE0
     \uD589\uB3D9\uD558\uC138\uC694."
+  waitingSec: 0
 --- !u!65 &868911303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16858,6 +16867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: "<b><i>AI SENMA</b></i> : \uB208\uC5D0 \uBCF4\uC774\uB294 \uC804\uBD80\uB97C
     \uBBFF\uC9C0 \uB9C8\uC138\uC694."
+  waitingSec: 0
 --- !u!1001 &942471675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17843,6 +17853,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 2094510514}
   elminateObject: {fileID: 612865783}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &983624618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20236,7 +20247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96f293327d5a84f08bb6391e2f2c850c, type: 2}
+  - {fileID: 2100000, guid: 56bff3853c73740da981a9b91fe146ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20414,6 +20425,7 @@ MonoBehaviour:
     \uB098\uAC00\uAC8C \uB418\uBA74 \uC790\uB3D9\uC73C\uB85C \uBCF4\uD638\uBCF8\uB2A5\uC774
     \uC791\uB3D9\uD574 \uC548\uC804\uD55C \uACF3\uC73C\uB85C \uB3CC\uC544\uC624\uAC8C
     \uB420 \uAC81\uB2C8\uB2E4."
+  waitingSec: 0
 --- !u!65 &1107120808
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28519,6 +28531,7 @@ MonoBehaviour:
   message: "<b><i>AI SENMA</b></i> : \uC0C1\uC790\uB97C \uB4E4\uACE0 \uC800 \uB05D\uC5D0
     \uAC00\uC2DC\uBA74 \uB429\uB2C8\uB2E4. <br><b><i>Moonmad Nick</b></i> : \uC8FD\uC9C0
     \uC54A\uB294\uB2E4 \uD574\uB3C4 \uBB34\uC12D\uB2E4\uACE0.."
+  waitingSec: 0
 --- !u!1 &1555335586
 GameObject:
   m_ObjectHideFlags: 0
@@ -30820,6 +30833,7 @@ MonoBehaviour:
   nextObsObj: {fileID: 1854414824}
   elminateObject: {fileID: 0}
   openDoorSound: {fileID: 0}
+  waitingSec: 3
 --- !u!114 &1708056058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32309,6 +32323,80 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3708836, y: 1.8904997, z: 0.02651232}
   m_Center: {x: 0.001971085, y: 0.3534715, z: -0.0004636335}
+--- !u!1001 &1786318803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2093671467}
+    m_Modifications:
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.036
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -13.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.15820456
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7746534
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5864021
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.17611384
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233565973789183878, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+      propertyPath: m_Name
+      value: Rain (Basic)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+--- !u!4 &1786318804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1233565973789183877, guid: e6c8b773db6089b46bedb5d125fc5d63, type: 3}
+  m_PrefabInstance: {fileID: 1786318803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1792826396
 GameObject:
   m_ObjectHideFlags: 0
@@ -34636,6 +34724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: 
+  waitingSec: 0
 --- !u!65 &1957849367
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37717,7 +37806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2093671467
 Transform:
   m_ObjectHideFlags: 0
@@ -37739,6 +37828,7 @@ Transform:
   - {fileID: 1092718021}
   - {fileID: 509868832}
   - {fileID: 1708056056}
+  - {fileID: 1786318804}
   m_Father: {fileID: 1522981636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094510514
