@@ -66,7 +66,7 @@ public class GravityBody : NetworkBehaviour
         float gravityForce = Mathf.Lerp(gravityForceMin, gravityForceMax, normalizedScale);
 
         // 중력 적용
-        //_rigidbody.AddForce(GravityDirection * (gravityForce * Time.fixedDeltaTime), ForceMode.Acceleration);
+        _rigidbody.AddForce(GravityDirection * (gravityForce * Time.fixedDeltaTime), ForceMode.Acceleration);
 
         Quaternion upRotation = Quaternion.FromToRotation(transform.up, -GravityDirection);
         Quaternion newRotation = Quaternion.Slerp(_rigidbody.rotation, upRotation * _rigidbody.rotation, Time.fixedDeltaTime * 3f);
