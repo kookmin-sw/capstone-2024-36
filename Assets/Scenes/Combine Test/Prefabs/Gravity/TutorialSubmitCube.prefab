@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 13cb7c8eca89404418087021045270f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 925465199
+  GlobalObjectIdHash: 956168244
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -203,6 +203,7 @@ MonoBehaviour:
     m_InternalValue: 0
   m_rigidBody: {fileID: 7672402617335747568}
   isGrabbed: 0
+  toggleGravity: 0
 --- !u!114 &4617604561810027753
 MonoBehaviour:
   m_ObjectHideFlags: 0
