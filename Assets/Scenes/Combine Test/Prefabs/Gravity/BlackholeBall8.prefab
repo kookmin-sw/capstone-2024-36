@@ -119,9 +119,9 @@ GameObject:
   - component: {fileID: 3440335932695849975}
   - component: {fileID: 8354978639174136703}
   - component: {fileID: 2174130738834409154}
-  - component: {fileID: 3038262115562223098}
   - component: {fileID: 7158891816307745945}
   - component: {fileID: 1203617546584118463}
+  - component: {fileID: 2325393660369697120}
   m_Layer: 0
   m_Name: BlackholeBall8
   m_TagString: Untagged
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1182764714
+  GlobalObjectIdHash: 4119077391
   InScenePlacedSourceGlobalObjectIdHash: 638505811
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -258,33 +258,6 @@ MonoBehaviour:
   smoothDampTime: 0.1
   sendPerSec: 10
   bKeepSendWhenNotExist: 1
---- !u!54 &3038262115562223098
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4786946954240449908}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &7158891816307745945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,3 +282,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a37d6ad9a854f7aab6a986bc926d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2325393660369697120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786946954240449908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delta: 8.5
+  Xspeed: 1.5
+  Yspeed: 1.5

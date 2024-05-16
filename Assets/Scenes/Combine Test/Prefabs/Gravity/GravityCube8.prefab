@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2244616488211688562}
   - component: {fileID: 8272473413169148345}
   m_Layer: 0
-  m_Name: GravityCube6
+  m_Name: GravityCube8
   m_TagString: moveable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 5, y: 18, z: 198}
-  m_LocalScale: {x: 1.333333, y: 1.3333328, z: 1.3333328}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 546621315
+  GlobalObjectIdHash: 4053788510
   InScenePlacedSourceGlobalObjectIdHash: 95036671
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1

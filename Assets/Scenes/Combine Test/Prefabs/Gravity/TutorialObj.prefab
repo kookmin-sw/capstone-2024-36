@@ -147,7 +147,7 @@ MonoBehaviour:
     m_InternalValue: 0
   m_rigidBody: {fileID: 0}
   isGrabbed: 0
-  toggleGravity: 0
+  toggleGravity: 1
 --- !u!54 &256275289533504503
 Rigidbody:
   m_ObjectHideFlags: 0
