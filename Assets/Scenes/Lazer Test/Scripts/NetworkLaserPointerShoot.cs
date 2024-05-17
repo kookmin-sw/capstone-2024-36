@@ -29,35 +29,33 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
 
     void Update()
     {
-        
-        if (isLaserActive.Value)
-        {
-            if(beam == null){
-                beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
-                lasermanger.lasers.Add(gameObject);
-                Debug.Log("빔생성");
+        if(thisscene){if(beam == null){
+            //beam = new LaserBeam(gameObject.transform.position, gameObject.transform.forward, material, LaserColor);
+        }
+        else{
+            if (isLaserActive.Value && beam != null)
+            {
+                beam.laserObject.SetActive(true);
+                beam.EndPoint.SetActive(true);
+                beam.laserObject.GetComponent<LineRenderer>().startColor = LaserColor;
+                beam.laserObject.GetComponent<LineRenderer>().endColor = LaserColor;
+                beam.EndPoint.name = "EndCollider" + (int)( LaserColor.r *255 ) + (int)( LaserColor.g * 255) + (int)( LaserColor.b * 255);
+                beam.laserColor = LaserColor;
+                // beam.laser.positionCount = 0;
+                // beam.laserIndices.Clear();  
+                // beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
             }
-            beam.laserObject.SetActive(true);
-            beam.EndPoint.SetActive(true);
-            beam.laserObject.GetComponent<LineRenderer>().startColor = LaserColor;
-            beam.laserObject.GetComponent<LineRenderer>().endColor = LaserColor;
-            beam.EndPoint.name = "EndCollider" + (int)( LaserColor.r *255 ) + (int)( LaserColor.g * 255) + (int)( LaserColor.b * 255);
-            beam.laserColor = LaserColor;
-            // beam.laser.positionCount = 0;
-            // beam.laserIndices.Clear();  
-            // beam.CastRay(gameObject.transform.position, gameObject.transform.up, beam.laser);
+            else if (!isLaserActive.Value && beam != null)
+            {
+                beam.laserObject.SetActive(false);
+                beam.Offcollider();
+                beam.EndPoint.SetActive(false);
+                // beam.laser.positionCount = 0;
+                // beam.laserIndices.Clear();
+            }
         }
-        else if (!isLaserActive.Value && beam != null)
-        {
-            beam.laserObject.SetActive(false);
-            beam.Offcollider();
-            beam.EndPoint.SetActive(false);
-            // beam.laser.positionCount = 0;
-            // beam.laserIndices.Clear();
-        }
-        
             
-        
+        }
         
         
        
