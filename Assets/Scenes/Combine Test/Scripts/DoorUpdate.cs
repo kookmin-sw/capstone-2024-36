@@ -35,6 +35,7 @@ public class DoorUpdate : MonoBehaviour
 
     void CheckDoorList()
     {
+        allClear=true;
             foreach(GameObject door in doorlist)
         {
             if(!door.GetComponent<LightDoorUpdate>().isDoorActive) // GameObject의 isclear이 false인 경우

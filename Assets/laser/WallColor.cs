@@ -13,6 +13,9 @@ public class WallColor : MonoBehaviour
     private bool IsGreen = false;
     public Color mix = Color.black;
     public GameObject door;
+    public GameObject door2;
+    
+    public bool isClear;
 
     private MeshRenderer meshRenderer;
 
@@ -21,33 +24,47 @@ public class WallColor : MonoBehaviour
     void Awake(){
         meshRenderer = GetComponent<MeshRenderer>();
     }
-    
+    void FixedUpdate(){
+        isClear=false;
+        
+    }
     void Update(){
+        
+        if(isClear){
+            if (door.transform.position.y > -2)
+                {
+                    Debug.Log("down");
+                    door.transform.Translate(Vector3.down * Time.deltaTime *3);
+                    if(door2 != null){
+                        door2.transform.Translate(Vector3.down * Time.deltaTime *3);
+                    }
+                }
+        }
+        else{
+            if (door.transform.position.y < 2.8)
+                {
+                    Debug.Log("up");
+                    door.transform.Translate(Vector3.up * Time.deltaTime );
+                    if(door2 != null){
+                        door2.transform.Translate(Vector3.up * Time.deltaTime );
+                    }
+                }
+
+        }
         ColorOFF();
+        // mix = Color.white;
+        // SetWallColor(Color.white);
         
     }
 
     void UpdaetWallColor(){
         mix = mixColor();
         SetWallColor(mix);
+        if(mix == ClearWallColor){
+            isClear = true;
+        }
         // mix = outcolor;
-        if( mix == ClearWallColor){
-            if (door.transform.position.y > -2)
-                {
-                    door.transform.Translate(Vector3.down * Time.deltaTime *3);
-                }
-            else
-                {
-                    door.transform.Translate(Vector3.up * Time.deltaTime);
-                }
-        }
-        else{
-            if (door.transform.position.y < 2.26)
-                {
-                    door.transform.Translate(Vector3.up * Time.deltaTime *3);
-                }
-
-        }
+        
 
     }
 
@@ -124,19 +141,11 @@ public class WallColor : MonoBehaviour
 
     void OnTriggerExit(Collider collision){
         Debug.Log("exit");
-        // if (collision.gameObject.name == "EndColliderCollider25500")
-        // {
-        //     IsRed  = false;
-        // }
-        // else if (collision.gameObject.name == "EndColliderCollider00255")
-        // {
-        //     IsBlue  = false;
-        // }
-        // else if (collision.gameObject.name == "EndColliderCollider02550")
-        // {
-        //     IsGreen  = false;
-        // }
-
+        
+        ColorOFF();
+        mix = Color.white;
+        SetWallColor(Color.white);  
+        isClear = false;
     }
 
     public void SetinColor(Color color){
