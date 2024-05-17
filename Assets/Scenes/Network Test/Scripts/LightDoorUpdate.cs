@@ -22,6 +22,9 @@ public class LightDoorUpdate : MonoBehaviour
 
     // Update is called once per frame
 
+    void FixedUpdate(){
+        isDoorActive = false;
+    }
     void Start()
     {
         //door = GameObject.Find("Door_2 Variant");
@@ -75,7 +78,11 @@ public class LightDoorUpdate : MonoBehaviour
     }
 
 
-    
+    void OnTriggerStay(Collider other){
+        if (receiveColor == ClearColor){
+            isDoorActive=true;
+        }
+    }
 
     void OnTriggerExit(Collider other)
     {
