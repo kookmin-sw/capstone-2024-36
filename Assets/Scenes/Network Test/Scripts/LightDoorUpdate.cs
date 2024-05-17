@@ -60,11 +60,6 @@ public class LightDoorUpdate : MonoBehaviour
 
     public void ClearSuccess(Color color){
         receiveColor = color;
-        UnityEngine.Debug.Log(receiveColor + "clearcolor" + ClearColor);
-        if(receiveColor == ClearColor){
-            isDoorActive = true;
-            UnityEngine.Debug.Log("clear" + isDoorActive);
-        }
 
 
 
