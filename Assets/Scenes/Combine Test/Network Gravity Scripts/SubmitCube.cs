@@ -8,12 +8,11 @@ public class SubmitCube : NetworkBehaviour
     [SerializeField] GameObject nextObsObj;
     [SerializeField] GameObject elminateObject;
     [SerializeField] private AudioClip openDoorSound;
-    [SerializeField] private float waitingSec = 3.0f;
 
 
     IEnumerator HandleCollision(Collider other)
     {
-        yield return new WaitForSeconds(waitingSec);
+        yield return new WaitForSeconds(3f);
         bool isPositioned = false;
         Vector3 otherPosition = other.transform.position;
         Transform thisTransform = GetComponent<Transform>();
