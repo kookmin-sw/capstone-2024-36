@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 3038262115562223098}
   - component: {fileID: 7158891816307745945}
   - component: {fileID: 1203617546584118463}
-  - component: {fileID: -1190531287093689459}
+  - component: {fileID: 5584522421611069881}
   m_Layer: 0
   m_Name: BlackholeBall7
   m_TagString: Untagged
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1321021106
+  GlobalObjectIdHash: 4034153520
   InScenePlacedSourceGlobalObjectIdHash: 638505811
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a37d6ad9a854f7aab6a986bc926d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1190531287093689459
+--- !u!114 &5584522421611069881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,9 +319,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4786946954240449908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387c44b6017324bbd8b08b7e9e360bcf, type: 3}
+  m_Script: {fileID: 11500000, guid: ed8c2edd5f0ba4605b35762a334f4ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delta: 3
-  Xspeed: 0.5
+  Xspeed: 1.5
   Yspeed: 0
