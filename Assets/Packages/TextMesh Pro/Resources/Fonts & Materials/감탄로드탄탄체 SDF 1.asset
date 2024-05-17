@@ -118,11 +118,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: "\uAC10\uD0C4\uB85C\uB4DC\uD0C4\uD0C4\uCCB4 SDF"
+  m_Name: "\uAC10\uD0C4\uB85C\uB4DC\uD0C4\uD0C4\uCCB4 SDF 1"
   m_EditorClassIdentifier: 
-  hashCode: 215260753
+  hashCode: -1804242368
   material: {fileID: -8885181390643011402}
-  materialHashCode: -914121263
+  materialHashCode: 1612112480
   m_Version: 1.1.0
   m_SourceFontFileGUID: c9ebad953c6fb9a43a047161d89fd552
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c9ebad953c6fb9a43a047161d89fd552, type: 3}

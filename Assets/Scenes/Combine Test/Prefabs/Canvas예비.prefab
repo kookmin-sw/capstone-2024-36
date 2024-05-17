@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatText: {fileID: 4484460424431324144}
+  scrollRect: {fileID: 0}
+  chatRectTransform: {fileID: 0}
 --- !u!1 &3670737540654382371
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,10 +407,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD55C\uAD6D\uC5B4"
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ea9ac19a94b0763459aa07d3759662c8, type: 2}
-  m_sharedMaterial: {fileID: -4267498899681387979, guid: ea9ac19a94b0763459aa07d3759662c8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 32a285771fea3e0438a889ad43414103, type: 2}
+  m_sharedMaterial: {fileID: 488195251954973116, guid: 32a285771fea3e0438a889ad43414103, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

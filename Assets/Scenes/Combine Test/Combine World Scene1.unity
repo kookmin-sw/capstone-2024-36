@@ -12685,8 +12685,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashingText: {fileID: 1877441712}
   displayDuration: 10
-  message: "<b><\uC870\uC791 \uBC29\uBC95></b><br>W : \uC804\uC9C4<br>S : \uD6C4\uC9C4<br>A
-    : \uC88C<br>D : \uC6B0<br>Shift : \uB2EC\uB9AC\uAE30"
+  message: "<b><\uC870\uC791 \uBC29\uBC95></b><br>WASD : \uC774\uB3D9<br>Shift :
+    \uB2EC\uB9AC\uAE30<br>Space Bar : \uC810\uD504 "
+  onTime: 0.7
+  offTime: 0.3
+  fadeDuration: 0.2
 --- !u!4 &815908886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8112084272717300614, guid: da5c31f7195140b46bf75786231e3518, type: 3}
@@ -23642,6 +23645,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 942754721157112072, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1559365420251016398, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_Name
       value: Canvas(Chat) 1
@@ -23670,9 +23677,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2378969056583442707, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -291.50003
+      value: -291.5
       objectReference: {fileID: 0}
     - target: {fileID: 4037528303915860654, guid: 74243c07c1a43f94490189ffb705bd78, type: 3}
       propertyPath: m_AnchoredPosition.y
