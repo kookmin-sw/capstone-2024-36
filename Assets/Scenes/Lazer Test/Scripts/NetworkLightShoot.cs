@@ -7,6 +7,8 @@
     {
         public Color LaserColor = Color.red;
         public Material material;
+        public GameObject laserDestroyParticlesPrefab;
+        public float particleSpacing = 0.5f;
 
         private Camera m_camera;
 
@@ -17,6 +19,7 @@
         private PlayerControl actions;
 
         LaserBeam beam;
+        private List<Vector3> laserPositions = new List<Vector3>();
 
         void Awake(){
             if (actions == null)
@@ -52,9 +55,22 @@
                 if(Physics.Raycast(laserray, out hit)){
                     // mousedirection = (hit.point - playerposition).normalized;
                     directionToCameraCenter = (hit.point - playerposition).normalized;
+                    CalculateLaserPositions(playerposition, hit.point);
                 }
                 ShootLaserServerRpc(playerposition,directionToCameraCenter);
                 // ColorChange();
+            }
+        }
+
+        void CalculateLaserPositions(Vector3 start, Vector3 end)
+        {
+            laserPositions.Clear();
+            Vector3 direction = (end - start).normalized;
+            float distance = Vector3.Distance(start, end);
+            for (float i = 0; i < distance; i += particleSpacing)
+            {
+                Vector3 position = start + direction * i;
+                laserPositions.Add(position);
             }
         }
 
@@ -101,6 +117,14 @@
             GameObject laserAbility = GameObject.Find("laserability");
             if (laserAbility != null)
             {
+                foreach (var pos in laserPositions)
+                {
+                    if (laserDestroyParticlesPrefab != null)
+                    {
+                        GameObject particles = Instantiate(laserDestroyParticlesPrefab, pos, Quaternion.identity);
+                        Destroy(particles, 0.5f);
+                    }
+                }
                 Destroy(laserAbility);
             }
         }
