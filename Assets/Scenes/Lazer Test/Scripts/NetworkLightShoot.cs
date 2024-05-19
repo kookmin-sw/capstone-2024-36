@@ -122,7 +122,7 @@
                     if (laserDestroyParticlesPrefab != null)
                     {
                         GameObject particles = Instantiate(laserDestroyParticlesPrefab, pos, Quaternion.identity);
-                        Destroy(particles, 0.5f);
+                        Destroy(particles, 3f);
                     }
                 }
                 Destroy(laserAbility);

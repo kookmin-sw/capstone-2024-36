@@ -7,6 +7,7 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
 {
     public Color LaserColor = Color.red;
     public Material material;
+    public GameObject particleSystemPrefab;
 
     public LaserManger lasermanger;
 
@@ -89,9 +90,39 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
                 RequestToggleLaserActivationServerRpc();
                 Debug.Log("toggle send");
                 Debug.Log(isLaserActive.Value);
+
+            // 레이저가 꺼질 때에만 파티클 시스템 생성
+            if (!isLaserActive.Value)
+            {
+                // 마지막으로 꺼진 레이저의 시작점부터 끝점까지의 레이저 줄기에 따라 파티클 시스템 실행
+                if (beam != null)
+                {
+                    GenerateParticlesAlongLaser(beam.laser.GetPosition(0), beam.laser.GetPosition(beam.laser.positionCount - 1));
+                }
             }
+        }
             
         
+    }
+
+    private void GenerateParticlesAlongLaser(Vector3 start, Vector3 end)
+    {
+        Vector3 direction = end - start;
+        float distance = direction.magnitude;
+        int numParticles = Mathf.FloorToInt(distance * 20); // 거리에 따른 파티클 수
+
+        direction.Normalize(); // 방향 벡터 정규화
+
+        for (int i = 0; i < numParticles; i++)
+        {
+            // 파티클의 위치 계산
+            Vector3 particlePosition = start + direction * (i + 0.5f); // 레이저의 중간 지점에 파티클 생성
+
+            // 파티클 시스템 생성
+            GameObject particles = Instantiate(particleSystemPrefab, particlePosition, Quaternion.identity);
+            particles.GetComponent<ParticleSystem>().Play();
+            Destroy(particles, 3f);
+        }
     }
 
     // 서버에서 호출되는 RPC 함수로 레이저 활성화 상태를 토글합니다.
