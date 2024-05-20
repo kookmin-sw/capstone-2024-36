@@ -6,6 +6,15 @@ Ai Senma는 포탈과 12분이라는 게임을 참고한 게임으로, 실험실
 
 크기 조절, 중력, 빛 세 가지 퍼즐 기믹이 있으며 2인 협동 멀티 플레이가 가능합니다. 
 
+
+## 시놉시스
+모든 기억을 잃고 초능력 연구소에 납치된 주인공.  
+AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하며 각성한다.  
+퍼즐을 풀어가고 실험하다 보니 점점 기시감이..?  
+과연 주인공은 어떤 사람이었고 대체 왜 여기 갇히게 된 걸까?  
+신선한 기믹들과 대반전 스토리의 전말.
+
+
 ## 팀 소개
 
 문민철(\*\*\*\*1607): 팀장, 플레이어 스킬 개발(크기)  
@@ -16,6 +25,7 @@ Ai Senma는 포탈과 12분이라는 게임을 참고한 게임으로, 실험실
 강동우(\*\*\*\*1566): 맵 및 그래픽 디자인  
 강기범(\*\*\*\*1564): 스토리 및 보조개발  
 
+
 ## 조작
 이동: WASD  
 점프: 스페이스 바  
@@ -24,16 +34,28 @@ Ai Senma는 포탈과 12분이라는 게임을 참고한 게임으로, 실험실
 물체 회전: Ctrl + 마우스 휠  
 
 
-## 스크린샷
-<img width="529" alt="20240402_212842584" src="https://github.com/kookmin-sw/capstone-2024-36/assets/36731857/3b670a27-69ee-4f52-b573-653c720dd376">
+## 실행 방법
 
-<img width="527" alt="20240402_213012097" src="https://github.com/kookmin-sw/capstone-2024-36/assets/36731857/1051cc27-b264-47a8-9013-aeccce17ffc1">
+다운받으시고 .exe파일중에 AISENMA.exe 실행하시면 됩니다.
+
+
+## 스크린샷
+
+![시작맵](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/1d5e9a33-9faf-4b15-abd8-17bd550180e3)
+
+![1번맵](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/ed769cbe-527c-44a0-8c21-2a588ccacee1)
+
+![2번맵](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/e3be4b19-a122-407e-97af-13c275acaec0)
+
+![3번맵](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/a23245d0-11e2-43aa-a857-529b3eae49b5)
+
 
 ## 중간 발표 자료
 [파일 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%A4%91%EA%B0%84_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf)
   
 
 [중간 보고서 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
+
 
 ## 포스터
 ![깃허브 업로드용 포스터](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/92f845b3-6200-4550-9c96-dca78a40d7f0)
