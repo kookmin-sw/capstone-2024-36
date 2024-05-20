@@ -34,3 +34,5 @@ Ai Senma는 포탈과 12분이라는 게임을 참고한 게임으로, 실험실
   
 
 [중간 보고서 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
+
+## 포스터
