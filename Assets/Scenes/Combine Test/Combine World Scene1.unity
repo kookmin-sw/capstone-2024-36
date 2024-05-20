@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18900594, g: 0.2190921, b: 0.24243721, a: 1}
+  m_IndirectSpecularColor: {r: 0.18884689, g: 0.219037, b: 0.24241176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28317,12 +28317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e3b90871ed5f446ab960a5c61565c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLocalPlayerIn: 0
+  IsLocalPlayerIn: 1
   IsRemotePlayerIn: 0
-  portalType: 1
-  StageName: Stage2
+  portalType: 3
+  StageName: EndingStage
   PrefsName: Stage2
-  NextSceneName: Laser2 World Scene
+  NextSceneName: Scale3 World Scene
 --- !u!65 &1943560179
 BoxCollider:
   m_ObjectHideFlags: 0

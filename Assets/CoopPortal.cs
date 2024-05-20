@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
@@ -8,7 +8,8 @@ public enum ePortalType
 {
     Simple,
     Stage,
-    Clear 
+    Clear,
+    Ending
 }
 
 
@@ -157,6 +158,14 @@ public class CoopPortal : MonoBehaviour
                         moveScene = true;
                     }
                     else if (PrefsName.Contains('3') && info.IsStage2Cleared)
+                    {
+                        moveScene = true;
+                    }
+                }
+                else if (portalType == ePortalType.Ending)
+                {
+                    StageClearInfo info = SaveFileManager.Instance.GetStageClearInfo();
+                    if (info.IsStage1Cleared && info.IsStage2Cleared && info.IsStage3Cleared)
                     {
                         moveScene = true;
                     }
