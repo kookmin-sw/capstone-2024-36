@@ -26,6 +26,10 @@ AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하
 강기범(\*\*\*\*1564): 스토리 및 보조개발  
 
 
+## 포스터
+![깃허브 업로드용 포스터](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/92f845b3-6200-4550-9c96-dca78a40d7f0)
+
+
 ## 조작
 이동: WASD  
 점프: Space Bar
@@ -60,6 +64,3 @@ AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하
 
 [중간 보고서 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
 
-
-## 포스터
-![깃허브 업로드용 포스터](https://github.com/kookmin-sw/capstone-2024-36/assets/39340989/92f845b3-6200-4550-9c96-dca78a40d7f0)
