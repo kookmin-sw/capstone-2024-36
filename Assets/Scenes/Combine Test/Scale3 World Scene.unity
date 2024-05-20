@@ -4220,11 +4220,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 232763922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delta: 8
-  Xspeed: 0.5
+  Xspeed: 0.8
   Yspeed: 0
 --- !u!1001 &233211534
 PrefabInstance:
@@ -10449,7 +10449,7 @@ Transform:
   m_GameObject: {fileID: 640211144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10466,11 +10466,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 640211144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 5
-  Xspeed: 1
+  delta: 8
+  Xspeed: 0.5
   Yspeed: 1
 --- !u!1001 &643360000
 PrefabInstance:
@@ -24457,12 +24457,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1519023826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 5
-  Xspeed: 0
-  Yspeed: 2
+  delta: 8
+  Xspeed: 1.2
+  Yspeed: 0.4
 --- !u!1001 &1520385777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30623,12 +30623,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1842464249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delta: 8
   Xspeed: 0
-  Yspeed: 1
+  Yspeed: 0.8
 --- !u!1001 &1844868656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32664,12 +32664,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934231415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delta: 8
-  Xspeed: 0.8
-  Yspeed: 0
+  Xspeed: -1.5
+  Yspeed: 0.5
 --- !u!1001 &1939048057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37020,11 +37020,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130746740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702298b989b8a8c42b2c92675bf29f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 4
-  Xspeed: 0.8
+  delta: 8
+  Xspeed: 1
   Yspeed: 0
 --- !u!1001 &2131654270
 PrefabInstance:

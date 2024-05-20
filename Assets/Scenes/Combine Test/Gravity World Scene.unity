@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.16494176, g: 0.1658155, b: 0.16494176, a: 1}
+  m_IndirectSpecularColor: {r: 0.16535369, g: 0.16589633, b: 0.16535369, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1561,7 +1562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 1863646694}
   elminateObject: {fileID: 364156752}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &84784420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,7 +1716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 163568675}
   elminateObject: {fileID: 1789143098}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &86865974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 163568675}
   elminateObject: {fileID: 612865783}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &95367382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15409,7 +15410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 2093671466}
   elminateObject: {fileID: 0}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &812826219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19474,7 +19475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 2094510514}
   elminateObject: {fileID: 1522981635}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &983624618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26597,7 +26598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 0}
   elminateObject: {fileID: 944006424}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &1309505635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27049,7 +27050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 1031610039}
   elminateObject: {fileID: 80937035}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &1320214247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33980,7 +33981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextObsObj: {fileID: 1854414824}
   elminateObject: {fileID: 0}
-  openDoorSound: {fileID: 0}
+  openDoorSound: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
 --- !u!114 &1708056058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40268,6 +40269,10 @@ PrefabInstance:
       propertyPath: nextObsObj
       value: 
       objectReference: {fileID: 1031610039}
+    - target: {fileID: 1533593207454506117, guid: 4d78fbec0fac14aefbd409c40faab0e1, type: 3}
+      propertyPath: openDoorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dd532fdb2a61e4cc5bc727f3b32a69a8, type: 3}
     - target: {fileID: 1533593207454506117, guid: 4d78fbec0fac14aefbd409c40faab0e1, type: 3}
       propertyPath: elminateObject
       value: 
