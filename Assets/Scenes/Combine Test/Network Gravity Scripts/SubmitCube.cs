@@ -12,7 +12,34 @@ public class SubmitCube : NetworkBehaviour
 
     IEnumerator HandleCollision(Collider other)
     {
-        yield return new WaitForSeconds(3f);
+        Rigidbody cubeRigidbody = other.GetComponent<Rigidbody>();
+
+        if (cubeRigidbody.useGravity == true)
+        {
+            cubeRigidbody.useGravity = false;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (cubeRigidbody.useGravity == true)
+        {
+            cubeRigidbody.useGravity = false;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (cubeRigidbody.useGravity == true)
+        {
+            cubeRigidbody.useGravity = false;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        if (cubeRigidbody.useGravity == true)
+        {
+            cubeRigidbody.useGravity = false;
+        }
+
         bool isPositioned = false;
         Vector3 otherPosition = other.transform.position;
         Transform thisTransform = GetComponent<Transform>();
@@ -38,7 +65,10 @@ public class SubmitCube : NetworkBehaviour
         {
             if (!isHandlingCollision && other.CompareTag("moveable"))
             {
-                Rigidbody cubeRigidbody = other.GetComponent<Rigidbody>();
+                if (cubeRigidbody.useGravity == true)
+                {
+                    cubeRigidbody.useGravity = false;
+                }
                 BoxCollider cubeCollider = other.GetComponent<BoxCollider>();
 
                 isHandlingCollision = true;
@@ -104,11 +134,24 @@ public class SubmitCube : NetworkBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Rigidbody cubeRigidbody = other.GetComponent<Rigidbody>();
+        if (cubeRigidbody.useGravity == true)
+        {
+            cubeRigidbody.useGravity = false;
+        }
         StartCoroutine(HandleCollision(other));
     }
 
     void OnTriggerExit(Collider other)
     {
+        Rigidbody cubeRigidbody = other.GetComponent<Rigidbody>();
+        NetworkGrabbable networkGrabbable = other.GetComponent<NetworkGrabbable>();
+
+        if (networkGrabbable.toggleGravity == false)
+        {
+            cubeRigidbody.useGravity = true;
+        }
+
         StopCoroutine(HandleCollision(other));
     }
     /*
