@@ -32,14 +32,14 @@ AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하
 
 ## 조작
 이동: WASD  
-점프: Space Bar
-달리기 : Left Shift
-카메라이동 : Mouse
+점프: Space Bar  
+달리기 : Left Shift  
+카메라이동 : Mouse  
 염력 및 상호작용: E  
 크기 조절: Mouse Wheel  
-물체 회전: Q
-중력 : R
-암흑물질 : F
+물체 회전: Q  
+중력 : R  
+암흑물질 : F  
 
 
 ## 실행 방법
