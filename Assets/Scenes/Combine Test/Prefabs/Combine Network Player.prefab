@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: -916438802882961531}
   - component: {fileID: 5875068394305949217}
   - component: {fileID: 6802948144894432541}
-  - component: {fileID: 7313854131071841802}
   - component: {fileID: -4527428091034685198}
   - component: {fileID: 1125318161603723244}
   - component: {fileID: 1206625371184980762}
@@ -175,7 +174,7 @@ MonoBehaviour:
   JumpPower: 10
   drawGizmo: 1
   groundBoxSize: {x: 0.5, y: 0.3, z: 0.5}
-  groundBoxOffset: {x: 0, y: -0.15, z: 0}
+  groundBoxOffset: {x: 0, y: 0, z: 0}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -285,6 +284,7 @@ MonoBehaviour:
   LaserColor: {r: 0, g: 0, b: 0, a: 1}
   material: {fileID: 2100000, guid: b7994f25bc44402428a37d01239759b3, type: 2}
   laserDestroyParticlesPrefab: {fileID: 1233565973789183878, guid: e0f438649382a12449cbde77fa884d26, type: 3}
+  particleSpacing: 0.5
 --- !u!114 &6802948144894432541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,20 +305,6 @@ MonoBehaviour:
     m_Bits: 65
   m_holdDistance: 10
   distance: 0
---- !u!114 &7313854131071841802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5382125386911965414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f06b2283d346a990e04a10944404f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravityForceMin: 400
-  gravityForceMax: 1000
 --- !u!54 &-4527428091034685198
 Rigidbody:
   m_ObjectHideFlags: 0
