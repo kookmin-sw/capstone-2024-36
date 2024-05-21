@@ -174,7 +174,7 @@ MonoBehaviour:
   JumpPower: 10
   drawGizmo: 1
   groundBoxSize: {x: 0.3, y: 0.1, z: 0.3}
-  groundBoxOffset: {x: 0, y: -0.5, z: 0}
+  groundBoxOffset: {x: 0, y: -0.05, z: 0}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
