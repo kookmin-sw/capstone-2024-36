@@ -3516,7 +3516,8 @@ MonoBehaviour:
   message: "<b><i>Moonmad Nick</b></i> : \uAE5C\uC9DD\uC774\uC57C. \uC2DC\uCCB4\uB4E4\uC774\uC796\uC544.
     \uC774 \uAF34 \uB098\uC9C0 \uC54A\uC73C\uB824\uBA74 \uC5B4\uCA54 \uC218 \uC5C6\uC774
     \uC2DC\uD0A4\uB294 \uB300\uB85C \uD574\uC57C\uACA0\uB124."
-  delayTime: 0
+  messageDelay: 0
+  triggerID: 
 --- !u!65 &260154415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4889,7 +4890,8 @@ MonoBehaviour:
   message: "<b><i>AI SENMA</b></i> : \uC67C\uCABD\uBD80\uD130 \uC5FC\uB825, \uC554\uD751\uBB3C\uC9C8,
     \uC911\uB825 \uB2A5\uB825\uC744 \uBD80\uC5EC\uBC1B\uACE0 \uC801\uC751 \uBC0F
     \uAC01\uC131\uC744 \uC704\uD574 \uC2E4\uD5D8\uD569\uB2C8\uB2E4."
-  delayTime: 0
+  messageDelay: 0
+  triggerID: 
 --- !u!65 &314084343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12911,11 +12913,9 @@ MonoBehaviour:
   flashingText: {fileID: 1877441712}
   displayDuration: 10
   message: "<b><\uC870\uC791 \uBC29\uBC95></b><br>WASD : \uC774\uB3D9<br>Shift :
-    \uB2EC\uB9AC\uAE30<br>Space Bar : \uC810\uD504<br>Enter : \uB300\uD654\uCC3D
+    \uB2EC\uB9AC\uAE30<br>Space Bar : \uC810\uD504<br>Enter : \uCD5C\uADFC \uB300\uD654
     \uD655\uC778"
-  onTime: 0.7
-  offTime: 0.3
-  fadeDuration: 0.2
+  triggerID: 
 --- !u!4 &815908886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8112084272717300614, guid: da5c31f7195140b46bf75786231e3518, type: 3}
