@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Unity.Netcode;
 
 public class NetworkPlayer
@@ -163,6 +163,7 @@ public class NetworkPlayer
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    characterController.Move(Vector3.up * 0.2f);
                     isOnGround = false;
                     m_speedY = JumpPower;
                 }
@@ -181,6 +182,7 @@ public class NetworkPlayer
                 m_speedY = 0;
             }
 
+            
             characterController.Move(Vector3.up * m_speedY * Time.deltaTime);
         }
         else
@@ -306,6 +308,8 @@ public class NetworkPlayer
 
     public bool GroundCheck()
     {
+        // Debug.Log(transform.position);
+
         Vector3 center = transform.position - new Vector3(0.0f, -groundBoxSize.y, 0.0f) + groundBoxOffset;
 
         bool _isOnGround = Physics.BoxCast(
