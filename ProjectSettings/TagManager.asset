@@ -15,6 +15,7 @@ TagManager:
   - GravityControl
   - StageNumber
   - PlayerForGravity
+  - PickupObject
   layers:
   - Default
   - TransparentFX
