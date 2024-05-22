@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class soundSettings : MonoBehaviour
+public class OptionSettings : MonoBehaviour
 {
     public AudioMixer audioMixer;
     [SerializeField] GameObject Obj;
