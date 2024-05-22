@@ -14,30 +14,28 @@ public class GravitySetObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isSet == true)
-        {
-            setObject.SetActive(false);
-            isSet = false;
-        }   
+        setObject.SetActive(false);
+ 
+        /*
         else
         {
             setObject.SetActive(true);
             isSet = true;
         }
+        */
     }
     
     private void OnTriggerExit(Collider other)
     {
-        if (isSet == true)
-        {
-            setObject.SetActive(false);
-            isSet = false;
-        }
+        setObject.SetActive(true);
+    
+        /*
         else
         {
             setObject.SetActive(true);
             isSet = true;
         }
+        */
     }
 }
 

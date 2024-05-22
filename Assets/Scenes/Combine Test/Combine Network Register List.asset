@@ -36,7 +36,7 @@ MonoBehaviour:
   - RegisterId: 405
     Prefab: {fileID: 264308519798568513, guid: 4d78fbec0fac14aefbd409c40faab0e1, type: 3}
   - RegisterId: 406
-    Prefab: {fileID: 8611212553416790420, guid: 8ffe63713f99f48039145adf067d98e9, type: 3}
+    Prefab: {fileID: 4786946954240449908, guid: 2e7190fffc1184257bee1cee284a4608, type: 3}
   - RegisterId: 407
     Prefab: {fileID: 8242841767902432820, guid: 2d62f311e9e9841328a3b4f45a039281, type: 3}
   - RegisterId: 408

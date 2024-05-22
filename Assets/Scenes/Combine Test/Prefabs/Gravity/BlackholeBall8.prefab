@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2174130738834409154}
   - component: {fileID: 7158891816307745945}
   - component: {fileID: 1203617546584118463}
-  - component: {fileID: 643605472184842761}
+  - component: {fileID: 891704834090064558}
   m_Layer: 0
   m_Name: BlackholeBall8
   m_TagString: Untagged
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a37d6ad9a854f7aab6a986bc926d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &643605472184842761
+--- !u!114 &891704834090064558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8824d672de5874ee9b1ba067a72544fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delta: 10
+  delta: 11.5
   Xspeed: 2
   Yspeed: 2
 --- !u!1001 &5562748828044504795
