@@ -175,7 +175,7 @@ public class NetworkGrabManager : NetworkBehaviour
         {
             m_catchTarget.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
-        if (m_catchTarget.IsOwner && wheelInput < 0 && !canChange && m_catchTarget.transform.localScale.x > 0.2f)
+        if (m_catchTarget.IsOwner && wheelInput < 0 && !canChange && m_catchTarget.transform.localScale.x > 0.4f)
         {
             m_catchTarget.transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
         }
