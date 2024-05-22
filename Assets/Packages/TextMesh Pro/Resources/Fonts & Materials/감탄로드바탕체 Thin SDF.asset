@@ -24,24 +24,24 @@ MonoBehaviour:
     m_FaceIndex: 0
     m_FamilyName: GamtanRoad Batang Thin
     m_StyleName: Thin
-    m_PointSize: 40
+    m_PointSize: 30
     m_Scale: 1
     m_UnitsPerEM: 1024
-    m_LineHeight: 41.953125
-    m_AscentLine: 34.335938
-    m_CapLine: 30
-    m_MeanLine: 21
+    m_LineHeight: 31.464842
+    m_AscentLine: 25.751951
+    m_CapLine: 23
+    m_MeanLine: 16
     m_Baseline: 0
-    m_DescentLine: -7.6171875
-    m_SuperscriptOffset: 34.335938
+    m_DescentLine: -5.71289
+    m_SuperscriptOffset: 25.751951
     m_SuperscriptSize: 0.5
-    m_SubscriptOffset: -7.6171875
+    m_SubscriptOffset: -5.71289
     m_SubscriptSize: 0.5
-    m_UnderlineOffset: -4.8828125
-    m_UnderlineThickness: 1.953125
-    m_StrikethroughOffset: 8.4
-    m_StrikethroughThickness: 1.953125
-    m_TabWidth: 9
+    m_UnderlineOffset: -3.6621091
+    m_UnderlineThickness: 1.4648436
+    m_StrikethroughOffset: 6.4
+    m_StrikethroughThickness: 1.4648436
+    m_TabWidth: 6
   m_GlyphTable: []
   m_CharacterTable: []
   m_AtlasTextures:
@@ -93,7 +93,7 @@ MonoBehaviour:
     sourceFontFileName: 
     sourceFontFileGUID: 656ec996bdce3b447b1612647e5c877f
     pointSizeSamplingMode: 0
-    pointSize: 40
+    pointSize: 30
     padding: 9
     packingMode: 0
     atlasWidth: 1024

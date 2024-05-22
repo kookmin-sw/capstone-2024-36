@@ -132,24 +132,24 @@ MonoBehaviour:
     m_FaceIndex: 0
     m_FamilyName: GamtanRoad Tantan
     m_StyleName: Regular
-    m_PointSize: 40
+    m_PointSize: 30
     m_Scale: 1
     m_UnitsPerEM: 1024
-    m_LineHeight: 40
-    m_AscentLine: 34.335938
-    m_CapLine: 30
-    m_MeanLine: 22
+    m_LineHeight: 29.999998
+    m_AscentLine: 25.751951
+    m_CapLine: 23
+    m_MeanLine: 17
     m_Baseline: 0
-    m_DescentLine: -5.6640625
-    m_SuperscriptOffset: 34.335938
+    m_DescentLine: -4.248047
+    m_SuperscriptOffset: 25.751951
     m_SuperscriptSize: 0.5
-    m_SubscriptOffset: -5.6640625
+    m_SubscriptOffset: -4.248047
     m_SubscriptSize: 0.5
-    m_UnderlineOffset: -4.8828125
-    m_UnderlineThickness: 1.953125
-    m_StrikethroughOffset: 8.8
-    m_StrikethroughThickness: 1.953125
-    m_TabWidth: 9
+    m_UnderlineOffset: -3.6621091
+    m_UnderlineThickness: 1.4648436
+    m_StrikethroughOffset: 6.8
+    m_StrikethroughThickness: 1.4648436
+    m_TabWidth: 7
   m_GlyphTable: []
   m_CharacterTable: []
   m_AtlasTextures:
@@ -201,7 +201,7 @@ MonoBehaviour:
     sourceFontFileName: 
     sourceFontFileGUID: c9ebad953c6fb9a43a047161d89fd552
     pointSizeSamplingMode: 0
-    pointSize: 40
+    pointSize: 30
     padding: 9
     packingMode: 0
     atlasWidth: 1024

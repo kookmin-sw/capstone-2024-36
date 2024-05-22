@@ -12912,9 +12912,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashingText: {fileID: 1877441712}
   displayDuration: 10
-  message: "<b><\uC870\uC791 \uBC29\uBC95></b><br>WASD : \uC774\uB3D9<br>Shift :
-    \uB2EC\uB9AC\uAE30<br>Space Bar : \uC810\uD504<br>Enter : \uCD5C\uADFC \uB300\uD654
-    \uD655\uC778"
+  message: "<\uC870\uC791 \uBC29\uBC95><br>WASD : \uC774\uB3D9<br>Shift : \uB2EC\uB9AC\uAE30<br>Space
+    Bar : \uC810\uD504<br>Enter : \uCD5C\uADFC \uB300\uD654 \uD655\uC778"
+  onTime: 0.7
+  offTime: 0.3
+  fadeDuration: 0.2
   triggerID: 
 --- !u!4 &815908886 stripped
 Transform:
