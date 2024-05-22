@@ -16,6 +16,7 @@ public class WallColor : MonoBehaviour
     public GameObject door2;
     
     public bool isClear;
+    public bool isDoorSound;
 
     private MeshRenderer meshRenderer;
 
@@ -39,6 +40,13 @@ public class WallColor : MonoBehaviour
                         door2.transform.Translate(Vector3.down * Time.deltaTime *3);
                     }
                 }
+                else{
+                    if(isDoorSound==false && door.GetComponent<AudioSource>() != null){
+                    AudioSource audio = door.GetComponent<AudioSource>();
+                    audio.Play();
+                    isDoorSound=true;
+                    }
+                }
         }
         else{
             if (door.transform.position.y < 2.8)
@@ -48,6 +56,7 @@ public class WallColor : MonoBehaviour
                     if(door2 != null){
                         door2.transform.Translate(Vector3.up * Time.deltaTime );
                     }
+                    isDoorSound=false;
                 }
 
         }
