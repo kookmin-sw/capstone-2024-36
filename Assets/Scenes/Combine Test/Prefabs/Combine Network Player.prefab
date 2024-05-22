@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1125318161603723244}
   - component: {fileID: 1206625371184980762}
   - component: {fileID: 8030350346223149365}
+  - component: {fileID: 7138970237114492994}
   m_Layer: 8
   m_Name: Combine Network Player
   m_TagString: PlayerForGravity
@@ -461,6 +462,22 @@ MonoBehaviour:
   rightFoot: {fileID: 0}
   m_stepHeight: 0.035
   m_footstepSound: {fileID: 8300000, guid: 9ea11a2d13d536e4e8441a0f5895995c, type: 3}
+--- !u!114 &7138970237114492994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382125386911965414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa465f3e1f55fe44d8827d83e3c3863d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPosX: 0
+  SpawnPosY: 0
+  SpawnPosZ: 0
+  NextSceneName: 
 --- !u!1 &7581870567378784099
 GameObject:
   m_ObjectHideFlags: 0
