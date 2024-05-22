@@ -9,6 +9,7 @@ public class DoorUpdate : MonoBehaviour
     public bool isClear;
     bool allClear;
     public List<GameObject> doorlist;
+    public bool isDoorSound;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -22,12 +23,20 @@ public class DoorUpdate : MonoBehaviour
                 {
                     gameObject.transform.Translate(Vector3.down * Time.deltaTime *3);
                 }
+                else{
+                    if(isDoorSound==false){
+                         AudioSource audio = GetComponent<AudioSource>();
+                        audio.Play();
+                        isDoorSound=true;
+                    }
+                }
             }
             else
             {
                 if (gameObject.transform.position.y < 2)
                 {
                     gameObject.transform.Translate(Vector3.up * Time.deltaTime);
+                    isDoorSound=false;
                 }
             }
         

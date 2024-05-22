@@ -15,7 +15,9 @@ public class LightDoorUpdate : MonoBehaviour
     public Color ClearColor;
     public Color receiveColor;
 
+
     public bool isDoorActive;
+    public bool isDoorSound;
     // public NetworkVariable<bool> isDoor1Active = new NetworkVariable<bool>(
     //     false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     // Start is called before the first frame update
@@ -40,6 +42,14 @@ public class LightDoorUpdate : MonoBehaviour
                     door.transform.Translate(Vector3.down * Time.deltaTime *3);
                     door1.transform.Translate(Vector3.down * Time.deltaTime * 3);
                 }
+                else
+                {
+                    if(isDoorSound==false && door.GetComponent<AudioSource>() != null){
+                    AudioSource audio = door.GetComponent<AudioSource>();
+                    audio.Play();
+                    isDoorSound=true;
+                    }
+                }
             }
             else
             {
@@ -47,6 +57,7 @@ public class LightDoorUpdate : MonoBehaviour
                 {
                     door.transform.Translate(Vector3.up * Time.deltaTime);
                     door1.transform.Translate(Vector3.up * Time.deltaTime);
+                    isDoorSound=false;
                 }
             }
             //if laser doesn't continously box , need to close door again 
