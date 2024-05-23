@@ -129,6 +129,11 @@ public class SaveFileManager : SingletoneComponent<SaveFileManager>
             IsClearedUIText.enabled = false;
             IsClearedText.enabled = false;
         }
+        else if (portalType == ePortalType.TrueEnding)
+        {
+            IsClearedUIText.enabled = false;
+            IsClearedText.enabled = false;
+        }
 
         UICanvas.gameObject.SetActive(true);
     }

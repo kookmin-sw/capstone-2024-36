@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
-using Unity.Netcode;
-using Unity.Netcode.Transports.UTP;
 
 public enum ePortalType
 {
     Simple,
     Stage,
     Clear,
-    Ending
+    Ending,
+    TrueEnding
 }
 
 
