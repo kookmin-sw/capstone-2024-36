@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
@@ -65,13 +65,17 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
         return null;
     }
+
+    static public bool bSceneLoadOnDisconnect = true;
+
     #endregion
+
 
     [Header("Setting")]
     public string OnDisconnectionSceneName = "";
 
     [Header("Reference")]
-    public NetworkRegisterList RegisterList;
+    public List<NetworkRegisterList> RegisterLists = new List<NetworkRegisterList>();
 
     private static UnityTransport s_unityTransport;
     public static UnityTransport GetUnityTransport() { return s_unityTransport; }
@@ -80,18 +84,33 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     private void Awake()
     {
-        if (RegisterList == null)
-            Debug.LogError("FATAL: RegisterList is NULL");
+        if (RegisterLists == null)
+            Debug.LogError("FATAL: RegisterLists is NULL");
         else
         {
-            foreach(var item in RegisterList.List)
+            foreach(var list in RegisterLists)
             {
-                if (m_registeredPrefab.ContainsKey(item.RegisterId))
+                if (list == null)
                 {
-                    Debug.LogError("Duplicated register id found!");
-                    break;
+                    Debug.LogError("list is NULL!");
+                    continue;
                 }
-                m_registeredPrefab.Add(item.RegisterId, item.Prefab);
+
+                foreach(var item in list.List)
+                {
+                    if (item.Prefab == null)
+                    {
+                        Debug.LogError("Prefab is NULL!");
+                        continue;
+                    }
+
+                    if (m_registeredPrefab.ContainsKey(item.RegisterId))
+                    {
+                        Debug.LogError("Duplicated register id found!" + item.RegisterId);
+                        continue;
+                    }
+                    m_registeredPrefab.Add(item.RegisterId, item.Prefab);
+                }
             }
         }
 
@@ -115,7 +134,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 if (clientId == NetworkManager.Singleton.LocalClientId)
                 {
                     // catch disconnect here
-                    SceneManager.LoadScene(OnDisconnectionSceneName);
+                    if (bSceneLoadOnDisconnect)
+                        SceneManager.LoadScene(OnDisconnectionSceneName);
                 }
 
                 break;
@@ -133,7 +153,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         s_unityTransport.OnTransportEvent -= UnityTransport_OnTransportEvent;
         NetworkManager.Singleton.OnClientStopped -= Singleton_OnClientStopped;
 
-        SceneManager.LoadScene(OnDisconnectionSceneName);
+        if (bSceneLoadOnDisconnect)
+            SceneManager.LoadScene(OnDisconnectionSceneName);
     }
 
     public void LoadScene(int newSceneIndex)
@@ -187,6 +208,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
     public void MoveScene(int newSceneIndex, MyNetworkTransform netTr)
     {
+        SaveFileManager.Instance.HideCanvas();
+
         if (SceneManager.GetActiveScene().buildIndex == newSceneIndex)
         {
             Debug.Log($"LoadNextScene: already in same scene: {newSceneIndex}");
@@ -204,6 +227,11 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
             iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
             iTransform.FixedOnUnplace();
+
+            if (iTransform == netTr)
+            {
+                continue;
+            }
         }
 
         NotifyLeaveSceneRpc(
@@ -284,6 +312,99 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         EchoBack,   // set
         LoadScene   // request echo
     };
+
+    [Rpc(SendTo.Server)]
+    public void MoveSceneWithEveryPlayersRPC(int newSceneIndex)
+    {
+        SaveFileManager.Instance.HideCanvas();
+
+        if (SceneManager.GetActiveScene().buildIndex == newSceneIndex)
+        {
+            Debug.Log($"LoadNextScene: already in same scene: {newSceneIndex}");
+            return;
+        }
+
+        MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>(); ;
+        playerTransform.SceneSequenceNumber += 1;
+        playerTransform.CurrentSceneIndex = -1;
+
+        // 모든 MyNetworkTransform이 안보이게 된다. 
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
+        while (iterator.MoveNext())
+        {
+            MyNetworkTransform iTransform = iterator.Current;
+
+            iTransform.gameObject.SendMessage("SetExist", false, SendMessageOptions.DontRequireReceiver);
+            iTransform.FixedOnUnplace();
+
+            if (iTransform == playerTransform)
+            {
+                continue;
+            }
+
+            // 플레이어는 삭제하지 않는다. 
+            NetworkPlayer player = iTransform.GetComponent<NetworkPlayer>();
+            if (player != null)
+            {
+                continue;
+            }
+
+            if (iTransform.CurrentSceneIndex != newSceneIndex) 
+            {
+                iTransform.NetworkObject.Despawn(true);
+            }
+        }
+
+        NotifyLeaveSceneRpc(
+            playerTransform.NetworkObjectId, playerTransform.RegisterId, playerTransform.SceneSequenceNumber
+        );
+
+        StartCoroutine(moveSceneWithEveryPlayersEnumerator(newSceneIndex, playerTransform));
+    }
+
+    private IEnumerator moveSceneWithEveryPlayersEnumerator(int newSceneIndex, MyNetworkTransform netTr)
+    {
+        SceneManager.LoadScene(newSceneIndex);
+
+        yield return null;
+
+        IEnumerator<MyNetworkTransform> iterator = GetSpawnedEnumerator();
+        while (iterator.MoveNext())
+        {
+            MyNetworkTransform iTransform = iterator.Current;
+
+            if (iTransform.CurrentSceneIndex == newSceneIndex && iTransform.IsOwner)
+            {
+                if (iTransform == netTr)
+                    continue;
+
+                iTransform.FixedOnPlace();
+                iTransform.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+
+        netTr.CurrentSceneIndex = newSceneIndex;
+        netTr.SetSpawnPositionEvent.Invoke();
+        netTr.gameObject.SendMessage("SetExist", true, SendMessageOptions.DontRequireReceiver);
+        netTr.FixedOnPlace();
+
+        NotifyReadyForPlacedRpc(
+            netTr.NetworkObjectId,
+            netTr.RegisterId,
+            netTr.SceneSequenceNumber,
+            newSceneIndex,
+            ReadyForPlacedType.MoveScene
+        );
+
+        AfterServerMovedRpc(newSceneIndex);
+    }
+
+    [Rpc(SendTo.NotServer)]
+    public void AfterServerMovedRpc(int newSceneIndex)
+    {
+        MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>();
+        MoveScene(newSceneIndex, playerTransform);
+    }
 
     // TODO: Specified In Pram을 사용하여 Echo Back을 구현하기
     [Rpc(SendTo.NotMe)]
@@ -383,17 +504,16 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         // }
     }
 
-    /*
     [Rpc(SendTo.Server)]
     public void RequestOwnerRpc(ulong networkObjectId, ulong clientId)
     {
-        MyNetworkTransform.RegisterInfo spawnInfo = MyNetworkTransform.GetSpawned(networkObjectId);
-        if (spawnInfo == null)
+        if (!s_spawnInfoMap.ContainsKey(networkObjectId))
         {
-            Debug.LogError("SpawnInfo is NULL");
+            Debug.LogError("SpawnInfo not found");
             return;
         }
 
+        SpawnInfo spawnInfo = s_spawnInfoMap[networkObjectId];
         MyNetworkTransform netTr = spawnInfo.NetTransform;
         if (netTr == null)
         {
@@ -401,14 +521,12 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
             return;
         }
 
-        ulong serverId = NetworkManager.Singleton.LocalClientId;
-        if (clientId != serverId)
+        if (netTr.OwnerClientId != clientId)
         {
             NetworkObject netGo = netTr.GetComponent<NetworkObject>();
             netGo.ChangeOwnership(clientId);
         }
     }
-    */
 
     /*
     [Rpc(SendTo.Server)]

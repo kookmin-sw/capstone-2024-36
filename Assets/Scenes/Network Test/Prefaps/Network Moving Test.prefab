@@ -112,7 +112,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4064438781998964111}
   - component: {fileID: 7479649237607603934}
-  - component: {fileID: 5382643048494707561}
   - component: {fileID: -2099205837993649622}
   - component: {fileID: 2063576093647471897}
   - component: {fileID: 6950485936308383420}
@@ -154,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3906133669
+  GlobalObjectIdHash: 4175192314
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -163,19 +162,6 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 0
---- !u!114 &5382643048494707561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8319281662908137179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30c499cfacf7904ab89507fe7b55855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_initialPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &-2099205837993649622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8319281662908137179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d9a40eb038f1614aaad4c6d2ae2dd3e, type: 3}
   m_Name: 
@@ -234,7 +220,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &-2183150713918061832
@@ -270,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a72709fcba7e9f43b73f332e9fe9d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Interact: {fileID: 0}
 --- !u!1 &8806372225230970048
 GameObject:
   m_ObjectHideFlags: 0

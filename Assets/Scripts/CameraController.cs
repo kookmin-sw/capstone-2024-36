@@ -17,11 +17,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float m_maxPivotV = 80;     // highest point look up
     [SerializeField] private float m_collisionRadius = 0.2f;
     [SerializeField] private LayerMask m_collisionMask;
+    [SerializeField] private bool m_bLockMouse;
 
     [Header("Reference")]
     public Transform Target;
     [SerializeField] private Transform Pivot;
     [SerializeField] private Camera Cam;
+    [SerializeField] private Light BLight;
 
     private Vector3 m_smoothVelocity;
     private PlayerControl m_playerControl;
@@ -29,6 +31,11 @@ public class CameraController : MonoBehaviour
     private float m_defaultCameraZ;
     private float m_targetCameraZ;
     private Vector3 m_cameraPosition = Vector3.zero;
+
+    public static float Brightness = 1; // 밝기세팅을 위한 변수
+    public static float MouseSpeed = 50; // 마우스 속도세팅을 위한 변수
+
+    public Transform getPivot() { return Pivot; }
 
     private void Awake()
     {
@@ -51,8 +58,16 @@ public class CameraController : MonoBehaviour
     }
 
 
+
+
     private void LateUpdate()
     {
+        //세팅창에서 설정한 변수
+        BLight.intensity = Brightness;
+        BLight.shadowStrength = 0.5f;
+        m_verticalSpeed = MouseSpeed;
+        m_horizontalSpeed = MouseSpeed; 
+
         if (Target == null)
             return;
 
@@ -64,9 +79,13 @@ public class CameraController : MonoBehaviour
             Vector3 _targetCameraPosition = Vector3.SmoothDamp(
             transform.position, Target.transform.position, ref m_smoothVelocity, m_smoothSpeed * Time.deltaTime
         );
-        transform.position = _targetCameraPosition + new Vector3(0, 1.0f, 0);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        transform.position = _targetCameraPosition; // + new Vector3(0, 1.0f, 0);
+        
+        if (m_bLockMouse)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         // ratation
         HorizontalAngle += m_mouseDelta.x * m_horizontalSpeed * Time.deltaTime;

@@ -227,7 +227,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4479562085828977117, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
       propertyPath: NextSceneName
-      value: Network World Scene1
+      value: Network Scene Select Scene
       objectReference: {fileID: 0}
     - target: {fileID: 4479562085828977117, guid: 3e3e66544e7f08a4093a54947688be43, type: 3}
       propertyPath: NetworkSceneManagerPrefap

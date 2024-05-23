@@ -9,6 +9,12 @@ TagManager:
   - Wall
   - Man Spawn Pos
   - Woman Spawn Pos
+  - LaserPoint
+  - GravityObject
+  - stars
+  - GravityControl
+  - StageNumber
+  - PlayerForGravity
   layers:
   - Default
   - TransparentFX
@@ -19,11 +25,11 @@ TagManager:
   - Mirror
   - Wall
   - PlayerRigidbody
-  - 
-  - 
-  - 
-  - 
-  - 
+  - GravityArea
+  - ClearCheck
+  - Filter
+  - Laser
+  - Trigger
   - 
   - 
   - 

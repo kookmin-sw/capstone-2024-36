@@ -67,4 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDisconnectionSceneName: Gravity Title Scene
-  RegisterList: {fileID: 11400000, guid: e7527b9da001141458adcb9ce415fe85, type: 2}
+  RegisterLists:
+  - {fileID: 11400000, guid: e7527b9da001141458adcb9ce415fe85, type: 2}

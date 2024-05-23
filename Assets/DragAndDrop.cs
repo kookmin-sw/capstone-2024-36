@@ -84,7 +84,7 @@ public class DragAndDrop : MonoBehaviour
             {
                 hit.rigidbody.velocity = Vector3.zero;
                 hit.rigidbody.angularVelocity = Vector3.zero;
-                hit.rigidbody.useGravity = true;
+                //hit.rigidbody.useGravity = true;
             }
         }
     }

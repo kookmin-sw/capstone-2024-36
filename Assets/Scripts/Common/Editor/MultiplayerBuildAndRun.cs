@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 
 public class MultiplayerBuildAndRun
 {
@@ -51,14 +52,17 @@ public class MultiplayerBuildAndRun
                 scenePaths.Add(s.path);
         }
 
+        BuildReport report = null;
         for (int i = 1; i <= playerCount; i++)
         {
             if (i == 1)
             {
+                // disable auto run player
+
                 // GetScenePaths()
-                BuildPipeline.BuildPlayer(scenePaths.ToArray(),
+                report = BuildPipeline.BuildPlayer(scenePaths.ToArray(),
                 "Builds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + ".exe",
-                BuildTarget.StandaloneWindows64, BuildOptions.AutoRunPlayer);
+                BuildTarget.StandaloneWindows64, BuildOptions.None);
             }
             else
             {
@@ -69,10 +73,21 @@ public class MultiplayerBuildAndRun
 
                 CopyDirectory(buildPath1, i_buildPath, true);
 
-                i_buildPath += GetProjectName() + ".exe";
+                // i_buildPath += GetProjectName() + ".exe";
 
-                startInfo.FileName = i_buildPath;
-                Process.Start(startInfo);
+                // startInfo.FileName = i_buildPath;
+                // Process.Start(startInfo);
+            }
+        }
+
+        // Current Directory를 지정하기 위해 AutoRunPlayer를 사용하는 대신
+        // 아래 함수로 실행시킨다. 
+        // 세이브 파일 충돌 방지
+        if (report != null)
+        {
+            if (report.summary.result == BuildResult.Succeeded)
+            {
+                RunWin64(playerCount);
             }
         }
     }
@@ -108,12 +123,15 @@ public class MultiplayerBuildAndRun
         {
             try
             {
-                string path = 
-                    System.IO.Directory.GetCurrentDirectory() + 
-                    "/Builds/Win64/" + GetProjectName() + 
-                    i.ToString() + "/" + GetProjectName() + ".exe";
+                string path =
+                    System.IO.Directory.GetCurrentDirectory() +
+                    "/Builds/Win64/" + GetProjectName() +
+                    i.ToString() + "/";
 
-                startInfo.FileName = path;
+                UnityEngine.Debug.Log(path);
+
+                startInfo.WorkingDirectory = path;
+                startInfo.FileName = path + GetProjectName() + ".exe"; ;
                 Process process = Process.Start(startInfo);
             } 
             catch (Win32Exception)
@@ -129,7 +147,7 @@ public class MultiplayerBuildAndRun
 
     #endregion
 
-    static string GetProjectName()
+    public static string GetProjectName()
     {
         string[] s = Application.dataPath.Split('/');
         return s[s.Length - 2];

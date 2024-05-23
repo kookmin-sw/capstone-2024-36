@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class TestPlayUI : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class TestPlayUI : MonoBehaviour
         NetworkManager.Singleton.Shutdown();
     }
 
-    public void OnClickSceneButton(int buildIndex)
+    public void OnClickSceneButton(string sceneName)
     {
-        NetworkSceneManager.Instance.LoadScene(buildIndex);
+        int sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
+        NetworkSceneManager.Instance.LoadScene(sceneIndex);
     }
 }

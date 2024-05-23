@@ -67,4 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDisconnectionSceneName: Network Title Scene
-  RegisterList: {fileID: 11400000, guid: adb6066e67c318b4685732bc892a3822, type: 2}
+  RegisterLists:
+  - {fileID: 11400000, guid: adb6066e67c318b4685732bc892a3822, type: 2}

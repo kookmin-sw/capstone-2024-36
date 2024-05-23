@@ -67,4 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDisconnectionSceneName: Scale Title Scene
-  RegisterList: {fileID: 11400000, guid: fd358bb8fb3fe8d4b8af86eafad2c375, type: 2}
+  RegisterLists:
+  - {fileID: 11400000, guid: fd358bb8fb3fe8d4b8af86eafad2c375, type: 2}

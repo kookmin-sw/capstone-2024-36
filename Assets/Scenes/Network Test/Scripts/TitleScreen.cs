@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine.UI;
@@ -10,6 +10,8 @@ public class TitleScreen : MonoBehaviour
 {
     [Header("Settings")]
     public string NextSceneName;
+    public string SettingSceneName;
+    public string TitleSceneName;
 
     [Header("Status")]
     public bool isStarted = false;
@@ -55,7 +57,7 @@ public class TitleScreen : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log("TitleScreen start");
+        // Debug.Log("TitleScreen start");
         unityTransport = NetworkManager.Singleton.GetComponent<UnityTransport>();
 
         unityTransport.OnTransportEvent += UnityTransport_OnTransportEvent;
@@ -110,6 +112,21 @@ public class TitleScreen : MonoBehaviour
         InfoText.text = "Loading Network Object... ";
     }
 
+    public void StartMulti()
+    {
+        SceneManager.LoadScene("Combine Multi Scene");
+    }
+
+    public void StartSetting()
+    {
+        SceneManager.LoadScene("Combine Setting Scene");
+    }
+
+    public void EndSetting()
+    {
+        SceneManager.LoadScene("Combine Title Scene");
+    }
+
     private void Update()
     {
         if (isStarted)
@@ -136,6 +153,7 @@ public class TitleScreen : MonoBehaviour
                 return;
             }
 
+            NetworkSceneManager.bSceneLoadOnDisconnect = true;
             MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>();
             NetworkSceneManager.Instance.MoveScene(
                 (int)buildIndex, 
