@@ -30,8 +30,13 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     void Update()
     {
         if (lasermanger == null)
-            lasermanger = GameObject.Find("LaserManger").GetComponent<LaserManger>();
-
+        {
+            GameObject go = GameObject.Find("LaserManger");
+            if (go != null)
+            {
+                lasermanger = go.GetComponent<LaserManger>();
+            }
+        }
 
         if (isLaserActive.Value)
         {
