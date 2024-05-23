@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD300\uC6D0\n"
+  m_text: TEAM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32a285771fea3e0438a889ad43414103, type: 2}
   m_sharedMaterial: {fileID: 488195251954973116, guid: 32a285771fea3e0438a889ad43414103, type: 2}
@@ -768,10 +768,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD300\uC7A5, \uC2A4\uD14C\uC774\uC9C01 (\uD06C\uAE30)\n\uC2A4\uD14C\uC774\uC9C0
-    2 (\uC554\uD751\uBB3C\uC9C8)\n\uC2A4\uD14C\uC774\uC9C0 3 (\uC911\uB825)\n\uC11C\uBC84
+  m_text: "\uD300\uC7A5, \uC5FC\uB825 \uC2A4\uD14C\uC774\uC9C0\n\uC554\uD751\uBB3C\uC9C8
+    \uC2A4\uD14C\uC774\uC9C0\n\uC911\uB825 \uC2A4\uD14C\uC774\uC9C0\n\uC11C\uBC84
     \uBC0F \uBC31\uC5D4\uB4DC\n\uC11C\uBC84 \uBC0F \uBC31\uC5D4\uB4DC\n\uB9F5 \uBC0F
-    \uADF8\uB798\uD53D \uB514\uC790\uC778\n\uC2A4\uD1A0\uB9AC \uBC0F \uBCF4\uC870\uAC1C\uBC1C"
+    \uADF8\uB798\uD53D \uB514\uC790\uC778\n\uAE30\uD68D \uBC0F \uC2A4\uD1A0\uB9AC,
+    \uD2B8\uB9AC\uAC70"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32a285771fea3e0438a889ad43414103, type: 2}
   m_sharedMaterial: {fileID: 488195251954973116, guid: 32a285771fea3e0438a889ad43414103, type: 2}
@@ -805,7 +806,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -999,7 +1000,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thanks for playing!
+  m_text: Thanks For Playing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32a285771fea3e0438a889ad43414103, type: 2}
   m_sharedMaterial: {fileID: 488195251954973116, guid: 32a285771fea3e0438a889ad43414103, type: 2}
@@ -1133,10 +1134,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AI Semma
+  m_text: "A I S E N M A\nA M N E S I A\n<\uAE30\uC5B5 \uC0C1\uC2E4>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 32a285771fea3e0438a889ad43414103, type: 2}
-  m_sharedMaterial: {fileID: 488195251954973116, guid: 32a285771fea3e0438a889ad43414103, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5cc16da52b55cb47949420bd197c954, type: 2}
+  m_sharedMaterial: {fileID: -7979298068314978684, guid: d5cc16da52b55cb47949420bd197c954, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
