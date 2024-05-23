@@ -15,6 +15,8 @@ public class MenuBackground : MonoBehaviour
     public int spawnSecMin = 3;
     public int spawnSecMax = 7;
 
+    public bool bGeneratePrisoners = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,9 @@ public class MenuBackground : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!bGeneratePrisoners)
+            return;
+
         if (leftSecToSpawn > 0)
         {
             leftSecToSpawn -= Time.deltaTime;

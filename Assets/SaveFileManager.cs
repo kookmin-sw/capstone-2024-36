@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -120,6 +120,11 @@ public class SaveFileManager : SingletoneComponent<SaveFileManager>
             IsClearedText.enabled = false;
         }
         else if (portalType == ePortalType.Stage)
+        {
+            IsClearedUIText.enabled = false;
+            IsClearedText.enabled = false;
+        }
+        else if (portalType == ePortalType.Ending)
         {
             IsClearedUIText.enabled = false;
             IsClearedText.enabled = false;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
@@ -65,7 +65,11 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
 
         return null;
     }
+
+    static public bool bSceneLoadOnDisconnect = true;
+
     #endregion
+
 
     [Header("Setting")]
     public string OnDisconnectionSceneName = "";
@@ -130,7 +134,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
                 if (clientId == NetworkManager.Singleton.LocalClientId)
                 {
                     // catch disconnect here
-                    SceneManager.LoadScene(OnDisconnectionSceneName);
+                    if (bSceneLoadOnDisconnect)
+                        SceneManager.LoadScene(OnDisconnectionSceneName);
                 }
 
                 break;
@@ -148,7 +153,8 @@ public class NetworkSceneManager : NetworkSingletoneComponent<NetworkSceneManage
         s_unityTransport.OnTransportEvent -= UnityTransport_OnTransportEvent;
         NetworkManager.Singleton.OnClientStopped -= Singleton_OnClientStopped;
 
-        SceneManager.LoadScene(OnDisconnectionSceneName);
+        if (bSceneLoadOnDisconnect)
+            SceneManager.LoadScene(OnDisconnectionSceneName);
     }
 
     public void LoadScene(int newSceneIndex)

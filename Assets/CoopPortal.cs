@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 
 public enum ePortalType
 {
@@ -192,8 +194,20 @@ public class CoopPortal : MonoBehaviour
                         info.Save();
                     }
 
-                    int sceneIndex = SceneUtility.GetBuildIndexByScenePath(NextSceneName);
-                    NetworkSceneManager.Instance.MoveSceneWithEveryPlayersRPC(sceneIndex);
+                    if (portalType != ePortalType.Ending)
+                    {
+                        int sceneIndex = SceneUtility.GetBuildIndexByScenePath(NextSceneName);
+                        NetworkSceneManager.Instance.MoveSceneWithEveryPlayersRPC(sceneIndex);
+                    }
+                    else
+                    {
+                        GameObject.Destroy(ChatManager.Instance.transform.parent.gameObject);
+
+                        NetworkSceneManager.bSceneLoadOnDisconnect = false;
+                        NetworkManager.Singleton.Shutdown();
+                        SaveFileManager.Instance.HideCanvas();
+                        SceneManager.LoadScene(NextSceneName);
+                    }
                 }
             }
         }

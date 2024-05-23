@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine.UI;
@@ -153,6 +153,7 @@ public class TitleScreen : MonoBehaviour
                 return;
             }
 
+            NetworkSceneManager.bSceneLoadOnDisconnect = true;
             MyNetworkTransform playerTransform = NetworkPlayer.LocalIstance.GetComponent<MyNetworkTransform>();
             NetworkSceneManager.Instance.MoveScene(
                 (int)buildIndex, 

@@ -14,7 +14,7 @@ public class ChatManager : MonoBehaviour
     private Coroutine fadeCoroutine;
     private List<string> allMessages = new List<string>();
 
-    void Awake()
+    void Start()
     {
         if (Instance == null)
         {
