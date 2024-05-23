@@ -25,12 +25,14 @@ public class NetworkLaserPointerShoot : NetworkBehaviour
     public float updateInterval = 0.5f; // 업데이트 간격 설정 (초 단위)
 
     void Start(){
-        lasermanger = GameObject.Find("LaserManger").GetComponent<LaserManger>();
     }
 
     void Update()
     {
-        
+        if (lasermanger == null)
+            lasermanger = GameObject.Find("LaserManger").GetComponent<LaserManger>();
+
+
         if (isLaserActive.Value)
         {
             if(beam == null){
