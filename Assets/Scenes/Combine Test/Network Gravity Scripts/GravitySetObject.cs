@@ -14,7 +14,8 @@ public class GravitySetObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        setObject.SetActive(false);
+        if(other.CompareTag("PlayerForGravity"))
+            setObject.SetActive(false);
  
         /*
         else
@@ -27,7 +28,8 @@ public class GravitySetObject : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        setObject.SetActive(true);
+        if(other.CompareTag("PlayerForGravity"))
+            setObject.SetActive(true);
     
         /*
         else
