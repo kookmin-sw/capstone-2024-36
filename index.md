@@ -64,3 +64,12 @@ AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하
 
 [중간 보고서 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%A4%91%EA%B0%84%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
 
+## 최종 발표 자료
+
+[최종 발표 pdf 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%BA%A1%EB%94%94%20%EA%B8%B0%EB%A7%90%20LAB36%20PPT.pdf)
+
+[최종 발표 ppt 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/%EC%BA%A1%EB%94%94%20%EA%B8%B0%EB%A7%90%20LAB36.pptx)
+
+[최종 보고서 docx 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/LAB36%20-%20%EA%B8%B0%EB%A7%90%EB%B3%B4%EA%B3%A0%EC%84%9C.docx)
+
+[최종 보고서 pdf 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/LAB36%20-%20%EA%B8%B0%EB%A7%90%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
