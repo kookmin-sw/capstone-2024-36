@@ -75,4 +75,4 @@ AI가 시키는대로 주어진 염력, 암흑물질, 중력 능력에 적응하
 [최종 보고서 pdf 링크](https://github.com/kookmin-sw/capstone-2024-36/blob/master/LAB36%20-%20%EA%B8%B0%EB%A7%90%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf)
 
 ## 시연 영상
-(https://drive.google.com/file/d/1gwE-qeiie4K708wFQwubNw2uCDZfPoiy/view?usp=sharing)
+https://drive.google.com/file/d/1gwE-qeiie4K708wFQwubNw2uCDZfPoiy/view?usp=sharing
